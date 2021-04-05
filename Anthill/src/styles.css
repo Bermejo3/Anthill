@@ -5,7 +5,7 @@ body{
 }
 
 .sidebar{
-    background:  linear-gradient(#ff9100c9, #ff9100af), url(./assets/thomas-smith-399133-1707x2560.jpg);
+    background:  linear-gradient(#ff9100, #ff91007e), url(./assets/thomas-smith-399133-1707x2560.jpg);
     color:  #1f283e;
 }
 
