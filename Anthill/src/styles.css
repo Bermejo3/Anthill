@@ -9,3 +9,36 @@ body{
     color:  #1f283e;
 }
 
+.logoHome{
+    width: 160px;
+    height: 140px;
+}
+
+.logoHome img{
+    padding: 10px;
+}
+
+.calendario, .reloj{
+    background: rgba(255, 255, 255, 0.05);
+    margin: 10px;
+    padding: 20px;
+}
+
+.logoHome{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.calendario h2{
+    color:#ff9100
+}
+
+.calendario a{
+    text-decoration: none;
+    color: white;
+}
+
+.fc .fc-daygrid-day.fc-day-today{
+    background-color: #ff9100 !important
+}
