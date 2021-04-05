@@ -1,10 +1,16 @@
 
 body{
     color: white;
-    background-color: #1f283e;
+    /* background: #1f283e; */
+    background:  linear-gradient( rgba(31, 39, 61, 0.98),rgba(31, 39, 61, 0.98)), url("./assets/hormigasLogin.jpg");
 }
 
 .sidebar{
     background:  linear-gradient(#ff9100c9, #ff9100af), url("./assets/thomas-smith-399133-1707x2560.jpg");
     color:  #1f283e;
 }
+@media screen and (max-width:780px)
+{
+    #imagen{display :none}
+}
+
