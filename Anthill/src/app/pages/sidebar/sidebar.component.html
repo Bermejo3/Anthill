@@ -1,13 +1,66 @@
-<div class="sidebar">
+<div class="sidebar" *ngIf="this.servicio.estaOculto">
     <div class="menu">
         <nav class="nav flex-column">
-            <h2><i class="fas fa-bug" style="font-size: larger;"></i>Anthill</h2>
+            <h2><img src="../../../assets/Logo/LogoSinNombre.png" style= "width: 30%;" alt="">Anthill</h2>
             <hr>
-            <a class="nav-link active" aria-current="page" routerLink="home"><i class="fas fa-home"></i> Home</a>
+            <!--<a class="nav-link active" aria-current="page" routerLink="home"><i class="fas fa-home"></i> Home</a>
             <a class="nav-link" routerLink="calendar"><i class="fas fa-calendar-alt"></i> Horarios</a>
             <a class="nav-link" href="#"><i class="fas fa-cubes"></i> Stock</a>
             <a class="nav-link" href="#"> <i class="fas fa-industry"></i> Produccion</a>
-            <a class="nav-link" href="#"> <i class="fas fa-user-alt"></i> RRHH</a>
+            <a class="nav-link" href="#"> <i class="fas fa-user-alt"></i> RRHH</a> -->
+            <div class="misOpciones">
+                <a class ="opciones" routerLink="home">
+                    <i class="fas fa-home"></i>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Home
+                </a>
+                <a class ="opciones" id="drop" (click)="mostrar()">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Horarios
+                </a>
+                <ul *ngIf ="!isHidden" id="list">
+                    <a class="opciones">Turnos</a>
+                    <a class="opciones">Vacaciones</a>
+                </ul>
+
+                <a class="opciones">
+                    <i class="fas fa-cubes"></i>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Stock
+                </a>
+                <a class="opciones">
+                    <i class="fas fa-industry"></i>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Producción
+                </a>
+                <a class="opciones" (click)="ver()">
+                    <i class="fas fa-user-alt"></i>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    RRHH
+                </a>
+                <ul *ngIf ="!oculto" id="list">
+                    <a class="opciones">Empresa</a>
+                    <a class="opciones">Empleados</a>
+                </ul>
+               
+            </div>
+            
           </nav>
     </div>
 </div>

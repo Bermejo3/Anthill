@@ -1,0 +1,43 @@
+.misOpciones i
+{
+    margin-right:2px;
+    margin-left:2px;
+}
+.misOpciones
+{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.opciones
+{
+    position: flex;
+    display: inline-block;
+    padding: 10px 10px;  
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none; 
+    transition: 0.2s;
+    overflow: hidden;
+    font-size: 14px;
+    color: #1f283e;
+    background: rgba(255, 255, 255, 0.23);;
+    opacity: 1;
+    width: 100%;
+}
+.opciones:hover
+{
+    color: #ff9100;
+    background: #1f283e;
+    box-shadow: 0 0 10px #1f283e, 0 0 20px #1f283e, 0 0 40px #1f283e;
+    transition-delay: 0.5s;
+}
+
+.list button
+{
+    text-decoration: none; 
+}
+
+
+
+
+

@@ -1,14 +1,14 @@
 <div class="header">
     <nav class="navbar">
         <div class="container-fluid">
-          <a class="navbar-brand"><i class="fas fa-bars"></i></a>
+          <a class="navbar-brand" (click) = "mostrarBarra()" ><i class="fas fa-bars" style="color: white;"></i></a>
           <div>
             <h6>{{ getDay() }}</h6>
-            <h4>{{ hour }} : {{minute}} : {{seconds}}</h4>
+            <h4>{{ hrT }} : {{minT}} : {{sec}}</h4>
           </div>
            
           <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+            <input class="form-control me-2" type="search" placeholder="&#61442;" aria-label="Search">
           </form>
         </div>
       </nav>

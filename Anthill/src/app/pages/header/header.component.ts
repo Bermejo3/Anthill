@@ -1,27 +1,74 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiciosService } from 'src/shared/servicios.service';
 ​
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit 
+{
   private now = new Date()
-  public hour: number = this.now.getHours()
-  public minute: number = this.now.getMinutes()
-  public seconds: number = this.now.getSeconds()
+  public sec:number=0
+  public secT:string=""
+  public min:number=0
+  public minT:string=""
+  public hr:number=0
+  public hrT:string=""
+  public time: Date;
+
   public weekDay = this.now.getDay()
   public day = this.now.getDate()
   public month = this.now.getMonth()
-  constructor() { }
-​
-  ngOnInit(): void {
+  public isHidden: boolean = true;
+
+  constructor(public servicio:ServiciosService) 
+  {
+    this.sec=0
+    this.secT=""
+    this.min=0
+    this.minT=""
+    this.hr=0
+    this.hrT=""
+    this.time = new Date();
   }
-  public getDay(){
+  
+  mostrarBarra()
+  {
+    this.servicio.estaOculto = !this.servicio.estaOculto
+  }
+  ​
+  ngOnInit(): void 
+  {
+    setInterval(()=>
+    {
+      this.time = new Date();
+      this.sec = this.time.getSeconds();
+      this.min = this.time.getMinutes();
+      this.hr = this.time.getHours();
+      if(this.hr > 12){
+        
+        this.hr = this.hr - 12;
+      }
+      if(this.hr == 0){
+        this.hr = 12;
+      }
+      if(this.sec < 10){
+        this.secT = '0' + this.sec;
+      }
+      if(this.min < 10){
+        this.minT = '0' + this.min;
+      }
+      if(this.hr < 10){
+        this.hrT = '0' + this.hr;
+      }
+    },1000)
+  }
+  public getDay()
+  {
     let weekD = ["Domingo","Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"]
     let monthM = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
     return weekD[this.weekDay] +", " + this.day +" de " +monthM[this.month]
   }
-​
-
 }
+

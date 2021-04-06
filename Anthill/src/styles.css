@@ -1,7 +1,4 @@
-*{
-    font-size: 20px;
-    font-family: sans-serif;
-}
+
 
 body{
     color: white;
@@ -16,6 +13,7 @@ body{
     border-radius: 6px;
     margin-left: 20px;
     height: 87vh;
+    
 }
 
 @media screen and (max-width:780px)
@@ -66,9 +64,20 @@ body{
 .nav h2{
     font-family: 'Staatliches', cursive;
     margin-top: 1rem;
-    text-align: center;
+    font-size: 40px;
 }
-.nav a{
+
+​
+.nav i{
+    margin-right: 15px;
+
+}
+
+.form-control{
+    font-size: small;
+}
+
+/*.nav a{
     
     color: #1f283e;
     margin: 5px 30px;
@@ -84,13 +93,4 @@ body{
 .nav a:hover{
     background: rgba(255, 255, 255, 0.23);;
     opacity: 1;
-}
-​
-.nav i{
-    margin-right: 15px;
-}
-​
-.form-control{
-    font-size: small;
-}
-
+}*/

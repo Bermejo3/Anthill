@@ -1,4 +1,6 @@
+
 import { Component, OnInit } from '@angular/core';
+import { ServiciosService } from 'src/shared/servicios.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,7 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  public isHidden: boolean = true;
+  public oculto:boolean=true;
+
+  constructor(public servicio:ServiciosService) 
+  { 
+
+  }
+
+  mostrar()
+  {
+    this.isHidden=!this.isHidden;
+  }
+  ver()
+  {
+    this.oculto=!this.oculto;
+  }
 
   ngOnInit(): void {
   }
