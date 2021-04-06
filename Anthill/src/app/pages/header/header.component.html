@@ -1,1 +1,15 @@
-<p>header works!</p>
+<div class="header">
+    <nav class="navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand"><i class="fas fa-bars"></i></a>
+          <div>
+            <h6>{{ getDay() }}</h6>
+            <h4>{{ hour }} : {{minute}} : {{seconds}}</h4>
+          </div>
+           
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+          </form>
+        </div>
+      </nav>
+</div>

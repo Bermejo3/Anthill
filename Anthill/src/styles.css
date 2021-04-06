@@ -1,17 +1,32 @@
+*{
+    font-size: 20px;
+    font-family: sans-serif;
+}
 
 body{
     color: white;
-    /* background: #1f283e; */
-    background:  linear-gradient( rgba(31, 39, 61, 0.98),rgba(31, 39, 61, 0.98)), url("./assets/hormigasLogin.jpg");
+    background: #1f283e;
+    /* background:  linear-gradient( rgba(31, 39, 61, 0.98),rgba(31, 39, 61, 0.98)), url("./assets/hormigasLogin.jpg"); */
 }
 
 .sidebar{
     background:  linear-gradient(#ff9100c9, #ff9100af), url("./assets/thomas-smith-399133-1707x2560.jpg");
     color:  #1f283e;
+    border:  white solid 1px;
+    border-radius: 6px;
+    margin-left: 20px;
+    height: 87vh;
 }
+
 @media screen and (max-width:780px)
 {
     #imagen{display :none}
+}
+
+.header{
+    font-size: 30px;
+    padding: 5px 15px;
+    height: 10vh;
 }
 
 .logoHome{
@@ -47,3 +62,35 @@ body{
 .fc .fc-daygrid-day.fc-day-today{
     background-color: #ff9100 !important
 }
+
+.nav h2{
+    font-family: 'Staatliches', cursive;
+    margin-top: 1rem;
+    text-align: center;
+}
+.nav a{
+    
+    color: #1f283e;
+    margin: 5px 30px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+}
+​
+.nav a.active{
+    background: rgba(255, 255, 255, 0.23);;
+    opacity: 1;
+}
+​
+.nav a:hover{
+    background: rgba(255, 255, 255, 0.23);;
+    opacity: 1;
+}
+​
+.nav i{
+    margin-right: 15px;
+}
+​
+.form-control{
+    font-size: small;
+}
+
