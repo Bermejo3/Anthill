@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
+import interactionPlugin from '@fullcalendar/interaction'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,9 +25,11 @@ import { EmpleadoTurnosComponent } from './pages/empleado-turnos/empleado-turnos
 import { EmpleadoVacacionesComponent } from './pages/empleado-vacaciones/empleado-vacaciones.component';
 import { EmpleadoMiPerfilComponent } from './pages/empleado-mi-perfil/empleado-mi-perfil.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
+  interactionPlugin
 ]);
 
 @NgModule({
@@ -54,8 +57,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FullCalendarModule // register FullCalendar
-
+    FullCalendarModule, // register FullCalendar
+    NgbModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
