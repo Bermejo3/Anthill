@@ -1,11 +1,11 @@
-*{
+/* *{
     font-size: 20px;
     font-family: sans-serif;
-}
+} */
 
 body{
     color: white;
-    background: #1f283e;
+    background: rgb(31, 40, 62);
     /* background:  linear-gradient( rgba(31, 39, 61, 0.98),rgba(31, 39, 61, 0.98)), url("./assets/hormigasLogin.jpg"); */
 }
 

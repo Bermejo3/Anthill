@@ -1,1 +1,250 @@
-<p>stock works!</p>
+ <!-- ----------------------Search y Filtros---------------------------- -->
+ <div class="row barra-filtros">
+   <div class="col-2">
+     <form class="d-flex">
+       <input class="form-control me-2 mainLoginInput input-search-barra" type="search" placeholder="&#61442;"
+         aria-label="Search">
+       <button type="button" class="btn btn-primary btn-sm boton-redondo">Go</button>
+     </form>
+   </div>
+   <div class="col-1">
+     <select class="form-select" aria-label="Default select example">
+       <option selected>Open this select menu</option>
+       <option value="1">One</option>
+       <option value="2">Two</option>
+       <option value="3">Three</option>
+     </select>
+   </div>
+   <div class="col-1">
+     <select class="form-select" aria-label="Default select example">
+       <option selected>Open this select menu</option>
+       <option value="1">One</option>
+       <option value="2">Two</option>
+       <option value="3">Three</option>
+     </select>
+   </div>
+   <div class="col-1">
+     <select class="form-select" aria-label="Default select example">
+       <option selected>Open this select menu</option>
+       <option value="1">One</option>
+       <option value="2">Two</option>
+       <option value="3">Three</option>
+     </select>
+   </div>
+   <div class="col-1">
+     <select class="form-select" aria-label="Default select example">
+       <option selected>Open this select menu</option>
+       <option value="1">One</option>
+       <option value="2">Two</option>
+       <option value="3">Three</option>
+     </select>
+   </div>
+   <div class="col-1">
+     <select class="form-select" aria-label="Default select example">
+       <option selected>Open this select menu</option>
+       <option value="1">One</option>
+       <option value="2">Two</option>
+       <option value="3">Three</option>
+     </select>
+   </div>
+   <!-- -------------------- Button e Iconos------------------------------ -->
+   <button class="boton-barra-filtros" routerLink="stock-tarjetas">Añadir</button>
+
+   <div class="modal" tabindex="-1">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title">Modal title</h5>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+           <p>Modal body text goes here.</p>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+           <button type="button" class="btn btn-primary">Save changes</button>
+         </div>
+       </div>
+     </div>
+   </div>
+
+
+   <div class="col iconos-barra-filtros">
+     <i class="far fa-address-card" routerLink="/stock-tarjetas"></i>
+     <i class="fas fa-table" routerLink="/stock"></i>
+   </div>
+ </div>
+ <!-- ------------------Tabla--------------------------------- -->
+ <div class="row tamaño-tabla">
+
+   <div class="container mt-5">
+     <div class="tableContainer">
+       <table class="table">
+         <thead>
+           <tr class="tablaHeader">
+             <th>ID</th>
+             <th>Artículo</th>
+             <th>Categoría</th>
+             <th>Cantidad</th>
+             <th>Unidad</th>
+             <th>Fecha entrada</th>
+             <th>Ubicacion</th>
+             <th>Estado</th>
+             <th>Opciones</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr class="trPar">
+             <td>1</td>
+             <td>Paracetamol</td>
+             <td>Medicina</td>
+             <td>200</td>
+             <td>Cajas</td>
+             <td>21/05/2021</td>
+             <td>Almacén</td>
+             <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
+             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
+               <i class="fas fa-cog iconos-tarjetas"></i></td>
+           </tr>
+           <tr>
+             <td>2</td>
+             <td>Vacuna Moderna</td>
+             <td>Medicina</td>
+             <td>200</td>
+             <td>Litros</td>
+             <td>29/01/2021</td>
+             <td>Congelador</td>
+             <td><i class="fas fa-cubes estado-rojo-tabla"></i></td>
+             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
+               <i class="fas fa-cog iconos-tarjetas"></i></td>
+           </tr>
+           <tr class="trPar">
+             <td>3</td>
+             <td>Vacuna Pfizer</td>
+             <td>Medicina</td>
+             <td>600</td>
+             <td>Litros</td>
+             <td>12/01/2021</td>
+             <td>Congelador</td>
+             <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
+             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
+               <i class="fas fa-cog iconos-tarjetas"></i></td>
+           </tr>
+           <tr>
+             <td>4</td>
+             <td>Vacuna Española</td>
+             <td>Medicina</td>
+             <td>1900</td>
+             <td>Litros</td>
+             <td>5/02/202</td>
+             <td>Congelador</td>
+             <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
+             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
+               <i class="fas fa-cog iconos-tarjetas"></i></td>
+           </tr>
+           <tr class="trPar">
+             <td>5</td>
+             <td>Vacuna Johnson</td>
+             <td>Medicina</td>
+             <td>100</td>
+             <td>Litros</td>
+             <td>3/02/2021</td>
+             <td>Congelador</td>
+             <td><i class="fas fa-cubes estado-rojo-tabla"></i></td>
+             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
+               <i class="fas fa-cog iconos-tarjetas"></i></td>
+           </tr>
+           <tr>
+             <td>6</td>
+             <td>Viagras</td>
+             <td>Medicina</td>
+             <td>500</td>
+             <td>Cajas</td>
+             <td>21/01/2021</td>
+             <td>Almacén</td>
+             <td><i class="fas fa-cubes estado-verde-tabla" ></i></td>
+             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
+               <i class="fas fa-cog iconos-tarjetas"></i></td>
+           </tr>
+           <tr class="trPar">
+             <td>7</td>
+             <td>Anti inflamatorio</td>
+             <td>Medicina</td>
+             <td>1900</td>
+             <td>Cajas</td>
+             <td>21/01/2021</td>
+             <td>Almacén</td>
+             <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
+             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
+               <i class="fas fa-cog iconos-tarjetas"></i></td>
+           </tr>
+           <tr>
+             <td>8</td>
+             <td>Jeringuillas</td>
+             <td>Material médico</td>
+             <td>200</td>
+             <td>Unidades</td>
+             <td>19/08/2020</td>
+             <td>Almacén</td>
+             <td><i class="fas fa-cubes estado-rojo-tabla"></i></td>
+             <td><i class="fas fa-dumpster iconos-tarjetas" ></i>
+               <i class="fas fa-cog iconos-tarjetas"></i></td>
+           </tr>
+           <tr class="trPar">
+             <td>9</td>
+             <td>Catéter</td>
+             <td>Material médico</td>
+             <td>300</td>
+             <td>Unidades</td>
+             <td>21/01/2021</td>
+             <td>Almacén</td>
+             <td><i class="fas fa-cubes estado-rojo-tabla"></i></td>
+             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
+               <i class="fas fa-cog iconos-tarjetas"></i></td>
+           </tr>
+           <tr>
+             <td>10</td>
+             <td>Mascarillas</td>
+             <td>Material médico</td>
+             <td>20000</td>
+             <td>Unidades</td>
+             <td>2/03/2021</td>
+             <td>Almacén</td>
+             <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
+             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
+               <i class="fas fa-cog iconos-tarjetas"></i></td>
+           </tr>
+           <tr class="trPar">
+             <td>11</td>
+             <td>Trajes médicos</td>
+             <td>Material médico</td>
+             <td>1200</td>
+             <td>Unidades</td>
+             <td>21/09/2020</td>
+             <td>Almacén</td>
+             <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
+             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
+               <i class="fas fa-cog iconos-tarjetas"></i></td>
+           </tr>
+           <tr>
+             <td>12</td>
+             <td>Suero</td>
+             <td>Medicina</td>
+             <td>23200</td>
+             <td>Litros</td>
+             <td>21/01/2021</td>
+             <td>Congelador</td>
+             <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
+             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
+               <i class="fas fa-cog iconos-tarjetas"></i></td>
+           </tr>
+
+
+         </tbody>
+       </table>
+     </div>
+   </div>
+
+
+
+ </div>

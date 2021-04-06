@@ -1,0 +1,91 @@
+/* .........Boton y Search............ */
+.boton-barra-filtros {
+  color: #fff !important;
+  font-size: 20px;
+  font-weight: 500;
+  background: #1b8249;
+  border: 2px solid;
+  border-color: #1b8249;
+  position: relative;
+  width: 20%;
+  height: 80px;
+  border-radius: 6px;
+  background-color: #1b8249;
+}
+
+.boton-barra-filtros:before {
+  content:"";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 0px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.5s ease;
+} 
+.boton-barra-filtros:hover:before {
+  height: 100%;
+}
+.row .iconos-barra-filtros{
+  text-align:end;
+
+}
+.iconos-barra-filtros i{
+  cursor:pointer;
+  font-size:50px;
+  margin-right:3% ;
+}
+.mainLoginInput::-webkit-input-placeholder { 
+  font-family: FontAwesome;
+  font-weight: normal;
+  overflow: visible;
+  vertical-align: top;
+  display: inline-block !important;
+  padding-left: 5px;
+  padding-top: 2px;
+  color: hsl(0, 0%, 0%);
+}
+/* .........Desaparecer responsive............ */
+@media screen and (max-width:1500px)
+{
+    #imagen{display :none}
+}
+/* .........Filtros y Search............ */
+.barra-filtros{
+  width: 100%;
+  height: 10%
+}
+.input-search-barra{
+  margin-left: 5%
+}
+.boton-redondo{
+  border-radius: 50%
+}
+/* .........Body tarjetas............ */
+.container-tarjetas{
+  width: 100%;
+   height: 85%
+}
+.fila-completa{
+  width: 97%; height: 50%; margin-left: 1%; margin-top: 20px;
+}
+.tarjetas-fila1{
+  background-color:rgba(255, 255, 255, 0.15);
+  max-width: 540px;
+  height: 90%;
+  border-radius: 6px; 
+  box-shadow: 0px 10px 10px white inset
+}
+.letras-tarjeta{
+  color:white; margin-left: 30%;margin-top: 8%
+}
+.iconos-tarjetas{
+  margin-left: 7%;  font-size: 30px; cursor: pointer;
+}
+.estado-rojo{
+  color:red;font-size: 30px;margin-left: 7%;
+}
+.estado-verde{
+  color:green;font-size: 30px;margin-left: 7%;
+  }
+

@@ -24,6 +24,7 @@ import { EmpleadoTurnosComponent } from './pages/empleado-turnos/empleado-turnos
 import { EmpleadoVacacionesComponent } from './pages/empleado-vacaciones/empleado-vacaciones.component';
 import { EmpleadoMiPerfilComponent } from './pages/empleado-mi-perfil/empleado-mi-perfil.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { StockTarjetasComponent } from './pages/stock-tarjetas/stock-tarjetas.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -49,7 +50,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     EmpleadoTurnosComponent,
     EmpleadoVacacionesComponent,
     EmpleadoMiPerfilComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    StockTarjetasComponent
   ],
   imports: [
     BrowserModule,
