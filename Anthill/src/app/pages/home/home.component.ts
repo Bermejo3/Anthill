@@ -47,14 +47,6 @@ export class HomeComponent implements OnInit {
       this.sec = this.time.getSeconds();
       this.min = this.time.getMinutes();
       this.hr = this.time.getHours();
-      this.day = 'AM';
-      if(this.hr > 12){
-        this.day = 'PM';
-        this.hr = this.hr - 12;
-      }
-      if(this.hr == 0){
-        this.hr = 12;
-      }
       if(this.sec < 10){
         this.secT = '0' + this.sec;
       }
@@ -64,7 +56,7 @@ export class HomeComponent implements OnInit {
       if(this.hr < 10){
         this.hrT = '0' + this.hr;
       }
-    });
+    },1000);
   }
 
 }
