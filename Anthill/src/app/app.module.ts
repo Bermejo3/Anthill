@@ -26,6 +26,7 @@ import { EmpleadoVacacionesComponent } from './pages/empleado-vacaciones/emplead
 import { EmpleadoMiPerfilComponent } from './pages/empleado-mi-perfil/empleado-mi-perfil.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StockTarjetasComponent } from './pages/stock-tarjetas/stock-tarjetas.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -52,7 +53,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     EmpleadoTurnosComponent,
     EmpleadoVacacionesComponent,
     EmpleadoMiPerfilComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    StockTarjetasComponent
   ],
   imports: [
     BrowserModule,
