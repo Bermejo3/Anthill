@@ -9,8 +9,18 @@ export class ServiciosService {
 
   public esEmpleado:boolean = false;
 
+  public showInfo: boolean = false
   constructor() 
   { 
 
   }
+
+  show(){
+    this.showInfo = true;
+  }
+
+  hide(){ 
+    this.showInfo = false;
+  }
+
 }

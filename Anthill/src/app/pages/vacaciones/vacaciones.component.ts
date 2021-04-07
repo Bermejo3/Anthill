@@ -1,6 +1,8 @@
 import { Component, OnInit,  } from '@angular/core';
 import { CalendarOptions, EventClickArg } from '@fullcalendar/angular';
 import esLocale from '@fullcalendar/core/locales/es';
+import { DateClickArg } from '@fullcalendar/interaction';
+import { ServiciosService } from 'src/shared/servicios.service';
 
 
 @Component({
@@ -10,13 +12,9 @@ import esLocale from '@fullcalendar/core/locales/es';
 })
 export class VacacionesComponent implements OnInit {
 
-  showModal: boolean
-  title = 'ngularfullcalendarbootstrap';
-  name:string = ""
-  date:string = ""
-
-  constructor() {
-    this.showModal = false
+  public dia: number = 0
+  public mes: string = ""
+  constructor(public servicio: ServiciosService) {
   }
 
   calendarOptions: CalendarOptions = {
@@ -24,9 +22,11 @@ export class VacacionesComponent implements OnInit {
     locale: esLocale,
     weekNumbers: true,
     weekNumberFormat: { week: 'numeric'},
-    height: "80vh",
+    height: "70vh",
+    aspectRatio: 3,
+    editable: true,
     eventContent:this.renderEventContent,
-    eventClick: this.modalClick
+    eventClick: this.modalClick.bind(this),
   };
 
   calendarEvents= [
@@ -62,20 +62,17 @@ export class VacacionesComponent implements OnInit {
   }
 
   show(){
-    this.showModal = true;
-    alert('asda'+ this.name + this.date + this.showModal )
+    this.servicio.showInfo = true;
   }
 
   modalClick(clickInfo: EventClickArg){
-    this.name = clickInfo.event.title;  
-    this.date = clickInfo.event.startStr;
-    this.showModal = true;
-    alert('asda'+ this.name + this.date + this.showModal )
+    this.servicio.show()
+    this.mes = clickInfo.event.startStr
   }
 
   
   hide(){ 
-    this.showModal = false;
+    this.servicio.showInfo = false;
   }
 
 }

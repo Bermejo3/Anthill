@@ -35,16 +35,19 @@ body {
   padding: 10px;
 }
 
-.calendario,
-.reloj {
-  background: rgba(255, 255, 255, 0.05);
-  margin: 10px;
-  padding: 20px;
+.calendario, .reloj, .selectTurno{
+    background: rgba(255, 255, 255, 0.05);
+    margin: 10px;
+    padding: 20px;
 }
 
-.logoHome {
-  margin: 0px;
-  padding: 0px;
+.selectTurno{
+    background-color: #ff9100   
+}
+
+.logoHome{
+    margin: 0px;
+    padding: 0px;
 }
 
 
