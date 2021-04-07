@@ -1,1 +1,81 @@
-<p>produccion works!</p>
+
+<div class="row barra-filtros">
+   <div class="col-2">
+     <form class="d-flex">
+       <input class="form-control me-2 mainLoginInput input-search-barra" type="search" placeholder="&#61442;"
+         aria-label="Search">
+       <button type="button" class="btn btn-primary btn-sm boton-redondo">Go</button>
+     </form>
+   </div>
+   <div class="col-1">
+     <select class="form-select" aria-label="Default select example" style="width: fit-content;">
+       <option selected>Fecha</option>
+       <option value="1">Dia</option>
+       <option value="2">Mes</option>
+     </select>
+     </div>
+     <div class="col-9">
+   <button class="boton-barra-filtros" routerLink="stock-tarjetas">Añadir</button>
+</div>
+
+<div class="row">
+  <div class = "grafico">
+    <div echarts [options]="chartOptions" [loading] = "true" class="demo-chart">
+  </div>
+</div>
+
+<div class="col">
+<div class="row tamaño-tabla">
+  <div class="container mt-5">
+    <div class="tableContainer">
+      <table class="table">
+        <thead>
+          <tr class="tablaHeader">
+            <th>Empleado</th>
+            <th>Producción total</th>
+            <th>Horas Trabajadas</th>
+            <th>Emblema</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="trPar">
+            <td>Paco</td>
+            <td>250</td>
+            <td>34</td>
+            <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
+          </tr>
+          <tr>
+            <td>Paco</td>
+            <td>250</td>
+            <td>34</td>
+            <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
+          </tr>
+          <tr class="trPar">
+            <td>Paco</td>
+            <td>250</td>
+            <td>34</td>
+            <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
+          </tr>
+          <tr>
+            <td>Paco</td>
+            <td>250</td>
+            <td>34</td>
+            <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
+          </tr>
+          <tr class="trPar">
+            <td>Paco</td>
+            <td>250</td>
+            <td>34</td>
+            <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
+          </tr>
+          <tr>
+            <td>Paco</td>
+            <td>250</td>
+            <td>34</td>
+            <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+</div>
