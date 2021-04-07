@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StockTarjetasComponent implements OnInit {
 
-  constructor() { }
+  showModal: boolean
+
+  constructor() { 
+    this.showModal=false
+  }
 
   ngOnInit(): void {
   }
-
+  show(){
+    this.showModal = true;
+  }  
+  hide(){ 
+    this.showModal = false;
+  }
 }

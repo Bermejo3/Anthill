@@ -10,7 +10,7 @@
     width: 20%;
     height: 80px;
     border-radius: 6px;
-    background-color: #1b8249;
+    background-color: #ff9100;
   }
   
   .boton-barra-filtros:before {
@@ -52,7 +52,7 @@
 .tableContainer{
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
-    padding: 1%;
+    padding: 20px;
 }
 .table{
     margin: 5px;
@@ -92,3 +92,28 @@
   .iconos-tarjetas{
     margin-left: 7%;  font-size: 30px; cursor: pointer;
   }
+/* -----------Modal------------ */
+.tarjetas-modal{
+  /* background:  linear-gradient( rgba(31, 39, 61, 0.98),rgba(31, 39, 61, 0.95)),url("../../../assets/hormigasLogin.jpg");  */
+  background:  rgb(31, 40, 62, 0.90);
+}
+.modal-content{
+  background-color:#ff9100 ;
+  border:2px solid white;
+  width: 800px;
+  height: 680px;
+  margin-top: 90px;
+  position: relative;
+}
+.cabecera-input{
+  width: 33%; background-color: rgb(31, 40, 62); color:white;margin-top: 15px;height: 40px;
+}
+
+.input-modal{
+  background-color: rgb(45, 58, 88);color: white;margin-top: 15px; height: 40px;
+}
+.colocar-boton{
+  justify-content: center;
+  margin: 3%;
+}
+

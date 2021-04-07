@@ -1,1 +1,74 @@
-<p>rrhh-add-empleados works!</p>
+<div class="row tarjeta-add-empleado">
+  <div class="foto">
+    <div class="row">
+      <img src="../../../assets/tarjetas/empleado2.jpg"
+        style="width: 400px;height:405px;margin-top: 12%; margin-left: 10%; border-radius: 16%;" alt="">
+    </div>
+    <div class="row">
+      <button class="boton-barra-filtros pequeño" routerLink="rrhh-add-empleados">Añade una foto</button>
+    </div>
+    <div class="row grande">
+      <button class="boton-barra-filtros" routerLink="rrhh-empleados">Guardar empleado</button>
+    </div>
+  </div>
+  <div class="col">
+    <form>
+
+      <div class="input-group flex-nowrap mt-1">
+        <span class="input-group-text cabecera-input" id="addon-wrapping">Nombre</span>
+        <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
+          defaultValue=null #titulo>
+      </div>
+      <div class="input-group flex-nowrap mt-1">
+        <span class="input-group-text cabecera-input" id="addon-wrapping">Apellidos</span>
+        <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
+          defaultValue=null #titulo>
+      </div>
+      <div class="input-group flex-nowrap mt-1">
+        <span class="input-group-text cabecera-input" id="addon-wrapping">Edad</span>
+        <input type="email" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
+          defaultValue=null #titulo>
+      </div>
+      <div class="input-group flex-nowrap mt-1">
+        <span class="input-group-text cabecera-input" id="addon-wrapping">Puesto</span>
+        <input type="email" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
+          defaultValue=null #titulo>
+      </div>
+      <div class="input-group flex-nowrap mt-1">
+        <span class="input-group-text cabecera-input" id="addon-wrapping">Teléfono</span>
+        <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
+          defaultValue=null #titulo>
+      </div>
+      <div class="input-group flex-nowrap mt-1">
+        <span class="input-group-text cabecera-input" id="addon-wrapping">Turno</span>
+        <div class="falso-input">
+          <div class="colocar-selectores" style="width: 400px;height: 40px">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option1">
+            <label class="form-check-label" for="inlineRadio2">Mañana</label>
+            <input class="form-check-input margen1" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+              value="option1">
+            <label class="form-check-label margen2" for="inlineRadio2">Tarde</label>
+            <input class="form-check-input margen3" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+              value="option1">
+            <label class="form-check-label margen4" for="inlineRadio2">Noche</label>
+          </div>
+        </div>
+      </div>
+      <div class="input-group flex-nowrap mt-1">
+        <span class="input-group-text cabecera-input" id="addon-wrapping">Email</span>
+        <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
+          defaultValue=null #titulo>
+      </div>
+      <div class="input-group flex-nowrap mt-1">
+        <span class="input-group-text cabecera-input" id="addon-wrapping">Contraseña</span>
+        <input type="password" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
+          defaultValue=null #titulo>
+      </div>
+      <div class="input-group flex-nowrap mt-1">
+        <span class="input-group-text cabecera-input" id="addon-wrapping">Descripción</span>
+        <textarea class="form-control input-modal descripcion" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+      </div>
+    </form>
+  </div>
+</div>

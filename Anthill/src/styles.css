@@ -1,62 +1,64 @@
-body{
-    color: white;
-    background: rgb(31, 40, 62);
-    /* background:  linear-gradient( rgba(31, 39, 61, 0.98),rgba(31, 39, 61, 0.98)), url("./assets/hormigasLogin.jpg"); */
+body {
+  color: white;
+  background: rgb(31, 40, 62);
+  /* background:  linear-gradient( rgba(31, 39, 61, 0.98),rgba(31, 39, 61, 0.98)), url("./assets/hormigasLogin.jpg"); */
 }
 
-.sidebar{
-    background:  linear-gradient(#ff9100c9, #ff9100af), url("./assets/thomas-smith-399133-1707x2560.jpg");
-    color:  #1f283e;
-    border:  white solid 1px;
-    border-radius: 6px;
-    margin-left: 20px;
-    height: 87vh;
-    
+.sidebar {
+  background: linear-gradient(#ff9100c9, #ff9100af), url("./assets/thomas-smith-399133-1707x2560.jpg");
+  color: #1f283e;
+  border: white solid 1px;
+  border-radius: 6px;
+  margin-left: 20px;
+  height: 87vh;
+
+}
+/* ----------------------------------Desaparecer fotos------------------------------------------------------- */
+@media screen and (max-width:780px) {
+  #imagen {
+    display: none
+  }
+}
+/* ---------------------------------------------------------------------------------------------------------- */
+.header {
+  font-size: 30px;
+  padding: 5px 15px;
+  height: 10vh;
 }
 
-@media screen and (max-width:780px)
-{
-    #imagen{display :none}
+.logoHome {
+  width: 160px;
+  height: 140px;
 }
 
-.header{
-    font-size: 30px;
-    padding: 5px 15px;
-    height: 10vh;
+.logoHome img {
+  padding: 10px;
 }
 
-.logoHome{
-    width: 160px;
-    height: 140px;
+.calendario,
+.reloj {
+  background: rgba(255, 255, 255, 0.05);
+  margin: 10px;
+  padding: 20px;
 }
 
-.logoHome img{
-    padding: 10px;
-}
-
-.calendario, .reloj{
-    background: rgba(255, 255, 255, 0.05);
-    margin: 10px;
-    padding: 20px;
-}
-
-.logoHome{
-    margin: 0px;
-    padding: 0px;
+.logoHome {
+  margin: 0px;
+  padding: 0px;
 }
 
 
-.calendario h2{
-    color:#ff9100
+.calendario h2 {
+  color: #ff9100
 }
 
-.calendario a{
-    text-decoration: none;
-    color: white;
+.calendario a {
+  text-decoration: none;
+  color: white;
 }
 
-.fc .fc-daygrid-day.fc-day-today{
-    background-color: #ff9100 !important
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: #ff9100 !important
 }
 
 .nav h2{
@@ -66,14 +68,13 @@ body{
     text-align: center;
 }
 
-​
-.nav i{
-    margin-right: 15px;
+​ .nav i {
+  margin-right: 15px;
 
 }
 
-.form-control{
-    font-size: small;
+.form-control {
+  font-size: small;
 }
 
 /*.nav a{
@@ -93,3 +94,40 @@ body{
     background: rgba(255, 255, 255, 0.23);;
     opacity: 1;
 }*/
+
+
+/*  -------------------------------------------------------Modal---------------------------------------------------------- */
+.tarjetas-modal {
+  background: rgb(31, 40, 62, 0.90);
+}
+
+.modal-content {
+  background-color: #ff9100;
+  border: 2px solid white;
+  width: 800px;
+  height: 680px;
+  margin-top: 90px;
+  position: relative;
+}
+
+.cabecera-input {
+  width: 33%;
+  background-color: rgb(31, 40, 62);
+  color: white;
+  margin-top: 15px;
+  height: 40px;
+}
+
+.input-modal {
+  background-color: rgb(45, 58, 88);
+  color: white;
+  margin-top: 15px;
+  height: 40px;
+}
+
+.colocar-boton {
+  justify-content: center;
+  margin: 3%;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------- */

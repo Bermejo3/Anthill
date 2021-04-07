@@ -1,20 +1,21 @@
-/* .boton4 {
-  color: rgba(255, 255, 255, 0.9) !important;
-  font-size: 20px;
-  font-weight: 400;
-  padding: 0.5em 1.2em;
-  background: #318aac;
-  border: 2px solid;
-  border-color: #318aac;
-  position: relative;
-
+.cuerpo-registro {
+  justify-content: center;
+  margin-top: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: wrap;
 }
 
-.boton4:hover {
-  color: rgba(255, 255, 255, 1) !important;
-  box-shadow: 0 4px 16px rgba(49, 138, 172, 1);
-  transition: all 0.2s ease;
-} */
+.tarjeta-registro {
+  border: 1px solid #ff9100;
+  width: min-width;
+  height: 600px;
+  justify-content: center;
+  align-items: centers;
+  background-color: #ff9100;
+  border-radius: 6px;
+}
+
 .boton4 {
   color: #fff !important;
   font-size: 20px;
@@ -45,3 +46,36 @@
   width: 100%;
 }
 
+/*  ----------------------------------------------------------------Modal-------------------------------------------------------------- */
+.tarjetas-modal {
+  background: rgb(31, 40, 62, 0.90);
+}
+
+.modal-content {
+  background-color: #ff9100;
+  border: 2px solid white;
+  width: 800px;
+  height: 680px;
+  margin-top: 90px;
+  position: relative;
+}
+
+.cabecera-input {
+  width: 33%;
+  background-color: rgb(31, 40, 62);
+  color: white;
+  margin-top: 15px;
+  height: 40px;
+}
+
+.input-modal {
+  background-color: rgb(45, 58, 88);
+  color: white;
+  margin-top: 15px;
+  height: 40px;
+}
+
+.colocar-boton {
+  justify-content: center;
+  margin: 3%;
+}
