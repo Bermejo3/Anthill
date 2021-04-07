@@ -1,1 +1,26 @@
+    .cuerpo-login{
+        justify-content: center; margin-top: 60px; display:flex ;flex-wrap: wrap; flex-flow: wrap;
+    }
+
+
+
     
+    /* .foto-hormiguero{
+        border:1px solid  #ff9100; width: min-width; height: 600px; justify-content: center;align-items: centers ;background-color:  #ff9100; border-radius: 6px;
+        
+    }
+    .caja-login{
+        
+      border: 1px solid  #ff9100; width:400px; height: 500px; border-radius: 6px; background-color:  #ff9100;justify-content: center;
+    }
+    .alinear-input{
+        justify-content: center;
+    }
+    .input-email{
+        
+        text-align: center; width: min-content; align-items: center;border-radius: 16px; margin-top: 30px;
+    }
+    .input-password{
+        
+        text-align: center;width: min-content; align-items: center; border-radius: 16px; margin-top: 10px;
+    } */
