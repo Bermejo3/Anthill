@@ -3,11 +3,6 @@
         <nav class="nav flex-column">
             <h2><img src="../../../assets/Logo/LogoSinNombre.png" style= "width: 30%;" alt="">Anthill</h2>
             <hr>
-            <!--<a class="nav-link active" aria-current="page" routerLink="home"><i class="fas fa-home"></i> Home</a>
-            <a class="nav-link" routerLink="calendar"><i class="fas fa-calendar-alt"></i> Horarios</a>
-            <a class="nav-link" href="#"><i class="fas fa-cubes"></i> Stock</a>
-            <a class="nav-link" href="#"> <i class="fas fa-industry"></i> Produccion</a>
-            <a class="nav-link" href="#"> <i class="fas fa-user-alt"></i> RRHH</a> -->
             <div class="misOpciones">
                 <a class ="opciones" routerLink="home">
                     <i class="fas fa-home"></i>
@@ -17,7 +12,7 @@
                     <span></span>
                     Home
                 </a>
-                <a class ="opciones" id="drop" (click)="mostrar()">
+                <a class ="opciones" *ngIf="!this.servicio.esEmpleado" id="drop" (click)="mostrar()">
                     <i class="fas fa-calendar-alt"></i>
                     <span></span>
                     <span></span>
@@ -25,12 +20,12 @@
                     <span></span>
                     Horarios
                 </a>
-                <ul *ngIf ="!isHidden" id="list">
+                <ul *ngIf ="!isHidden && !this.servicio.esEmpleado" id="list">
                     <a class="opciones" routerLink="turnos-empresa">Turnos</a>
                     <a class="opciones" routerLink="vacaciones">Vacaciones</a>
                 </ul>
 
-                <a class="opciones">
+                <a class="opciones" *ngIf="!this.servicio.esEmpleado" routerLink="stock">
                     <i class="fas fa-cubes"></i>
                     <span></span>
                     <span></span>
@@ -38,7 +33,7 @@
                     <span></span>
                     Stock
                 </a>
-                <a class="opciones">
+                <a class="opciones" *ngIf="!this.servicio.esEmpleado" routerLink="produccion">
                     <i class="fas fa-industry"></i>
                     <span></span>
                     <span></span>
@@ -46,7 +41,7 @@
                     <span></span>
                     Producción
                 </a>
-                <a class="opciones" (click)="ver()">
+                <a class="opciones" *ngIf="!this.servicio.esEmpleado" (click)="ver()">
                     <i class="fas fa-user-alt"></i>
                     <span></span>
                     <span></span>
@@ -54,10 +49,30 @@
                     <span></span>
                     RRHH
                 </a>
-                <ul *ngIf ="!oculto" id="list">
-                    <a class="opciones">Empresa</a>
-                    <a class="opciones">Empleados</a>
+                <ul *ngIf ="!oculto && !this.servicio.esEmpleado" id="list">
+                    <a class="opciones" routerLink="rrhh-empresa">Empresa</a>
+                    <a class="opciones" routerLink="rrhh-empleados">Empleados</a>
                 </ul>
+                <a class ="opciones" id="drop" *ngIf="this.servicio.esEmpleado"(click)="mostrar()">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Horarios
+                </a>
+                <ul *ngIf ="!isHidden && this.servicio.esEmpleado" id="list">
+                    <a class="opciones" routerLink="empleado-turnos">Turnos</a>
+                    <a class="opciones" routerLink="empleado-vacaciones">Vacaciones</a>
+                </ul>
+                <a class="opciones" *ngIf="this.servicio.esEmpleado" routerLink="empleado-mi-perfil">
+                    <i class="fas fa-user-alt"></i>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Mi perfil
+                </a>
                
             </div>
             

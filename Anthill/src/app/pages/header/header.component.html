@@ -2,13 +2,14 @@
     <nav class="navbar">
         <div class="container-fluid">
           <a class="navbar-brand" (click) = "mostrarBarra()" ><i class="fas fa-bars" style="color: white;"></i></a>
-          <div>
-            <h6>{{ getDay() }}</h6>
-            <h4>{{ hrT }} : {{minT}} : {{sec}}</h4>
+          <div class="col-4">
+            <h6 style="text-align: center;">{{ getDay() }}</h6>
+            <h4 style="text-align: center;">{{hr}} : {{min}}</h4>
           </div>
            
           <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="&#61442;" aria-label="Search">
+            <input class="form-control me-2 mainLoginInput input-search-barra" type="search" placeholder="&#61442;"
+         aria-label="Search">
           </form>
         </div>
       </nav>

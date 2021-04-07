@@ -27,6 +27,7 @@ import { EmpleadoMiPerfilComponent } from './pages/empleado-mi-perfil/empleado-m
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StockTarjetasComponent } from './pages/stock-tarjetas/stock-tarjetas.component';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -60,7 +61,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     BrowserModule,
     AppRoutingModule,
     FullCalendarModule, // register FullCalendar
-    NgbModule 
+    NgbModule,
+    NgxEchartsModule.forRoot({ echarts: () => import('echarts'),}),// gráficas
   ],
   providers: [],
   bootstrap: [AppComponent]

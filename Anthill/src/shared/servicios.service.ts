@@ -7,6 +7,8 @@ export class ServiciosService {
 
   public estaOculto:boolean = true;
 
+  public esEmpleado:boolean = false;
+
   constructor() 
   { 
 
