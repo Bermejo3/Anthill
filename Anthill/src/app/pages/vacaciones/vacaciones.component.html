@@ -1,31 +1,38 @@
 <div class="container">
-    <div class="calendario">
-        <full-calendar [options]="calendarOptions"></full-calendar>
-    </div>
-    <!-- <div class="informacion" [style.display]="showModal ? 'block' : 'none'">
-      Hola
-    </div> -->
-</div>
-<button (click)="show()">Mostrar</button>
-
-<!-- Modal -->
-<div class="modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <div class="modal-header">
-          <h4 class="modal-title">{{ name }}</h4>
-          <button type="button" class="close" data-dismiss="modal" (click)="hide()">&times;</button>
-        </div>
-        
-        <div class="modal-body">
-          Event Start From : {{ date }}
-        </div>
-        
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="hide()">Close</button>
-        </div>
-        
+  <div class="row">
+    <div class="col-4" [style.display]="this.servicio.showInfo ? 'block' : 'none'">
+      <div class="empleados">
+        <div class="tamaño-tabla">
+            <div class="tableContainer">
+              <div class="dialog">
+                <a (click)=hide() class="close-thik"></a>
+              </div>
+              <table class="table">
+                <thead>
+                  <tr class="tablaHeader">
+                    <th>Vacaciones dia {{mes}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="trPar">
+                    <td>Alberto Bermejo</td>
+                  </tr>
+                  <tr>
+                    <td>Manuel Pinto</td>
+                  </tr>
+                  <tr class="trPar">
+                    <td>Carlos Ocaña</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
       </div>
     </div>
+    <div class="col-8">
+      <div class="calendario">
+        <full-calendar [options]="calendarOptions"></full-calendar>
+    </div>
+    </div>
   </div>
+</div>

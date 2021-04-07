@@ -46,23 +46,8 @@ export class HeaderComponent implements OnInit
       this.sec = this.time.getSeconds();
       this.min = this.time.getMinutes();
       this.hr = this.time.getHours();
-      if(this.hr > 12){
-        
-        this.hr = this.hr - 12;
-      }
-      if(this.hr == 0){
-        this.hr = 12;
-      }
-      if(this.sec < 10){
-        this.secT = '0' + this.sec;
-      }
-      if(this.min < 10){
-        this.minT = '0' + this.min;
-      }
-      if(this.hr < 10){
-        this.hrT = '0' + this.hr;
-      }
-    },1000)
+
+    })
   }
   public getDay()
   {
