@@ -10,12 +10,53 @@
    <div class="col-1">
      <select class="form-select" aria-label="Default select example" style="width: fit-content;">
        <option selected>Fecha</option>
-       <option value="1">Dia</option>
+       <option value="1">Día</option>
        <option value="2">Mes</option>
      </select>
      </div>
-     <div class="col-9">
-   <button class="boton-barra-filtros" routerLink="stock-tarjetas">Añadir</button>
+<div class="col-9">
+   <button class="boton-barra-filtros" (click)="show()">Añadir</button>
+</div>
+
+<div class="modal tarjetas-modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <div class="modal-header" >
+        <h4 class="modal-title">Introduce nuevos datos</h4>
+        <button type="button" class="close" data-dismiss="modal" (click)="hide()">&times;</button>
+      </div>
+      
+      <div class="modal-body fondo-modal">
+        <form>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Empleado</span>
+            <select class="form-select" aria-label="Default select example" style="width: fit-content;" #empleado>
+              <option *ngFor = "let trabajadores of data" selected value="{{trabajadores.empleado}}">{{trabajadores.empleado}}</option>
+            </select>
+    
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Producción</span>
+            <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #productividad>
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Horas</span>
+            <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #horas>
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Día</span>
+            <input type="date" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #dias>
+          </div>
+        </form>
+      </div>
+      
+      <div class="modal-footer colocar-boton">
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="nuevoDato(empleado.value, productividad.valueAsNumber, horas.valueAsNumber, dias.value)">Enviar</button>
+      </div>
+      
+    </div>
+  </div>
 </div>
 
 <div class="row">
@@ -32,46 +73,16 @@
         <thead>
           <tr class="tablaHeader">
             <th>Empleado</th>
-            <th>Producción total</th>
+            <th>Producción Total</th>
             <th>Horas Trabajadas</th>
             <th>Emblema</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="trPar">
-            <td>Paco</td>
-            <td>250</td>
-            <td>34</td>
-            <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
-          </tr>
-          <tr>
-            <td>Paco</td>
-            <td>250</td>
-            <td>34</td>
-            <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
-          </tr>
-          <tr class="trPar">
-            <td>Paco</td>
-            <td>250</td>
-            <td>34</td>
-            <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
-          </tr>
-          <tr>
-            <td>Paco</td>
-            <td>250</td>
-            <td>34</td>
-            <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
-          </tr>
-          <tr class="trPar">
-            <td>Paco</td>
-            <td>250</td>
-            <td>34</td>
-            <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
-          </tr>
-          <tr>
-            <td>Paco</td>
-            <td>250</td>
-            <td>34</td>
+          <tr *ngFor = "let trabajadores of data; let i = index; let even = even" [ngClass] = "{trPar: even}" (click)="verEmpleado(i)">
+            <td>{{trabajadores.empleado}}</td>
+            <td>{{trabajadores.productividad}}</td>
+            <td>{{trabajadores.horas}}</td>
             <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
           </tr>
         </tbody>

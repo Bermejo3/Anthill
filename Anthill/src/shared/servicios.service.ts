@@ -13,6 +13,11 @@ export class ServiciosService {
 
   public estaLogueado: boolean = false
 
+  public nombreEmpleado: string = "";
+  public produccionEmpleado: number = 0;
+  public horasEmpleado: number = 0;
+  public diaTrabajado: string = "";
+
   public weekNumber: number = 0
   public firstDayWeek: Date = new Date()
 

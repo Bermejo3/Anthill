@@ -1,1 +1,93 @@
-<p>empleado-mi-perfil works!</p>
+<div class="row">
+    <div class="col-6"></div>
+    <div class="col-6">
+        <div class="row filabotones">
+            <div class="col">
+                <button type="button" class="btn btn-primary btn-sm boton-redondo"><i class="fas fa-arrow-left"></i></button>
+                <button type="button" class="btn btn-primary btn-sm boton-redondo"><i class="fas fa-arrow-right"></i></button>
+            </div>
+            <div class="col">
+                <button class="boton-barra-filtros">Sem</button>
+                <button class="boton-barra-filtros">Mes</button>
+                <button class="boton-barra-filtros">Año</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row fila-completa">
+    <div class="col-6">
+      <div class="card mb-3 shadow tarjetas-fila1">
+        <div class="row g-0 img">
+          <div class="col-md-4">
+            <img src="../../../assets/tarjetas/empleado2.jpg" alt="..."
+              style="width: 200px;height:250px;margin-top: 10%; margin-left: 20%; border-radius: 50%;" id="imagen">
+          </div>
+          <div class="col-8">
+            <div class="card-body letras-tarjeta">
+              <p class="card-title"><b>Nombre:</b> Olivia</p>
+              <p class="card-title"><b>Apellido:</b> Artiles</p>
+              <p class="card-title"><b>Edad:</b> 28</p>
+              <p class="card-title"><b>Puesto:</b> Becaria</p>
+              <p class="card-title"><b>Turno:</b><i class="fas fa-adjust iconos-tarjetas tarde"></i><i
+                  class="fas fa-moon iconos-tarjetas luna"></i> </p>
+              <p class="card-title"><b>Telefono:</b> 679970021</p>
+              <p class="card-title"><b>Email:</b> Congeladora@gmail.com</p>
+              <p class="card-title"><b>Vacaciones restantes:</b> 21</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+        <div class="col">
+            <div class="row tamaño-tabla">
+                <div class="tableContainer">
+                  <table class="table">
+                    <thead>
+                      <tr class="tablaHeader">
+                        <th>Producción</th>
+                        <th>Horas Trabajadas</th>
+                        <th>Día</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="trPar">
+                        <td>250</td>
+                        <td>5</td>
+                        <td>22-11-21</td>
+                      </tr>
+                        <tr>
+                          <td>250</td>
+                          <td>6</td>
+                          <td>23-11-21</td>
+                        </tr>
+                      <tr class="trPar">
+                        <td>250</td>
+                        <td>5</td>
+                        <td>22-11-21</td>
+                      </tr>
+                        <tr>
+                          <td>250</td>
+                          <td>6</td>
+                          <td>23-11-21</td>
+                        </tr>
+                      <tr class="trPar">
+                        <td>250</td>
+                        <td>5</td>
+                        <td>22-11-21</td>
+                      </tr>
+                       
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class = "grafico">
+      <div echarts [options]="chartOptions" [loading] = "true" class="demo-chart">
+    </div>
+  </div>
