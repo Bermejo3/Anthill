@@ -1,17 +1,6 @@
 /* ................................................Boton e Iconos................................................. */
 .boton-barra-filtros {
-  color: #fff !important;
-  font-size: 20px;
-  font-weight: 500;
-  background: #1b8249;
-  border: 2px solid;
-  border-color: #1b8249;
-  position: relative;
-  width: 20%;
-  height: 80px;
   margin-left: 12%;
-  border-radius: 6px;
-  background-color: #ff9100;
 }
 
 .boton-barra-filtros:before {
@@ -38,6 +27,9 @@
   cursor: pointer;
   font-size: 50px;
   margin-right: 3%;
+}
+.iconos-barra-filtros i:hover{
+  color:darkturquoise
 }
 
 .mainLoginInput::-webkit-input-placeholder {
@@ -112,15 +104,17 @@
   transition: background-color .1s;
 }
 
-.elimnar:hover {
-  color: red;
-
-}
-
 .editar {
   color: rgb(135, 126, 135)
 }
-
+.card-title .fa-times-circle:hover {
+  color: red;
+  cursor:pointer
+}
+.card-title .fa-cog:hover {
+  color:  rgb(45, 58, 88);
+  cursor:pointer
+}
 /*  ----------------------------------------------------------------Modal-------------------------------------------------------------- */
 .tarjetas-modal {
   background: rgb(31, 40, 62, 0.90);

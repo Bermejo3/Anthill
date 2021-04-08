@@ -14,7 +14,7 @@ body {
 
 }
 /* ----------------------------------Desaparecer fotos------------------------------------------------------- */
-@media screen and (max-width:780px) {
+@media screen and (max-width:900px) {
   #imagen {
     display: none
   }
@@ -133,6 +133,7 @@ body {
   margin: 3%;
 }
 
+
 /* ----------------------------------------------------------------------------------------------------------------- */
 
 /* -------------------------------------CSS TABLAS------------------------------------------------------------------ */
@@ -186,7 +187,6 @@ body {
   color: #fff !important;
   font-size: 20px;
   font-weight: 500;
-  background: #1b8249;
   border: 2px solid;
   border-color: white;
   position: relative;

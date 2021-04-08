@@ -8,45 +8,44 @@
      </form>
    </div>
    <div class="col-1">
-     <select class="form-select" aria-label="Default select example">
-       <option selected>Open this select menu</option>
-       <option value="1">One</option>
-       <option value="2">Two</option>
-       <option value="3">Three</option>
-     </select>
-   </div>
-   <div class="col-1">
-     <select class="form-select" aria-label="Default select example">
-       <option selected>Open this select menu</option>
-       <option value="1">One</option>
-       <option value="2">Two</option>
-       <option value="3">Three</option>
-     </select>
-   </div>
-   <div class="col-1">
-     <select class="form-select" aria-label="Default select example">
-       <option selected>Open this select menu</option>
-       <option value="1">One</option>
-       <option value="2">Two</option>
-       <option value="3">Three</option>
-     </select>
-   </div>
-   <div class="col-1">
-     <select class="form-select" aria-label="Default select example">
-       <option selected>Open this select menu</option>
-       <option value="1">One</option>
-       <option value="2">Two</option>
-       <option value="3">Three</option>
-     </select>
-   </div>
-   <div class="col-1">
-     <select class="form-select" aria-label="Default select example">
-       <option selected>Open this select menu</option>
-       <option value="1">One</option>
-       <option value="2">Two</option>
-       <option value="3">Three</option>
-     </select>
-   </div>
+    <select class="form-select colocar-select" aria-label="Default select example">
+      <option selected>Categoría</option>
+      <option value="1">Material médico</option>
+      <option value="2">Medicina</option>
+      <option value="3">Parafarmacia</option>
+    </select>
+  </div>
+  <div class="col-1 margen1">
+    <select class="form-select colocar-select" aria-label="Default select example">
+      <option selected>Unidad</option>
+      <option value="1">Litros</option>
+      <option value="2">Unidades</option>
+      <option value="3">Kilos</option>
+    </select>
+  </div>
+  <div class="col-1 margen2">
+    <select class="form-select colocar-select" aria-label="Default select example">
+      <option selected>Fecha</option>
+      <option value="1">Enero-2021</option>
+      <option value="2">Febrero-2021</option>
+      <option value="3">Marzo-2021</option>
+    </select>
+  </div>
+  <div class="col-1">
+    <select class="form-select colocar-select" aria-label="Default select example">
+      <option selected>Ubicación</option>
+      <option value="1">Almacén</option>
+      <option value="2">Congelador</option>
+      <option value="3">En stock</option>
+    </select>
+  </div>
+  <div class="col-1">
+    <select class="form-select colocar-select" aria-label="Default select example">
+      <option selected>Estado</option>
+      <option value="1">Correcto</option>
+      <option value="2">Reponer</option>
+    </select>
+  </div>
    <!-- -------------------- Button e Iconos------------------------------ -->
    <button class="boton-barra-filtros" (click)="show()">Añadir</button>
 
@@ -98,7 +97,7 @@
         </div>
         
         <div class="modal-footer colocar-boton">
-          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="hide()">Guardar</button>
+          <button type="button" class="boton-barra-filtros boton-modal">Guardar</button>
         </div>
         
       </div>
@@ -131,8 +130,8 @@
                <p class="card-title"><b>Entrada:</b> 21/03/2021</p>
                <p class="card-title"><b>Ubicación:</b> Congelador</p>
                <p class="card-title"><b>Estado:</b> <i class="fas fa-cubes estado-rojo"></i></p>
-               <p class="card-title"><b>Opciones:</b> <i class="fas fa-dumpster iconos-tarjetas"></i>
-                 <i class="fas fa-cog iconos-tarjetas"></i></p>
+               <p class="card-title"><b>Opciones:</b> <i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+                 <i class="fas fa-cog iconos-tarjetas editar"(click)="show()" ></i></p>
 
 
              </div>
@@ -155,8 +154,8 @@
                <p class="card-title"><b>Entrada:</b> 21/03/2021</p>
                <p class="card-title"><b>Ubicación:</b> Congelador</p>
                <p class="card-title"><b>Estado:</b> <i class="fas fa-cubes estado-verde"></i></p>
-               <p class="card-title"><b>Opciones:</b> <i class="fas fa-dumpster iconos-tarjetas"></i>
-                 <i class="fas fa-cog iconos-tarjetas"></i></p>
+               <p class="card-title"><b>Opciones:</b> <i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+                 <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></p>
 
 
              </div>
@@ -179,8 +178,8 @@
                <p class="card-title"><b>Entrada:</b> 21/03/2021</p>
                <p class="card-title"><b>Ubicación:</b> Congelador</p>
                <p class="card-title"><b>Estado:</b> <i class="fas fa-cubes estado-verde"></i></p>
-               <p class="card-title"><b>Opciones:</b> <i class="fas fa-dumpster iconos-tarjetas"></i>
-                 <i class="fas fa-cog iconos-tarjetas"></i></p>
+               <p class="card-title"><b>Opciones:</b> <i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+                 <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></p>
 
 
              </div>
@@ -206,8 +205,8 @@
                <p class="card-title"><b>Entrada:</b> 21/03/2021</p>
                <p class="card-title"><b>Ubicación:</b> Congelador</p>
                <p class="card-title"><b>Estado:</b> <i class="fas fa-cubes estado-verde"></i></p>
-               <p class="card-title"><b>Opciones:</b> <i class="fas fa-dumpster iconos-tarjetas"></i><i
-                   class="fas fa-cog iconos-tarjetas"></i></p>
+               <p class="card-title"><b>Opciones:</b> <i class="far fa-times-circle iconos-tarjetas eliminar"></i><i
+                   class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></p>
 
 
              </div>
@@ -230,8 +229,8 @@
                <p class="card-title"><b>Entrada:</b> 21/03/2021</p>
                <p class="card-title"><b>Ubicación:</b> Congelador</p>
                <p class="card-title"><b>Estado:</b> <i class="fas fa-cubes estado-rojo"></i></p>
-               <p class="card-title"><b>Opciones:</b> <i class="fas fa-dumpster iconos-tarjetas"></i><i
-                   class="fas fa-cog iconos-tarjetas"></i></p>
+               <p class="card-title"><b>Opciones:</b> <i class="far fa-times-circle iconos-tarjetas eliminar"></i><i
+                   class="fas fa-cog iconos-tarjetas editar"(click)="show()"></i></p>
 
 
              </div>
@@ -254,8 +253,8 @@
                <p class="card-title"><b>Entrada:</b> 21/03/2021</p>
                <p class="card-title"><b>Ubicación:</b> Congelador</p>
                <p class="card-title"><b>Estado:</b> <i class="fas fa-cubes estado-verde"></i></p>
-               <p class="card-title"><b>Opciones:</b> <i class="fas fa-dumpster iconos-tarjetas"></i><i
-                   class="fas fa-cog iconos-tarjetas"></i></p>
+               <p class="card-title"><b>Opciones:</b> <i class="far fa-times-circle iconos-tarjetas eliminar"></i><i
+                   class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></p>
 
 
              </div>
