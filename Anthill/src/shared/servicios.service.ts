@@ -10,6 +10,12 @@ export class ServiciosService {
   public esEmpleado:boolean = false;
 
   public showInfo: boolean = false
+
+  public estaLogueado: boolean = false
+
+  public weekNumber: number = 0
+  public firstDayWeek: Date = new Date()
+
   constructor() 
   { 
 

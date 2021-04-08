@@ -26,9 +26,11 @@
     "@ng-bootstrap/ng-bootstrap": "^9.1.0",
     "bootstrap": "^4.5.0",
     "chart.js": "^3.0.2",
+    "echarts": "^5.0.2",
     "jquery": "^3.6.0",
     "ng2-charts": "^2.4.2",
     "ngx-echarts": "^6.0.1",
+    "resize-observer-polyfill": "^1.5.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

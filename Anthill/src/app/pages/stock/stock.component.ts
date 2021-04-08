@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiciosService } from 'src/shared/servicios.service';
 
 @Component({
   selector: 'app-stock',
@@ -9,7 +10,8 @@ export class StockComponent implements OnInit {
 
   showModal: boolean
 
-  constructor() {
+  constructor(public servicio: ServiciosService) {
+    this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.showModal = false
    }
 

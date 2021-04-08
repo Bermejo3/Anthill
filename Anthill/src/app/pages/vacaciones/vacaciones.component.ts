@@ -15,6 +15,7 @@ export class VacacionesComponent implements OnInit {
   public dia: number = 0
   public mes: string = ""
   constructor(public servicio: ServiciosService) {
+    this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
   }
 
   calendarOptions: CalendarOptions = {
@@ -22,7 +23,7 @@ export class VacacionesComponent implements OnInit {
     locale: esLocale,
     weekNumbers: true,
     weekNumberFormat: { week: 'numeric'},
-    height: "70vh",
+    height: "80vh",
     aspectRatio: 3,
     editable: true,
     eventContent:this.renderEventContent,

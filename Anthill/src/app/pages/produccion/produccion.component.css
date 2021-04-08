@@ -30,19 +30,7 @@
 .form-control{
     font-size: small;
 }
-.boton-barra-filtros {
-    color: #fff !important;
-    font-size: 20px;
-    font-weight: 500;
-    background: #1b8249;
-    border: 2px solid;
-    border-color: #1b8249;
-    position: relative;
-    width: 20%;
-    height: 80px;
-    border-radius: 6px;
-    background-color: #1b8249;
-}
+
 .boton-barra-filtros:before {
     content:"";
     position: absolute;

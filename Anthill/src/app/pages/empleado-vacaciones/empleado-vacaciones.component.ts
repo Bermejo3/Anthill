@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CalendarOptions, EventClickArg } from '@fullcalendar/angular';
 import esLocale from '@fullcalendar/core/locales/es';
 import { DateClickArg } from '@fullcalendar/interaction';
+import { ServiciosService } from 'src/shared/servicios.service';
 
 
 @Component({
@@ -15,7 +16,10 @@ export class EmpleadoVacacionesComponent implements OnInit {
   public showModalVacaciones: boolean
   public posicionEvento: number = 0
   public diaVacaciones: string = ""
-  constructor() {
+  
+  constructor(public servicio: ServiciosService) {
+    this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
+    this.servicio.esEmpleado=true //Para iniciar el sidebar de empleado
     this.showModal = false
     this.showModalVacaciones = false
   }

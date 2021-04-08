@@ -20,10 +20,12 @@ export class SidebarComponent implements OnInit {
   mostrar()
   {
     this.isHidden=!this.isHidden;
+    this.oculto=true
   }
   ver()
   {
     this.oculto=!this.oculto;
+    this.isHidden=true
   }
 
   ngOnInit(): void {

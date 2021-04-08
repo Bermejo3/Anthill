@@ -27,15 +27,15 @@ body {
 }
 
 .logoHome {
-  width: 160px;
-  height: 140px;
+  width:  fit-content;
+  height: fit-content;
 }
 
 .logoHome img {
   padding: 10px;
 }
 
-.calendario, .reloj, .selectTurno{
+.calendario, .reloj, .selectTurno, .logoHome{
     background: rgba(255, 255, 255, 0.05);
     margin: 10px;
     padding: 20px;
@@ -45,10 +45,10 @@ body {
     background-color: #ff9100   
 }
 
-.logoHome{
+/* .logoHome{
     margin: 0px;
     padding: 0px;
-}
+} */
 
 
 .calendario h2 {
@@ -134,3 +134,64 @@ body {
 }
 
 /* ----------------------------------------------------------------------------------------------------------------- */
+
+/* -------------------------------------CSS TABLAS------------------------------------------------------------------ */
+.tamaño-tabla{
+  width: 100%; height: 80%
+}
+.tableContainer{
+  background-color: rgba(255, 255, 255, 0.05);
+  margin: 10px;
+  padding: 20px;
+}
+.table{
+  margin: 5px;
+  color: white;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.tablaHeader{
+  color: #ff9100
+}
+.trPar{ 
+  background-color: rgba(255, 255, 255, 0.15);
+}
+.form-control{
+  font-size: small;
+}
+/* ----------------------------------------------------------------------------------------------------------------- */
+
+/* ......................................................Filtros y Search................................................... */
+.barra-filtros {
+  width: 100%;
+  height: 10%;
+  margin-left: 3px;
+}
+
+.input-search-barra {
+  margin-left: 6%
+}
+
+.boton-redondo {
+  border-radius: 50%
+}
+
+.tamaño-filtros {
+  width: 150px;
+}
+
+.boton-barra-filtros {
+  color: #fff !important;
+  font-size: 20px;
+  font-weight: 500;
+  background: #1b8249;
+  border: 2px solid;
+  border-color: white;
+  position: relative;
+  width: 20%;
+  height: 80px;
+  border-radius: 6px;
+  background-color: #ff9100;
+}

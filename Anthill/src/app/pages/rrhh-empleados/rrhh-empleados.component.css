@@ -58,24 +58,6 @@
   }
 }
 
-/* ......................................................Filtros y Search................................................... */
-.barra-filtros {
-  width: 100%;
-  height: 10%;
-  margin-left: 3px;
-}
-
-.input-search-barra {
-  margin-left: 6%
-}
-
-.boton-redondo {
-  border-radius: 50%
-}
-
-.tamaño-filtros {
-  width: 150px;
-}
 
 /* .................................................................Body tarjetas.............................................. */
 .container-tarjetas {

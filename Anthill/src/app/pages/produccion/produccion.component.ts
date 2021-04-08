@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { ServiciosService } from 'src/shared/servicios.service';
 
 
 @Component({
@@ -65,7 +66,9 @@ export class ProduccionComponent implements OnInit {
         }
   ]}
 
-  constructor() { }
+  constructor(public servicio: ServiciosService) {
+    this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
+  }
 
   ngOnInit(): void {
   }

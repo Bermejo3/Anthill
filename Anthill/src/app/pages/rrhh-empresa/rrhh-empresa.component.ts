@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiciosService } from 'src/shared/servicios.service';
 
 @Component({
   selector: 'app-rrhh-empresa',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RrhhEmpresaComponent implements OnInit {
 
-  constructor() { }
+  constructor(public servicio: ServiciosService) {
+    this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
+  }
 
   ngOnInit(): void {
   }

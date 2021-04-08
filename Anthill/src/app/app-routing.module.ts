@@ -19,7 +19,6 @@ import { TurnosSemanaComponent } from './pages/turnos-semana/turnos-semana.compo
 import { VacacionesComponent } from './pages/vacaciones/vacaciones.component';
 
 const routes: Routes = [
-
   {path:"", component:HomeComponent},
   {path:"login", component:LoginComponent},
   {path:"register", component:RegisterComponent},
@@ -38,9 +37,6 @@ const routes: Routes = [
   {path:"rrhh-add-empleados", component:RrhhAddEmpleadosComponent},
   {path:"rrhh-empleados", component:RrhhEmpleadosComponent},
   {path:"rrhh-empresa", component:RrhhEmpresaComponent}
-  
-  
-
 ];
 
 @NgModule({

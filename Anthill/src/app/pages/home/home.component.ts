@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
 import esLocale from '@fullcalendar/core/locales/es';
+import { ServiciosService } from 'src/shared/servicios.service';
 
 
 @Component({
@@ -24,14 +25,16 @@ export class HomeComponent implements OnInit {
   day=""
   time: Date
 
-  constructor() {
+  constructor(public servicio: ServiciosService) {
+    this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.d = new Date()
     this.time = new Date()
    }
 
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
-    locale: esLocale
+    locale: esLocale,
+    height: '70vh'
   };
 
   ngOnInit(): void {

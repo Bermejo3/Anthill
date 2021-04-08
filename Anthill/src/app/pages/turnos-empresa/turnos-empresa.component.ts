@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CalendarOptions, EventClickArg } from '@fullcalendar/angular';
 import esLocale from '@fullcalendar/core/locales/es';
 import { DateClickArg } from '@fullcalendar/interaction';
+import { ServiciosService } from 'src/shared/servicios.service';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-turnos-empresa',
@@ -9,8 +13,11 @@ import { DateClickArg } from '@fullcalendar/interaction';
   styleUrls: ['./turnos-empresa.component.css']
 })
 export class TurnosEmpresaComponent implements OnInit {
+  ;
 
-  constructor() { }
+  constructor(public servicio: ServiciosService, private _router: Router) {
+    this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
+  }
 
 
   calendarOptions: CalendarOptions = {
@@ -19,7 +26,7 @@ export class TurnosEmpresaComponent implements OnInit {
     weekNumbers: true,
     weekNumberFormat: { week: 'numeric'},
     height: "80vh",
-    dateClick: this.modalClick2,
+    dateClick: this.modalClick2.bind(this)
   };
 
   createEvents(){
@@ -61,6 +68,7 @@ export class TurnosEmpresaComponent implements OnInit {
                             - 3 + (week1.getDay() + 6) % 7) / 7);
     }
     console.log(weekday())
+    this.servicio.weekNumber=weekday()
 
     function getDateOfWeek(w:any, y:any) {
     var d = (1 + (w - 1) * 7)+3; // 1st of January + 7 days for each week
@@ -68,6 +76,9 @@ export class TurnosEmpresaComponent implements OnInit {
     return new Date(y, 0, d);
     }
     console.log(getDateOfWeek(weekday(), clickInfo.date.getFullYear()))
+    this.servicio.firstDayWeek=getDateOfWeek(weekday(), clickInfo.date.getFullYear())
+
+    this._router.navigate(['turnos-semana'])
   }
   
 }
