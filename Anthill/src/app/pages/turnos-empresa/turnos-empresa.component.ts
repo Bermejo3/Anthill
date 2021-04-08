@@ -67,15 +67,14 @@ export class TurnosEmpresaComponent implements OnInit {
       return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000
                             - 3 + (week1.getDay() + 6) % 7) / 7);
     }
-    console.log(weekday())
+    // console.log(weekday())
     this.servicio.weekNumber=weekday()
 
     function getDateOfWeek(w:any, y:any) {
     var d = (1 + (w - 1) * 7)+3; // 1st of January + 7 days for each week
-
     return new Date(y, 0, d);
     }
-    console.log(getDateOfWeek(weekday(), clickInfo.date.getFullYear()))
+    // console.log(getDateOfWeek(weekday(), clickInfo.date.getFullYear()))
     this.servicio.firstDayWeek=getDateOfWeek(weekday(), clickInfo.date.getFullYear())
 
     this._router.navigate(['turnos-semana'])

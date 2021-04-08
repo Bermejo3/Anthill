@@ -1,1 +1,29 @@
-<p>empleado-turnos works!</p>
+<div class="container">
+    <div class="calendario">
+        <full-calendar [options]="calendarOptions"></full-calendar>
+    </div>
+    <div class="tableContainer">
+        <table class="table table-bordered">
+          <thead>
+            <tr class="tablaHeader">
+              <th>Turno <br> Semana {{ servicio.weekNumber}}</th>
+              <th *ngFor="let dia of semana, let i = index">{{diasSemana[i]}} <br> {{dia.getDate()}}-{{dia.getMonth()+1}}-{{dia.getFullYear()}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="trPar">
+                <td><i class="far fa-sun"></i> Mañana</td>
+                <td *ngFor="let dia of semana, let i = index" class="turnoVacio" (click)="clickar('M'+i)" id="M{{i}}"></td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-adjust"></i> Tarde</td>
+                <td *ngFor="let dia of semana, let i = index" class="turnoVacio" id="T{{i}}"></td>
+            </tr>
+            <tr class="trPar">
+                <td><i class="far fa-moon"></i> Noche</td>
+                <td *ngFor="let dia of semana, let i = index" class="turnoVacio" id="N{{i}}"></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
