@@ -28,6 +28,7 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StockTarjetasComponent } from './pages/stock-tarjetas/stock-tarjetas.component';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { RrhhEmpleadosTablaComponent } from './pages/rrhh-empleados-tabla/rrhh-empleados-tabla.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -55,7 +56,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     EmpleadoVacacionesComponent,
     EmpleadoMiPerfilComponent,
     AboutUsComponent,
-    StockTarjetasComponent
+    StockTarjetasComponent,
+    RrhhEmpleadosTablaComponent
   ],
   imports: [
     BrowserModule,

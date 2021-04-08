@@ -1,6 +1,6 @@
 .cuerpo-registro {
   justify-content: center;
-  margin-top: 60px;
+
   display: flex;
   flex-wrap: wrap;
   flex-flow: wrap;
@@ -14,6 +14,8 @@
   align-items: centers;
   background-color: #ff9100;
   border-radius: 6px;
+  margin-top: 60px;
+
 }
 
 .boton4 {
@@ -31,19 +33,12 @@
   background-color: #1f283e;
 }
 
-.boton4:before {
-  content: "";
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 0px;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  transition: all 1s ease;
-}
-
-.boton4:hover:before {
-  width: 100%;
+.boton4:hover
+{
+    color: #ff9100;
+    background: #1f283e;
+    box-shadow: 0 0 10px #1f283e, 0 0 20px #1f283e, 0 0 40px #1f283e;
+    transition-delay: 0.2s;
 }
 
 /*  ----------------------------------------------------------------Modal-------------------------------------------------------------- */
@@ -79,3 +74,8 @@
   justify-content: center;
   margin: 3%;
 }
+
+body{
+  background:  linear-gradient( rgba(31, 39, 61, 0.98),rgba(31, 39, 61, 0.94)), url("../../../assets/hormigasLogin.jpg") !important ;
+  height: 100vh;
+   }

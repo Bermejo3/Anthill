@@ -10,6 +10,7 @@ import { ProduccionEmpleadoComponent } from './pages/produccion-empleado/producc
 import { ProduccionComponent } from './pages/produccion/produccion.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { RrhhAddEmpleadosComponent } from './pages/rrhh-add-empleados/rrhh-add-empleados.component';
+import { RrhhEmpleadosTablaComponent } from './pages/rrhh-empleados-tabla/rrhh-empleados-tabla.component';
 import { RrhhEmpleadosComponent } from './pages/rrhh-empleados/rrhh-empleados.component';
 import { RrhhEmpresaComponent } from './pages/rrhh-empresa/rrhh-empresa.component';
 import { StockTarjetasComponent } from './pages/stock-tarjetas/stock-tarjetas.component';
@@ -36,7 +37,8 @@ const routes: Routes = [
   {path:"produccion-empleado", component:ProduccionEmpleadoComponent},
   {path:"rrhh-add-empleados", component:RrhhAddEmpleadosComponent},
   {path:"rrhh-empleados", component:RrhhEmpleadosComponent},
-  {path:"rrhh-empresa", component:RrhhEmpresaComponent}
+  {path:"rrhh-empresa", component:RrhhEmpresaComponent},
+  {path:"rrhh-empleados-tabla", component:RrhhEmpleadosTablaComponent}
 ];
 
 @NgModule({

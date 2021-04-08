@@ -1,18 +1,8 @@
 /* ................................................Boton y Search................................................. */
-.boton-barra-filtros {
-  color: #fff !important;
-  font-size: 20px;
-  font-weight: 500;
-  background: #1b8249;
-  border: 2px solid;
-  border-color: #1b8249;
-  position: relative;
-  width: 20%;
-  height: 80px;
-  border-radius: 6px;
-  background-color: #ff9100;
+.boton-modal{
+  height: 40px;
+  background-color:  rgb(45, 58, 88);
 }
-
 .boton-barra-filtros:before {
   content: "";
   position: absolute;
@@ -37,6 +27,9 @@
   cursor: pointer;
   font-size: 50px;
   margin-right: 3%;
+}
+.iconos-barra-filtros i:hover{
+  color:darkturquoise
 }
 
 .mainLoginInput::-webkit-input-placeholder {
@@ -131,5 +124,45 @@
   color: white;
   margin-top: 15px;
   height: 40px;
+}
+.sol {
+  color: yellow;
+}
+
+.luna {
+  color: rgb(64, 75, 224);
+}
+
+.tarde {
+  color: #ff9100
+}
+
+.eliminar {
+  color: rgb(135, 126, 135);
+  margin-left: 10px;
+  margin-top: 10px;
+  transition: background-color .1s;
+}
+
+.card-title .fa-times-circle:hover {
+  color: red;
+  cursor:pointer
+}
+.card-title .fa-cog:hover {
+  color:  rgb(45, 58, 88);
+  cursor:pointer
+}
+
+.editar {
+  color: rgb(135, 126, 135)
+}
+.colocar-select{
+  width: fit-content;
+}
+.margen1{
+  margin-left: 2%;margin-right: -1%;
+}
+.margen2{
+  margin-right: 1%;
 }
 

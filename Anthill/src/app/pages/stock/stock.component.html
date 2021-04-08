@@ -7,46 +7,45 @@
        <button type="button" class="btn btn-primary btn-sm boton-redondo">Go</button>
      </form>
    </div>
-   <div class="col-1">
-     <select class="form-select" aria-label="Default select example">
-       <option selected>Open this select menu</option>
-       <option value="1">One</option>
-       <option value="2">Two</option>
-       <option value="3">Three</option>
-     </select>
-   </div>
-   <div class="col-1">
-     <select class="form-select" aria-label="Default select example">
-       <option selected>Open this select menu</option>
-       <option value="1">One</option>
-       <option value="2">Two</option>
-       <option value="3">Three</option>
-     </select>
-   </div>
-   <div class="col-1">
-     <select class="form-select" aria-label="Default select example">
-       <option selected>Open this select menu</option>
-       <option value="1">One</option>
-       <option value="2">Two</option>
-       <option value="3">Three</option>
-     </select>
-   </div>
-   <div class="col-1">
-     <select class="form-select" aria-label="Default select example">
-       <option selected>Open this select menu</option>
-       <option value="1">One</option>
-       <option value="2">Two</option>
-       <option value="3">Three</option>
-     </select>
-   </div>
-   <div class="col-1">
-     <select class="form-select" aria-label="Default select example">
-       <option selected>Open this select menu</option>
-       <option value="1">One</option>
-       <option value="2">Two</option>
-       <option value="3">Three</option>
-     </select>
-   </div>
+      <div class="col-1">
+        <select class="form-select colocar-select" aria-label="Default select example">
+          <option selected>Categoría</option>
+          <option value="1">Material médico</option>
+          <option value="2">Medicina</option>
+          <option value="3">Parafarmacia</option>
+        </select>
+      </div>
+      <div class="col-1 margen1">
+        <select class="form-select colocar-select" aria-label="Default select example">
+          <option selected>Unidad</option>
+          <option value="1">Litros</option>
+          <option value="2">Unidades</option>
+          <option value="3">Kilos</option>
+        </select>
+      </div>
+      <div class="col-1 margen2">
+        <select class="form-select colocar-select" aria-label="Default select example">
+          <option selected>Fecha</option>
+          <option value="1">Enero-2021</option>
+          <option value="2">Febrero-2021</option>
+          <option value="3">Marzo-2021</option>
+        </select>
+      </div>
+      <div class="col-1">
+        <select class="form-select colocar-select" aria-label="Default select example">
+          <option selected>Ubicación</option>
+          <option value="1">Almacén</option>
+          <option value="2">Congelador</option>
+          <option value="3">En stock</option>
+        </select>
+      </div>
+      <div class="col-1">
+        <select class="form-select colocar-select" aria-label="Default select example">
+          <option selected>Estado</option>
+          <option value="1">Correcto</option>
+          <option value="2">Reponer</option>
+        </select>
+      </div>
    <!-- -------------------- Button e Iconos------------------------------ -->
    <button class="boton-barra-filtros" (click)="show()">Añadir</button>
 
@@ -98,7 +97,7 @@
         </div>
         
         <div class="modal-footer colocar-boton">
-          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="hide()">Guardar</button>
+          <button type="button" class="boton-barra-filtros boton-modal" routerLink="/stock-tarjetas">Guardar</button>
         </div>
         
       </div>
@@ -140,8 +139,8 @@
              <td>21/05/2021</td>
              <td>Almacén</td>
              <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
-             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
-               <i class="fas fa-cog iconos-tarjetas"></i></td>
+             <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr>
              <td>2</td>
@@ -152,8 +151,8 @@
              <td>29/01/2021</td>
              <td>Congelador</td>
              <td><i class="fas fa-cubes estado-rojo-tabla"></i></td>
-             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
-               <i class="fas fa-cog iconos-tarjetas"></i></td>
+             <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr class="trPar">
              <td>3</td>
@@ -164,8 +163,8 @@
              <td>12/01/2021</td>
              <td>Congelador</td>
              <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
-             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
-               <i class="fas fa-cog iconos-tarjetas"></i></td>
+             <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr>
              <td>4</td>
@@ -176,8 +175,8 @@
              <td>5/02/202</td>
              <td>Congelador</td>
              <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
-             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
-               <i class="fas fa-cog iconos-tarjetas"></i></td>
+             <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr class="trPar">
              <td>5</td>
@@ -188,8 +187,8 @@
              <td>3/02/2021</td>
              <td>Congelador</td>
              <td><i class="fas fa-cubes estado-rojo-tabla"></i></td>
-             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
-               <i class="fas fa-cog iconos-tarjetas"></i></td>
+             <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr>
              <td>6</td>
@@ -200,8 +199,8 @@
              <td>21/01/2021</td>
              <td>Almacén</td>
              <td><i class="fas fa-cubes estado-verde-tabla" ></i></td>
-             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
-               <i class="fas fa-cog iconos-tarjetas"></i></td>
+             <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr class="trPar">
              <td>7</td>
@@ -212,8 +211,8 @@
              <td>21/01/2021</td>
              <td>Almacén</td>
              <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
-             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
-               <i class="fas fa-cog iconos-tarjetas"></i></td>
+             <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+               <i class="fas fa-cog iconos-tarjetas editar"(click)="show()"></i></td>
            </tr>
            <tr>
              <td>8</td>
@@ -224,8 +223,8 @@
              <td>19/08/2020</td>
              <td>Almacén</td>
              <td><i class="fas fa-cubes estado-rojo-tabla"></i></td>
-             <td><i class="fas fa-dumpster iconos-tarjetas" ></i>
-               <i class="fas fa-cog iconos-tarjetas"></i></td>
+             <td><i class="far fa-times-circle iconos-tarjetas eliminar" ></i>
+               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr class="trPar">
              <td>9</td>
@@ -236,8 +235,8 @@
              <td>21/01/2021</td>
              <td>Almacén</td>
              <td><i class="fas fa-cubes estado-rojo-tabla"></i></td>
-             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
-               <i class="fas fa-cog iconos-tarjetas"></i></td>
+             <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr>
              <td>10</td>
@@ -248,8 +247,8 @@
              <td>2/03/2021</td>
              <td>Almacén</td>
              <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
-             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
-               <i class="fas fa-cog iconos-tarjetas"></i></td>
+             <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr class="trPar">
              <td>11</td>
@@ -260,8 +259,8 @@
              <td>21/09/2020</td>
              <td>Almacén</td>
              <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
-             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
-               <i class="fas fa-cog iconos-tarjetas"></i></td>
+             <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr>
              <td>12</td>
@@ -272,8 +271,8 @@
              <td>21/01/2021</td>
              <td>Congelador</td>
              <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
-             <td><i class="fas fa-dumpster iconos-tarjetas"></i>
-               <i class="fas fa-cog iconos-tarjetas"></i></td>
+             <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
 
 

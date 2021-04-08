@@ -1,26 +1,87 @@
-    .cuerpo-login{
-        justify-content: center; margin-top: 60px; display:flex ;flex-wrap: wrap; flex-flow: wrap;
-    }
+body {
+  background: linear-gradient(rgba(31, 39, 61, 0.98), rgba(31, 39, 61, 0.94)), url("../../../assets/hormigasLogin.jpg") !important;
+  height: 100vh;
+}
 
+.tarjeta-login {
 
+  border: 1px solid #ff9100;
+  width: 400px;
+  height: 500px;
+  border-radius: 6px;
+  background-color: #ff9100;
+  justify-content: center;
+  margin-top: 80px
+}
 
-    
-    /* .foto-hormiguero{
-        border:1px solid  #ff9100; width: min-width; height: 600px; justify-content: center;align-items: centers ;background-color:  #ff9100; border-radius: 6px;
-        
-    }
-    .caja-login{
-        
-      border: 1px solid  #ff9100; width:400px; height: 500px; border-radius: 6px; background-color:  #ff9100;justify-content: center;
-    }
-    .alinear-input{
-        justify-content: center;
-    }
-    .input-email{
-        
-        text-align: center; width: min-content; align-items: center;border-radius: 16px; margin-top: 30px;
-    }
-    .input-password{
-        
-        text-align: center;width: min-content; align-items: center; border-radius: 16px; margin-top: 10px;
-    } */
+.imagen-hormiguero {
+  width: 400px;
+  height: 500px;
+  border-radius: 6px;
+  margin-top: 80px;
+}
+
+.logo-tarjeta {
+  width: max-content;
+  height: max-content;
+  margin-left: 130px;
+  margin-top: 40px;
+}
+
+.input-login {
+  text-align: center;
+  width: min-content;
+  align-items: center;
+  border-radius: 16px;
+  margin-top: 30px;
+}
+
+.margen {
+  margin-top: 10px;
+}
+
+.boton-login {
+
+  border-radius: 6px;
+  margin-top: 30px;
+  width: 200px;
+  justify-content: center;
+  background-color: #1f283e;
+  color: white
+
+}
+.boton-login:hover
+{
+    color: #ff9100;
+    background: #1f283e;
+    box-shadow: 0 0 10px #1f283e, 0 0 20px #1f283e, 0 0 40px #1f283e;
+    transition-delay: 0.2s;
+}
+
+.about {
+  text-align: center;
+  margin-top: 10%;
+  cursor: pointer;
+  color: #ff9100;
+  width: 10%;
+  margin-left: 45%;
+}
+.about:hover
+{
+    color: #ff9100;
+    background: #1f283e;
+    box-shadow: 0 0 10px #ff9100, 0 0 20px #ff9100, 0 0 40px #ff9100;
+    transition-delay: 0.5s;
+}
+.alinear{
+  text-align: center;
+}
+.register{
+  color: #1f283e;cursor:pointer
+}
+/* .register:hover{
+  color: #ff9100;
+    background: #1f283e;
+    box-shadow: 0 0 10px #1f283e, 0 0 20px #1f283e, 0 0 40px #1f283e;
+    transition-delay: 0.2s;
+} */
