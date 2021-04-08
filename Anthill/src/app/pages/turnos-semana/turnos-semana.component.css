@@ -1,14 +1,18 @@
 
 .turnoCompleto{
-    background-color: green;
+    background-color: rgba(0, 128, 0, 0.801);
 }
 
 .turnoMedias{
-    background-color: yellow;
+    background-color: rgba(255, 255, 0, 0.712);
 }
 
 .turnoVacio{
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.turnoSeleccionado{
+    background-color: #ff9100;
 }
 
 tbody tr{
@@ -18,4 +22,41 @@ tbody tr{
 td{
     width: 10%;
     vertical-align: middle;
+}
+
+.botonGuardar{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.boton-barra-filtros{
+    background-color:  rgb(31, 40, 62);
+    height: 50px;    
+}
+
+.selectTurno{
+    margin: auto;
+    text-align: center;
+    width: 50%;
+}
+
+.tablaEmpleadosElegidos{
+    margin: auto;
+}
+
+.empleadoSelect{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.celdaEmpleadoSelect{
+    width: fit-content;
+    text-align: left;
+}
+
+.tablaEmpleadosElegidos i:hover{
+    color: red;
+    cursor: pointer;
 }
