@@ -1,5 +1,8 @@
-<div class="container">
-  <div class="row">
+    <div class="col-8">
+      <div class="calendario">
+        <full-calendar [options]="calendarOptions"></full-calendar>
+      </div>
+    </div>
     <div class="col-4" [style.display]="this.servicio.showInfo ? 'block' : 'none'">
       <div class="empleados">
         <div class="tamaño-tabla">
@@ -29,10 +32,3 @@
           </div>
       </div>
     </div>
-    <div class="col-8">
-      <div class="calendario">
-        <full-calendar [options]="calendarOptions"></full-calendar>
-    </div>
-    </div>
-  </div>
-</div>

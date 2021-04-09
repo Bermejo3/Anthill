@@ -24,7 +24,6 @@ export class VacacionesComponent implements OnInit {
     weekNumbers: true,
     weekNumberFormat: { week: 'numeric'},
     height: "80vh",
-    aspectRatio: 3,
     editable: true,
     eventContent:this.renderEventContent,
     eventClick: this.modalClick.bind(this),

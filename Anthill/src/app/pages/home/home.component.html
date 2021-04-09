@@ -1,20 +1,9 @@
-<div class="container">
     <div class="row">
-        <div class="col-2 logoHome">
-            <img src="../../../assets/Logo/LogoBlanco.png" alt="">
-        </div>
-        <div class="col-6 calendario">
+        <div class="col-8 calendario">
             <full-calendar [options]="calendarOptions"></full-calendar>
         </div>
         <div class="col-3 reloj">
-            <div class="row">
-                <div class="digitalClock">
-                    <div class="display">
-                        {{ hr + ':' + min + ':' + sec}}
-                    </div>
-                </div>
-            </div>
-<!-- Reloj copiado de https://www.codingnepalweb.com/2020/05/neumorphism-working-analog-clock-using-javascript.html -->
+            <!-- Reloj copiado de https://www.codingnepalweb.com/2020/05/neumorphism-working-analog-clock-using-javascript.html -->
             <div class="row mt-5">
                 <div class="clock">
                     <div class="center-nut">
@@ -61,7 +50,10 @@
                     </div>
                 </div>
      <!-- Reloj copiado -->
+
+            </div>
+            <div class="col logoHome mt-2">
+                <img src="../../../assets/Logo/LogoBlanco.png" alt="">
             </div>
         </div>    
     </div>
-</div>

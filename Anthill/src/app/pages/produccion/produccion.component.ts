@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class ProduccionComponent implements OnInit {
 
   chartOptions: NgxEchartsModule = {
-    color: ["#ff9100"],
+    color: ["#54e346"],
     title: 
     {
       textStyle:{color:'#ffffff'},

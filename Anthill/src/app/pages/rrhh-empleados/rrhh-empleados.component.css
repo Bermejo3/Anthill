@@ -3,7 +3,7 @@
   margin-left: 12%;
 }
 
-.boton-barra-filtros:before {
+/* .boton-barra-filtros:before {
   content: "";
   position: absolute;
   top: 0px;
@@ -16,7 +16,7 @@
 
 .boton-barra-filtros:hover:before {
   height: 100%;
-}
+} */
 
 .row .iconos-barra-filtros {
   text-align: end;

@@ -22,7 +22,13 @@
     text-align: center;
 }
 .tablaHeader{
-    color: #ff9100
+    color: #fff;
+    font-size: large;
+    font-weight: bold;
+}
+
+.destacada{
+  color: #54e346;
 }
 .trPar{ 
     background-color: rgba(255, 255, 255, 0.15);
@@ -30,8 +36,10 @@
 .form-control{
     font-size: small;
 }
-
-.boton-barra-filtros:before {
+.form-select{
+  margin-top: 0px !important
+}
+/* .boton-barra-filtros:before {
     content:"";
     position: absolute;
     top: 0px;
@@ -43,7 +51,7 @@
   } 
   .boton-barra-filtros:hover:before {
     height: 100%;
-  }
+  } */
 
 /* <-- Modal --> */
 

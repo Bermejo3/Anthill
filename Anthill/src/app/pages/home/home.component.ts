@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     locale: esLocale,
-    height: '70vh'
+    height: '80vh'
   };
 
   ngOnInit(): void {

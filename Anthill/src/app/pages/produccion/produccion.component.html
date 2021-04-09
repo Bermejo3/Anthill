@@ -73,7 +73,7 @@
         <thead>
           <tr class="tablaHeader">
             <th>Empleado</th>
-            <th>Producción Total</th>
+            <th class="destacada">Producción Total</th>
             <th>Horas Trabajadas</th>
             <th>Emblema</th>
           </tr>
@@ -81,7 +81,7 @@
         <tbody>
           <tr *ngFor = "let trabajadores of data; let i = index; let even = even" [ngClass] = "{trPar: even}" (click)="verEmpleado(i)">
             <td>{{trabajadores.empleado}}</td>
-            <td>{{trabajadores.productividad}}</td>
+            <td class="destacada">{{trabajadores.productividad}}</td>
             <td>{{trabajadores.horas}}</td>
             <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
           </tr>
