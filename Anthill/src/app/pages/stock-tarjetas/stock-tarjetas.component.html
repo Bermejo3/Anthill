@@ -112,161 +112,159 @@
 
    <div class="col iconos-barra-filtros">
      <i class="far fa-address-card" routerLink="/stock-tarjetas"></i>
-     <i class="fas fa-table" routerLink="/stock"></i>
+     <i class="fas fa-table" id="margen"  routerLink="/stock"></i>
    </div>
  </div>
  <!-- ------------------Tarjetas--------------------------------- -->
- <div class="row container-tarjetas">
+ 
+<!-- ------------------Tarjetas--------------------------------- -->
+<div class="row container-tarjetas">
 
 
-   <div class="row fila-completa">
-     <div class="col-4">
-       <div class="card mb-3 shadow tarjetas-fila1">
-         <div class="row g-0 img">
-           <div class="col-md-4">
-             <img src="../../../assets/hormiguero.png" alt="..."
-               style="width: 200px;height:250px;margin-top: 25%; margin-left: 15%; border-radius: 50%;" id="imagen">
-           </div>
-           <div class="col-8">
-             <div class="card-body letras-tarjeta">
-               <p class="card-title"><b>Cartegoria:</b> Vacuna</p>
-               <p class="card-title"><b>Cantidad:</b> 200</p>
-               <p class="card-title"><b>Unidad:</b> Litros</p>
-               <p class="card-title"><b>Entrada:</b> 21/03/2021</p>
-               <p class="card-title"><b>Ubicación:</b> Congelador</p>
-               <p class="card-title"><b>Estado:</b> <i class="fas fa-cubes estado-rojo"></i></p>
-               <p class="card-title"><b>Opciones:</b> <i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-                 <i class="fas fa-cog iconos-tarjetas editar"(click)="show()" ></i></p>
-
-
-             </div>
-           </div>
-         </div>
+  <div class="row fila-completa">
+    <div class="col-3">
+     <div class="card tarjetas letras-tarjeta tarjetas-fila1">
+       <img class="card-img-top"src="../../../assets/tarjetas/jeringuilla.jpg" alt="Card image cap">
+       <div class="card-body" >
+         <p class="card-text"><b>Artículo: </b>Jeringuillas</p>
+         <p class="card-text"><b>Categoría: </b>Material médico</p>
+         <p class="card-text"><b>Cantidad: </b>260</p>
+         <p class="card-text"><b>Unidad: </b>Unidades </p>
+         <p class="card-text"><b>Ubicación: </b>En stock</p>
+         <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
+         <hr>
+         <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+           <i class="fas fa-cog iconos-tarjetas editar" ></i></p>
+         
+         
        </div>
      </div>
-     <div class="col-4">
-       <div class="card mb-3 shadow tarjetas-fila1">
-         <div class="row g-0 img">
-           <div class="col-md-4">
-             <img src="../../../assets/hormigasLogin.jpg" alt="..."
-               style="width: 200px;height:250px;margin-top: 25%; margin-left: 15%; border-radius: 50%;" id="imagen">
-           </div>
-           <div class="col-8">
-             <div class="card-body letras-tarjeta">
-               <p class="card-title"><b>Cartegoria:</b> Vacuna</p>
-               <p class="card-title"><b>Cantidad:</b> 200</p>
-               <p class="card-title"><b>Unidad:</b> Litros</p>
-               <p class="card-title"><b>Entrada:</b> 21/03/2021</p>
-               <p class="card-title"><b>Ubicación:</b> Congelador</p>
-               <p class="card-title"><b>Estado:</b> <i class="fas fa-cubes estado-verde"></i></p>
-               <p class="card-title"><b>Opciones:</b> <i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-                 <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></p>
-
-
-             </div>
-           </div>
-         </div>
+    </div><div class="col-3">
+      <div class="card tarjetas letras-tarjeta tarjetas-fila1">
+        <img class="card-img-top"src="../../../assets/tarjetas/paracetamol.jpg" alt="Card image cap">
+        <div class="card-body" >
+          <p class="card-text"><b>Artículo: </b>Paracetamol</p>
+          <p class="card-text"><b>Categoría: </b>Medicina</p>
+          <p class="card-text"><b>Cantidad: </b>160</p>
+          <p class="card-text"><b>Unidad: </b>Unidades </p>
+          <p class="card-text"><b>Ubicación: </b>En stock</p>
+          <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-rojo"></i></p>
+          <hr>
+          <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+            <i class="fas fa-cog iconos-tarjetas editar" ></i></p>
+          
+          
+        </div>
+      </div>
+     </div>
+     <div class="col-3">
+      <div class="card tarjetas letras-tarjeta tarjetas-fila1">
+        <img class="card-img-top"src="../../../assets/tarjetas/vacuna.jpg" alt="Card image cap">
+        <div class="card-body" >
+          <p class="card-text"><b>Artículo: </b>Vacuna</p>
+          <p class="card-text"><b>Categoría: </b>Material médico</p>
+          <p class="card-text"><b>Cantidad: </b>12260</p>
+          <p class="card-text"><b>Unidad: </b>Unidades </p>
+          <p class="card-text"><b>Ubicación: </b>En stock</p>
+          <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
+          <hr>
+          <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+            <i class="fas fa-cog iconos-tarjetas editar" ></i></p>
+          
+          
+        </div>
+      </div>
+     </div>
+     <div class="col-3">
+      <div class="card tarjetas letras-tarjeta tarjetas-fila1">
+        <img class="card-img-top"src="../../../assets/tarjetas/cateter.jpg" alt="Card image cap">
+        <div class="card-body" >
+          <p class="card-text"><b>Artículo: </b>Jeringuillas</p>
+          <p class="card-text"><b>Categoría: </b>Material médico</p>
+          <p class="card-text"><b>Cantidad: </b>260</p>
+          <p class="card-text"><b>Unidad: </b>Unidades </p>
+          <p class="card-text"><b>Ubicación: </b>En stock</p>
+          <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
+          <hr>
+          <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+            <i class="fas fa-cog iconos-tarjetas editar" ></i></p>
+          
+          
+        </div>
+      </div>
+     </div>
+  <!-- -----------------------------------Fila2---------------------------------- -->
+  <div class="row fila-completa">
+    <div class="col-3">
+     <div class="card tarjetas letras-tarjeta tarjetas-fila1">
+       <img class="card-img-top"src="../../../assets/tarjetas/jeringuilla.jpg" alt="Card image cap">
+       <div class="card-body" >
+         <p class="card-text"><b>Artículo: </b>Jeringuillas</p>
+         <p class="card-text"><b>Categoría: </b>Material médico</p>
+         <p class="card-text"><b>Cantidad: </b>260</p>
+         <p class="card-text"><b>Unidad: </b>Unidades </p>
+         <p class="card-text"><b>Ubicación: </b>En stock</p>
+         <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
+         <hr>
+         <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+           <i class="fas fa-cog iconos-tarjetas editar" ></i></p>
+         
+         
        </div>
      </div>
-     <div class="col-4">
-       <div class="card mb-3 shadow tarjetas-fila1">
-         <div class="row g-0 img">
-           <div class="col-md-4">
-             <img src="../../../assets/Logo/LogoNaranja.png" alt="..."
-               style="width: 200px;height:250px;margin-top: 25%; margin-left: 15%; border-radius: 50%;" id="imagen">
-           </div>
-           <div class="col-8">
-             <div class="card-body letras-tarjeta">
-               <p class="card-title"><b>Cartegoria:</b> Vacuna</p>
-               <p class="card-title"><b>Cantidad:</b> 200</p>
-               <p class="card-title"><b>Unidad:</b> Litros</p>
-               <p class="card-title"><b>Entrada:</b> 21/03/2021</p>
-               <p class="card-title"><b>Ubicación:</b> Congelador</p>
-               <p class="card-title"><b>Estado:</b> <i class="fas fa-cubes estado-verde"></i></p>
-               <p class="card-title"><b>Opciones:</b> <i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-                 <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></p>
-
-
-             </div>
-           </div>
-         </div>
-       </div>
+    </div><div class="col-3">
+      <div class="card tarjetas letras-tarjeta tarjetas-fila1">
+        <img class="card-img-top"src="../../../assets/tarjetas/jeringuilla.jpg" alt="Card image cap">
+        <div class="card-body" >
+          <p class="card-text"><b>Artículo: </b>Jeringuillas</p>
+          <p class="card-text"><b>Categoría: </b>Material médico</p>
+          <p class="card-text"><b>Cantidad: </b>260</p>
+          <p class="card-text"><b>Unidad: </b>Unidades </p>
+          <p class="card-text"><b>Ubicación: </b>En stock</p>
+          <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
+          <hr>
+          <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+            <i class="fas fa-cog iconos-tarjetas editar" ></i></p>
+          
+          
+        </div>
+      </div>
      </div>
-   </div>
-   <!-- -----------------------------------Fila2---------------------------------- -->
-   <div class="row fila-completa">
-     <div class="col-4">
-       <div class="card mb-3 shadow tarjetas-fila1">
-         <div class="row g-0 img">
-           <div class="col-md-4">
-             <img src="../../../assets/thomas-smith-399133-1707x2560.jpg" alt="..."
-               style="width: 200px;height:250px;margin-top: 25%; margin-left: 15%; border-radius: 50%;" id="imagen">
-           </div>
-           <div class="col-8">
-             <div class="card-body letras-tarjeta">
-               <p class="card-title"><b>Cartegoria:</b> Vacuna</p>
-               <p class="card-title"><b>Cantidad:</b> 200</p>
-               <p class="card-title"><b>Unidad:</b> Litros</p>
-               <p class="card-title"><b>Entrada:</b> 21/03/2021</p>
-               <p class="card-title"><b>Ubicación:</b> Congelador</p>
-               <p class="card-title"><b>Estado:</b> <i class="fas fa-cubes estado-verde"></i></p>
-               <p class="card-title"><b>Opciones:</b> <i class="far fa-times-circle iconos-tarjetas eliminar"></i><i
-                   class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></p>
-
-
-             </div>
-           </div>
-         </div>
-       </div>
+     <div class="col-3">
+      <div class="card tarjetas letras-tarjeta tarjetas-fila1">
+        <img class="card-img-top"src="../../../assets/tarjetas/jeringuilla.jpg" alt="Card image cap">
+        <div class="card-body" >
+          <p class="card-text"><b>Artículo: </b>Jeringuillas</p>
+          <p class="card-text"><b>Categoría: </b>Material médico</p>
+          <p class="card-text"><b>Cantidad: </b>260</p>
+          <p class="card-text"><b>Unidad: </b>Unidades </p>
+          <p class="card-text"><b>Ubicación: </b>En stock</p>
+          <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
+          <hr>
+          <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+            <i class="fas fa-cog iconos-tarjetas editar" ></i></p>
+          
+          
+        </div>
+      </div>
      </div>
-     <div class="col-4">
-       <div class="card mb-3 shadow tarjetas-fila1">
-         <div class="row g-0 img">
-           <div class="col-md-4">
-             <img src="../../../assets/04f64347325351.5a04cfc3f2c34.png" alt="..."
-               style="width: 200px;height:250px;margin-top: 25%; margin-left: 15%; border-radius: 50%;" id="imagen">
-           </div>
-           <div class="col-8">
-             <div class="card-body letras-tarjeta">
-               <p class="card-title"><b>Cartegoria:</b> Vacuna</p>
-               <p class="card-title"><b>Cantidad:</b> 200</p>
-               <p class="card-title"><b>Unidad:</b> Litros</p>
-               <p class="card-title"><b>Entrada:</b> 21/03/2021</p>
-               <p class="card-title"><b>Ubicación:</b> Congelador</p>
-               <p class="card-title"><b>Estado:</b> <i class="fas fa-cubes estado-rojo"></i></p>
-               <p class="card-title"><b>Opciones:</b> <i class="far fa-times-circle iconos-tarjetas eliminar"></i><i
-                   class="fas fa-cog iconos-tarjetas editar"(click)="show()"></i></p>
-
-
-             </div>
-           </div>
-         </div>
-       </div>
+     <div class="col-3">
+      <div class="card tarjetas letras-tarjeta tarjetas-fila1">
+        <img class="card-img-top"src="../../../assets/tarjetas/jeringuilla.jpg" alt="Card image cap">
+        <div class="card-body" >
+          <p class="card-text"><b>Artículo: </b>Jeringuillas</p>
+          <p class="card-text"><b>Categoría: </b>Material médico</p>
+          <p class="card-text"><b>Cantidad: </b>260</p>
+          <p class="card-text"><b>Unidad: </b>Unidades </p>
+          <p class="card-text"><b>Ubicación: </b>En stock</p>
+          <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
+          <hr>
+          <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+            <i class="fas fa-cog iconos-tarjetas editar" ></i></p>
+          
+          
+        </div>
+      </div>
      </div>
-     <div class="col-4">
-       <div class="card mb-3 shadow tarjetas-fila1">
-         <div class="row g-0 img">
-           <div class="col-md-4">
-             <img src="../../../assets/hormiguero.png" alt="..."
-               style="width: 200px;height:250px;margin-top: 25%; margin-left: 15%; border-radius: 50%;" id="imagen">
-           </div>
-           <div class="col-8">
-             <div class="card-body letras-tarjeta">
-               <p class="card-title"><b>Cartegoria:</b> Vacuna</p>
-               <p class="card-title"><b>Cantidad:</b> 200</p>
-               <p class="card-title"><b>Unidad:</b> Litros</p>
-               <p class="card-title"><b>Entrada:</b> 21/03/2021</p>
-               <p class="card-title"><b>Ubicación:</b> Congelador</p>
-               <p class="card-title"><b>Estado:</b> <i class="fas fa-cubes estado-verde"></i></p>
-               <p class="card-title"><b>Opciones:</b> <i class="far fa-times-circle iconos-tarjetas eliminar"></i><i
-                   class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></p>
-
-
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
-
-   </div>
  </div>
+</div>

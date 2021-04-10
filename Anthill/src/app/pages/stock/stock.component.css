@@ -62,8 +62,8 @@
     color: #ff9100
   }
   
-  .eliminar {
-    color: rgb(135, 126, 135);
+  .eliminar, .editar  {
+    color: white;
     margin-left: 10px;
     transition: color .1s;
   }
@@ -72,14 +72,11 @@
     cursor:pointer
   }
   .table .fa-cog:hover {
-    color:  rgb(45, 58, 88);
+    color:  var(--colorPrincipal);
     cursor:pointer
   }
   
   
-  .editar {
-    color: rgb(135, 126, 135)
-  }
   
 /* -----------Modal------------ */
 .tarjetas-modal{
@@ -113,4 +110,17 @@
 }
 .margen2{
   margin-right: 1%;
+}
+.tableContainer{
+  background: linear-gradient(
+    90deg
+    ,#03256c 0  
+    ,#0539a9 60%
+    ,#03256c);
+}
+#margen{
+  margin-right: 25%;
+}
+.boton-barra-filtros{
+  height: 55px;
 }

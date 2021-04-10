@@ -1,22 +1,29 @@
 body {
-  background: linear-gradient(rgba(31, 39, 61, 0.98), rgba(31, 39, 61, 0.94)), url("../../../assets/hormigasLogin.jpg") !important;
+  background: linear-gradient(var(--colorFondo), #03246cf7), url("../../../assets/hormigasLogin.jpg") !important;
   height: 100vh;
 }
 
 .tarjeta-login {
 
-  border: 1px solid #ff9100;
+  border: 1px solid turquoise;
   width: 400px;
-  height: 500px;
+  height: 520px;
   border-radius: 6px;
-  background-color: #ff9100;
+  background-color: white;
   justify-content: center;
-  margin-top: 80px
+  margin-top: 80px;
+  color:#03256c;
+  text-align: center;
+}
+.tarjeta-login:hover{
+  -webkit-box-shadow: 3px 3px 5px 6px rgba(0,0,0,0.75);  
+  -moz-box-shadow:    3px 3px 5px 6px rgba(0,0,0,0.75); 
+  box-shadow:         3px 3px 5px 6px rgba(0,0,0,0.75);  
 }
 
 .imagen-hormiguero {
   width: 400px;
-  height: 500px;
+  height: 520px;
   border-radius: 6px;
   margin-top: 80px;
 }
@@ -46,14 +53,17 @@ body {
   margin-top: 30px;
   width: 200px;
   justify-content: center;
-  background-color: #1f283e;
+  
+    background: linear-gradient(
+      0deg
+      ,#03256c 0,#063db3 100%,#03256c);
+  
   color: white
 
 }
 .boton-login:hover
 {
-    color: #ff9100;
-    background: #1f283e;
+    color: var(--colorPrincipal);
     box-shadow: 0 0 10px #1f283e, 0 0 20px #1f283e, 0 0 40px #1f283e;
     transition-delay: 0.2s;
 }
@@ -62,26 +72,26 @@ body {
   text-align: center;
   margin-top: 10%;
   cursor: pointer;
-  color: #ff9100;
+  color: white;
   width: 10%;
   margin-left: 45%;
 }
 .about:hover
 {
-    color: #ff9100;
-    background: #1f283e;
-    box-shadow: 0 0 10px #ff9100, 0 0 20px #ff9100, 0 0 40px #ff9100;
+    color: var(--colorPrincipal);
+    
+    text-shadow: 0 0 10px  var(--colorPrincipal), 0 0 20px  var(--colorPrincipal), 0 0 40px  var(--colorPrincipal);
     transition-delay: 0.5s;
 }
 .alinear{
   text-align: center;
 }
 .register{
-  color: #1f283e;cursor:pointer
+  color: #03256c  ;cursor:pointer
 }
-/* .register:hover{
-  color: #ff9100;
-    background: #1f283e;
-    box-shadow: 0 0 10px #1f283e, 0 0 20px #1f283e, 0 0 40px #1f283e;
+.register:hover{
+  color: var(--colorPrincipal);
+
+    text-shadow: 0 0 10px #03256c, 0 0 20px #03256c, 0 0 40px #03256c;
     transition-delay: 0.2s;
-} */
+}
