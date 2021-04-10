@@ -27,7 +27,7 @@
     margin-right:3% ;
   }
   .iconos-barra-filtros i:hover{
-    color:darkturquoise
+    color:var(--colorPrincipal)
   }
   .mainLoginInput::-webkit-input-placeholder {
     font-family: FontAwesome;
@@ -62,7 +62,7 @@
     cursor:pointer
   }
   .table .fa-cog:hover {
-    color:  rgb(45, 58, 88);
+    color:  var(--colorPrincipal);
     cursor:pointer
   }
   
@@ -78,6 +78,6 @@
  .tableContainer{
      width: fit-content;
  }
- .colocar-select{
+ .form-select{
   width: fit-content;
 }

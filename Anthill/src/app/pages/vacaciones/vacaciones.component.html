@@ -1,34 +1,37 @@
-    <div class="col-8">
-      <div class="calendario">
-        <full-calendar [options]="calendarOptions"></full-calendar>
-      </div>
+<div class="row">
+  <div class="col-8">
+    <div class="calendario">
+      <full-calendar [options]="calendarOptions"></full-calendar>
     </div>
-    <div class="col-4" [style.display]="this.servicio.showInfo ? 'block' : 'none'">
-      <div class="empleados">
-        <div class="tamaño-tabla">
-            <div class="tableContainer">
-              <div class="dialog">
-                <a (click)=hide() class="close-thik"></a>
-              </div>
-              <table class="table">
-                <thead>
-                  <tr class="tablaHeader">
-                    <th>Vacaciones dia {{mes}}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="trPar">
-                    <td>Alberto Bermejo</td>
-                  </tr>
-                  <tr>
-                    <td>Manuel Pinto</td>
-                  </tr>
-                  <tr class="trPar">
-                    <td>Carlos Ocaña</td>
-                  </tr>
-                </tbody>
-              </table>
+  </div>
+  <div class="col-4" [style.display]="this.servicio.showInfo ? 'block' : 'none'">
+    <div class="empleados">
+      <div class="tamaño-tabla">
+          <div class="tableContainer">
+            <div class="dialog">
+              <a (click)=hide() class="close-thik"></a>
             </div>
+            <table class="table">
+              <thead>
+                <tr class="tablaHeader">
+                  <th>Vacaciones dia {{mes}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="trPar">
+                  <td>Alberto Bermejo</td>
+                </tr>
+                <tr>
+                  <td>Manuel Pinto</td>
+                </tr>
+                <tr class="trPar">
+                  <td>Carlos Ocaña</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-      </div>
+        </div>
     </div>
+  </div>
+</div>
+  

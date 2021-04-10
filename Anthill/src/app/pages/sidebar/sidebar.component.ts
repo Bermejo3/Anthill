@@ -21,11 +21,30 @@ export class SidebarComponent implements OnInit {
   {
     this.isHidden=!this.isHidden;
     this.oculto=true
+    document.getElementById('sidebar')!.classList.remove('sidebarContracted')
+    this.servicio.estaOculto = true
   }
+
   ver()
   {
     this.oculto=!this.oculto;
     this.isHidden=true
+    document.getElementById('sidebar')!.classList.remove('sidebarContracted')
+    this.servicio.estaOculto = true
+  }
+
+  mostrarBarra()
+  {
+    if (this.servicio.estaOculto == true){
+      this.servicio.estaOculto = false
+    }
+    else if (this.servicio.estaOculto == false){
+      this.servicio.estaOculto = true
+    }
+    this.isHidden=true
+    this.oculto=true
+
+    document.getElementById('sidebar')!.classList.toggle('sidebarContracted')
   }
 
   ngOnInit(): void {

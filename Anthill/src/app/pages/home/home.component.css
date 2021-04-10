@@ -1,3 +1,17 @@
+
+
+.logoHome {
+  width:  fit-content;
+  height: fit-content;
+}
+
+.logoHome img {
+  padding: 10px;
+}
+
+
+
+
 /* Reloj analogico */
 
 .clock{

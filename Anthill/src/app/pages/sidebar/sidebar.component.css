@@ -1,5 +1,5 @@
 
-.opciones
+.opciones, .opcionesHide
 {
     position: flex;
     display: inline-block;
@@ -21,7 +21,7 @@
     transition-delay: 0.5s;
 }
 
-.opciones i{
+.opciones i, .opcionesHide i{
     font-size: 20px;
 }
 

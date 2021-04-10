@@ -29,7 +29,7 @@ export class EmpleadoVacacionesComponent implements OnInit {
     locale: esLocale,
     weekNumbers: true,
     weekNumberFormat: { week: 'numeric'},
-    height: "70vh",
+    height: "80vh",
     aspectRatio: 3,
     eventContent:this.renderEventContent,
     dateClick: this.modalClick.bind(this)
