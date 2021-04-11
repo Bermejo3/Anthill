@@ -1,6 +1,5 @@
 .cuerpo-registro {
   justify-content: center;
-
   display: flex;
   flex-wrap: wrap;
   flex-flow: wrap;
@@ -12,7 +11,7 @@
   height: 650px;
   justify-content: center;
   align-items: centers;
-  background-color: white;
+  background-color: var(--colorSideBar);
   border-radius: 6px;
   margin-top: 60px;
   text-align: center;
@@ -46,11 +45,6 @@
 }
 
 /*  ----------------------------------------------------------------Modal-------------------------------------------------------------- */
-.tarjetas-modal {
-  background: rgb(31, 40, 62, 0.90);
-}
-
-
 
 .cabecera-input {
   width: 33%;
@@ -69,7 +63,6 @@
   border-bottom-right-radius: 12px;
   border-top-right-radius: 12px;
   font-size: 16px;
-  
 }
 
 .colocar-boton {
@@ -80,4 +73,4 @@
 body{
   background:  linear-gradient( var(--colorFondo),#03246cf7), url("../../../assets/hormigasLogin.jpg") !important ;
   height: 100vh;
-   }
+}

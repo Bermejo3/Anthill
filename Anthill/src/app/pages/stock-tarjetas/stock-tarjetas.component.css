@@ -71,32 +71,6 @@
 
 }
 
-.tarjetas-fila1{
-  height: fit-content;
-  border: 0.1px solid #343c5087;
-  /* box-shadow:         3px 3px 5px 6px #fcfcfc87 inset; */
-  width: 20rem;
-  border-radius: 12px;
-  background: linear-gradient(
-    90deg
-    ,#06308c 0  
-    ,#063aaa 60%
-    ,#0950e8);
-  margin-top: 16px;
-}
-.tarjetas-fila1 img{
-  margin-left: 1%;width: 17rem;height: 200px;margin-top: -40px; border-radius: 6px; cursor: pointer;
-          -webkit-box-shadow: 1px 1px 3px 4px #ccc; 
-          -moz-box-shadow:    1px 1px 3px 4px #ccc;  
-          box-shadow:         1px 1px 3px 4px #ccc;  
-}
-.tarjetas-fila1:hover{
-/* box-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18; */
-
-  -webkit-box-shadow: 3px 3px 5px 6px #ffffff;  
-  -moz-box-shadow:    3px 3px 5px 6px #ffffff; 
-  box-shadow:         3px 3px 5px 6px #ffffff;  
-}
 .letras-tarjeta {
   color: white;
   /* margin-left: 20%; */

@@ -8,7 +8,7 @@
      </form>
    </div>
       <div class="col-1">
-        <select class="form-select colocar-select" aria-label="Default select example">
+        <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example">
           <option selected>Categoría</option>
           <option value="1">Material médico</option>
           <option value="2">Medicina</option>
@@ -16,7 +16,7 @@
         </select>
       </div>
       <div class="col-1 margen1">
-        <select class="form-select colocar-select" aria-label="Default select example">
+        <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example">
           <option selected>Unidad</option>
           <option value="1">Litros</option>
           <option value="2">Unidades</option>
@@ -24,7 +24,7 @@
         </select>
       </div>
       <div class="col-1 margen2">
-        <select class="form-select colocar-select" aria-label="Default select example">
+        <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example">
           <option selected>Fecha</option>
           <option value="1">Enero-2021</option>
           <option value="2">Febrero-2021</option>
@@ -32,7 +32,7 @@
         </select>
       </div>
       <div class="col-1">
-        <select class="form-select colocar-select" aria-label="Default select example">
+        <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example">
           <option selected>Ubicación</option>
           <option value="1">Almacén</option>
           <option value="2">Congelador</option>
@@ -40,7 +40,7 @@
         </select>
       </div>
       <div class="col-1">
-        <select class="form-select colocar-select" aria-label="Default select example">
+        <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example">
           <option selected>Estado</option>
           <option value="1">Correcto</option>
           <option value="2">Reponer</option>
@@ -145,7 +145,7 @@
              <td>Almacén</td>
              <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
              <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
+               <i class="fas fa-edit iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr>
              <td>2</td>
@@ -157,7 +157,7 @@
              <td>Congelador</td>
              <td><i class="fas fa-cubes estado-rojo-tabla"></i></td>
              <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
+               <i class="fas fa-edit iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr class="trPar">
              <td>3</td>
@@ -169,7 +169,7 @@
              <td>Congelador</td>
              <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
              <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
+               <i class="fas fa-edit iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr>
              <td>4</td>
@@ -181,7 +181,7 @@
              <td>Congelador</td>
              <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
              <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
+               <i class="fas fa-edit iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr class="trPar">
              <td>5</td>
@@ -193,7 +193,7 @@
              <td>Congelador</td>
              <td><i class="fas fa-cubes estado-rojo-tabla"></i></td>
              <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
+               <i class="fas fa-edit iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr>
              <td>6</td>
@@ -205,7 +205,7 @@
              <td>Almacén</td>
              <td><i class="fas fa-cubes estado-verde-tabla" ></i></td>
              <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
+               <i class="fas fa-edit iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr class="trPar">
              <td>7</td>
@@ -217,7 +217,7 @@
              <td>Almacén</td>
              <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
              <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-               <i class="fas fa-cog iconos-tarjetas editar"(click)="show()"></i></td>
+               <i class="fas fa-edit iconos-tarjetas editar"(click)="show()"></i></td>
            </tr>
            <tr>
              <td>8</td>
@@ -229,7 +229,7 @@
              <td>Almacén</td>
              <td><i class="fas fa-cubes estado-rojo-tabla"></i></td>
              <td><i class="far fa-times-circle iconos-tarjetas eliminar" ></i>
-               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
+               <i class="fas fa-edit iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr class="trPar">
              <td>9</td>
@@ -241,7 +241,7 @@
              <td>Almacén</td>
              <td><i class="fas fa-cubes estado-rojo-tabla"></i></td>
              <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
+               <i class="fas fa-edit iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr>
              <td>10</td>
@@ -253,7 +253,7 @@
              <td>Almacén</td>
              <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
              <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
+               <i class="fas fa-edit iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr class="trPar">
              <td>11</td>
@@ -265,7 +265,7 @@
              <td>Almacén</td>
              <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
              <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
+               <i class="fas fa-edit iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
            <tr>
              <td>12</td>
@@ -277,7 +277,7 @@
              <td>Congelador</td>
              <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
              <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-               <i class="fas fa-cog iconos-tarjetas editar" (click)="show()"></i></td>
+               <i class="fas fa-edit iconos-tarjetas editar" (click)="show()"></i></td>
            </tr>
 
 

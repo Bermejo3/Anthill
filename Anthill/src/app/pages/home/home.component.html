@@ -1,59 +1,28 @@
-    <div class="row">
-        <div class="col-8 calendario">
-            <full-calendar [options]="calendarOptions"></full-calendar>  
-        </div>
-        <div class="col-3 reloj">
-            <!-- Reloj copiado de https://www.codingnepalweb.com/2020/05/neumorphism-working-analog-clock-using-javascript.html -->
-            <div class="row mt-5">
-                <div class="clock">
-                    <div class="center-nut">
-                    </div>
-                    <div class="center-nut2">
-                    </div>
-                    <div class="indicators">
-                        <div>
-                        </div>
-                        <div>
-                        </div>
-                        <div>
-                        </div>
-                        <div>
-                        </div>
-                        <div>
-                        </div>
-                        <div>
-                        </div>
-                        <div>
-                        </div>
-                        <div>
-                        </div>
-                        <div>
-                        </div>
-                        <div>
-                        </div>
-                        <div>
-                        </div>
-                        <div>
-                        </div>
-                    </div>
-                    <div class="sec-hand" [ngStyle]="{ transform: 'rotate(' + second + 'deg)' }">
-                        <div class="sec">
-                        </div>
-                    </div>
-                    <div class="min-hand" [ngStyle]="{ transform: 'rotate(' + minute + 'deg)' }">
-                        <div class="min">
-                        </div>
-                    </div>
-                    <div class="hr-hand" [ngStyle]="{ transform: 'rotate(' + hour + 'deg)' }">
-                        <div class="hr">
-                        </div>
-                    </div>
-                </div>
-     <!-- Reloj copiado -->
-
-            </div>
-            <div class="col logoHome mt-2">
-                <img src="../../../assets/Logo/LogoBlanco.png" alt="">
-            </div>
-        </div>    
+<div class="row">
+    <div class="col-8 calendario">
+        <full-calendar [options]="calendarOptions"></full-calendar>  
     </div>
+    <div class="col-3 reloj">
+<!-- Reloj copiado de https://www.codingnepalweb.com/2020/05/neumorphism-working-analog-clock-using-javascript.html -->
+        <div class="clock">
+            <div class="hour" [ngStyle]="{ transform: 'rotate(' + hour + 'deg)' }">
+                 <div class="hr" id="hr">
+
+                </div>
+            </div>
+            <div class="min" [ngStyle]="{ transform: 'rotate(' + minute + 'deg)' }">
+                <div class="mn" id="mn">
+
+                </div>
+            </div>
+            <div class="sec" [ngStyle]="{ transform: 'rotate(' + second + 'deg)' }">
+                <div class="sc" id="sc" style="transform: rotateZ(276deg);">
+
+                </div>
+            </div>
+        </div>
+        <div class="col logoHome mt-5">
+            <img src="../../../assets/Logo/LogoBlanco.png" alt="">
+        </div>
+    </div>
+</div>

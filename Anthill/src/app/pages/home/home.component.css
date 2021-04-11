@@ -1,8 +1,7 @@
 
 
 .logoHome {
-  width:  fit-content;
-  height: fit-content;
+  width:  100%;
 }
 
 .logoHome img {
@@ -14,190 +13,94 @@
 
 /* Reloj analogico */
 
-.clock{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #dde1e7;
-    height: 250px;
-    width: 250px;
-    border-radius: 50%;
-    box-shadow: -3px -3px 7px #ffffff73,
-                3px 3px 5px rgba(94,104,121,0.288);
-    margin-left: 20px;
-  }
-  .clock:before{
-    position: absolute;
-    content: '';
-    height: 220px;
-    width: 220px;
-    background: #dde1e7;
-    border-radius: 50%;
-    box-shadow: inset -3px -3px 7px #ffffff73,
-                inset 3px 3px 5px rgba(94,104,121,0.288);
-  }
-  .clock:after{
-    position: absolute;
-    content: '';
-    height: 120px;
-    width: 120px;
-    background: #dde1e7;
-    border-radius: 50%;
-    box-shadow: -1px -1px 5px #ffffff73,
-                1px 1px 3px rgba(94,104,121,0.288);
-  }
-  .clock .center-nut{
-    height: 15px;
-    width: 15px;
-    background: #404040;
-    border-radius: 50%;
-    z-index: 2;
-    position: absolute;
-  }
-  .clock .center-nut2{
-    height: 9px;
-    width: 9px;
-    background: #ff9100;
-    border-radius: 50%;
-    z-index: 15;
-    position: absolute;
-  }
-  .indicators div{
-    position: absolute;
-    width: 2px;
-    height: 5px;
-    background: #404040;
-  }
-  .indicators div:nth-child(1){
-    transform: rotate(30deg) translateY(-100px);
-  }
-  .indicators div:nth-child(2){
-    transform: rotate(60deg) translateY(-100px);
-  }
-  .indicators div:nth-child(3){
-    background: #ff9100;
-    transform: rotate(90deg) translateY(-100px);
-  }
-  .indicators div:nth-child(4){
-    transform: rotate(120deg) translateY(-100px);
-  }
-  .indicators div:nth-child(5){
-    transform: rotate(150deg) translateY(-100px);
-  }
-  .indicators div:nth-child(6){
-    background: #ff9100;
-    transform: rotate(180deg) translateY(-100px);
-  }
-  .indicators div:nth-child(7){
-    transform: rotate(210deg) translateY(-100px);
-  }
-  .indicators div:nth-child(8){
-    transform: rotate(240deg) translateY(-100px);
-  }
-  .indicators div:nth-child(9){
-    background: #ff9100;
-    transform: rotate(270deg) translateY(-100px);
-  }
-  .indicators div:nth-child(10){
-    transform: rotate(300deg) translateY(-100px);
-  }
-  .indicators div:nth-child(11){
-    transform: rotate(330deg) translateY(-100px);
-  }
-  .indicators div:nth-child(12){
-    background: #ff9100;
-    transform: rotate(360deg) translateY(-100px);
-  }
-  .sec-hand,.min-hand,.hr-hand{
-    position: absolute;
-  }
-  .sec-hand, .sec{
-    height: 180px;
-    width: 180px;
-    z-index: 6;
-  }
-  .min-hand, .min{
-    height: 140px;
-    width: 140px;
-    z-index: 5;
-  }
-  .hr-hand, .hr{
-    height: 110px;
-    width: 110px;
-    z-index: 4;
-  }
-  .sec,.min,.hr{
-    display: flex;
-    justify-content: center;
-    position: absolute;
-  }
-  .sec:before{
-    position: absolute;
-    content: '';
-    height: 110px;
-    width: 3px;
-    background: #ff9100;
-  }
-  .sec:after{
-    position: absolute;
-    content: '';
-    height: 35px;
-    width: 7px;
-    background: #ff9100;
-    top: 105px;
-    border-radius: 5px;
-  }
-  .min:before{
-    position: absolute;
-    content: '';
-    width: 1px;
-    top: -15px;
-    border-left: 3px solid transparent;
-    border-right: 3px solid transparent;
-    border-bottom: 60px solid #1f283e;
-  }
-  .min:after{
-    position: absolute;
-    content: '';
-    width: 3px;
-    top: 40px;
-    border-left: 2px solid transparent;
-    border-right: 2px solid transparent;
-    border-top: 30px solid #1f283e;
-  }
-  .hr:before{
-    position: absolute;
-    content: '';
-    width: 1px;
-    border-left: 3px solid transparent;
-    border-right: 3px solid transparent;
-    border-bottom: 35px solid #303030;
-  }
-  .hr:after{
-    position: absolute;
-    content: '';
-    width: 3px;
-    top: 34px;
-    border-left: 2px solid transparent;
-    border-right: 2px solid transparent;
-    border-top: 25px solid #303030;
-  }
+.clock {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  border: 4px;
+  border-radius: 50%;
+  border: 2px solid var(--colorPrincipal);
+  margin: 0 auto;
+}
 
-  /* Reloj Digital */
-  .digitalClock{
-    background: #dde1e7;
-    height: 90px;
-    line-height: 90px;
-    text-align: center;
-    padding: 0 15px;
-    box-shadow: -3px -3px 7px rgba(255,255,255,0.05),
-                 3px 3px 5px rgba(0,0,0,0.5);
-  }
-  .digitalClock .display{
-    font-size: 40px;
-    color: #ff9100;
-    letter-spacing: 5px;
-    font-family: 'Orbitron', sans-serif;
-  }
+
+/* The small circle int the center */
+.clock:before {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: var(--colorPrincipal);
+  border-radius: 50%;
+
+  /* The z-index property specifies the stack order of an element.
+  /* An element with greater stack order is always in front of an element with a lower stack order.  */
+  /* Note: z-index only works on positioned elements (position: absolute, position: relative, position: fixed, or position: sticky). */
+  z-index: 10000;
+  /* kept as a high value, since wanted at top */
+}
+
+.clock .hour,
+.clock .min,
+.clock .sec {
+  position: absolute;
+}
+
+.clock .hour, .hr {
+  width: 160px;
+  height: 160px;
+} 
+
+.clock .min, .mn {
+  width: 190px;
+  height: 190px;
+}
+
+.clock .sec, .sc {
+  width: 230px;
+  height: 230px;
+}
+
+.hr, .mn, .sc {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  border-radius: 50%;
   
+}
+
+.hr:before {
+  content: '';
+  position: absolute;
+  width: 7.5px;
+  height: 85px;
+  background: var(--colorPrincipal);
+  z-index: 10;
+  /* z-index least */
+  border-radius: 2.8px;
+}
+
+.mn:before {
+  content: '';
+  position: absolute;
+  width: 3.5px;
+  height: 100px;
+  background: var(--colorPrincipal);
+  z-index: 11;
+  /* z-index more than hour hand */
+  border-radius: 3px;
+}
+
+.sc:before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 150px;
+  background: var(--colorPrincipal);
+  z-index: 12;
+  /* z-index more than hour minute hand */
+  border-radius: 3px;
+}

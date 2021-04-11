@@ -8,7 +8,7 @@
      </form>
    </div>
    <div class="col-1">
-    <select class="form-select colocar-select" aria-label="Default select example">
+    <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example">
       <option selected>Categoría</option>
       <option value="1">Material médico</option>
       <option value="2">Medicina</option>
@@ -16,7 +16,7 @@
     </select>
   </div>
   <div class="col-1 margen1">
-    <select class="form-select colocar-select" aria-label="Default select example">
+    <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example">
       <option selected>Unidad</option>
       <option value="1">Litros</option>
       <option value="2">Unidades</option>
@@ -24,7 +24,7 @@
     </select>
   </div>
   <div class="col-1 margen2">
-    <select class="form-select colocar-select" aria-label="Default select example">
+    <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example">
       <option selected>Fecha</option>
       <option value="1">Enero-2021</option>
       <option value="2">Febrero-2021</option>
@@ -32,7 +32,7 @@
     </select>
   </div>
   <div class="col-1">
-    <select class="form-select colocar-select" aria-label="Default select example">
+    <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example">
       <option selected>Ubicación</option>
       <option value="1">Almacén</option>
       <option value="2">Congelador</option>
@@ -40,7 +40,7 @@
     </select>
   </div>
   <div class="col-1">
-    <select class="form-select colocar-select" aria-label="Default select example">
+    <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example">
       <option selected>Estado</option>
       <option value="1">Correcto</option>
       <option value="2">Reponer</option>
@@ -54,68 +54,11 @@
     <span></span>
     Añadir</button>
 
-   <div class="modal tarjetas-modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <div class="modal-header" >
-          <h4 class="modal-title">Introduce un nuevo Producto</h4>
-          <button type="button" class="close" data-dismiss="modal" (click)="hide()">&times;</button>
-        </div>
-        
-        <div class="modal-body fondo-modal">
-          <form>
-
-            <div class="input-group flex-nowrap mt-1">
-              <span class="input-group-text cabecera-input" id="addon-wrapping">Introducir foto (Opcional)</span>
-              <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
-            </div>
-            <div class="input-group flex-nowrap mt-1">
-              <span class="input-group-text cabecera-input" id="addon-wrapping">Artículo</span>
-              <input type="text"class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
-            </div>
-            <div class="input-group flex-nowrap mt-1">
-              <span class="input-group-text cabecera-input" id="addon-wrapping">Categoría</span>
-              <input type="email" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
-            </div>
-            <div class="input-group flex-nowrap mt-1">
-              <span class="input-group-text cabecera-input" id="addon-wrapping">Cantidad</span>
-              <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
-            </div>
-            <div class="input-group flex-nowrap mt-1">
-              <span class="input-group-text cabecera-input" id="addon-wrapping">Unidad</span>
-              <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
-            </div>
-            <div class="input-group flex-nowrap mt-1">
-              <span class="input-group-text cabecera-input" id="addon-wrapping">Fecha de entrada</span>
-              <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
-            </div>
-            <div class="input-group flex-nowrap mt-1">
-              <span class="input-group-text cabecera-input" id="addon-wrapping">Ubicación</span>
-              <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
-            </div>
-            <div class="input-group flex-nowrap mt-1">
-              <span class="input-group-text cabecera-input" id="addon-wrapping">Cantidad mínima</span>
-              <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
-            </div>
-          </form>
-        </div>
-        
-        <div class="modal-footer colocar-boton">
-          <button type="button" class="boton-barra-filtros boton-modal">Guardar</button>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-
-
    <div class="col iconos-barra-filtros">
      <i class="far fa-address-card" routerLink="/stock-tarjetas"></i>
      <i class="fas fa-table" id="margen"  routerLink="/stock"></i>
    </div>
  </div>
- <!-- ------------------Tarjetas--------------------------------- -->
  
 <!-- ------------------Tarjetas--------------------------------- -->
 <div class="row container-tarjetas">
@@ -134,7 +77,7 @@
          <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
          <hr>
          <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-           <i class="fas fa-cog iconos-tarjetas editar" ></i></p>
+           <i class="fas fa-edit iconos-tarjetas editar" ></i></p>
          
          
        </div>
@@ -151,7 +94,7 @@
           <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-rojo"></i></p>
           <hr>
           <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-            <i class="fas fa-cog iconos-tarjetas editar" ></i></p>
+            <i class="fas fa-edit iconos-tarjetas editar" ></i></p>
           
           
         </div>
@@ -169,7 +112,7 @@
           <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
           <hr>
           <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-            <i class="fas fa-cog iconos-tarjetas editar" ></i></p>
+            <i class="fas fa-edit iconos-tarjetas editar" ></i></p>
           
           
         </div>
@@ -187,7 +130,7 @@
           <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
           <hr>
           <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-            <i class="fas fa-cog iconos-tarjetas editar" ></i></p>
+            <i class="fas fa-edit iconos-tarjetas editar" ></i></p>
           
           
         </div>
@@ -207,7 +150,7 @@
          <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
          <hr>
          <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-           <i class="fas fa-cog iconos-tarjetas editar" ></i></p>
+           <i class="fas fa-edit iconos-tarjetas editar" ></i></p>
          
          
        </div>
@@ -224,7 +167,7 @@
           <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
           <hr>
           <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-            <i class="fas fa-cog iconos-tarjetas editar" ></i></p>
+            <i class="fas fa-edit iconos-tarjetas editar" ></i></p>
           
           
         </div>
@@ -242,7 +185,7 @@
           <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
           <hr>
           <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-            <i class="fas fa-cog iconos-tarjetas editar" ></i></p>
+            <i class="fas fa-edit iconos-tarjetas editar" ></i></p>
           
           
         </div>
@@ -260,11 +203,68 @@
           <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
           <hr>
           <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-            <i class="fas fa-cog iconos-tarjetas editar" ></i></p>
+            <i class="fas fa-edit iconos-tarjetas editar" ></i></p>
           
           
         </div>
       </div>
      </div>
  </div>
+</div>
+
+
+<!-- ------------------Modal--------------------------------- -->
+<div class="modal tarjetas-modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <div class="modal-header" >
+        <h4 class="modal-title">Introduce un nuevo Producto</h4>
+        <button type="button" class="close" data-dismiss="modal" (click)="hide()">&times;</button>
+      </div>
+      
+      <div class="modal-body fondo-modal">
+        <form>
+
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Introducir foto (Opcional)</span>
+            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Artículo</span>
+            <input type="text"class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Categoría</span>
+            <input type="email" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Cantidad</span>
+            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Unidad</span>
+            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Fecha de entrada</span>
+            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Ubicación</span>
+            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Cantidad mínima</span>
+            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
+          </div>
+        </form>
+      </div>
+      
+      <div class="modal-footer colocar-boton">
+        <button type="button" class="boton-barra-filtros boton-modal">Guardar</button>
+      </div>
+      
+    </div>
+  </div>
 </div>

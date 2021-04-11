@@ -2,7 +2,7 @@
         <table class="table table-bordered" id="prueba">
           <thead>
             <tr class="tablaHeader">
-              <th>Turno Semana {{ servicio.weekNumber}}</th>
+              <th>Turno <br> Semana {{ servicio.weekNumber}}</th>
               <th *ngFor="let dia of semana, let i = index">{{diasSemana[i]}} <br> {{dia.getDate()}}-{{dia.getMonth()+1}}-{{dia.getFullYear()}}</th>
             </tr>
           </thead>
@@ -41,7 +41,8 @@
           </select>
         </div>
         <div class="botonGuardar">
-          <button class="boton-barra-filtros" (click)='servicio.hide()'>Guardar</button>
+          <button class="boton-barra-filtros reductor" (click)='servicio.hide()'>Guardar</button>
         </div>
     </div>
+
 

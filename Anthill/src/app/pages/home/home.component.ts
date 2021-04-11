@@ -44,22 +44,6 @@ export class HomeComponent implements OnInit {
       this.minute = this.d.getMinutes()*6
       this.hour = this.d.getHours()*30 + Math.round(this.minute/12)
     },1000)
-
-    setInterval(()=>{
-      this.time = new Date();
-      this.sec = this.time.getSeconds();
-      this.min = this.time.getMinutes();
-      this.hr = this.time.getHours();
-      if(this.sec < 10){
-        this.secT = '0' + this.sec;
-      }
-      if(this.min < 10){
-        this.minT = '0' + this.min;
-      }
-      if(this.hr < 10){
-        this.hrT = '0' + this.hr;
-      }
-    },1000);
   }
 
 }
