@@ -1,0 +1,48 @@
+    <div class="tableContainer">
+        <table class="table table-bordered" id="prueba">
+          <thead>
+            <tr class="tablaHeader">
+              <th>Turno <br> Semana {{ servicio.weekNumber}}</th>
+              <th *ngFor="let dia of semana, let i = index">{{diasSemana[i]}} <br> {{dia.getDate()}}-{{dia.getMonth()+1}}-{{dia.getFullYear()}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="trPar">
+                <td><i class="far fa-sun"></i> Mañana</td>
+                <td *ngFor="let dia of semana, let i = index" class="turnoVacio" (click)="clickar('M'+i)" id="M{{i}}"></td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-adjust"></i> Tarde</td>
+                <td *ngFor="let dia of semana, let i = index" class="turnoVacio" (click)="clickar('T'+i)" id="T{{i}}"></td>
+            </tr>
+            <tr class="trPar">
+                <td><i class="far fa-moon"></i> Noche</td>
+                <td *ngFor="let dia of semana, let i = index" class="turnoVacio" (click)="clickar('N'+i)" id="N{{i}}"></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div [style.display]="this.servicio.showInfo ? 'block' : 'none'" class="selectTurno">
+        <div class="empleadosElegidos">
+          <table class="tablaEmpleadosElegidos">
+            <tr *ngFor="let empleadoS of arrayEmpleadosSeleccionado, let i=index" class="empleadoSelect">
+              <td class="celdaEmpleadoSelect">{{empleadoS}} </td>
+              <td><i class="fas fa-times-circle" (click)=quitarSeleccionado(i)></i></td>
+            </tr>
+          </table>
+        </div>
+        <hr>
+        <div class="input-group flex-nowrap mt-1">
+        <span class="input-group-text" id="addon-wrapping"
+          style="width: 33%; background-color: #1f283e; color:white">Empleado</span>
+        <select class="form-select" aria-label="Default select example" #selectBox on-change="selectEmpleado(selectBox);">
+            <option value="" selected>Seleccione un empleado</option>
+            <option *ngFor="let empleado of arrayEmpleados, let i = index" value="{{empleado}}">{{empleado}}</option>
+          </select>
+        </div>
+        <div class="botonGuardar">
+          <button class="boton-barra-filtros reductor" (click)='servicio.hide()'>Guardar</button>
+        </div>
+    </div>
+
+

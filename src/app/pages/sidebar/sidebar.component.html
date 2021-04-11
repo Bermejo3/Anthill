@@ -1,0 +1,83 @@
+<div class="sidebar" id="sidebar">
+    <div class="menu">
+        <nav class="nav flex-column">
+            <h2>
+                <img src="../../../assets/Logo/ANT.png" style= "width: 3rem;" alt="">
+                <p *ngIf="this.servicio.estaOculto">Anthill</p>
+            </h2>
+            <hr class="separador">
+            <div class="misOpciones">
+                <a class ="opciones" routerLink="home" [routerLinkActive]="['active']">
+                    <i class="fas fa-home"></i>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span *ngIf="this.servicio.estaOculto"> Home</span>
+                </a>
+                <a class ="opciones" *ngIf="!this.servicio.esEmpleado" id="drop" (click)="mostrar()">
+                    <i class="fas fa-calendar-alt" [routerLinkActive]="['active']"></i>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span *ngIf="this.servicio.estaOculto"> Horarios</span>
+                </a>
+                <ul *ngIf ="!isHidden && !this.servicio.esEmpleado" id="list">
+                    <a class="opciones" routerLink="turnos-empresa" [routerLinkActive]="['active']">Turnos</a>
+                    <a class="opciones" routerLink="vacaciones" [routerLinkActive]="['active']">Vacaciones</a>
+                </ul>
+
+                <a class="opciones" *ngIf="!this.servicio.esEmpleado" routerLink="stock" [routerLinkActive]="['active']">
+                    <i class="fas fa-cubes"></i>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span *ngIf="this.servicio.estaOculto"> Stock</span>
+                </a>
+                <a class="opciones" *ngIf="!this.servicio.esEmpleado" routerLink="produccion" [routerLinkActive]="['active']">
+                    <i class="fas fa-industry"></i>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span *ngIf="this.servicio.estaOculto"> Producción</span>
+                </a>
+                <a class="opciones" *ngIf="!this.servicio.esEmpleado" (click)="ver()">
+                    <i class="fas fa-user-alt" [routerLinkActive]="['active']"></i>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span *ngIf="this.servicio.estaOculto"> RRHH</span>                    
+                </a>
+                <ul *ngIf ="!oculto && !this.servicio.esEmpleado" id="list">
+                    <a class="opciones" routerLink="rrhh-empresa" [routerLinkActive]="['active']">Empresa</a>
+                    <a class="opciones" routerLink="rrhh-empleados" [routerLinkActive]="['active']">Empleados</a>
+                </ul>
+                <a class ="opciones" id="drop" *ngIf="this.servicio.esEmpleado"(click)="mostrar()">
+                    <i class="fas fa-calendar-alt" [routerLinkActive]="['active']"></i>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span *ngIf="this.servicio.estaOculto"> Horarios</span>
+                </a>
+                <ul *ngIf ="!isHidden && this.servicio.esEmpleado" id="list">
+                    <a class="opciones" routerLink="empleado-turnos" [routerLinkActive]="['active']">Turnos</a>
+                    <a class="opciones" routerLink="empleado-vacaciones" [routerLinkActive]="['active']">Vacaciones</a>
+                </ul>
+                <a class="opciones" *ngIf="this.servicio.esEmpleado" routerLink="empleado-mi-perfil" [routerLinkActive]="['active']"> 
+                    <i class="fas fa-user-alt"></i>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span *ngIf="this.servicio.estaOculto"> Mi Perfil</span>
+                </a>
+            </div>
+          </nav>
+        <a class="navbar-brand opcionesHide" (click) = "mostrarBarra()" ><i class="fas fa-bars"></i></a>
+    </div>
+</div>

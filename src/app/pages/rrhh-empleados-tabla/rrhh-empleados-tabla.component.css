@@ -1,0 +1,86 @@
+/* .........Boton y Search............ */
+.boton-barra-filtros {
+    margin-left: 12%;
+    
+  }
+  
+  .boton-barra-filtros:before {
+    content:"";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 0px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.5s ease;
+  } 
+  .boton-barra-filtros:hover:before {
+    height: 100%;
+  }
+  .row .iconos-barra-filtros{
+    text-align:end;
+  
+  }
+  .iconos-barra-filtros i{
+    cursor:pointer;
+    font-size:50px;
+    margin-right:3% ;
+  }
+  .iconos-barra-filtros i:hover{
+    color:var(--colorPrincipal)
+  }
+  .mainLoginInput::-webkit-input-placeholder {
+    font-family: FontAwesome;
+    font-weight: normal;
+    overflow: visible;
+    vertical-align: top;
+    display: inline-block !important;
+    padding-left: 5px;
+    padding-top: 2px;
+    color: hsl(0, 0%, 0%);
+  }
+  .sol {
+    color: yellow;
+  }
+  
+  .luna {
+    color: rgb(64, 75, 224);
+  }
+  
+  .tarde {
+    color: #ff9100
+  }
+  
+  .eliminar {
+    color: rgb(135, 126, 135);
+    margin-left: 10px;
+    margin-top: 10px;
+    transition: background-color .1s;
+  }
+  .table .fa-times-circle:hover {
+    color: red;
+    cursor:pointer
+  }
+  .table .fa-cog:hover {
+    color:  var(--colorPrincipal);
+    cursor:pointer
+  }
+  
+  .editar {
+    color: rgb(135, 126, 135)
+  }
+
+  .iconos-tarjetas {
+    margin-left: 7%;
+    font-size: 25px;
+    cursor: pointer;
+  }
+ .tableContainer{
+     width: fit-content;
+ }
+ .form-select{
+  width: fit-content;
+}
+#margen{
+  margin-right: 25%;
+}

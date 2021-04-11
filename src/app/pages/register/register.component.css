@@ -1,0 +1,76 @@
+.cuerpo-registro {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: wrap;
+}
+
+.tarjeta-registro {
+  border: 1px solid white;
+  width: min-width;
+  height: 650px;
+  justify-content: center;
+  align-items: centers;
+  background-color: var(--colorSideBar);
+  border-radius: 6px;
+  margin-top: 60px;
+  text-align: center;
+  color: var(--colorFondo);
+}
+.tarjeta-registro:hover{
+  -webkit-box-shadow: 3px 3px 5px 6px rgba(0,0,0,0.75);  
+  -moz-box-shadow:    3px 3px 5px 6px rgba(0,0,0,0.75); 
+  box-shadow:         3px 3px 5px 6px rgba(0,0,0,0.75);  
+}
+ 
+.boton4{
+  color: #fff !important;
+  font-size: 20px;
+  font-weight: 500;
+  border: 2px solid;
+  border-color: white;
+  position: relative;
+  width: 20%;
+  height: 80px;
+  border-radius: 6px;
+  background: linear-gradient(
+    0deg
+    ,#03256c 0,#063aa9 100%,#03256c)
+}
+.boton4:hover
+{
+
+    box-shadow: 0 0 10px #1f283e, 0 0 20px #1f283e, 0 0 40px #1f283e;
+    transition-delay: 0.2s;
+}
+
+/*  ----------------------------------------------------------------Modal-------------------------------------------------------------- */
+
+.cabecera-input {
+  width: 33%;
+  background-color: var(--colorFondo);
+  color: white;
+  margin-top: 15px;
+  height: 40px;
+  border-top-left-radius: 12px;
+}
+
+.input-modal {
+  background-color: rgb(174, 174, 174);
+  color: var(--colorFondo);
+  margin-top: 15px;
+  height: 40px;
+  border-bottom-right-radius: 12px;
+  border-top-right-radius: 12px;
+  font-size: 16px;
+}
+
+.colocar-boton {
+  justify-content: center;
+  margin: 3%;
+}
+
+body{
+  background:  linear-gradient( var(--colorFondo),#03246cf7), url("../../../assets/hormigasLogin.jpg") !important ;
+  height: 100vh;
+}

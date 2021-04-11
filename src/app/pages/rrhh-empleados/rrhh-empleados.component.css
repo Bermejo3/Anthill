@@ -1,0 +1,146 @@
+/* ................................................Boton e Iconos................................................. */
+
+.boton-barra-filtros {
+  margin-left: 12%;
+}
+
+.row .iconos-barra-filtros {
+  text-align: end;
+}
+
+.iconos-barra-filtros i {
+  cursor: pointer;
+  font-size: 50px;
+  margin-right: 3%;
+}
+.iconos-barra-filtros i:hover{
+  color: #17b11c;
+  text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;
+  color: #17b11c;
+
+}
+.boton-barra-filtros{
+  height: 55px;
+}
+.mainLoginInput::-webkit-input-placeholder {
+  font-family: FontAwesome;
+  font-weight: normal;
+  overflow: visible;
+  vertical-align: top;
+  display: inline-block !important;
+  padding-left: 5px;
+  padding-top: 2px;
+  color: hsl(0, 0%, 0%);
+}
+
+.form-select{
+  width: fit-content;
+}
+
+/* ....................................Desaparecer responsive.................................................. */
+@media screen and (max-width:1500px) {
+  #imagen {
+    display: none
+  }
+}
+
+
+/* .................................................................Body tarjetas.............................................. */
+.container-tarjetas {
+  width: 100%;
+  height: 85%;
+ 
+}
+
+.fila-completa {
+  width: 97%;
+  height: 50%;
+  margin-left: 1%;
+  margin-top: 20px;
+ 
+
+}
+
+.tarjetas-fila1{
+  height: fit-content;
+  /* border: 0.1px solid #343c5087; */
+  border: 1px solid rgba(255,255,255,0.09);
+
+  /* box-shadow:         3px 3px 5px 6px #fcfcfc87 inset; */
+  width: 20rem;
+  border-radius: 12px;
+  /* background: linear-gradient(
+    90deg
+    ,#06308c 0  
+    ,#063aaa 60%
+    ,#0950e8); */
+  /* background: linear-gradient(
+    90deg
+    ,#02194b 0  
+    ,#0539a9 50%
+    ,#02194b); */
+  background: rgba(0,0,0,0.2);
+
+  /* margin-top: 16px; */
+}
+.tarjetas-fila1 img{
+  margin-left: 1%;width: 17rem; height: 300px;margin-top: -40px; border-radius: 6px; cursor: pointer;
+          -webkit-box-shadow: 1px 1px 3px 4px #ccc; 
+          -moz-box-shadow:    1px 1px 3px 4px #ccc;  
+          box-shadow:         1px 1px 3px 4px #ccc;  
+}
+.tarjetas-fila1:hover{
+/* box-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18; */
+box-shadow: 0 0px 26px 0 rgb(255 255 255 / 8%);
+
+  /* -webkit-box-shadow: 3px 3px 5px 6px #ffffff;  
+  -moz-box-shadow:    3px 3px 5px 6px #ffffff; 
+  box-shadow:         3px 3px 5px 6px var(--colorPrincipal);   */
+}
+.letras-tarjeta {
+  color: white;
+  /* margin-left: 20%; */
+  margin-top: 1%;
+  margin-bottom: 5%;
+}
+
+.iconos-tarjetas {
+  margin-left: 7%;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.sol {
+  color: yellow;
+}
+
+.luna {
+  color: rgb(64, 75, 224);
+}
+
+.tarde {
+  color: #ff9100
+}
+
+.eliminar {
+  color: rgb(135, 126, 135);
+  margin-left: 10px;
+  margin-top: 10px;
+  transition: background-color .1s;
+}
+
+.editar {
+  color: rgb(135, 126, 135)
+}
+ .eliminar:hover {
+  color: red;
+  cursor:pointer
+}
+ .editar:hover{
+  color:  var(--colorPrincipal);
+  cursor:pointer
+}
+
+#margen{
+  margin-right: 25%;
+}

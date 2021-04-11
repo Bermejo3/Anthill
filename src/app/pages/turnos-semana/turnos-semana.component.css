@@ -1,0 +1,62 @@
+
+.turnoCompleto{
+    background-color: rgba(255, 0, 0, 0.5);
+
+}
+
+.turnoMedias{
+    background-color: rgba(255, 255, 0, 0.712);
+}
+
+.turnoVacio{
+    background-color: rgba(0, 128, 0, 0.801);
+}
+
+.turnoSeleccionado{
+    background-color: #fafafa;
+}
+
+tbody tr{
+    height: 10vh;
+}
+
+td{
+    width: 10%;
+    vertical-align: middle;
+}
+
+.botonGuardar{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.boton-barra-filtros{
+    height: 50px;    
+}
+
+.selectTurno{
+    margin: auto;
+    text-align: center;
+    width: 50%;
+}
+
+.tablaEmpleadosElegidos{
+    margin: auto;
+}
+
+.empleadoSelect{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.celdaEmpleadoSelect{
+    width: fit-content;
+    text-align: left;
+}
+
+.tablaEmpleadosElegidos i:hover{
+    color: red;
+    cursor: pointer;
+}

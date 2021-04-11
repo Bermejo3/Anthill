@@ -1,0 +1,104 @@
+/* .........Boton y Search............ */
+.boton-modal{
+  height: 40px;
+  background-color:  rgb(45, 58, 88);
+} 
+
+  .row .iconos-barra-filtros{
+    text-align:end;
+  
+  }
+  .iconos-barra-filtros i{
+    cursor:pointer;
+    font-size:50px;
+    margin-right:3% ;
+    text-align: end;
+  }
+  .iconos-barra-filtros i:hover{
+    color:darkturquoise
+  }
+  .mainLoginInput::-webkit-input-placeholder { 
+    font-family: FontAwesome;
+    font-weight: normal;
+    overflow: visible;
+    vertical-align: top;
+    display: inline-block !important;
+    padding-left: 5px;
+    padding-top: 2px;
+    color: hsl(0, 0%, 0%);
+  }
+
+/* .........Filtros y Search............ */
+.barra-filtros{
+    width: 100%;
+    height: 10%;
+    justify-content:flex-start;
+  }
+  .input-search-barra{
+    margin-left: 5%
+  }
+  .boton-redondo{
+    border-radius: 50%
+  }
+  /* .........Estados............ */
+  .estado-verde-tabla{
+    color:yellowgreen;font-size: 30px;margin-left: 7%
+  }
+.estado-rojo-tabla{
+    color:red;font-size: 30px;margin-left: 7%
+}
+  .iconos-tarjetas{
+    margin-left: 7%;  font-size: 30px; cursor: pointer;
+  }
+  .sol {
+    color: yellow;
+  }
+  
+  .luna {
+    color: rgb(64, 75, 224);
+  }
+  
+  .tarde {
+    color: #ff9100
+  }
+  
+  .eliminar, .editar  {
+    color: white;
+    margin-left: 10px;
+    transition: color .1s;
+  }
+  .table .fa-times-circle:hover {
+    color: red;
+    cursor:pointer
+  }
+  .table .fa-edit:hover {
+    color:  var(--colorPrincipal);
+    cursor:pointer
+  }
+  
+  
+  
+/* -----------Modal------------ */
+
+.colocar-select{
+  width: fit-content;
+}
+.margen1{
+  margin-left: 2%;margin-right: -1%;
+}
+.margen2{
+  margin-right: 1%;
+}
+.tableContainer{
+  background: linear-gradient(
+    90deg
+    ,#03256c 0  
+    ,#0539a9 60%
+    ,#03256c);
+}
+#margen{
+  margin-right: 25%;
+}
+.boton-barra-filtros{
+  height: 55px;
+}

@@ -1,0 +1,75 @@
+    <div class="row">
+      <div class="col-8">
+        <div class="calendario">
+          <full-calendar [options]="calendarOptions"></full-calendar>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="listadoVacaciones">
+          <div class="tamaño-tabla">
+              <div class="tableContainer">
+                <table class="table">
+                  <thead>
+                    <tr class="tablaHeader">
+                        <th>Vacaciones</th>
+                        <th>Dia</th>
+                        <th></th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor='let dia of calendarEvents, let i = index; odd as isOdd' (click)="show(i)">
+                    <tr [ngClass] ="{'trPar' : isOdd}">
+                      <td>{{ i+1 }}</td>
+                      <td>{{ dia.date }}</td>
+                      <td><i class="fas fa-times-circle"></i></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        </div>
+        <div class="vacacionesRestantes tableContainer">
+            <table class="table">
+                <thead>
+                  <tr class="tablaHeader">
+                      <th>Vacaciones Restantes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{ 23 - calendarEvents.length }}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </div>
+    </div>
+
+  <!-- Modal Borrar-->
+<div class="modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+         ¿Seguro que quieres borrar tus vacaciones del día {{ calendarEvents[posicionEvento].date }}?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="hide()">Atrás</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="borrar(posicionEvento)">Borrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Modal Añadir Vacaciones-->
+<div class="modal" id="myModal" [style.display]="showModalVacaciones ? 'block' : 'none'">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+         ¿Quieres añadir el dia {{ diaVacaciones }} a tus vacaciones?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="hide()">Atrás</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="addVacaciones(diaVacaciones)">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>

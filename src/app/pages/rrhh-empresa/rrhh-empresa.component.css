@@ -1,0 +1,114 @@
+.tarjeta-add-empleado {
+    width: 70%;
+    height: 750px;
+    border: 2px solid white;
+    background: linear-gradient(#03256c, #03246cde), url("../../../assets/hormiguero.png");
+    margin-left: 10%;
+    border-radius: 6px;
+  }
+  
+  /* ................................................Boton y Search................................................. */
+  .boton-barra-filtros {
+    width: 63%;
+  }
+  
+  .grande {
+    height: 80px;
+    width: 600px;
+    margin-top: 34%;
+    margin-left: 10%;
+    border-radius: 12px;
+  }
+  
+  .pequeño {
+    height: 40px;
+    width: 40%;
+    margin-left: 33%;
+    background-color: #b53900d2;
+    margin-top: 5%;
+  }
+  
+  .cabecera-input {
+    width: 33%;
+    background-color: rgb(31, 40, 62);
+    color: white;
+    margin-top: 18px;
+    height: 40px;
+  }
+  
+  .input-modal {
+    background-color: rgb(45, 58, 88);
+    color: white;
+    margin-top: 18px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .colocar-selectores {
+    position: absolute;
+    margin-left: 40px;
+    justify-content: space-between;
+    align-items: flex-start;
+  
+  }
+  
+  .form-check-label,
+  .form-check-input {
+    margin-top: 2% !important;
+    justify-content: space-evenly;
+  
+  }
+  
+  .descripcion {
+    height: 180px;
+    text-align: start;
+  
+  }
+  
+  .falso-input {
+    width: 67%;
+    height: 40px;
+    background-color: rgb(45, 58, 88);
+    margin-top: 19px;
+    border: 1px solid white;
+    border-radius: 4px;
+    justify-content: space-evenly;
+  }
+  
+  .col form {
+    margin-right: 6%;
+    margin-top: 5%;
+    align-content: space-between;
+  }
+  
+  .foto {
+    width: 460px;
+  }
+  
+  .iconos-tarjetas {
+    margin-left: 6%;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+  .sol {
+    color: yellow;
+  }
+  
+  .luna {
+    color: rgb(64, 75, 224);
+  }
+  
+  .tarde {
+    color: #ff9100
+  }
+  
+  .margen1 {
+    margin-left: 6%;
+  }
+  
+  .margen2 {
+    margin-left: 12%;
+  }
+  
+  
