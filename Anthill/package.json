@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -27,6 +27,7 @@
     "bootstrap": "^4.5.0",
     "chart.js": "^3.0.2",
     "echarts": "^5.0.2",
+    "express": "^4.17.1",
     "jquery": "^3.6.0",
     "ng2-charts": "^2.4.2",
     "ngx-echarts": "^6.0.1",
