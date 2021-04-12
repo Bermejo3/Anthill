@@ -282,10 +282,8 @@ body {
   /* margin-top: 16px; */
 }
 .tarjetas-fila1 img{
-  margin-left: 1%;width: 17rem; height: 300px;margin-top: -40px; border-radius: 6px; cursor: pointer;
-          -webkit-box-shadow: 1px 1px 3px 4px #ccc; 
-          -moz-box-shadow:    1px 1px 3px 4px #ccc;  
-          box-shadow:         1px 1px 3px 4px #ccc;  
+  margin-left: 1%;width: 17rem; height: 250px;margin-top: -40px; border-radius: 6px; cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.09);
 }
 .tarjetas-fila1:hover{
 /* box-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18; */
