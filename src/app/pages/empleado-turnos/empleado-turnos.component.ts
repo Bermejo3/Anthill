@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiciosService } from 'src/shared/servicios.service';
+import { ServiciosService } from 'src/app/shared/servicios.service';
 import { CalendarOptions, EventClickArg } from '@fullcalendar/angular';
 import esLocale from '@fullcalendar/core/locales/es';
 import { DateClickArg } from '@fullcalendar/interaction';

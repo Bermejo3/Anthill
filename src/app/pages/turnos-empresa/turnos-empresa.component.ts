@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CalendarOptions, EventClickArg } from '@fullcalendar/angular';
 import esLocale from '@fullcalendar/core/locales/es';
 import { DateClickArg } from '@fullcalendar/interaction';
-import { ServiciosService } from 'src/shared/servicios.service';
+import { ServiciosService } from 'src/app/shared/servicios.service';
 import { Router } from '@angular/router';
 
 
