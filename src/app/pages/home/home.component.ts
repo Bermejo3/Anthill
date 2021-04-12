@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
 import esLocale from '@fullcalendar/core/locales/es';
-import { ServiciosService } from 'src/shared/servicios.service';
+import { ServiciosService } from 'src/app/shared/servicios.service';
 
 
 @Component({
