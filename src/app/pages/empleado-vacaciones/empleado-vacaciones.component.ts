@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CalendarOptions, EventClickArg } from '@fullcalendar/angular';
 import esLocale from '@fullcalendar/core/locales/es';
 import { DateClickArg } from '@fullcalendar/interaction';
+import { Holidays } from 'src/app/models/holidays';
+import { ApiserviceService } from 'src/app/shared/apiservice.service';
 import { ServiciosService } from 'src/app/shared/servicios.service';
 
 
@@ -16,8 +18,10 @@ export class EmpleadoVacacionesComponent implements OnInit {
   public showModalVacaciones: boolean
   public posicionEvento: number = 0
   public diaVacaciones: string = ""
+
+  public vacaciones: Holidays[] = []
   
-  constructor(public servicio: ServiciosService) {
+  constructor(public servicio: ServiciosService, private apiservice: ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.servicio.esEmpleado=true //Para iniciar el sidebar de empleado
     this.showModal = false
@@ -36,48 +40,6 @@ export class EmpleadoVacacionesComponent implements OnInit {
   };
 
   calendarEvents= [
-    {
-      date:'2021-01-02',
-      display: 'background',
-      backgroundColor: '#ff9100',
-      imageUrl: '../../../assets/Logo/Hormiga1.png',
-    },
-    {
-      date:'2021-01-03',
-      display: 'background',
-      backgroundColor: '#ff9100',
-      imageUrl: '../../../assets/Logo/Hormiga1.png',
-    },
-    {
-      date:'2021-02-06',
-      display: 'background',
-      backgroundColor: '#ff9100',
-      imageUrl: '../../../assets/Logo/Hormiga1.png',
-    },
-    {
-      date:'2021-03-27',
-      display: 'background',
-      backgroundColor: '#ff9100',
-      imageUrl: '../../../assets/Logo/Hormiga1.png',
-    },
-    {
-      date:'2021-04-15',
-      display: 'background',
-      backgroundColor: '#ff9100',
-      imageUrl: '../../../assets/Logo/Hormiga1.png',
-    },
-    {
-      date:'2021-07-06',
-      display: 'background',
-      backgroundColor: '#ff9100',
-      imageUrl: '../../../assets/Logo/Hormiga1.png',
-    },
-    {
-      date: '2021-07-23',
-      display: 'background',
-      backgroundColor: '#ff9100',
-      imageUrl: '../../../assets/Logo/Hormiga1.png',
-    }
   ]
 
   renderEventContent(eventInfo:any, createElement:any) {
@@ -98,15 +60,11 @@ export class EmpleadoVacacionesComponent implements OnInit {
     this.diaVacaciones = clickInfo.dateStr
   }
 
-  addVacaciones(dia: string){
-    this.calendarEvents.push({date: dia, display: 'background', backgroundColor: '#ff9100',
-          imageUrl: '../../../assets/Logo/Hormiga1.png',})
-    this.hide()
-  }
+
 
 
   ngOnInit(): void {
-      this.calendarOptions.events = this.calendarEvents
+      this.getVacacionesEmp()
   }
 
   show(i:number){
@@ -120,10 +78,43 @@ export class EmpleadoVacacionesComponent implements OnInit {
     this.showModalVacaciones = false;
   }
   
-  borrar(posicionEvento: number){
+  borrarVacaciones(posicionEvento: number, fecha: string){
     this.hide()
     this.calendarEvents.splice(posicionEvento,1)
-    this.calendarOptions.events = this.calendarEvents
+
+    this.apiservice.deleteVacacionesEmp(this.servicio.id_employees, fecha).subscribe((resultado: any)=>{
+      if (resultado.codigo == 1){
+        console.log(resultado.mensaje)
+      }
+      this.getVacacionesEmp()
+    })
   }
 
+  getVacacionesEmp(){
+    this.apiservice.getVacacionesEmp(this.servicio.id_employees).subscribe((resultado: Holidays[])=>{
+      this.vacaciones = resultado
+    for (let i=0; i<this.vacaciones.length; i++){
+      let holiday = {
+        date: this.vacaciones[i].date,
+        display: 'background',
+        backgroundColor: '#fafafa',
+        imageUrl: '../../../assets/Logo/Hormiga1.png',
+      }
+      this.calendarEvents.push(holiday)
+    }
+    this.calendarOptions.events = this.calendarEvents
+    })
+  }
+
+  addVacaciones(dia: string){
+    this.calendarEvents.push({date: dia, display: 'background', backgroundColor: '#ff9100',
+          imageUrl: '../../../assets/Logo/Hormiga1.png',})
+          
+    this.apiservice.addVacacionesEmp(this.servicio.id_employees, dia).subscribe((resultado: any)=>{
+      if (resultado.codigo == 1){
+        console.log(resultado.mensaje)
+      }
+    })
+    this.hide()
+  }
 }

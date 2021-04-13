@@ -15,3 +15,7 @@
 .close-thik:after {
     content: '✖'; /* UTF-8 symbol */
   }
+
+.tableContainer{
+    background: rgba(0,0,0,0.2);
+}

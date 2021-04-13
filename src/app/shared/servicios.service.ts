@@ -26,6 +26,8 @@ export class ServiciosService {
   public weekNumber: number = 0
   public firstDayWeek: Date = new Date()
 
+  public id_employees: number = 1
+
   constructor() 
   { 
 

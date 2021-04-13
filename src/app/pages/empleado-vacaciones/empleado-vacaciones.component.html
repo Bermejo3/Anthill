@@ -16,11 +16,11 @@
                         <th></th>
                     </tr>
                   </thead>
-                  <tbody *ngFor='let dia of calendarEvents, let i = index; odd as isOdd' (click)="show(i)">
+                  <tbody *ngFor='let dia of calendarEvents, let i = index; odd as isOdd'>
                     <tr [ngClass] ="{'trPar' : isOdd}">
                       <td>{{ i+1 }}</td>
                       <td>{{ dia.date }}</td>
-                      <td><i class="fas fa-times-circle"></i></td>
+                      <td><i class="fas fa-times-circle" (click)="show(i)"></i></td>
                     </tr>
                   </tbody>
                 </table>
@@ -53,7 +53,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="hide()">Atrás</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="borrar(posicionEvento)">Borrar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="borrarVacaciones(posicionEvento, calendarEvents[posicionEvento].date)">Borrar</button>
         </div>
       </div>
     </div>

@@ -18,14 +18,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="trPar">
-                  <td>Alberto Bermejo</td>
-                </tr>
-                <tr>
-                  <td>Manuel Pinto</td>
-                </tr>
-                <tr class="trPar">
-                  <td>Carlos Ocaña</td>
+                <tr class="trPar" *ngFor="let empleado of arrayVacaciones, let even = even" [ngClass]="{trPar:even}">
+                  <td>{{empleado}}</td>
                 </tr>
               </tbody>
             </table>
