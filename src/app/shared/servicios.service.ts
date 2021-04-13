@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class ServiciosService {
 
+  public id_companies : number =1
+  
   public estaOculto:boolean = true;
 
   public esEmpleado:boolean = false;
