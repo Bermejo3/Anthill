@@ -62,18 +62,16 @@
  
 <!-- ------------------Tarjetas--------------------------------- -->
 <div class="row container-tarjetas">
-
-
   <div class="row fila-completa">
-    <div class="col-3">
-     <div class="card tarjetas letras-tarjeta tarjetas-fila1">
+
+     <div class="card tarjetas letras-tarjeta tarjetas-fila1" *ngFor="let stock of arrayStock; let i = index">
        <img class="card-img-top"src="../../../assets/tarjetas/jeringuilla.jpg" alt="Card image cap">
        <div class="card-body" >
-         <p class="card-text"><b>Artículo: </b>Jeringuillas</p>
-         <p class="card-text"><b>Categoría: </b>Material médico</p>
-         <p class="card-text"><b>Cantidad: </b>260</p>
-         <p class="card-text"><b>Unidad: </b>Unidades </p>
-         <p class="card-text"><b>Ubicación: </b>En stock</p>
+         <p class="card-text"><b>Artículo: </b>{{stock.name}}</p>
+         <p class="card-text"><b>Categoría: </b>{{stock.type}}</p>
+         <p class="card-text"><b>Cantidad: </b>{{stock.quantity}}</p>
+         <p class="card-text"><b>Unidad: </b>{{stock.unit}} </p>
+         <p class="card-text"><b>Ubicación: </b>{{stock.place}}</p>
          <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
          <hr>
          <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
@@ -82,133 +80,9 @@
          
        </div>
      </div>
-    </div><div class="col-3">
-      <div class="card tarjetas letras-tarjeta tarjetas-fila1">
-        <img class="card-img-top"src="../../../assets/tarjetas/paracetamol.jpg" alt="Card image cap">
-        <div class="card-body" >
-          <p class="card-text"><b>Artículo: </b>Paracetamol</p>
-          <p class="card-text"><b>Categoría: </b>Medicina</p>
-          <p class="card-text"><b>Cantidad: </b>160</p>
-          <p class="card-text"><b>Unidad: </b>Unidades </p>
-          <p class="card-text"><b>Ubicación: </b>En stock</p>
-          <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-rojo"></i></p>
-          <hr>
-          <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-            <i class="fas fa-edit iconos-tarjetas editar" ></i></p>
-          
-          
-        </div>
-      </div>
-     </div>
-     <div class="col-3">
-      <div class="card tarjetas letras-tarjeta tarjetas-fila1">
-        <img class="card-img-top"src="../../../assets/tarjetas/vacuna.jpg" alt="Card image cap">
-        <div class="card-body" >
-          <p class="card-text"><b>Artículo: </b>Vacuna</p>
-          <p class="card-text"><b>Categoría: </b>Material médico</p>
-          <p class="card-text"><b>Cantidad: </b>12260</p>
-          <p class="card-text"><b>Unidad: </b>Unidades </p>
-          <p class="card-text"><b>Ubicación: </b>En stock</p>
-          <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
-          <hr>
-          <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-            <i class="fas fa-edit iconos-tarjetas editar" ></i></p>
-          
-          
-        </div>
-      </div>
-     </div>
-     <div class="col-3">
-      <div class="card tarjetas letras-tarjeta tarjetas-fila1">
-        <img class="card-img-top"src="../../../assets/tarjetas/cateter.jpg" alt="Card image cap">
-        <div class="card-body" >
-          <p class="card-text"><b>Artículo: </b>Jeringuillas</p>
-          <p class="card-text"><b>Categoría: </b>Material médico</p>
-          <p class="card-text"><b>Cantidad: </b>260</p>
-          <p class="card-text"><b>Unidad: </b>Unidades </p>
-          <p class="card-text"><b>Ubicación: </b>En stock</p>
-          <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
-          <hr>
-          <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-            <i class="fas fa-edit iconos-tarjetas editar" ></i></p>
-          
-          
-        </div>
-      </div>
-     </div>
-  <!-- -----------------------------------Fila2---------------------------------- -->
-  <div class="row fila-completa">
-    <div class="col-3">
-     <div class="card tarjetas letras-tarjeta tarjetas-fila1">
-       <img class="card-img-top"src="../../../assets/tarjetas/jeringuilla.jpg" alt="Card image cap">
-       <div class="card-body" >
-         <p class="card-text"><b>Artículo: </b>Jeringuillas</p>
-         <p class="card-text"><b>Categoría: </b>Material médico</p>
-         <p class="card-text"><b>Cantidad: </b>260</p>
-         <p class="card-text"><b>Unidad: </b>Unidades </p>
-         <p class="card-text"><b>Ubicación: </b>En stock</p>
-         <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
-         <hr>
-         <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-           <i class="fas fa-edit iconos-tarjetas editar" ></i></p>
-         
-         
-       </div>
-     </div>
-    </div><div class="col-3">
-      <div class="card tarjetas letras-tarjeta tarjetas-fila1">
-        <img class="card-img-top"src="../../../assets/tarjetas/jeringuilla.jpg" alt="Card image cap">
-        <div class="card-body" >
-          <p class="card-text"><b>Artículo: </b>Jeringuillas</p>
-          <p class="card-text"><b>Categoría: </b>Material médico</p>
-          <p class="card-text"><b>Cantidad: </b>260</p>
-          <p class="card-text"><b>Unidad: </b>Unidades </p>
-          <p class="card-text"><b>Ubicación: </b>En stock</p>
-          <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
-          <hr>
-          <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-            <i class="fas fa-edit iconos-tarjetas editar" ></i></p>
-          
-          
-        </div>
-      </div>
-     </div>
-     <div class="col-3">
-      <div class="card tarjetas letras-tarjeta tarjetas-fila1">
-        <img class="card-img-top"src="../../../assets/tarjetas/jeringuilla.jpg" alt="Card image cap">
-        <div class="card-body" >
-          <p class="card-text"><b>Artículo: </b>Jeringuillas</p>
-          <p class="card-text"><b>Categoría: </b>Material médico</p>
-          <p class="card-text"><b>Cantidad: </b>260</p>
-          <p class="card-text"><b>Unidad: </b>Unidades </p>
-          <p class="card-text"><b>Ubicación: </b>En stock</p>
-          <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
-          <hr>
-          <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-            <i class="fas fa-edit iconos-tarjetas editar" ></i></p>
-          
-          
-        </div>
-      </div>
-     </div>
-     <div class="col-3">
-      <div class="card tarjetas letras-tarjeta tarjetas-fila1">
-        <img class="card-img-top"src="../../../assets/tarjetas/jeringuilla.jpg" alt="Card image cap">
-        <div class="card-body" >
-          <p class="card-text"><b>Artículo: </b>Jeringuillas</p>
-          <p class="card-text"><b>Categoría: </b>Material médico</p>
-          <p class="card-text"><b>Cantidad: </b>260</p>
-          <p class="card-text"><b>Unidad: </b>Unidades </p>
-          <p class="card-text"><b>Ubicación: </b>En stock</p>
-          <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
-          <hr>
-          <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-            <i class="fas fa-edit iconos-tarjetas editar" ></i></p>
-          
-          
-        </div>
-      </div>
-     </div>
+    
+
+
  </div>
 </div>
 

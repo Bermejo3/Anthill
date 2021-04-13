@@ -17,6 +17,9 @@
   .iconos-barra-filtros i:hover{
     color:darkturquoise
   }
+  .color{
+    background: #ff9100;
+  }
   .mainLoginInput::-webkit-input-placeholder { 
     font-family: FontAwesome;
     font-weight: normal;

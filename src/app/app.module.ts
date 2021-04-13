@@ -58,9 +58,11 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     EmpleadoMiPerfilComponent,
     AboutUsComponent,
     StockTarjetasComponent,
-    RrhhEmpleadosTablaComponent
+    RrhhEmpleadosTablaComponent,
+    
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FullCalendarModule, // register FullCalendar
