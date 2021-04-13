@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { ProdIndividual } from 'src/app/models/prod-individual';
+import { Productividad } from 'src/app/models/productividad';
+import { ApiserviceService } from 'src/app/shared/apiservice.service';
 import { ServiciosService } from 'src/app/shared/servicios.service';
 
 @Component({
@@ -75,11 +78,16 @@ export class ProduccionEmpleadoComponent implements OnInit {
       }
   ]}
 
+  public produccionEmpleados: ProdIndividual [];
+  public produccionEmpleado: ProdIndividual;
+
+  public arrayProductividad: Productividad[];
+
   public showModal:boolean;
 
   public data: Array<any>;
 
-  constructor(public servicio: ServiciosService) {
+  constructor(public servicio: ServiciosService, public apiservice: ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
 
     this.showModal=false;
@@ -90,6 +98,31 @@ export class ProduccionEmpleadoComponent implements OnInit {
       { empleado: 'Fernando', productividad: '234', horas: '45' },
       { empleado: 'Tania', productividad: '435', horas: '47' }
     ];
+  }
+  getProductividad()
+  {
+    this.apiservice.getProductividad(this.servicio.id_companies).subscribe((resultado:Productividad[])=>{this.arrayProductividad = resultado})
+  }
+
+  getProdIndividual()
+  {
+    this.apiservice.getProdIndividual(this.servicio.id_employees, this.servicio.id_companies).subscribe((resultado: ProdIndividual[]) =>
+    {
+      this.produccionEmpleados = resultado;
+    })
+    
+  }
+
+  addProductividad(nombre:string,productividad:number, horas:number, dia:string)
+  {
+    this.produccionEmpleado = new ProdIndividual(this.servicio.id_employees,nombre,productividad, horas, dia, this.servicio.id_companies)
+    this.apiservice.addProductividad(this.produccionEmpleado).subscribe((resultado:ProdIndividual)=>
+    {
+      this.produccionEmpleado = resultado;
+    })
+    this.getProdIndividual();
+    this.hide();
+
   }
 
   nuevoDato(nombre:string,productividad:number, horas:number, dia:string)
@@ -108,7 +141,10 @@ export class ProduccionEmpleadoComponent implements OnInit {
   hide(){ 
     this.showModal = false;
   }
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
+    this.getProdIndividual()
+    this.getProductividad()
   }
 
 }

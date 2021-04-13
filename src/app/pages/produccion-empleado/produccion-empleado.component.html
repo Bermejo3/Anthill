@@ -35,11 +35,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>{{servicio.nombreEmpleado}}</td>
-                <td>{{servicio.produccionEmpleado}}</td>
-                <td>{{servicio.horasEmpleado}}</td>
-                <td>{{servicio.diaTrabajado}}</td>
+              <tr *ngFor = "let empleadop of produccionEmpleados">
+                <td>{{empleadop.name}}</td>
+                <td>{{empleadop.productivity}}</td>
+                <td>{{empleadop.hours}}</td>
+                <td>{{empleadop.date}}</td>
               </tr>
             </tbody>
           </table>
@@ -61,7 +61,7 @@
               <div class="input-group flex-nowrap mt-1">
                 <span class="input-group-text cabecera-input" id="addon-wrapping">Empleado</span>
                 <select class="form-select" aria-label="Default select example" style="width: fit-content;" #empleado>
-                  <option *ngFor = "let trabajadores of data" selected value="{{trabajadores.empleado}}">{{trabajadores.empleado}}</option>
+                  <option *ngFor = "let trabajadores of arrayProductividad; let i = index; let even = even" selected value="{{trabajadores.name}}">{{trabajadores.name}}</option>
                 </select>
         
               </div>
@@ -81,7 +81,7 @@
           </div>
           
           <div class="modal-footer colocar-boton">
-            <button type="button" class="btn btn-success" data-dismiss="modal" (click)="nuevoDato(empleado.value, productividad.valueAsNumber, horas.valueAsNumber, dias.value)">Enviar</button>
+            <button type="button" class="btn btn-success" data-dismiss="modal" (click)="addProductividad(empleado.value, productividad.valueAsNumber, horas.valueAsNumber, dias.value)">Enviar</button>
           </div>
           
         </div>

@@ -13,6 +13,9 @@ export class ServiciosService {
 
   public estaLogueado: boolean = false
 
+  public id_employees:number = 1;
+  public id_companies: number = 1;
+
   public nombreEmpleado: string = "";
   public produccionEmpleado: number = 0;
   public horasEmpleado: number = 0;

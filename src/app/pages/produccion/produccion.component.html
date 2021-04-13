@@ -37,7 +37,7 @@
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Empleado</span>
             <select class="form-select" aria-label="Default select example" style="width: fit-content;" #empleado>
-              <option *ngFor = "let trabajadores of data" selected value="{{trabajadores.empleado}}">{{trabajadores.empleado}}</option>
+              <option *ngFor = "let trabajadores of arrayProductividad" selected value="{{trabajadores.name}}">{{trabajadores.name}}</option>
             </select>
     
           </div>
@@ -57,7 +57,7 @@
       </div>
       
       <div class="modal-footer colocar-boton">
-        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="nuevoDato(empleado.value, productividad.valueAsNumber, horas.valueAsNumber, dias.value)">Enviar</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="addProductividad(empleado.value, productividad.valueAsNumber, horas.valueAsNumber, dias.value)">Enviar</button>
       </div>
       
     </div>
@@ -84,10 +84,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor = "let trabajadores of data; let i = index; let even = even" [ngClass] = "{trPar: even}" (click)="verEmpleado(i)">
-            <td>{{trabajadores.empleado}}</td>
-            <td class="destacada">{{trabajadores.productividad}}</td>
-            <td>{{trabajadores.horas}}</td>
+          <tr *ngFor = "let trabajadores of arrayProductividad; let i = index; let even = even" [ngClass] = "{trPar: even}" (click)="getProdIndividual(i)">
+            <td>{{trabajadores.name}}</td>
+            <td class="destacada">{{trabajadores.sum_productivity}}</td>
+            <td>{{trabajadores.sum_hours}}</td>
             <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
           </tr>
         </tbody>

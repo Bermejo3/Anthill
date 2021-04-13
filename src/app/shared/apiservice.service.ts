@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ProdIndividual } from '../models/prod-individual';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,25 @@ export class ApiserviceService {
 
   private url = 'http://localhost:300'
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient) 
+  { 
+    
+  }
+
+  getProductividad(id_companies:number)
+  {
+    return this.http.get(this.url + "/productividad?id_companies=" + id_companies); //hazme un get a la url entre paréntesis
+  }
+
+  getProdIndividual(id_employees:number, id_companies:number)
+  {
+    return this.http.get(this.url + "/productividad/empleado?id_employees=" + id_employees + "&id_companies=" + id_companies)
+  }
+
+  addProductividad(nuevaProductividad:ProdIndividual)
+  {
+    return this.http.post(this.url + "/productividad", nuevaProductividad)
+  }
 
   // getDisco(id?:number){
   //   if (id != null){
