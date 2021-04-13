@@ -2,6 +2,8 @@ import { Component, OnInit,  } from '@angular/core';
 import { CalendarOptions, EventClickArg } from '@fullcalendar/angular';
 import esLocale from '@fullcalendar/core/locales/es';
 import { DateClickArg } from '@fullcalendar/interaction';
+import { Holidays } from 'src/app/models/holidays';
+import { ApiserviceService } from 'src/app/shared/apiservice.service';
 import { ServiciosService } from 'src/app/shared/servicios.service';
 
 
@@ -14,7 +16,9 @@ export class VacacionesComponent implements OnInit {
 
   public dia: number = 0
   public mes: string = ""
-  constructor(public servicio: ServiciosService) {
+  public vacaciones: Holidays[] = []
+  public arrayVacaciones: string[] = []
+  constructor(public servicio: ServiciosService, private apiservice: ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
   }
 
@@ -30,22 +34,10 @@ export class VacacionesComponent implements OnInit {
   };
 
   calendarEvents= [
-    {
-      date:'2021-04-15',
-      display: 'background',
-      backgroundColor: '#ff9100',
-      imageUrl: '../../../assets/Logo/Hormiga1.png',
-    },
-    {
-      date: '2021-04-23',
-      display: 'background',
-      backgroundColor: '#fafafa',
-      imageUrl: '../../../assets/Logo/Hormiga1.png',
-    }
   ]
 
   ngOnInit(): void {
-      this.calendarOptions.events = this.calendarEvents
+    this.getVacaciones()
   }
 
   renderEventContent(eventInfo:any, createElement:any) {
@@ -68,6 +60,13 @@ export class VacacionesComponent implements OnInit {
   modalClick(clickInfo: EventClickArg){
     this.servicio.show()
     this.mes = clickInfo.event.startStr
+    let arrayVacaciones = []
+    for (let i=0; i<this.vacaciones.length; i++){
+      if (this.vacaciones[i].date == this.mes){
+        arrayVacaciones.push(this.vacaciones[i].name)
+      }
+    }
+    this.arrayVacaciones = arrayVacaciones
   }
 
   
@@ -75,4 +74,19 @@ export class VacacionesComponent implements OnInit {
     this.servicio.showInfo = false;
   }
 
+  getVacaciones(){
+    this.apiservice.getVacaciones().subscribe((resultado: Holidays[])=>{
+      this.vacaciones = resultado
+    for (let i=0; i<this.vacaciones.length; i++){
+      let holiday = {
+        date: this.vacaciones[i].date,
+        display: 'background',
+        backgroundColor: '#fafafa',
+        imageUrl: '../../../assets/Logo/Hormiga1.png',
+      }
+      this.calendarEvents.push(holiday)
+    }
+    this.calendarOptions.events = this.calendarEvents
+    })
+  }
 }
