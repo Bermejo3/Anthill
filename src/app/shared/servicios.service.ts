@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class ServiciosService {
 
-  public id_companies : number =1
   
   public estaOculto:boolean = true;
 
@@ -25,8 +24,6 @@ export class ServiciosService {
 
   public weekNumber: number = 0
   public firstDayWeek: Date = new Date()
-
-  public id_employees: number = 1
 
   constructor() 
   { 
