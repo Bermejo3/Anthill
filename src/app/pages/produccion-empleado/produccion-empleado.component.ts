@@ -64,7 +64,7 @@ export class ProduccionEmpleadoComponent implements OnInit {
             emphasis: {
                 focus: 'series'
             },
-            data: [120, 132, 101, 134, 90, 230, 210]
+            data: []
         },
         { 
           color: ["#00ffff"],
@@ -74,8 +74,8 @@ export class ProduccionEmpleadoComponent implements OnInit {
           emphasis: {
               focus: 'series'
           },
-          data: [125, 99, 230, 274, 100, 55, 400]
-      }
+          data: []
+        }
   ]}
 
   public produccionEmpleados: ProdIndividual [];
@@ -85,12 +85,17 @@ export class ProduccionEmpleadoComponent implements OnInit {
 
   public showModal:boolean;
 
+  public mergeOptions = {}
+
   public data: Array<any>;
 
   constructor(public servicio: ServiciosService, public apiservice: ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
-
+    
     this.showModal=false;
+
+    this.servicio.produccionMes=[];
+    this.servicio.produccionMesEmpleado=[];
 
     this.data = [
       { empleado: 'John', productividad: '250', horas: '35' },
@@ -99,6 +104,7 @@ export class ProduccionEmpleadoComponent implements OnInit {
       { empleado: 'Tania', productividad: '435', horas: '47' }
     ];
   }
+
   getProductividad()
   {
     this.apiservice.getProductividad(this.servicio.id_companies).subscribe((resultado:Productividad[])=>{this.arrayProductividad = resultado})
@@ -112,7 +118,51 @@ export class ProduccionEmpleadoComponent implements OnInit {
     })
     
   }
+  ProdIndiMes()
+  {
+    this.getProductMes();
+    this.apiservice.ProdIndiMes(this.servicio.id_employees, this.servicio.id_companies).subscribe((resultado:any[])=>
+    {
+      for(let i=0; i<resultado.length; i++)
+      {
+        this.servicio.produccionMesEmpleado.push(resultado[i].sum_productivity);
 
+        this.mergeOptions = {
+					series: [
+            {
+              name: 'Productividad Media',
+              type: 'line',
+              areaStyle: {},
+              emphasis: {
+                  focus: 'series'
+              },
+              data: this.servicio.produccionMes
+            },
+            { 
+              color: ["#00ffff"],
+              name: 'Empleado',
+              type: 'line',
+              areaStyle: {},
+              emphasis: {
+                  focus: 'series'
+              },
+              data: this.servicio.produccionMesEmpleado
+            }
+          ]
+				};
+      }
+    })
+  }
+  getProductMes()
+  {
+    this.apiservice.getProductMes(this.servicio.id_companies).subscribe((resultado: any[])=>
+    {
+      for(let i=0; i<resultado.length; i++)
+      {
+        this.servicio.produccionMes.push(resultado[i].sum_productivity/2);
+      }
+    })
+  }
   addProductividad(nombre:string,productividad:number, horas:number, dia:string)
   {
     this.produccionEmpleado = new ProdIndividual(this.servicio.id_employees,nombre,productividad, horas, dia, this.servicio.id_companies)
@@ -145,6 +195,7 @@ export class ProduccionEmpleadoComponent implements OnInit {
   {
     this.getProdIndividual()
     this.getProductividad()
+    this.ProdIndiMes()
   }
 
 }

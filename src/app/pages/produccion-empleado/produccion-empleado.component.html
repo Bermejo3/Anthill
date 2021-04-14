@@ -18,7 +18,7 @@
 </div>
 <div class="row">
   <div class = "grafico">
-    <div echarts [options]="chartOptions" [loading] = "true" class="demo-chart">
+    <div echarts [options]="chartOptions" [merge]="mergeOptions" [loading]="true" class="demo-chart">
   </div>
 </div>
 <div class="col">
@@ -39,7 +39,7 @@
                 <td>{{empleadop.name}}</td>
                 <td>{{empleadop.productivity}}</td>
                 <td>{{empleadop.hours}}</td>
-                <td>{{empleadop.date}}</td>
+                <td>{{empleadop.date.slice(0,10)}}</td>
               </tr>
             </tbody>
           </table>

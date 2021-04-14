@@ -16,6 +16,10 @@ export class ApiserviceService {
     
   }
 
+  ProdIndiMes(id_employees:number, id_companies:number)
+  {
+    return this.http.get(this.url + "/productividad/empleado/fecha?id_employees=" + id_employees + "&id_companies=" + id_companies)
+  }
   getProductividad(id_companies:number)
   {
     return this.http.get(this.url + "/productividad?id_companies=" + id_companies); //hazme un get a la url entre paréntesis
@@ -24,6 +28,11 @@ export class ApiserviceService {
   getProdIndividual(id_employees:number, id_companies:number)
   {
     return this.http.get(this.url + "/productividad/empleado?id_employees=" + id_employees + "&id_companies=" + id_companies)
+  }
+
+  getProductMes(id_companies:number)
+  {
+    return this.http.get(this.url + "/productividad/fecha?id_companies=" + id_companies);
   }
 
   addProductividad(nuevaProductividad:ProdIndividual)

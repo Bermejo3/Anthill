@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class ServiciosService {
 
+  public produccionMes:number[];
+  public produccionMesEmpleado:number[];
   
   public estaOculto:boolean = true;
 
