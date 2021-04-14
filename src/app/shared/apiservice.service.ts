@@ -122,5 +122,38 @@ export class ApiserviceService {
 
 
 
+  getTurnos(id_companies){
+    return this.http.get(this.url + "/turnos/empresa?id_companies=" + id_companies)
+  }
+
+  getTurnosSemana(id_companies){
+    return this.http.get(this.url + "/turnos/semana?id_companies=" + id_companies)
+  }
+
+  getTurnosListaEmpleados(id_companies, shiftMorning, shiftAfternoon, shiftEvening){
+    return this.http.get(this.url +"/turnos/listaempleados" +"?id_companies=" + id_companies +"&shiftMorning=" + shiftMorning + "&shiftAfternoon=" + shiftAfternoon + "&shiftEvening=" + shiftEvening)
+  }
+
+  postTurnos(id_companies, id_employees, id_shifts, date){
+    let body = {
+      id_companies: id_companies,
+      id_employees: id_employees,
+      id_shifts: id_shifts,
+      date: date
+    }
+    return this.http.post(this.url + "/turnos", body)
+  }
+
+  deleteTurno(id_companies, id_employees, id_shifts, date){
+    let options = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}), 
+      body: {id_companies: id_companies,
+             id_employees: id_employees,
+             id_shifts: id_shifts,
+             date: date
+            }
+    }
+    return this.http.delete(this.url + "/turnos", options)
+  }
 }
 
