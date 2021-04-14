@@ -4,6 +4,8 @@ import esLocale from '@fullcalendar/core/locales/es';
 import { DateClickArg } from '@fullcalendar/interaction';
 import { ServiciosService } from 'src/app/shared/servicios.service';
 import { Router } from '@angular/router';
+import { ApiserviceService } from 'src/app/shared/apiservice.service';
+import { Turnos } from 'src/app/models/turnos';
 
 
 
@@ -15,7 +17,8 @@ import { Router } from '@angular/router';
 export class TurnosEmpresaComponent implements OnInit {
   ;
 
-  constructor(public servicio: ServiciosService, private _router: Router) {
+  public turnos: any[] = []
+  constructor(public servicio: ServiciosService, private _router: Router, private apiservice: ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
   }
 
@@ -29,30 +32,10 @@ export class TurnosEmpresaComponent implements OnInit {
     dateClick: this.modalClick2.bind(this)
   };
 
-  createEvents(){
-    let event = {date: "", display:"", backgroundColor:""}
-    let colores = ["#018101","#fffb00","#df0a0a"]
-    for (let i=0; i<32; i++){
-      let color =  colores[Math.floor(Math.random()*3)]
-      event = {
-        date: '2021-04-'+(i+1),
-        display: 'background',
-        backgroundColor: color,
-      }
-      this.calendarEvents.push(event)
-    }
-    this.calendarOptions.events = this.calendarEvents
-  }
-  calendarEvents= [
-    {
-      date:'',
-      display: 'background',
-      backgroundColor: '',
-    }
-  ]
+  calendarEvents = []
 
   ngOnInit(): void {
-    this.createEvents()
+    this.getTurnos()
   }
 
   modalClick2(clickInfo: DateClickArg){ //ESTO PERMITE CALCULAR EL NUMERO DE LA SEMANA Y EL PRIMER DIA DE CADA SEMANA. NECESARIO PARA EL TURNO-EMPLEADO
@@ -80,4 +63,30 @@ export class TurnosEmpresaComponent implements OnInit {
     this._router.navigate(['turnos-semana'])
   }
   
+  getTurnos(){
+    this.apiservice.getTurnos(this.servicio.id_companies).subscribe((resultado: any[])=>{
+      this.turnos = resultado
+    for (let i=0; i<this.turnos.length; i++){
+      if (this.turnos[i].count_employees == 9){
+        let shift = {
+          date: this.turnos[i].date,
+          display: 'background',
+          backgroundColor: '#ff0000',
+        }
+        this.calendarEvents.push(shift)
+      }
+      else{
+        let shift = {
+          date: this.turnos[i].date,
+          display: 'background',
+          backgroundColor: '#fbff00',
+  
+        }
+        this.calendarEvents.push(shift)
+      }
+
+    }
+    this.calendarOptions.events = this.calendarEvents
+    })
+  }
 }

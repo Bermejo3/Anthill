@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Turnos } from 'src/app/models/turnos';
+import { ApiserviceService } from 'src/app/shared/apiservice.service';
 import { ServiciosService } from 'src/app/shared/servicios.service';
 
 @Component({
@@ -9,56 +11,207 @@ import { ServiciosService } from 'src/app/shared/servicios.service';
 export class TurnosSemanaComponent implements OnInit {
 
   public semana: Date[] = []
+  public semana2: Date[] = [] // Parche para hacer funcionar el getTurnosSemana y los problemas con el formato fecha
   public diasSemana: string[] = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"] 
 
-  public arrayEmpleados: string[] = ["Carlos Ocaña", "Manuel Pinto", "Alberto Bermejo", "Ariadna Trapero", "Moli Isa", "Jorge Rodriguez", "Jose Herrera", "Laura Lopex", "Pascual Bolullo"]
-  public arrayEmpleadosSeleccionado: string[] = []
+  public arrayEmpleados: any[] = []
+  public arrayEmpleadosSeleccionado: any[] = []
   public idCasilla: string = "0"
 
-  constructor(public servicio: ServiciosService) {
-    this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
-    this.servicio.showInfo = false
+  public showInfo: boolean
 
+  constructor(public servicio: ServiciosService, private apiservice: ApiserviceService) {
+    this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
+    this.showInfo = false
   }
 
   ngOnInit(): void {
 
     for (let i=0; i<7; i++){
       let newFecha: Date = new Date(this.servicio.firstDayWeek)
-      newFecha.setUTCDate(this.servicio.firstDayWeek.getUTCDate()+i)
+      newFecha.setDate(this.servicio.firstDayWeek.getDate()+i)
       this.semana.push(newFecha)
     }
+    for (let i=0; i<8; i++){
+      let newFecha2: Date = new Date(this.servicio.firstDayWeek)
+      newFecha2.setDate(this.servicio.firstDayWeek.getDate()+i)
+      this.semana2.push(newFecha2)
+    }
+    this.getTurnosSemana()
   }
 
-  clickar(id:any){
+  hide(){
+    this.showInfo = false
+    document.getElementById(this.idCasilla)!.classList.remove("turnoSeleccionado")
+    this.getTurnosSemana()
+  }
+
+  clickar(id:any, id_shift){
+    if (this.idCasilla != "0"){
+      document.getElementById(this.idCasilla)!.classList.remove("turnoSeleccionado")
+    }
     this.idCasilla=id
-    this.servicio.showInfo = true
-    document.getElementById(this.idCasilla)!.className = "turnoSeleccionado"
+    this.showInfo = true
+    document.getElementById(this.idCasilla)!.classList.add("turnoSeleccionado")
+
+    this.getEmpleadosTurnos() //Para cargar el array del select
+
+    this.getEmpleadosSeleccionado()
   }
 
-  selectEmpleado(empleado: HTMLSelectElement){
-    this.arrayEmpleadosSeleccionado.push(empleado.value)
-    this.rellenarCasilla()
+  selectEmpleado(i: HTMLSelectElement){
+    let id_employees = this.arrayEmpleados[i.value].id_employees
+    let id_shifts
+    if (this.idCasilla.includes("M")){
+      id_shifts = 1
+    }
+    else if (this.idCasilla.includes("T")){
+      id_shifts = 2
+    }
+    else if (this.idCasilla.includes("N")){
+      id_shifts = 3
+    }
+    let date = this.semana2[Number(this.idCasilla.slice(1,2))+1].toJSON().slice(0,10)
+    this.apiservice.postTurnos(this.servicio.id_companies, id_employees, id_shifts, date).subscribe((resultado: any)=>{
+      if (resultado.codigo == 1){
+        console.log(resultado.mensaje)
+      }
+      this.getTurnosSemana()
+      this.getEmpleadosSeleccionado()
+    })
+    
   }
 
   quitarSeleccionado(i:number){
-    this.arrayEmpleadosSeleccionado.splice(i,1)
-    this.rellenarCasilla()
+    console.log(this.arrayEmpleadosSeleccionado)
+    let id_employees = this.arrayEmpleadosSeleccionado[i].id_employees
+    let id_shifts
+    if (this.idCasilla.includes("M")){
+      id_shifts = 1
+    }
+    else if (this.idCasilla.includes("T")){
+      id_shifts = 2
+    }
+    else if (this.idCasilla.includes("N")){
+      id_shifts = 3
+    }
+    let date = this.semana2[Number(this.idCasilla.slice(1,2))+1].toJSON().slice(0,10)
+    console.log(id_employees)
+    console.log(id_shifts)
+    console.log(date)
+    this.apiservice.deleteTurno(this.servicio.id_companies, id_employees,id_shifts, date).subscribe((resultado: any)=>{
+      if (resultado.codigo == 1){
+        console.log(resultado.mensaje)
+      }
+      this.getTurnosSemana()
+      this.getEmpleadosSeleccionado()
+    })
   }
 
-  rellenarCasilla(){
-    document.getElementById(this.idCasilla)!.innerHTML = ""
-    for (let i=0; i<this.arrayEmpleadosSeleccionado.length;i++){
-      document.getElementById(this.idCasilla)!.innerHTML += '<img src="../../../assets/Logo/Hormiga2.png" alt="" width="40px" height="40px">'
+  getTurnosSemana(){ //Para rellenar la tabla. Primero se reinicia todo a cero para futuros usos. Se recorre la semana y se inicia los contadores para saber como colorear la celda. Luego se busca si coinciden los dias y el turno y se van añadiendo hormigas y pintando la celda.
+    this.apiservice.getTurnosSemana(this.servicio.id_companies).subscribe((resultado: Turnos[])=>{
+      this.reiniciarHormigas()
+
+      for (let i=0; i<this.semana.length; i++){
+        let countM=0
+        let countT=0
+        let countN=0
+        for (let j=0; j<resultado.length; j++){
+          if (resultado[j].date == this.semana2[i+1].toJSON().slice(0,10)){
+            if (resultado[j].turno == "Mañana"){
+              document.getElementById(`M${i}`)!.innerHTML += '<img src="../../../assets/Logo/Hormiga2.png" alt="" width="40px" height="40px">'
+              countM++
+                if (countM == 0){
+                  document.getElementById(`M${i}`)!.className = "turnoVacio"
+                }
+                else if (countM < 3){
+                  document.getElementById(`M${i}`)!.className = "turnoMedias"
+                }
+                else if (countM == 3){
+                  document.getElementById(`M${i}`)!.className = "turnoCompleto"
+                }
+            }
+            else if (resultado[j].turno == "Tarde"){
+              document.getElementById(`T${i}`)!.innerHTML += '<img src="../../../assets/Logo/Hormiga2.png" alt="" width="40px" height="40px">'
+              countT++
+              if (countT == 0){
+                document.getElementById(`T${i}`)!.className = "turnoVacio"
+              }
+              else if (countT < 3){
+                document.getElementById(`T${i}`)!.className = "turnoMedias"
+              }
+              else if (countT == 3){
+                document.getElementById(`T${i}`)!.className = "turnoCompleto"
+              }
+            }
+            else{
+              document.getElementById(`N${i}`)!.innerHTML += '<img src="../../../assets/Logo/Hormiga2.png" alt="" width="40px" height="40px">'
+              countN++
+              if (countN == 0){
+                document.getElementById(`N${i}`)!.className = "turnoVacio"
+              }
+              else if (countN < 3){
+                document.getElementById(`N${i}`)!.className = "turnoMedias"
+              }
+              else if (countN == 3){
+                document.getElementById(`N${i}`)!.className = "turnoCompleto"
+              }
+            }
+          }
+        }
+      }
+    })
+  }
+
+  getEmpleadosTurnos(){ //Permite llenar el array que forma parte del select
+    let shiftMorning = 0
+    let shiftAfternoon = 0
+    let shiftEvening = 0
+    if (this.idCasilla.includes("M")){
+      shiftMorning = 1
     }
-    if (this.arrayEmpleadosSeleccionado.length == 0 ){
-      document.getElementById(this.idCasilla)!.className = "turnoVacio"
+    else if (this.idCasilla.includes("T")){
+      shiftAfternoon = 1
     }
-    else if (this.arrayEmpleadosSeleccionado.length < 3 ){
-      document.getElementById(this.idCasilla)!.className = "turnoMedias"
+    else if (this.idCasilla.includes("N")){
+      shiftEvening = 1
     }
-    else if (this.arrayEmpleadosSeleccionado.length >= 3){
-      document.getElementById(this.idCasilla)!.className = "turnoCompleto"
+    this.apiservice.getTurnosListaEmpleados(this.servicio.id_companies, shiftMorning, shiftAfternoon, shiftEvening).subscribe((resultado: any[])=>{
+      for (let i=0; i<resultado.length; i++){
+        this.arrayEmpleados.push({id_employees: resultado[i].id_employees, name: resultado[i].name, surname: resultado[i].surname})
+      }
+    })
+  }
+
+  reiniciarHormigas(){ //setea todas las celdas sin imagenes
+    for (let i=0; i<7; i++){
+      document.getElementById(`M${i}`)!.innerHTML = ""
+      document.getElementById(`T${i}`)!.innerHTML = ""
+      document.getElementById(`N${i}`)!.innerHTML = ""
     }
+  }
+
+  getEmpleadosSeleccionado(){ //Llena el array que se muestra en el modal con los empleados que hay en cada casilla de la tabla
+    this.apiservice.getTurnosSemana(this.servicio.id_companies).subscribe((resultado: Turnos[])=>{
+      let date = this.semana2[Number(this.idCasilla.slice(1,2))+1].toJSON().slice(0,10)
+      this.arrayEmpleadosSeleccionado=[]
+      let turno
+      if (this.idCasilla.includes("M")){
+        turno = "Mañana"
+      }
+      else if (this.idCasilla.includes("T")){
+        turno = "Tarde"
+      }
+      else if (this.idCasilla.includes("N")){
+        turno = "Noche"
+      }
+
+        for (let j=0; j<resultado.length; j++){
+          if ((resultado[j].date == date) && (resultado[j].turno == turno)){
+            this.arrayEmpleadosSeleccionado.push({id_employees: resultado[j].id_employees, name: resultado[j].name, surname: resultado[j].surname})
+          }
+        }  
+      
+    })
   }
 }
