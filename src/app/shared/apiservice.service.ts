@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProdIndividual } from '../models/prod-individual';
 import {Stock} from "../models/stock"
-
+import { Empresa } from '../models/empresa';
+import{Empleados}from"../models/empleados"
 @Injectable({
   providedIn: 'root'
 })
@@ -40,7 +41,7 @@ export class ApiserviceService {
   }
 
   updateStock(stock:Stock){
-    return this.http.put(this.url, stock)
+    return this.http.put(this.url+"/stock", stock)
   }
 
   deleteStock(id_stock:number){
@@ -76,4 +77,41 @@ export class ApiserviceService {
     }
     return this.http.post(this.url + "/vacaciones", body)
   }
+
+  addEmpresa(empresa:Empresa)
+  {
+    return this.http.post(this.url+"/empresa", empresa)
+  }
+
+  // getEmpleados(id_companies:number)
+  // {
+  //   this.http.get(this.url+"/empleado?id_companies="+id_companies)
+  // }
+
+  // getEmpleadoInd(id_companies:number)
+  // {
+  //   this.http.get(this.url+"/empleado/empleado?id_companies="+id_companies)
+  // }
+
+  // addEmpleado(empleado:Empleados)
+  // {
+  //   return this.http.post(this.url+"/empleado", empleado)
+  // }
+
+  // updateEmpleado(empleado:Empleados){
+    
+  //   return this.http.put(this.url+"/empleado", empleado)
+  // }
+  // deleteEmpleado(id_employees:number){
+  //   let options ={
+  //         headers:new HttpHeaders({'Content-Type': 'application/json'}),
+  //         body:{id_employees:id_employees}
+  //   }
+  //   return this.http.delete(this.url+"/empleado", options)
+  // }
+
+
+
+
 }
+

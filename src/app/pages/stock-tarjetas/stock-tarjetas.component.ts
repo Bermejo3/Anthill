@@ -10,16 +10,24 @@ import {Stock} from "../../models/stock"
 })
 export class StockTarjetasComponent implements OnInit {
   
+  showModal: boolean
+  showModal2:boolean
   stock : Stock = new Stock(0,0,"","",0,"","","",0)
   arrayStock : Stock[] = []
-  showModal: boolean
+  mensaje: string = ""
+  mostrar: boolean
+  posicionTabla : number = 0
 
-  constructor(public servicio: ServiciosService, public apiService:ApiserviceService) {
+  constructor(public servicio: ServiciosService,public apiService: ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
-    this.showModal=false
-  }
-  getStock(){
-    this.apiService.getStock(this.servicio.id_companies).subscribe(
+    this.showModal = false
+    this.showModal2 = false
+    this.mostrar = false
+   }
+
+   getStock(){
+    this.apiService.getStock(this.servicio.id_companies).subscribe
+    (
       (data:Stock[]) =>
       {
         this.arrayStock=data
@@ -27,13 +35,62 @@ export class StockTarjetasComponent implements OnInit {
     )
   }
 
+  addStock(name:string,type:string,quantity:number,unit:string,date:string,place:string, minQuantity:number,picture:string){
+
+    this.apiService.addStock(new Stock(0,this.servicio.id_companies,name ,type,quantity,unit,date,place,minQuantity,picture)).subscribe(
+      (data:any)=>
+      {      
+        this.mensaje =data.mensaje
+        this.getStock()
+        this.hide()      
+      }
+    )
+  }
+
+  
+updateStock(name:string,type:string,quantity:number,unit:string,date:string,place:string, minQuantity:number,picture:string){
+  
+  this.apiService.updateStock(new Stock(0,this.servicio.id_companies,name ,type,quantity,unit,date,place,minQuantity,picture)).subscribe(
+    (data:any)=>
+    {
+      console.log(data)
+      this.mensaje=data.mensaje
+      this.getStock()
+      this.hide()
+    }
+
+  )
+}
+
+  deleteStock(id_stock){
+    this.apiService.deleteStock(id_stock).subscribe
+    (
+      (data:any) =>
+      {
+        this.mensaje =data.mensaje
+        this.getStock()
+        this.mostrar = true
+      }
+    )
+    console.log(id_stock)  
+  }
+
   ngOnInit(): void {
     this.getStock()
   }
   show(){
-    this.showModal = true;
-  }  
+    this.showModal = true;   
+  } 
+  show2(posicionTabla)  {
+    this.showModal2 = true;
+    this.posicionTabla = posicionTabla
+  } 
   hide(){ 
     this.showModal = false;
+    this.showModal2=false
   }
+  cerrar() {
+    this.mostrar = false
+  }
+
 }
