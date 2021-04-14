@@ -74,8 +74,8 @@
          <p class="card-text"><b>Ubicación: </b>{{stock.place}}</p>
          <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
          <hr>
-         <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-           <i class="fas fa-edit iconos-tarjetas editar" ></i></p>
+         <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="deleteStock(stock.id_stock)"></i>
+           <i class="fas fa-edit iconos-tarjetas editar"  (click)="show2(i)" ></i></p>
          
          
        </div>
@@ -83,11 +83,16 @@
     
 
 
- </div>
-</div>
+  </div>
+  </div>
+  <div class="alert alert-dismissible alert-success" *ngIf="mostrar">
+  <button type="button" class="close" on-click="cerrar()">&times;</button>
+  <strong>{{mensaje}}</strong> <a href="#" class="alert-link"></a>
+  </div>
 
 
-<!-- ------------------Modal--------------------------------- -->
+
+<!-- --------------------------------Modal añadir producto-------------------------------------- -->
 <div class="modal tarjetas-modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -102,43 +107,104 @@
 
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Introducir foto (Opcional)</span>
-            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
+            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #picture>
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Artículo</span>
-            <input type="text"class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
+            <input type="text"class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #name>
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Categoría</span>
-            <input type="email" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
+            <input type="email" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #type>
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Cantidad</span>
-            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
+            <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #quantity>
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Unidad</span>
-            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
+            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #unit>
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Fecha de entrada</span>
-            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
+            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #date>
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Ubicación</span>
-            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
+            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #place>
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Cantidad mínima</span>
-            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #titulo>
+            <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #minQuantity>
           </div>
         </form>
       </div>
       
       <div class="modal-footer colocar-boton">
-        <button type="button" class="boton-barra-filtros boton-modal">Guardar</button>
+        <button type="button" class="boton-barra-filtros boton-modal" routerLink="/stock" (click)="addStock(name.value, type.value, quantity.valueAsNumber, unit.value, date.value, place.value, minQuantity.valueAsNumber, picture.value)">Guardar</button>
+        <button type="button" class="boton-barra-filtros boton-modal color" (click)="hide()">Cancelar</button>
       </div>
+      
       
     </div>
   </div>
 </div>
+
+<!-- ------------------------------------------Modal cambiar producto--------------------------------------------------------- -->
+
+<div class="modal tarjetas-modal" id="myModal" [style.display]="showModal2 ? 'block' : 'none'">
+<div class="modal-dialog">
+  <div class="modal-content">
+  
+    <div class="modal-header" >
+      <h4 class="modal-title">Cambiar Producto</h4>
+      <button type="button" class="close" data-dismiss="modal" (click)="hide()">&times;</button>
+    </div>
+    
+    <div class="modal-body fondo-modal">
+      <form>
+
+        <div class="input-group flex-nowrap mt-1">
+          <span class="input-group-text cabecera-input" id="addon-wrapping">Cambiar foto</span>
+          <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].picture}}" defaultValue=null #picture>
+        </div>
+        <div class="input-group flex-nowrap mt-1">
+          <span class="input-group-text cabecera-input" id="addon-wrapping">Artículo</span>
+          <input type="text"class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].name}}" defaultValue=null #name>
+        </div>
+        <div class="input-group flex-nowrap mt-1">
+          <span class="input-group-text cabecera-input" id="addon-wrapping">Categoría</span>
+          <input type="email" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].type}}"  defaultValue=null #type>
+        </div>
+        <div class="input-group flex-nowrap mt-1">
+          <span class="input-group-text cabecera-input" id="addon-wrapping">Cantidad</span>
+          <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].quantity}}" defaultValue=null #quantity>
+        </div>
+        <div class="input-group flex-nowrap mt-1">
+          <span class="input-group-text cabecera-input" id="addon-wrapping">Unidad</span>
+          <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].unit}}" defaultValue=null #unit>
+        </div>
+        <div class="input-group flex-nowrap mt-1">
+          <span class="input-group-text cabecera-input" id="addon-wrapping">Fecha de entrada</span>
+          <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"  value="{{arrayStock[posicionTabla].date}}"defaultValue=null #date>
+        </div>
+        <div class="input-group flex-nowrap mt-1">
+          <span class="input-group-text cabecera-input" id="addon-wrapping">Ubicación</span>
+          <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].place}}"defaultValue=null #place>
+        </div>
+        <div class="input-group flex-nowrap mt-1">
+          <span class="input-group-text cabecera-input" id="addon-wrapping">Cantidad mínima</span>
+          <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].minQuantity}}"defaultValue=null #minQuantity>
+        </div>
+      </form>
+    </div>
+    
+    <div class="modal-footer colocar-boton">
+      <button type="button" class="boton-barra-filtros boton-modal" routerLink="/stock" (click)="updateStock(name.value, type.value, quantity.valueAsNumber, unit.value, date.value, place.value, minQuantity.valueAsNumber, picture.value)" >Guardar</button>
+      <button type="button" class="boton-barra-filtros boton-modal color"(click)="hide()">Cancelar</button>
+    </div>
+    
+  </div>
+</div>
+</div>
+   

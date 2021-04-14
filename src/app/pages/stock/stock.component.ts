@@ -12,7 +12,7 @@ import {Stock} from "../../models/stock"
 export class StockComponent implements OnInit {
 
   showModal: boolean
-  showModal2
+  showModal2:boolean
   stock : Stock = new Stock(0,0,"","",0,"","","",0)
   arrayStock : Stock[] = []
   mensaje: string = ""
@@ -25,6 +25,7 @@ export class StockComponent implements OnInit {
     this.showModal2 = false
     this.mostrar = false
    }
+
    getStock(){
     this.apiService.getStock(this.servicio.id_companies).subscribe
     (
@@ -34,6 +35,33 @@ export class StockComponent implements OnInit {
       }
     )
   }
+
+  addStock(name:string,type:string,quantity:number,unit:string,date:string,place:string, minQuantity:number,picture:string){
+
+    this.apiService.addStock(new Stock(0,this.servicio.id_companies,name ,type,quantity,unit,date,place,minQuantity,picture)).subscribe(
+      (data:any)=>
+      {      
+        this.mensaje =data.mensaje
+        this.getStock()
+        this.hide()      
+      }
+    )
+  }
+
+  
+updateStock(name:string,type:string,quantity:number,unit:string,date:string,place:string, minQuantity:number,picture:string){
+  
+  this.apiService.updateStock(new Stock(0,this.servicio.id_companies,name ,type,quantity,unit,date,place,minQuantity,picture)).subscribe(
+    (data:any)=>
+    {
+      console.log(data)
+      this.mensaje=data.mensaje
+      this.getStock()
+      this.hide()
+    }
+
+  )
+}
 
   deleteStock(id_stock){
     this.apiService.deleteStock(id_stock).subscribe
@@ -48,24 +76,13 @@ export class StockComponent implements OnInit {
     console.log(id_stock)  
   }
 
-addStock(name:string,type:string,quantity:number,unit:string,date:string,place:string, minQuantity:number,picture:string){
-
-  this.apiService.addStock(new Stock(0,this.servicio.id_companies,name ,type,quantity,unit,date,place,minQuantity,picture)).subscribe(
-    (data:any)=>
-    {      
-      this.getStock()
-      this.hide()      
-    }
-  )
-}
-
   ngOnInit(): void {
     this.getStock()
   }
   show(){
     this.showModal = true;   
   } 
-  show2(posicionTabla:number){
+  show2(posicionTabla)  {
     this.showModal2 = true;
     this.posicionTabla = posicionTabla
   } 
@@ -80,54 +97,4 @@ addStock(name:string,type:string,quantity:number,unit:string,date:string,place:s
 }
 
 
-// eliminarDisco() {
-//   this.disco = this.myForm.value
-//   this._discoService.eliminarDisco(this.disco.id).subscribe(
-//     (data: any) => {
-//       this.mensaje = data.mensaje
-//       this.cerrar()
-//       this.discos=data
-//       this.disco.id=null
-//       if (data.length == 0) {
-     
-//         this.mostrar = true
-
-//         this.mensaje = "No se encuentra el Id"
-//       }
-//       this.obtenerDiscos
-//     }
-
-//   )
-// }
-
-  // grabarDatos() {
-//   this.disco = this.myForm.value
-//   this._discoService.grabarDisco(this.disco).subscribe(
-//     (data) => {
-//       console.log(data)
-//       console.log('Disco Guardado')
-
-//       this.obtenerDiscos()
-
-
-//     }
-//   )
-// }
-
-
-// cambiarDatos() {
-//   this.disco = this.myForm.value
-//   this._discoService.cambiarDisco(this.disco).subscribe(
-//     (data) => {
-//       console.log(data)
-//       if (this.disco.interprete == null || this.disco.titulo == null || this.disco.anyoPublicacion == null) {
-//         this.mensaje = "Faltan campos"
-//       } else {
-//         this.mensaje = "Disco modificado"
-//       }
-//       this.obtenerDiscos()
-
-//     }
-//   )
-// }
 
