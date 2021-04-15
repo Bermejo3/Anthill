@@ -15,35 +15,58 @@ export class RrhhEmpleadosTablaComponent implements OnInit{
   mensaje: string = ""
   mostrar: boolean
   posicionTabla : number = 0
+  showModal: boolean
+  showModal2:boolean
 
   constructor(public servicio: ServiciosService, public apiService:ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.mostrar = false
   }
+  getEmpleados(){
+    this.apiService.getEmpleados(this.servicio.id_companies).subscribe(
+      (data:Empleados[])=>
+      {
+        this.arrayEmpleados=data
+      }
+    )
+  }  
 
-  // getEmpleados(){
-  //   this.apiService.getEmpleados(this.servicio.id_companies).subscribe(
-  //     (data:Empleados)=>
-  //     {
-  //       this.arrayEmpleados=data
-  //     }
-  //   )
-    
-  // }
-  // deleteStock(id_eployees){
-  //   this.apiService.deleteEmpleado(id_employees).subscribe
-  //   (
-  //     (data:any) =>
-  //     {
-  //       this.mensaje =data.mensaje
-  //       this.getEmpleados()
-  //       this.mostrar = true
-  //     }
-  //   )
-  //   console.log(id_stock)  
-  // }
- 
+  cerrar() {
+    this.mostrar = false
+  }
+  showPosicion(posicionTabla)  {
+    this.posicionTabla = posicionTabla
+  } 
+  show(posicionTabla){
+    this.showModal = true;   
+    this.posicionTabla = posicionTabla
+  } 
+  show2(posicionTabla)  {
+    this.showModal2 = true;
+    this.posicionTabla = posicionTabla
+  } 
+  
+  deleteEmpleado(){
+    let id_employees = this.arrayEmpleados[this.posicionTabla].id_employees
+    this.apiService.deleteEmpleado(id_employees).subscribe
+    (
+      (data:any) =>
+      {
+        this.mensaje =data.mensaje
+        this.getEmpleados()
+        this.mostrar = true
+        this.hide()
+      }
+    )
+    console.log(id_employees)  
+  }
+  hide(){ 
+    this.showModal = false;
+    this.showModal2=false
+  }
+
   ngOnInit(): void {
+    this.getEmpleados()
   }
  
 }

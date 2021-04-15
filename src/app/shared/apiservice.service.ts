@@ -54,7 +54,9 @@ export class ApiserviceService {
   }
 
   updateStock(stock:Stock){
+    console.log('ok')
     return this.http.put(this.url+"/stock", stock)
+    
   }
 
   deleteStock(id_stock:number){
@@ -101,27 +103,30 @@ export class ApiserviceService {
     return this.http.get(this.url+"/empleado?id_companies="+id_companies)
   }
 
-  // getEmpleadoInd(id_companies:number)
-  // {
-  //   this.http.get(this.url+"/empleado/empleado?id_companies="+id_companies)
-  // }
+  getEmpleadoInd(id_companies:number)
+  {
+    return this.http.get(this.url+"/empleado/empleado?id_companies="+id_companies)
+  }
 
-  // addEmpleado(empleado:Empleados)
-  // {
-  //   return this.http.post(this.url+"/empleado", empleado)
-  // }
+  addEmpleado(empleado:Empleados)
+  {
+    return this.http.post(this.url+"/empleado", empleado)
+  }
 
-  // updateEmpleado(empleado:Empleados){
+  updateEmpleado(empleado:Empleados){
     
-  //   return this.http.put(this.url+"/empleado", empleado)
-  // }
-  // deleteEmpleado(id_employees:number){
-  //   let options ={
-  //         headers:new HttpHeaders({'Content-Type': 'application/json'}),
-  //         body:{id_employees:id_employees}
-  //   }
-  //   return this.http.delete(this.url+"/empleado", options)
-  // }
+    return this.http.put(this.url+"/empleado", empleado)
+  }
+  deleteEmpleado(id_employees:number){
+    let options ={
+          headers:new HttpHeaders({'Content-Type': 'application/json'}),
+          body:{id_employees:id_employees}
+          
+          
+    }
+    console.log(options);
+    return this.http.delete(this.url+"/empleado", options)
+  }
 
 
 

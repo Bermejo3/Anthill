@@ -60,83 +60,49 @@
               <th>Turno</th>
               <th>Teléfono</th>
               <th>Email</th>
-              <th>Vacaciones</th>
+              
               <th>Opciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="trPar">
-              <td>Eugenio</td>
-              <td>Delgado</td>
-              <td>45</td>
-              <td>Desarrollador</td>
-              <td class="col"> <i class="fas fa-sun iconos-tarjetas sol"></i><i class=" fas fa-moon iconos-tarjetas luna"></i></td>
-              <td>654821397</td>
-              <td>Eugenio@gmail.com</td>
-              <td>21</td>
-              <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+            <tr *ngFor="let empleado of arrayEmpleados; let i = index; let even = even" [ngClass]="{trPar:even}">
+              <td>{{empleado.name}}</td>
+              <td>{{empleado.surname}}</td>
+              <td>{{empleado.age}}</td>
+              <td>{{empleado.position}}</td>
+              <td class="col"> <i class="fas fa-sun iconos-tarjetas sol"></i> <i class="fas fa-adjust iconos-tarjetas sol"></i><i class=" fas fa-moon iconos-tarjetas luna"></i></td>
+              <td>{{empleado.phone}}</td>
+              <td>{{empleado.email}}</td>
+              
+              <td><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="show(i)"></i>
                 <i class="fas fa-edit iconos-tarjetas editar" routerLink="/rrhh-add-empleados"></i></td>
-            </tr>
-            <tr>
-                <td>Aurelio</td>
-                <td>Delgado</td>
-                <td>45</td>
-                <td>Desarrollador</td>
-                <td> <i class="fas fa-moon iconos-tarjetas luna"></i></td>
-                <td>655937397</td>
-                <td>Aurelio@gmail.com</td>
-
-                <td>21</td>
-                <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-                  <i class="fas fa-edit iconos-tarjetas editar" routerLink="/rrhh-add-empleados"></i></td>
-            </tr>
-            <tr>
-                <td>Aurelio</td>
-                <td>Delgado</td>
-                <td>45</td>
-                <td>Desarrollador</td>
-                <td> <i class="fas fa-moon iconos-tarjetas luna"></i></td>
-                <td>655937397</td>
-                <td>Aurelio@gmail.com</td>
-
-                <td>21</td>
-                <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-                  <i class="fas fa-edit iconos-tarjetas editar" routerLink="/rrhh-add-empleados"></i></td>
-            </tr>
-            <tr>
-                <td>Aurelio</td>
-                <td>Delgado</td>
-                <td>45</td>
-                <td>Desarrollador</td>
-                <td> <i class="fas fa-adjust iconos-tarjetas tarde"></i></td>
-                <td>655937397</td>
-                <td>Aurelio@gmail.com</td>
-
-                <td>21</td>
-                <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-                  <i class="fas fa-edit iconos-tarjetas editar" routerLink="/rrhh-add-empleados"></i></td>
-            </tr>
-            <tr>
-                <td>Aurelio</td>
-                <td>Delgado</td>
-                <td>45</td>
-                <td>Desarrollador</td>
-                <td> <i class="fas fa-sun iconos-tarjetas sol"></i></td>
-                <td>655937397</td>
-                <td>Aurelio@gmail.com</td>
-
-                <td>21</td>
-                <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
-                  <i class="fas fa-edit iconos-tarjetas editar" routerLink="/rrhh-add-empleados"></i></td>
             </tr>
  
  
           </tbody>
         </table>
       </div>
-    </div>
- 
- 
- 
+       <!-- Modal Borrar-->
+      <div class="modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+            ¿Seguro que quieres borrar a {{ empleado.name }}?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="hide()">Atrás</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteEmpleado()">Borrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-dismissible alert-success" *ngIf="mostrar">
+        <button type="button" class="close" on-click="cerrar()">&times;</button>
+        <strong>{{mensaje}}</strong> <a href="#" class="alert-link"></a>
+      </div>
   </div>
+ 
+ 
+ 
+</div>
  

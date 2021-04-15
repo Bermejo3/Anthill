@@ -11,8 +11,8 @@ export class Empleados {
         public password:string,
         public descrimption?:string,
         public picture?:string,
-        public shiftMorning?:string,
-        public shiftAfternoon?:string,
-        public shiftEvening?:string,
+        public shiftMorning?:number,
+        public shiftAfternoon?:number,
+        public shiftEvening?:number,
     ){}
 }
