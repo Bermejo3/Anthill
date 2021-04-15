@@ -1,7 +1,6 @@
 <body>
   
 
-<!-- <div class="container"> -->
   <div class="row" style="justify-content: center;">
     
         <div class="col-3">
@@ -14,9 +13,9 @@
           <h2>ANTHILL</h2>
           <hr>
           <form class="row" style="justify-content: center;">
-            <input class="input-login" type="email" placeholder="Email">
-            <input class="input-login margen" type="password" placeholder="Password">
-            <button class="boton-login" routerLink="/home">Acceder</button>
+            <input class="input-login" type="email" placeholder="Email" #email>
+            <input class="input-login margen" type="password" placeholder="Password" #password>
+            <button class="boton-login" (click)="acceder(email.value,password.value)">Acceder</button>
           </form>
           <br>
           <hr>
@@ -25,7 +24,6 @@
         </div>
 
   </div>
-<!-- </div> -->
 <div class="col about">
     <h5 routerLink="/about-us">Sobre nosotros</h5>
 </div>

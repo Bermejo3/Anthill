@@ -3,6 +3,8 @@ import { ServiciosService } from 'src/app/shared/servicios.service';
 import { CalendarOptions, EventClickArg } from '@fullcalendar/angular';
 import esLocale from '@fullcalendar/core/locales/es';
 import { DateClickArg } from '@fullcalendar/interaction';
+import { ApiserviceService } from 'src/app/shared/apiservice.service';
+import { Turnos } from 'src/app/models/turnos';
 
 @Component({
   selector: 'app-empleado-turnos',
@@ -11,11 +13,13 @@ import { DateClickArg } from '@fullcalendar/interaction';
 })
 export class EmpleadoTurnosComponent implements OnInit {
 
+  public showInfo: boolean = false
   public semana: Date[] = []
+  public semana2: Date[] = []
   public diasSemana: string[] = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"]
   public id: string ="" 
 
-  constructor(public servicio: ServiciosService) {
+  constructor(public servicio: ServiciosService, public apiservice: ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.servicio.esEmpleado=true //Para iniciar el sidebar de empleado
   }
@@ -29,36 +33,35 @@ export class EmpleadoTurnosComponent implements OnInit {
     fixedWeekCount: false,
     dateClick: this.modalClick2.bind(this)
   };
-
-  createEvents(){
-    let event = {date: "", display:"", backgroundColor:""}
-    let colores = ["#018101"]
-    for (let i=0; i<32; i++){
-      let color =  colores[0]
-      event = {
-        date: '2021-04-'+(i+1),
-        display: 'background',
-        backgroundColor: color,
-      }
-      if (Math.random() > 0.5){this.calendarEvents.push(event)}
-      
-    }
-    this.calendarOptions.events = this.calendarEvents
-  }
   calendarEvents= [
-    {
-      date:'',
-      display: 'background',
-      backgroundColor: '',
-    }
   ]
 
+  getTurnosEmpleado(){
+    this.apiservice.getTurnosEmpleado(this.servicio.id_companies, this.servicio.id_employees).subscribe((resultado: Turnos[])=>{
+      console.log(resultado)
+      let event = {date: "", display:"", backgroundColor:""}
+      for (let i=0; i<resultado.length; i++){
+        event = {
+          date: resultado[i].date,
+          display: 'background',
+          backgroundColor: "#008000cc",
+        }
+        this.calendarEvents.push(event)
+      }
+      this.calendarOptions.events = this.calendarEvents
+    })
+  }
+
   ngOnInit(): void {
-    this.createEvents()
+    this.getTurnosEmpleado()
 
     this.crearSemana()
     
     this.mostrarTurnos()
+  }
+
+  show(){
+    this.showInfo=true
   }
 
   modalClick2(clickInfo: DateClickArg){ //ESTO PERMITE CALCULAR EL NUMERO DE LA SEMANA Y EL PRIMER DIA DE CADA SEMANA. NECESARIO PARA EL TURNO-EMPLEADO
@@ -83,6 +86,7 @@ export class EmpleadoTurnosComponent implements OnInit {
     // console.log(getDateOfWeek(weekday(), clickInfo.date.getFullYear()))
     this.servicio.firstDayWeek=getDateOfWeek(weekday(), clickInfo.date.getFullYear())
 
+    this.show()
     this.crearSemana()
     this.mostrarTurnos()
   }
@@ -94,22 +98,33 @@ export class EmpleadoTurnosComponent implements OnInit {
       newFecha.setUTCDate(this.servicio.firstDayWeek.getUTCDate()+i)
       this.semana.push(newFecha)
     }
+    this.semana2 =  []
+    for (let i=0; i<8; i++){
+      let newFecha2: Date = new Date(this.servicio.firstDayWeek)
+      newFecha2.setDate(this.servicio.firstDayWeek.getDate()+i)
+      this.semana2.push(newFecha2)
+    }
+    this.mostrarTurnos()
   }
 
   mostrarTurnos(){
-    for (let i=0; i<this.semana.length; i++){
-      for (let j=0; j<this.calendarEvents.length; j++){
-        if (this.semana[i].getDate() == Number(this.calendarEvents[j].date.slice(8,10))){
-          this.id = "M"+i
-          document.getElementById('M1')!.className = "turnoCompleto"
+    this.apiservice.getTurnosEmpleado(this.servicio.id_companies, this.servicio.id_employees).subscribe((resultado: Turnos[])=>{
+      for (let i=0; i<this.semana.length; i++){
+        for (let j=0; j<resultado.length; j++){
+          if (resultado[j].date == this.semana2[i+1].toJSON().slice(0,10)){
+            if (resultado[j].turno == "Mañana"){
+              document.getElementById(`M${i}`)!.className = "turnoCompleto"
+            }
+            else if (resultado[j].turno == "Tarde"){             
+              document.getElementById(`T${i}`)!.className = "turnoCompleto"
+            }
+            else if (resultado[j].turno == "Noche"){
+              document.getElementById(`N${i}`)!.className = "turnoCompleto"
+            }
+          }
         }
       }
-    }
-  }
-
-  clickar(id:any){
-    console.log(id)
-    document.getElementById(id)!.className = "turnoSeleccionado"
+    })
   }
 
 }

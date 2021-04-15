@@ -9,3 +9,7 @@
   .turnoCompleto{
     background-color: rgba(255, 0, 0, 0.5);
   }
+
+  .tableContainer{
+    background: rgba(0,0,0,0.2);
+}

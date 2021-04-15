@@ -83,7 +83,6 @@ export class TurnosSemanaComponent implements OnInit {
   }
 
   quitarSeleccionado(i:number){
-    console.log(this.arrayEmpleadosSeleccionado)
     let id_employees = this.arrayEmpleadosSeleccionado[i].id_employees
     let id_shifts
     if (this.idCasilla.includes("M")){
@@ -116,6 +115,9 @@ export class TurnosSemanaComponent implements OnInit {
         let countM=0
         let countT=0
         let countN=0
+        document.getElementById(`M${i}`)!.className = "turnoVacio"
+        document.getElementById(`T${i}`)!.className = "turnoVacio"
+        document.getElementById(`N${i}`)!.className = "turnoVacio"
         for (let j=0; j<resultado.length; j++){
           if (resultado[j].date == this.semana2[i+1].toJSON().slice(0,10)){
             if (resultado[j].turno == "Mañana"){
@@ -167,20 +169,36 @@ export class TurnosSemanaComponent implements OnInit {
     let shiftMorning = 0
     let shiftAfternoon = 0
     let shiftEvening = 0
+    let id_shifts
+    let date = this.semana2[Number(this.idCasilla.slice(1,2))+1].toJSON().slice(0,10)
+    this.arrayEmpleados=[]
     if (this.idCasilla.includes("M")){
       shiftMorning = 1
+      id_shifts = 1
+      this.apiservice.getTurnosListaEmpleadosMorning(date,  shiftMorning, this.servicio.id_companies, id_shifts, date).subscribe((resultado: any[])=>{
+        for (let i=0; i<resultado.length; i++){
+          this.arrayEmpleados.push({id_employees: resultado[i].id_employees, name: resultado[i].name, surname: resultado[i].surname})
+        }
+      })
     }
     else if (this.idCasilla.includes("T")){
       shiftAfternoon = 1
+      id_shifts = 2
+      this.apiservice.getTurnosListaEmpleadosAfternoon(date,  shiftAfternoon, this.servicio.id_companies, id_shifts, date).subscribe((resultado: any[])=>{
+        for (let i=0; i<resultado.length; i++){
+          this.arrayEmpleados.push({id_employees: resultado[i].id_employees, name: resultado[i].name, surname: resultado[i].surname})
+        }
+      })
     }
     else if (this.idCasilla.includes("N")){
       shiftEvening = 1
+      id_shifts = 3
+      this.apiservice.getTurnosListaEmpleadosEvening(date,  shiftEvening, this.servicio.id_companies, id_shifts, date).subscribe((resultado: any[])=>{
+        for (let i=0; i<resultado.length; i++){
+          this.arrayEmpleados.push({id_employees: resultado[i].id_employees, name: resultado[i].name, surname: resultado[i].surname})
+        }
+      })
     }
-    this.apiservice.getTurnosListaEmpleados(this.servicio.id_companies, shiftMorning, shiftAfternoon, shiftEvening).subscribe((resultado: any[])=>{
-      for (let i=0; i<resultado.length; i++){
-        this.arrayEmpleados.push({id_employees: resultado[i].id_employees, name: resultado[i].name, surname: resultado[i].surname})
-      }
-    })
   }
 
   reiniciarHormigas(){ //setea todas las celdas sin imagenes
@@ -211,7 +229,6 @@ export class TurnosSemanaComponent implements OnInit {
             this.arrayEmpleadosSeleccionado.push({id_employees: resultado[j].id_employees, name: resultado[j].name, surname: resultado[j].surname})
           }
         }  
-      
     })
   }
 }

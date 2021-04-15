@@ -139,8 +139,14 @@ export class ApiserviceService {
     return this.http.get(this.url + "/turnos/semana?id_companies=" + id_companies)
   }
 
-  getTurnosListaEmpleados(id_companies, shiftMorning, shiftAfternoon, shiftEvening){
-    return this.http.get(this.url +"/turnos/listaempleados" +"?id_companies=" + id_companies +"&shiftMorning=" + shiftMorning + "&shiftAfternoon=" + shiftAfternoon + "&shiftEvening=" + shiftEvening)
+  getTurnosListaEmpleadosMorning(date, id_companies, shiftMorning, id_shifts, date2){
+    return this.http.get(this.url +"/turnos/listaempleados/morning" +"?date" +date +"&shiftMorning=" +shiftMorning +"&id_companies=" + id_companies +"&id_shifts=" +id_shifts + "&date2=" + date2)
+  }
+  getTurnosListaEmpleadosAfternoon(date, id_companies, shiftAfternoon, id_shifts, date2){
+    return this.http.get(this.url +"/turnos/listaempleados/afternoon" +"?date" +date +"&shiftAfternoon=" +shiftAfternoon +"&id_companies=" + id_companies +"&id_shifts=" +id_shifts + "&date2=" + date2)
+  }
+  getTurnosListaEmpleadosEvening(date, id_companies, shiftEvening, id_shifts, date2){
+    return this.http.get(this.url +"/turnos/listaempleados/evening" +"?date" +date +"&shiftEvening=" +shiftEvening +"&id_companies=" + id_companies +"&id_shifts=" +id_shifts + "&date2=" + date2)
   }
 
   postTurnos(id_companies, id_employees, id_shifts, date){
@@ -164,5 +170,25 @@ export class ApiserviceService {
     }
     return this.http.delete(this.url + "/turnos", options)
   }
-}
 
+
+  getTurnosEmpleado(id_companies, id_employees){
+    return this.http.get(this.url +"/turnos/empleado" +"?id_companies=" +id_companies +"&id_employees="+id_employees)
+  }
+
+  postLogin(email, password){
+    let body = {
+      email: email,
+      password: password
+    }
+    return this.http.post(this.url + "/empresa/login", body)
+  }
+  postLoginEmpleado(email, password){
+    let body = {
+      email: email,
+      password: password
+    }
+    return this.http.post(this.url + "/empleado/login", body)
+  }
+
+}
