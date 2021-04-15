@@ -39,13 +39,13 @@ export class RegisterComponent implements OnInit {
      })
    }
 
-  addEmpresa(name:string,adress:string,email:string,phone:number,password:string,confPass:string){
+  addEmpresa(name:string,address:string,email:string,phone:number,password:string,confPass:string){
     this.myForm.value
-    this.apiService.addEmpresa(new Empresa(0,name,adress,email,phone,password,confPass)).subscribe(
+    this.apiService.addEmpresa(new Empresa(0,name,address,email,phone,password,confPass)).subscribe(
       (data:any)=>
       {
         this.myForm.value;
-        console.log(data)
+        console.log(address)
       }
     )
   }

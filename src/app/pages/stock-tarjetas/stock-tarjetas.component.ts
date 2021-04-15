@@ -9,11 +9,12 @@ import {Stock} from "../../models/stock"
   styleUrls: ['./stock-tarjetas.component.css']
 })
 export class StockTarjetasComponent implements OnInit {
-  
+
   showModal: boolean
   showModal2:boolean
-  stock : Stock = new Stock(0,0,"","",0,"","","",0)
-  arrayStock : Stock[] = []
+  showModal3:boolean
+  stock : Stock = new Stock(0,0,"","",0,"","","",0,"")
+  arrayStock : Stock[] = [this.stock]
   mensaje: string = ""
   mostrar: boolean
   posicionTabla : number = 0
@@ -22,6 +23,7 @@ export class StockTarjetasComponent implements OnInit {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.showModal = false
     this.showModal2 = false
+    this.showModal3=false
     this.mostrar = false
    }
 
@@ -49,11 +51,12 @@ export class StockTarjetasComponent implements OnInit {
 
   
 updateStock(name:string,type:string,quantity:number,unit:string,date:string,place:string, minQuantity:number,picture:string){
-  
-  this.apiService.updateStock(new Stock(0,this.servicio.id_companies,name ,type,quantity,unit,date,place,minQuantity,picture)).subscribe(
+
+  this.posicionTabla= this.arrayStock[this.posicionTabla].id_stock
+
+  this.apiService.updateStock(new Stock(this.posicionTabla,this.servicio.id_companies,name ,type,quantity,unit,date,place,minQuantity,picture)).subscribe(
     (data:any)=>
     {
-      console.log(data)
       this.mensaje=data.mensaje
       this.getStock()
       this.hide()
@@ -69,8 +72,8 @@ updateStock(name:string,type:string,quantity:number,unit:string,date:string,plac
       {
         this.mensaje =data.mensaje
         this.getStock()
-        this.mostrar = true
-      }
+        this.hide()
+      } 
     )
     console.log(id_stock)  
   }
@@ -85,12 +88,19 @@ updateStock(name:string,type:string,quantity:number,unit:string,date:string,plac
     this.showModal2 = true;
     this.posicionTabla = posicionTabla
   } 
+  showSure(posicionTabla){
+    this.showModal3 = true;
+    this.posicionTabla = posicionTabla
+  }
   hide(){ 
     this.showModal = false;
     this.showModal2=false
+    this.showModal3=false
   }
   cerrar() {
     this.mostrar = false
   }
+  
 
 }
+  
