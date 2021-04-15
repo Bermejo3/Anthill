@@ -81,28 +81,48 @@ export class ProduccionEmpleadoComponent implements OnInit {
   public produccionEmpleados: ProdIndividual [];
   public produccionEmpleado: ProdIndividual;
 
+  public id_productivity:number;
+
   public arrayProductividad: Productividad[];
 
   public showModal:boolean;
+  public showModal2:boolean;
 
   public mergeOptions = {}
 
+  public misEmpleados:number;
+
   public data: Array<any>;
+
+  public posicionTabla:number;
 
   constructor(public servicio: ServiciosService, public apiservice: ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     
+    
     this.showModal=false;
+    this.showModal2 = false
 
+    this.id_productivity=0;
+    this.servicio.numeroEmpleados=[];
     this.servicio.produccionMes=[];
     this.servicio.produccionMesEmpleado=[];
+    this.misEmpleados=0;
 
-    this.data = [
-      { empleado: 'John', productividad: '250', horas: '35' },
-      { empleado: 'Michael', productividad: '789', horas: '39' },
-      { empleado: 'Fernando', productividad: '234', horas: '45' },
-      { empleado: 'Tania', productividad: '435', horas: '47' }
-    ];
+    this.posicionTabla=0;
+  }
+
+  getEmpleados()
+  {
+    this.apiservice.getEmpleados(this.servicio.id_companies).subscribe((resultado:any[]) =>
+    {
+      for(let i=0; i<resultado.length; i++)
+      {
+        this.servicio.numeroEmpleados.push(resultado[i].id_employees);
+
+        this.misEmpleados = this.servicio.numeroEmpleados.length;
+      }
+    })
   }
 
   getProductividad()
@@ -114,7 +134,11 @@ export class ProduccionEmpleadoComponent implements OnInit {
   {
     this.apiservice.getProdIndividual(this.servicio.id_employees, this.servicio.id_companies).subscribe((resultado: ProdIndividual[]) =>
     {
+     
       this.produccionEmpleados = resultado;
+
+      console.log(this.produccionEmpleados)
+      console.log(resultado)
     })
     
   }
@@ -159,13 +183,13 @@ export class ProduccionEmpleadoComponent implements OnInit {
     {
       for(let i=0; i<resultado.length; i++)
       {
-        this.servicio.produccionMes.push(resultado[i].sum_productivity/2);
+        this.servicio.produccionMes.push(resultado[i].sum_productivity/this.misEmpleados);
       }
     })
   }
   addProductividad(nombre:string,productividad:number, horas:number, dia:string)
   {
-    this.produccionEmpleado = new ProdIndividual(this.servicio.id_employees,nombre,productividad, horas, dia, this.servicio.id_companies)
+    this.produccionEmpleado = new ProdIndividual(this.servicio.id_employees,nombre,productividad, horas, dia, this.servicio.id_companies, this.id_productivity)
     this.apiservice.addProductividad(this.produccionEmpleado).subscribe((resultado:ProdIndividual)=>
     {
       this.produccionEmpleado = resultado;
@@ -173,6 +197,22 @@ export class ProduccionEmpleadoComponent implements OnInit {
     this.getProdIndividual();
     this.hide();
 
+  }
+
+  updateProductividad(nombre:string,productividad:number, horas:number,dia:string){
+  
+    console.log(this.servicio.id_employees, nombre, productividad, horas, dia);
+    this.id_productivity = this.produccionEmpleados[this.posicionTabla].id_productivity;
+    
+    this.apiservice.updateProductividad(new ProdIndividual(this.servicio.id_employees,nombre,productividad, horas, dia, this.servicio.id_companies, this.id_productivity)).subscribe(
+      (resultado:ProdIndividual)=>
+      {
+        this.produccionEmpleado = resultado;
+        this.getProdIndividual()
+        this.hide()
+      }
+  
+    )
   }
 
   nuevoDato(nombre:string,productividad:number, horas:number, dia:string)
@@ -187,15 +227,24 @@ export class ProduccionEmpleadoComponent implements OnInit {
 
   show(){
     this.showModal = true;
-  }  
+  }
+  show2(posicionTabla:number)
+  {
+    this.showModal2=true;
+    this.posicionTabla = posicionTabla;
+  }
   hide(){ 
     this.showModal = false;
+    this.showModal2=false;
   }
   ngOnInit(): void 
   {
     this.getProdIndividual()
     this.getProductividad()
+    this.getEmpleados()
     this.ProdIndiMes()
+
+    
   }
 
 }

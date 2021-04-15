@@ -32,21 +32,24 @@
                 <th>Producción Total</th>
                 <th>Horas Trabajadas</th>
                 <th>Día</th>
+                <th>Opciones</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor = "let empleadop of produccionEmpleados">
+              <tr *ngFor = "let empleadop of produccionEmpleados, let i=index">
                 <td>{{empleadop.name}}</td>
                 <td>{{empleadop.productivity}}</td>
                 <td>{{empleadop.hours}}</td>
                 <td>{{empleadop.date.slice(0,10)}}</td>
+                <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+                  <i class="fas fa-edit iconos-tarjetas editar" (click)="show2(i)"></i></td>
               </tr>
             </tbody>
           </table>
         </div>
     </div>
     </div>
-
+<!-- Modal añadir nueva productividad-->
     <div class="modal tarjetas-modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -61,9 +64,9 @@
               <div class="input-group flex-nowrap mt-1">
                 <span class="input-group-text cabecera-input" id="addon-wrapping">Empleado</span>
                 <select class="form-select" aria-label="Default select example" style="width: fit-content;" #empleado>
-                  <option *ngFor = "let trabajadores of arrayProductividad; let i = index; let even = even" selected value="{{trabajadores.name}}">{{trabajadores.name}}</option>
+                  <option value="" selected>Seleccione un empleado</option>
+                  <option *ngFor = "let trabajadores of arrayProductividad; let i = index; let even = even" value="{{trabajadores.name}}">{{trabajadores.name}}</option>
                 </select>
-        
               </div>
               <div class="input-group flex-nowrap mt-1">
                 <span class="input-group-text cabecera-input" id="addon-wrapping">Producción</span>
@@ -82,6 +85,44 @@
           
           <div class="modal-footer colocar-boton">
             <button type="button" class="btn btn-success" data-dismiss="modal" (click)="addProductividad(empleado.value, productividad.valueAsNumber, horas.valueAsNumber, dias.value)">Enviar</button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+<!--Modal editar/borrar productividad-->
+    <div class="modal tarjetas-modal" id="myModal" [style.display]="showModal2 ? 'block' : 'none'">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        
+          <div class="modal-header" >
+            <h4 class="modal-title">Modificar o eliminar datos</h4>
+            <button type="button" class="close" data-dismiss="modal" (click)="hide()">&times;</button>
+          </div>
+          
+          <div class="modal-body fondo-modal">
+            <form>
+              <div class="input-group flex-nowrap mt-1">
+                <span class="input-group-text cabecera-input" id="addon-wrapping">Empleado</span>
+                <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{produccionEmpleados[posicionTabla].name}}" defaultValue=null #empleadoEdit>
+              </div>
+              <div class="input-group flex-nowrap mt-1">
+                <span class="input-group-text cabecera-input" id="addon-wrapping">Producción</span>
+                <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{produccionEmpleados[posicionTabla].productivity}}" defaultValue=null #productividadEdit>
+              </div>
+              <div class="input-group flex-nowrap mt-1">
+                <span class="input-group-text cabecera-input" id="addon-wrapping">Horas</span>
+                <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{produccionEmpleados[posicionTabla].hours}}" defaultValue=null #horasEdit>
+              </div>
+              <div class="input-group flex-nowrap mt-1">
+                <span class="input-group-text cabecera-input" id="addon-wrapping">Día</span>
+                <input type="date" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{produccionEmpleados[posicionTabla].date}}" defaultValue=null #diasEdit>
+              </div>
+            </form>
+          </div>
+          
+          <div class="modal-footer colocar-boton">
+            <button type="button" class="boton-barra-filtros boton-modal" (click) = "updateProductividad(empleadoEdit.value, productividadEdit.valueAsNumber, horasEdit.valueAsNumber, diasEdit.value)" >Guardar</button>
           </div>
           
         </div>

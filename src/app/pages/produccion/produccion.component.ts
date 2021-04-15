@@ -68,25 +68,27 @@ export class ProduccionComponent implements OnInit {
 
   getProductividad()
   {
-    this.apiservice.getProductividad(this.servicio.id_companies).subscribe((resultado:Productividad[])=>{this.arrayProductividad = resultado})
+    this.apiservice.getProductividad(this.servicio.id_companies).subscribe((resultado:Productividad[])=>
+    {
+      this.arrayProductividad = resultado;
+    })
+    
   }
 
   getProdIndividual(i:number)
   {
-    this.apiservice.getProdIndividual(i, this.servicio.id_companies).subscribe((resultado: ProdIndividual) =>
-    {
-      this.produccionEmpleado = resultado;
-      this.index = i;
-      this._router.navigate(['produccion-empleado'])
-    })
+    this.servicio.id_employees = this.arrayProductividad[i].id_employees; 
+    this._router.navigate(['produccion-empleado'])
+    
   }
   
   addProductividad(nombre:string,productividad:number, horas:number, dia:string)
   {
-    this.produccionEmpleado = new ProdIndividual(this.servicio.id_employees,nombre,productividad, horas, dia, this.servicio.id_companies)
+    this.produccionEmpleado = new ProdIndividual(this.servicio.id_employees,nombre,productividad, horas, dia, this.servicio.id_companies, 0)
     this.apiservice.addProductividad(this.produccionEmpleado).subscribe((resultado:ProdIndividual)=>
     {
       this.produccionEmpleado = resultado;
+    
     })
     this._router.navigate(['produccion-empleado'])
   }

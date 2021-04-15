@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ServiciosService {
 
+  public numeroEmpleados:number[];
   public produccionMes:number[];
   public produccionMesEmpleado:number[];
   
@@ -18,6 +19,7 @@ export class ServiciosService {
 
   public id_employees:number = 1;
   public id_companies: number = 1;
+  
 
   public nombreEmpleado: string = "";
   public produccionEmpleado: number = 0;

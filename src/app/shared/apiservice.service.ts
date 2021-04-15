@@ -40,6 +40,10 @@ export class ApiserviceService {
   {
     return this.http.post(this.url + "/productividad", nuevaProductividad)
   }
+  updateProductividad(nuevaProductividad:ProdIndividual)
+  {
+    return this.http.put(this.url+"/productividad", nuevaProductividad)
+  }
 
   getStock(id_companies:number){
     return this.http.get(this.url+"/stock?id_companies="+id_companies)
@@ -92,10 +96,10 @@ export class ApiserviceService {
     return this.http.post(this.url+"/empresa", empresa)
   }
 
-  // getEmpleados(id_companies:number)
-  // {
-  //   this.http.get(this.url+"/empleado?id_companies="+id_companies)
-  // }
+  getEmpleados(id_companies:number)
+  {
+    return this.http.get(this.url+"/empleado?id_companies="+id_companies)
+  }
 
   // getEmpleadoInd(id_companies:number)
   // {

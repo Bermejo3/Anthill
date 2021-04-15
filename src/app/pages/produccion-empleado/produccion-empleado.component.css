@@ -47,29 +47,42 @@
 
 /* <-- Modal --> */
 
-.tarjetas-modal{
-    /* background:  linear-gradient( rgba(31, 39, 61, 0.98),rgba(31, 39, 61, 0.95)),url("../../../assets/hormigasLogin.jpg");  */
-    background:  rgb(31, 40, 62, 0.90);
+.colocar-select{
+  width: fit-content;
+}
+.margen1{
+  margin-left: 2%;margin-right: -1%;
+}
+.margen2{
+  margin-right: 1%;
+}
+.tableContainer{
+  background: linear-gradient(
+    90deg
+    ,#03256c 0  
+    ,#0539a9 60%
+    ,#03256c);
+}
+#margen{
+  margin-right: 25%;
+}
+.boton-barra-filtros{
+  height: 55px;
+}
+
+  .iconos-tarjetas{
+    margin-left: 7%;  font-size: 30px; cursor: pointer;
   }
-  .modal-content{
-    background-color:#ff9100 ;
-    border:2px solid white;
-    width: 800px;
-    height: 450px;
-    margin-top: 90px;
-    position: relative;
+  .eliminar, .editar  {
+    color: white;
+    margin-left: 10px;
+    transition: color .1s;
   }
-  .cabecera-input{
-    width: 33%; background-color: rgb(31, 40, 62); color:white;margin-top: 15px;height: 40px;
+  .table .fa-times-circle:hover {
+    color: red;
+    cursor:pointer
   }
-  .form-select
-  {
-    background-color: rgb(45, 58, 88);color: white;margin-top: 15px; height: 40px;
-  }
-  .input-modal{
-    background-color: rgb(45, 58, 88);color: white;margin-top: 15px; height: 40px;
-  }
-  .colocar-boton{
-    justify-content: center;
-    margin: 3%;
+  .table .fa-edit:hover {
+    color:  var(--colorPrincipal);
+    cursor:pointer
   }
