@@ -14,10 +14,12 @@ import { ServiciosService } from 'src/app/shared/servicios.service';
 })
 export class VacacionesComponent implements OnInit {
 
+  public showInfo: boolean = false
   public dia: number = 0
   public mes: string = ""
   public vacaciones: Holidays[] = []
   public arrayVacaciones: string[] = []
+  
   constructor(public servicio: ServiciosService, private apiservice: ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
   }
@@ -54,11 +56,11 @@ export class VacacionesComponent implements OnInit {
   }
 
   show(){
-    this.servicio.showInfo = true;
+    this.showInfo = true;
   }
 
   modalClick(clickInfo: EventClickArg){
-    this.servicio.show()
+    this.show()
     this.mes = clickInfo.event.startStr
     let arrayVacaciones = []
     for (let i=0; i<this.vacaciones.length; i++){
@@ -71,7 +73,7 @@ export class VacacionesComponent implements OnInit {
 
   
   hide(){ 
-    this.servicio.showInfo = false;
+    this.showInfo = false;
   }
 
   getVacaciones(){
