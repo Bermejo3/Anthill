@@ -17,9 +17,8 @@ export class ServiciosService {
 
   public estaLogueado: boolean = false
 
-  public id_employees:number = 1;
-  public id_companies: number = 1;
-  
+  public id_employees:number = Number(JSON.parse(sessionStorage.getItem("id_employees")));  
+  public id_companies: number = Number(JSON.parse(sessionStorage.getItem("id_companies")));
 
   public nombreEmpleado: string = "";
   public produccionEmpleado: number = 0;
@@ -31,7 +30,8 @@ export class ServiciosService {
 
   constructor() 
   { 
-
+    this.id_employees = Number(JSON.parse(sessionStorage.getItem("id_employees"))) || 1;  
+    this.id_companies = Number(JSON.parse(sessionStorage.getItem("id_companies"))) || 1;
   }
 
   show(){

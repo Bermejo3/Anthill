@@ -19,6 +19,9 @@ export class StockComponent implements OnInit {
   mensaje: string = ""
   mostrar: boolean
   posicionTabla : number = 0
+
+  public page: number = 1
+  public itemsPerPage: number = 4
   
 
   constructor(public servicio: ServiciosService,public apiService: ApiserviceService) {

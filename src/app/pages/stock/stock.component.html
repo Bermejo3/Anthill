@@ -57,7 +57,7 @@
     Añadir</button>
 
     <div class="col iconos-barra-filtros">
-      <i class="far fa-address-card" routerLink="/stock-tarjetas"></i>
+      <i class="far fa-address-card" routerLink="/stock/tarjetas"></i>
       <i class="fas fa-table" id="margen" routerLink="/stock"></i>
     </div>
   </div>
@@ -84,7 +84,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let stock of arrayStock; let i = index; let even = even" [ngClass]="{trPar:even}" >
+          <tr *ngFor="let stock of arrayStock | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index; let even = even" [ngClass]="{trPar:even}" >
             <td>{{stock.id_stock}}</td>
             <td>{{stock.name}}</td>
             <td>{{stock.type}}</td>
@@ -98,7 +98,7 @@
           </tr>
         </tbody>
       </table>
-      
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>      
     </div>
     
   </div>

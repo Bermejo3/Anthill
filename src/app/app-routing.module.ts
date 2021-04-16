@@ -26,19 +26,19 @@ const routes: Routes = [
   {path:"about-us", component:AboutUsComponent},
   {path:"home", component:HomeComponent},
   {path:"turnos-empresa", component:TurnosEmpresaComponent},
-  {path:"turnos-semana", component:TurnosSemanaComponent},
+  {path:"turnos-empresa/semana", component:TurnosSemanaComponent},
   {path:"vacaciones", component:VacacionesComponent},
   {path:"stock",component:StockComponent},
-  {path:"stock-tarjetas", component:StockTarjetasComponent},
+  {path:"stock/tarjetas", component:StockTarjetasComponent},
   {path:"empleado-mi-perfil", component:EmpleadoMiPerfilComponent},
   {path:"empleado-turnos", component:EmpleadoTurnosComponent},
   {path:"empleado-vacaciones", component:EmpleadoVacacionesComponent},
   {path:"produccion", component:ProduccionComponent},
-  {path:"produccion-empleado", component:ProduccionEmpleadoComponent},
-  {path:"rrhh-add-empleados", component:RrhhAddEmpleadosComponent},
+  {path:"produccion/empleado", component:ProduccionEmpleadoComponent},
+  {path:"rrhh-empleados/add-empleados", component:RrhhAddEmpleadosComponent},
   {path:"rrhh-empleados", component:RrhhEmpleadosComponent},
   {path:"rrhh-empresa", component:RrhhEmpresaComponent},
-  {path:"rrhh-empleados-tabla", component:RrhhEmpleadosTablaComponent}
+  {path:"rrhh-empleados/tabla", component:RrhhEmpleadosTablaComponent}
 ];
 
 @NgModule({

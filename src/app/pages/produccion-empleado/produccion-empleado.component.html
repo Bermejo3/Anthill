@@ -36,7 +36,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor = "let empleadop of produccionEmpleados, let i=index">
+              <tr *ngFor = "let empleadop of produccionEmpleados | paginate: { itemsPerPage: itemsPerPage, currentPage: page }, let i=index">
                 <td>{{empleadop.name}}</td>
                 <td>{{empleadop.productivity}}</td>
                 <td>{{empleadop.hours}}</td>
@@ -46,6 +46,7 @@
               </tr>
             </tbody>
           </table>
+          <pagination-controls (pageChange)="page = $event"></pagination-controls>
         </div>
     </div>
     </div>

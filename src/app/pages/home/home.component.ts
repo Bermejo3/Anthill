@@ -44,6 +44,8 @@ export class HomeComponent implements OnInit {
       this.minute = this.d.getMinutes()*6
       this.hour = this.d.getHours()*30 + Math.round(this.minute/12)
     },1000)
+
+    console.log(this.servicio.id_companies)
   }
 
 }

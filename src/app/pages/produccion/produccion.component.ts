@@ -25,6 +25,9 @@ export class ProduccionComponent implements OnInit {
   public index: number;
 
   public mergeOptions = {};
+
+  public page: number = 1
+  public itemsPerPage: number = 7
   
   constructor(public servicio: ServiciosService, private _router:Router, private apiservice: ApiserviceService) 
   {
@@ -78,7 +81,7 @@ export class ProduccionComponent implements OnInit {
   getProdIndividual(i:number)
   {
     this.servicio.id_employees = this.arrayProductividad[i].id_employees; 
-    this._router.navigate(['produccion-empleado'])
+    this._router.navigate(['produccion/empleado'])
     
   }
   
@@ -90,7 +93,7 @@ export class ProduccionComponent implements OnInit {
       this.produccionEmpleado = resultado;
     
     })
-    this._router.navigate(['produccion-empleado'])
+    this._router.navigate(['produccion/empleado'])
   }
 
   verEmpleado(i:number)
@@ -99,7 +102,7 @@ export class ProduccionComponent implements OnInit {
 
     this.index = i;
 
-    this._router.navigate(['produccion-empleado'])
+    this._router.navigate(['produccion/empleado'])
   }
 
   nuevoDato(nombre:string,productividad:number, horas:number, dia:string)
@@ -110,7 +113,7 @@ export class ProduccionComponent implements OnInit {
     this.servicio.horasEmpleado = horas;
     this.servicio.diaTrabajado = dia;
 
-    this._router.navigate(['produccion-empleado'])
+    this._router.navigate(['produccion/empleado'])
 
   }
 
