@@ -13,25 +13,44 @@ export class RrhhAddEmpleadosComponent implements OnInit {
 
   mensaje: string = ""
   mostrar: boolean
-  empleado:Empleados = new Empleados(0,0,"","" , 0,"", 0, "", "", "", "",0,0,0)
+  empleado:Empleados = new Empleados(0,0,"","" , 0,"", 0, false,false,false,"", "", "", "",)
   arrayEmpleados : Empleados[]=[]
   posicionTabla : number = 0
   public myForm:FormGroup
+  checkbox:boolean=false
 
   constructor(public servicio: ServiciosService, public apiService:ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
   }
 
-  addEmpleado(name:string,surname:string,age:number,position:string,phone:number,email:string,password:string,description){
+  
+  getEmpleados(){
+    this.apiService.getEmpleados(this.servicio.id_companies).subscribe(
+      (data:Empleados[])=>
+      {
+        this.arrayEmpleados=data
+      }
+    )
+  }  
+
+  addEmpleado(name:string,surname:string,age:number,position:string,phone:number,shiftMorning:boolean,shiftAfternoon:boolean,shiftEvening:boolean,email:string,password:string,description){
     console.log(name);
-    this.myForm.value
-    this.apiService.addEmpleado(new Empleados(0,this.servicio.id_companies,name,surname,age,position,phone,email,password,description)).subscribe(
+    // this.myForm.value
+
+    let empleado = new Empleados(0,this.servicio.id_companies,name,surname,age,position,phone,shiftMorning,shiftAfternoon,shiftEvening,email,password,description)
+    console.log(empleado);
+    
+    this.apiService.addEmpleado(empleado).subscribe(
       (data:any)=>
       {
-        this.myForm.value
+        // this.myForm.value
         this.mensaje=data.mensaje
       }
     )
+  }
+
+  checkBox(){
+    this.checkbox=true
   }
   
   ngOnInit(): void {

@@ -6,7 +6,6 @@ export class Empresa {
     public email:string,
     public phone:number, 
     public password:string,
-    public confPass:string,
     public picture?:string
     ){}
 

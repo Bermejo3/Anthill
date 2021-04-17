@@ -1,0 +1,76 @@
+<div class="row tarjeta-add-empleado">
+    <div class="col-4" >
+        <img src="../../../assets/tarjetas/empleado2.jpg"
+          style="width: 300px;height:305px;margin-top: -12%; margin-left: -20%; border-radius: 16%;" alt="">
+    </div> 
+      
+    
+      <div class="col-8">
+        <form>
+  
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Nombre</span>
+            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
+              value ="{{arrayEmpleados[posicionTabla].name}}" defaultValue=null #name>
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Apellidos</span>
+            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
+            value ="{{arrayEmpleados[posicionTabla].surname}}" defaultValue=null #surname>
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Edad</span>
+            <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
+            value ="{{arrayEmpleados[posicionTabla].age}}" defaultValue=null #age>
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Puesto</span>
+            <input type="email" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
+            value ="{{arrayEmpleados[posicionTabla].position}}" defaultValue=null #position>
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Teléfono</span>
+            <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
+            value ="{{arrayEmpleados[posicionTabla].phone}}" defaultValue=null #phone>
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Turno</span>
+            <div class="falso-input">
+              <div class="colocar-selectores" >
+  
+                      <input name="cbipeliculas" type="checkbox" (click)="checkBox()" #shiftMorning/>       Mañana
+              
+                      <input class="margen1" name="cbilibros margen1" type="checkbox" (click)="checkBox()" #shiftAfternoon />       Tarde
+                    
+                      <input class="margen1" name="cbiinternet margen2" type="checkbox" (click)="checkBox()" #shiftEvening />       Noche
+                    
+              </div>
+            </div>
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Email</span>
+            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
+            value ="{{arrayEmpleados[posicionTabla].email}}" defaultValue=null #email>
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Contraseña</span>
+            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
+            value ="{{arrayEmpleados[posicionTabla].password}}" defaultValue=null #password>
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Descripción</span>
+            <textarea class="form-control input-modal descripcion" id="exampleFormControlTextarea1" rows="2" value ="{{arrayEmpleados[posicionTabla].name}}" #description></textarea>
+  
+          </div>
+          <div class="row grande">
+            <button type="button" class="boton-barra-filtros reductor" routerLink="/rrhh-empleados" click="updateEmpleado(name.value,surname.value,age.valueAsNumber,position.value,phone.value,shiftMorning.checked, shiftAfternoon.checked, shiftEvening.checked,email.value,password.value,description.value)">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Guardar empleado</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  

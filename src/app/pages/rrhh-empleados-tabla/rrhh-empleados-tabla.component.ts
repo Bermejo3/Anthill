@@ -10,7 +10,7 @@ import{Empleados}from "../../models/empleados"
 })
 export class RrhhEmpleadosTablaComponent implements OnInit{
 
-  empleado: Empleados = new Empleados(0,0,"","",0,"",0,"","","","")
+  empleado: Empleados = new Empleados(0,0,"","",0,"",0,false,false,false,"","","","")
   arrayEmpleados : Empleados[] = []
   mensaje: string = ""
   mostrar: boolean
@@ -23,13 +23,18 @@ export class RrhhEmpleadosTablaComponent implements OnInit{
     this.mostrar = false
   }
   getEmpleados(){
+
     this.apiService.getEmpleados(this.servicio.id_companies).subscribe(
       (data:Empleados[])=>
       {
         this.arrayEmpleados=data
+        this.servicio.arrayEmpleados=this.arrayEmpleados
+        console.log(this.arrayEmpleados);
+
       }
     )
   }  
+
 
   cerrar() {
     this.mostrar = false

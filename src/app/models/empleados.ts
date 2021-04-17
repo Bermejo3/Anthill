@@ -7,12 +7,13 @@ export class Empleados {
         public age:number,
         public position:string,
         public phone:number,
+        public shiftMorning:boolean,
+        public shiftAfternoon:boolean,
+        public shiftEvening:boolean,
         public email:string,
         public password:string,
         public descrimption?:string,
         public picture?:string,
-        public shiftMorning?:number,
-        public shiftAfternoon?:number,
-        public shiftEvening?:number,
+        
     ){}
 }

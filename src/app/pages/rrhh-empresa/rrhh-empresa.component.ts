@@ -11,23 +11,41 @@ import { ServiciosService } from 'src/app/shared/servicios.service';
 export class RrhhEmpresaComponent implements OnInit {
 
   empresa:Empresa=new Empresa(0,"","","",0,"","")
-  arrayEmpresa : Empresa[] = []
+  arrayEmpresa : Empresa[] = [this.empresa]
   mensaje: string = ""
+  posicionTabla:number=0
+  
 
   constructor(public servicio: ServiciosService, public apiService:ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
   }
-  updateEmpresa(name:string,adress:string,email:string,phone:number,password:string,confPass:string,picture:string){
 
-    this.apiService.addEmpresa(new Empresa(0,name,adress,email,phone,password,confPass)).subscribe(
+  getEmpresa(){
+    this.apiService.getEmpresa(this.servicio.id_companies).subscribe
+    (
+      (data:Empresa[]) =>
+      {
+        console.log(data)
+        this.arrayEmpresa=data
+        console.log(this.arrayEmpresa)
+      }
+    )
+  }
+
+  updateEmpresa(name:string,adress:string,email:string,phone:number,password:string){
+    let id_companies =this.arrayEmpresa[this.posicionTabla].id_companies
+    console.log(id_companies)
+    this.apiService.updateEmpresa(new Empresa(id_companies,name,adress,email,phone,password)).subscribe(
       (data:any)=>
       {
         this.mensaje = data.mensaje
+        console.log(this.mensaje)
       }
     )   
   }
 
   ngOnInit(): void {
+    this.getEmpresa()
   }
 
 }
