@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Empleados } from '../models/empleados';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,8 @@ export class ServiciosService {
   public produccionMes:number[];
   public produccionMesEmpleado:number[];
   
+  public arrayEmpleados : Empleados[] = []
+
   public estaOculto:boolean = true;
 
   public esEmpleado:boolean = false;

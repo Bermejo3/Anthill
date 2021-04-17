@@ -105,6 +105,14 @@ export class ApiserviceService {
   {
     return this.http.post(this.url+"/empresa", empresa)
   }
+  getEmpresa(id_companies:number)
+  {
+    return this.http.get(this.url+"/empresa?id_companies=" + id_companies)
+  }
+  updateEmpresa(empresa:Empresa)
+  {
+    return this.http.put(this.url+"/empresa", empresa)
+  }
 
   getEmpleados(id_companies:number)
   {

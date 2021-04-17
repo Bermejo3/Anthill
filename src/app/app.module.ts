@@ -34,6 +34,7 @@ import { RrhhEmpleadosTablaComponent } from './pages/rrhh-empleados-tabla/rrhh-e
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 
+import { RrhhEditEmpleadosComponent } from './pages/rrhh-edit-empleados/rrhh-edit-empleados.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -63,6 +64,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     AboutUsComponent,
     StockTarjetasComponent,
     RrhhEmpleadosTablaComponent,
+    RrhhEditEmpleadosComponent,
     
   ],
   imports: [

@@ -11,7 +11,7 @@ import{Empleados}from "../../models/empleados"
 })
 export class RrhhEmpleadosComponent implements OnInit {
 
-  empleado: Empleados = new Empleados(0,0,"","",0,"",0,"","","","")
+  empleado: Empleados = new Empleados(0,0,"","",0,"",0,false,false,false,"","","","")
   arrayEmpleados : Empleados[] = []
   mensaje: string = ""
   mostrar: boolean
@@ -28,11 +28,15 @@ export class RrhhEmpleadosComponent implements OnInit {
 
 
   getEmpleados(){
+
     this.apiService.getEmpleados(this.servicio.id_companies).subscribe(
       (data:Empleados[])=>
       {
         this.arrayEmpleados=data
+        this.servicio.arrayEmpleados=this.arrayEmpleados
         this.showModal3 = false
+        console.log(this.arrayEmpleados);
+
       }
     )
   }  
