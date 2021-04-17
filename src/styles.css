@@ -6,6 +6,21 @@
   --colorLetraTablas: #fff;
 }
 
+.row1{
+  display: flex;
+  flex-direction: row;
+}
+
+.col2{
+  flex: 0 0 16.666667%;
+  max-width: 15%;
+}
+
+.col10{
+  flex: 0 0 83.333333%;
+  max-width: 82%;
+}
+
 .cuerpoComponentes{
   margin-top: 4vh
 }
@@ -20,10 +35,10 @@ body {
 
 /* ------------------Sidebar---------------------- */
 .sidebar {
-  /* background: var(--colorSideBar); */
-  background: linear-gradient(#fff, rgba(255, 255, 255, 0.664)), url("./assets/thomas-smith-399133-1707x2560.jpg");
+  background: var(--colorSideBar);
+  /* background: linear-gradient(#fff, rgba(255, 255, 255, 0.664)), url("./assets/thomas-smith-399133-1707x2560.jpg"); */
   color: var(--colorLetraSideBar);
-  height: 90vh;
+  height: 100vh;
   width: 184px;
 }
 
@@ -113,8 +128,13 @@ body {
   color: var(--colorSideBar);
 }
 
+.navbar-brand{
+  margin-right: 0;
+}
+
 .nav h2{
-  margin-top: 1rem;
+  margin-top: 0;
+  margin-bottom: 0;
   font-size: 40px;
   text-align: center;
   text-transform: uppercase;
@@ -210,6 +230,10 @@ body {
 }
 .form-control{
   font-size: small;
+}
+
+.ngx-pagination .current{
+  background: var(--colorPrincipal) !important;
 }
 /* ----------------------------------------------------------------------------------------------------------------- */
 

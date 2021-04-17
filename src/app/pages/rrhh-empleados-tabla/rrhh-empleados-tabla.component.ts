@@ -18,6 +18,9 @@ export class RrhhEmpleadosTablaComponent implements OnInit{
   showModal: boolean
   showModal2:boolean
 
+  public page: number = 1
+  public itemsPerPage: number = 10
+
   constructor(public servicio: ServiciosService, public apiService:ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.mostrar = false

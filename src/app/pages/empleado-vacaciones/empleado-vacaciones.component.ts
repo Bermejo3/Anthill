@@ -19,6 +19,9 @@ export class EmpleadoVacacionesComponent implements OnInit {
   public posicionEvento: number = 0
   public diaVacaciones: string = ""
 
+  public page: number = 1
+  public itemsPerPage: number = 7
+  
   public vacaciones: Holidays[] = []
   
   constructor(public servicio: ServiciosService, private apiservice: ApiserviceService) {

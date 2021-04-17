@@ -92,6 +92,9 @@ export class ProduccionEmpleadoComponent implements OnInit {
   public showModal2:boolean;
   public showModal3:boolean;
 
+  public page: number = 1
+  public itemsPerPage: number = 7
+
   public mergeOptions = {}
 
   public misEmpleados:number;

@@ -32,7 +32,7 @@
      </select>
    </div>
    <!-- -------------------- Button e Iconos------------------------------ -->
-   <button class="boton-barra-filtros reductor" routerLink="/rrhh-add-empleados">
+   <button class="boton-barra-filtros reductor" routerLink="rrhh-empleados/add-empleados">
     <span></span>
     <span></span>
     <span></span>
@@ -41,7 +41,7 @@
 
    <div class="col iconos-barra-filtros">
     <i class="far fa-address-card" routerLink="/rrhh-empleados"></i>
-    <i class="fas fa-table" id="margen"routerLink="/rrhh-empleados-tabla"></i>
+    <i class="fas fa-table" id="margen"routerLink="/rrhh-empleados/tabla"></i>
 </div>
 
  </div>
@@ -51,7 +51,7 @@
 
    <div class="row fila-completa">
      <!-- <div class="col-3"> -->
-      <div class="card tarjetas letras-tarjeta tarjetas-fila1" *ngFor="let empleado of arrayEmpleados; let i = index">
+      <div class="card tarjetas letras-tarjeta tarjetas-fila1" *ngFor="let empleado of arrayEmpleados | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
         <img class="card-img-top"src="../../../assets/tarjetas/empleado3.jfif" alt="Card image cap">
         <div class="card-body" >
           <p class="card-text"><b>Nombre: </b>{{empleado.name}}</p>
@@ -63,14 +63,13 @@
           <hr>
           <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="showSure(i)"></i>
             <i class="fas fa-edit iconos-tarjetas editar" routerLink="rrhh-add-empleados"></i></p>
-          
-          
         </div>
       </div>
      <!-- </div> -->
-     
   </div>
 </div>
+<pagination-controls (pageChange)="page = $event"></pagination-controls>
+
 <!-- Modal Borrar-->
 <div class="modal" id="myModal" [style.display]="showModal3 ? 'block' : 'none'" *ngFor="let stock of arrayEmpleados; let i = index" >
   <div class="modal-dialog">

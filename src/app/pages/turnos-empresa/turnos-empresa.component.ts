@@ -60,7 +60,7 @@ export class TurnosEmpresaComponent implements OnInit {
     // console.log(getDateOfWeek(weekday(), clickInfo.date.getFullYear()))
     this.servicio.firstDayWeek=getDateOfWeek(weekday(), clickInfo.date.getFullYear())
 
-    this._router.navigate(['turnos-semana'])
+    this._router.navigate(['turnos-empresa/semana'])
   }
   
   getTurnos(){

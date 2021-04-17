@@ -1,14 +1,19 @@
 
 <div *ngIf='servicio.estaLogueado, else isFalse' >
-
-  <div class="row">
-    <div class="col-2">
+  <div class="row1">
+    <div class="col2">
       <app-sidebar></app-sidebar>
     </div>
-    <div class="col-10 cuerpoComponentes">
+    <div class="col10 cuerpoComponentes">
         <router-outlet></router-outlet>
     </div>
   </div>
+  <!-- <div class="row1">
+    <app-sidebar></app-sidebar>
+    <router-outlet></router-outlet>
+  </div> -->
+
+
 </div>
 
 <ng-template #isFalse> 

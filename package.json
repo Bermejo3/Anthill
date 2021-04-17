@@ -31,6 +31,7 @@
     "jquery": "^3.6.0",
     "ng2-charts": "^2.4.2",
     "ngx-echarts": "^6.0.1",
+    "ngx-pagination": "^5.0.0",
     "resize-observer-polyfill": "^1.5.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

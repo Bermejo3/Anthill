@@ -64,7 +64,7 @@
 <div class="row container-tarjetas">
   <div class="row fila-completa">
 
-     <div class="card tarjetas letras-tarjeta tarjetas-fila1" *ngFor="let stock of arrayStock; let i = index">
+     <div class="card tarjetas letras-tarjeta tarjetas-fila1" *ngFor="let stock of arrayStock | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
        <img class="card-img-top"src="../../../assets/tarjetas/jeringuilla.jpg" alt="Card image cap">
        <div class="card-body" >
          <p class="card-text"><b>Artículo: </b>{{stock.name}}</p>
@@ -76,13 +76,9 @@
          <hr>
          <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="showSure(i)"></i>
            <i class="fas fa-edit iconos-tarjetas editar"  (click)="show2(i)" ></i></p>
-         
-         
        </div>
      </div>
-    
-
-
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>      
   </div>
 </div>
          <!-- Modal Borrar-->

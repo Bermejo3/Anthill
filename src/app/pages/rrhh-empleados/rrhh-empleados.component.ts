@@ -17,6 +17,10 @@ export class RrhhEmpleadosComponent implements OnInit {
   mostrar: boolean
   posicionTabla : number = 0
   showModal3:boolean
+  
+  public page: number = 1
+  public itemsPerPage: number = 4
+
   constructor(public servicio: ServiciosService, public apiService:ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.mostrar = false

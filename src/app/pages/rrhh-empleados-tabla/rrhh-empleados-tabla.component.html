@@ -65,7 +65,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let empleado of arrayEmpleados; let i = index; let even = even" [ngClass]="{trPar:even}">
+            <tr *ngFor="let empleado of arrayEmpleados | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index; let even = even" [ngClass]="{trPar:even}">
               <td>{{empleado.name}}</td>
               <td>{{empleado.surname}}</td>
               <td>{{empleado.age}}</td>
@@ -77,10 +77,10 @@
               <td><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="show(i)"></i>
                 <i class="fas fa-edit iconos-tarjetas editar" routerLink="/rrhh-add-empleados"></i></td>
             </tr>
- 
- 
           </tbody>
         </table>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
       </div>
        <!-- Modal Borrar-->
       <div class="modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">

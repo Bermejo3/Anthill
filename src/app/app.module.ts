@@ -32,6 +32,8 @@ import { StockTarjetasComponent } from './pages/stock-tarjetas/stock-tarjetas.co
 import { NgxEchartsModule } from 'ngx-echarts';
 import { RrhhEmpleadosTablaComponent } from './pages/rrhh-empleados-tabla/rrhh-empleados-tabla.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -72,6 +74,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     FullCalendarModule, // register FullCalendar
     NgbModule,
     NgxEchartsModule.forRoot({ echarts: () => import('echarts'),}),// gráficas
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

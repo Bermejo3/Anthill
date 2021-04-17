@@ -16,7 +16,7 @@
                         <th></th>
                     </tr>
                   </thead>
-                  <tbody *ngFor='let dia of calendarEvents, let i = index; odd as isOdd'>
+                  <tbody *ngFor='let dia of calendarEvents | paginate: { itemsPerPage: itemsPerPage, currentPage: page }, let i = index; odd as isOdd'>
                     <tr [ngClass] ="{'trPar' : isOdd}">
                       <td>{{ i+1 }}</td>
                       <td>{{ dia.date }}</td>
@@ -24,6 +24,7 @@
                     </tr>
                   </tbody>
                 </table>
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
               </div>
             </div>
         </div>

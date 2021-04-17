@@ -1,5 +1,5 @@
 
-.opciones, .opcionesHide
+.opciones, .opcionesHide, .opcionesLog
 {
     position: flex;
     display: inline-block;
@@ -23,6 +23,14 @@
 
 .opciones i, .opcionesHide i{
     font-size: 20px;
+}
+
+.opcionesHide{
+    padding-bottom: 0;
+}
+
+.opcionesLog{
+    padding-top: 0;
 }
 
 .misOpciones .active{
