@@ -46,7 +46,7 @@
  
   </div>
   <!-- ----------------------------Tabla------------------------------------------- -->
-  <div class="row tamaño-tabla">
+  <div class="row tamaño-tabla" *ngIf="arrayEmpleados.length > 0; else isNone">
 
     <div class="container mt-5">
       <div class="tableContainer">
@@ -79,9 +79,15 @@
             </tr>
           </tbody>
         </table>
-  <pagination-controls (pageChange)="page = $event"></pagination-controls>
-
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
       </div>
+    </div>
+  </div>
+  
+<ng-template #isNone>
+  <h5 style="text-align: center;">Todavía no hay empleados introducidos</h5>
+</ng-template>
+
        <!-- Modal Borrar-->
       <div class="modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
         <div class="modal-dialog">
@@ -100,9 +106,8 @@
         <button type="button" class="close" on-click="cerrar()">&times;</button>
         <strong>{{mensaje}}</strong> <a href="#" class="alert-link"></a>
       </div>
-  </div>
  
  
  
-</div>
+
  

@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
         this.apiservice.postLoginEmpleado(email, password).subscribe((resultado: any)=>{
           if (resultado.codigo == 1){
             this.servicio.esEmpleado = true
+            sessionStorage.setItem("id_companies", JSON.stringify(resultado.res[0].id_companies))
             sessionStorage.setItem("id_employees", JSON.stringify(resultado.res[0].id_employees))
             // this.servicio.id_employees = resultado.res[0].id_employees
             this._router.navigate(['home'])

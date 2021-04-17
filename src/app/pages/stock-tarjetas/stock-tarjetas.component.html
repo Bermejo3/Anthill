@@ -62,7 +62,7 @@
  
 <!-- ------------------Tarjetas--------------------------------- -->
 <div class="row container-tarjetas">
-  <div class="row fila-completa">
+  <div class="row fila-completa" *ngIf="arrayStock.length > 0; else isNone">
 
      <div class="card tarjetas letras-tarjeta tarjetas-fila1" *ngFor="let stock of arrayStock | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
        <img class="card-img-top"src="../../../assets/tarjetas/jeringuilla.jpg" alt="Card image cap">
@@ -81,6 +81,9 @@
   <pagination-controls (pageChange)="page = $event"></pagination-controls>      
   </div>
 </div>
+<ng-template #isNone>
+  <h5 style="text-align: center;">Todavía no hay artículos introducidos</h5>
+</ng-template>
          <!-- Modal Borrar-->
          <div class="modal" id="myModal" [style.display]="showModal3 ? 'block' : 'none'" *ngFor="let stock of arrayStock; let i = index" >
           <div class="modal-dialog">

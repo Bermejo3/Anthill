@@ -23,6 +23,46 @@
     Añadir</button>
 </div>
 
+<div class="row" *ngIf="arrayProductividad.length > 0; else isNone">
+  <div class = "grafico">
+    <div echarts [options]="ChartOptions" [loading]="true" [merge]="mergeOptions" class="demo-chart">
+    </div>
+  </div>
+  
+  <div class="col">
+    <div class="row tamaño-tabla">
+      <div class="container mt-5">
+        <div class="tableContainer">
+          <table class="table">
+            <thead>
+              <tr class="tablaHeader">
+                <th>Empleado</th>
+                <th class="destacada">Producción Total</th>
+                <th>Horas Trabajadas</th>
+                <th>Emblema</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor = "let trabajadores of arrayProductividad | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index; let even = even" [ngClass] = "{trPar: even}" (click)="getProdIndividual(i)">
+                <td>{{trabajadores.name}}</td>
+                <td class="destacada">{{trabajadores.sum_productivity}}</td>
+                <td>{{trabajadores.sum_hours}}</td>
+                <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #isNone>
+  <h5 style="text-align: center;">Todavía no hay datos de producción introducidos</h5>
+</ng-template>
+
+
+<!-- Modal añadir-->
 <div class="modal tarjetas-modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -62,37 +102,4 @@
       
     </div>
   </div>
-</div>
-
-<div class="row">
-  <div class = "grafico">
-    <div echarts [options]="ChartOptions" [loading]="true" [merge]="mergeOptions" class="demo-chart">
-  </div>
-</div>
-
-<div class="col">
-<div class="row tamaño-tabla">
-  <div class="container mt-5">
-    <div class="tableContainer">
-      <table class="table">
-        <thead>
-          <tr class="tablaHeader">
-            <th>Empleado</th>
-            <th class="destacada">Producción Total</th>
-            <th>Horas Trabajadas</th>
-            <th>Emblema</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor = "let trabajadores of arrayProductividad | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index; let even = even" [ngClass] = "{trPar: even}" (click)="getProdIndividual(i)">
-            <td>{{trabajadores.name}}</td>
-            <td class="destacada">{{trabajadores.sum_productivity}}</td>
-            <td>{{trabajadores.sum_hours}}</td>
-            <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
-          </tr>
-        </tbody>
-      </table>
-      <pagination-controls (pageChange)="page = $event"></pagination-controls>
-    </div>
-</div>
 </div>

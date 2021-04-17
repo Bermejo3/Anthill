@@ -113,7 +113,9 @@ export class EmpleadoVacacionesComponent implements OnInit {
     this.calendarEvents.push({date: dia, display: 'background', backgroundColor: '#ff9100',
           imageUrl: '../../../assets/Logo/Hormiga1.png',})
 
-    this.apiservice.addVacacionesEmp(this.servicio.id_employees, dia).subscribe((resultado: any)=>{
+    this.apiservice.addVacacionesEmp(this.servicio.id_employees, this.servicio.id_companies, dia).subscribe((resultado: any)=>{
+      
+      console.log(resultado)
       if (resultado.codigo == 1){
         console.log(resultado.mensaje)
       }

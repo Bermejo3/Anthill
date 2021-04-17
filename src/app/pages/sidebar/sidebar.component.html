@@ -82,7 +82,7 @@
           </nav>
         <div>
             <hr class="separador">
-            <a class="navbar-brand opcionesLog"><i class="fas fa-sign-out-alt"></i><span *ngIf="this.servicio.estaOculto"> Log out</span></a>
+            <a class="navbar-brand opcionesLog" (click)="cerrarSesion()"><i class="fas fa-sign-out-alt"></i><span *ngIf="this.servicio.estaOculto"> Log out</span></a>
         </div>
     </div>
 </div>

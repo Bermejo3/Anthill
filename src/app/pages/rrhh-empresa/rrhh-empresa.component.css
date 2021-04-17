@@ -5,6 +5,7 @@
     background: linear-gradient(#03256c, #03246cde), url("../../../assets/hormiguero.png");
     margin-left: 10%;
     border-radius: 6px;
+    margin-top: 5vh;
   }
   
   /* ................................................Boton y Search................................................. */

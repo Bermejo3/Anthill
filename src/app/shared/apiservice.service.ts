@@ -93,9 +93,10 @@ export class ApiserviceService {
     return this.http.delete(this.url + "/vacaciones", options)
   }
 
-  addVacacionesEmp(id_employees, date){
+  addVacacionesEmp(id_employees, id_companies, date){
     let body = {
       id_employees: id_employees,
+      id_companies: id_companies,
       date: date
     }
     return this.http.post(this.url + "/vacaciones", body)

@@ -5,7 +5,7 @@ body {
 
 .tarjeta-login {
 
-  border: 1px solid turquoise;
+  border: 1px solid rgba(255,255,255,0.09);
   width: 400px;
   height: 520px;
   border-radius: 6px;

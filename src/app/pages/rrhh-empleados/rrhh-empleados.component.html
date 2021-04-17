@@ -46,32 +46,33 @@
 
  </div>
  <!-- ------------------Tarjetas--------------------------------- -->
- <div class="row container-tarjetas">
+ <div *ngIf="arrayEmpleados.length > 0; else isNone">
+  <div class="row container-tarjetas">
+    <div class="row fila-completa">
+      <!-- <div class="col-3"> -->
+       <div class="card tarjetas letras-tarjeta tarjetas-fila1" *ngFor="let empleado of arrayEmpleados | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
+         <img class="card-img-top"src="../../../assets/tarjetas/empleado3.jfif" alt="Card image cap">
+         <div class="card-body" >
+           <p class="card-text"><b>Nombre: </b>{{empleado.name}}</p>
+           <p class="card-text"><b>Apellido: </b>{{empleado.surname}}</p>
+           <p class="card-text"><b>Edad: </b>{{empleado.age}}</p>
+           <p class="card-text"><b>Puesto: </b>{{empleado.position}} </p>
+           <p class="card-text"><b>Teléfono: </b>{{empleado.phone}}</p>
+           <p class="card-text"><b>Email: </b>{{empleado.email}}</p>
+           <hr>
+           <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="showSure(i)"></i>
+             <i class="fas fa-edit iconos-tarjetas editar" routerLink="/rrhh-edit-empleados"></i></p>
+         </div>
+       </div>
+      <!-- </div> -->
+   </div>
+ </div>
+ <pagination-controls (pageChange)="page = $event"></pagination-controls>
+ </div>
 
-
-   <div class="row fila-completa">
-     <!-- <div class="col-3"> -->
-      <div class="card tarjetas letras-tarjeta tarjetas-fila1" *ngFor="let empleado of arrayEmpleados | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
-        <img class="card-img-top"src="../../../assets/tarjetas/empleado3.jfif" alt="Card image cap">
-        <div class="card-body" >
-          <p class="card-text"><b>Nombre: </b>{{empleado.name}}</p>
-          <p class="card-text"><b>Apellido: </b>{{empleado.surname}}</p>
-          <p class="card-text"><b>Edad: </b>{{empleado.age}}</p>
-          <p class="card-text"><b>Puesto: </b>{{empleado.position}} </p>
-          <p class="card-text"><b>Teléfono: </b>{{empleado.phone}}</p>
-          <p class="card-text"><b>Email: </b>{{empleado.email}}</p>
-          <hr>
-          <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="showSure(i)"></i>
-            <i class="fas fa-edit iconos-tarjetas editar" routerLink="/rrhh-edit-empleados"></i></p>
-          
-          
-        </div>
-      </div>
-     <!-- </div> -->
-  </div>
-</div>
-<pagination-controls (pageChange)="page = $event"></pagination-controls>
-
+<ng-template #isNone>
+  <h5 style="text-align: center;">Todavía no hay empleados introducidos</h5>
+</ng-template>
 <!-- Modal Borrar-->
 <div class="modal" id="myModal" [style.display]="showModal3 ? 'block' : 'none'" *ngFor="let stock of arrayEmpleados; let i = index" >
   <div class="modal-dialog">

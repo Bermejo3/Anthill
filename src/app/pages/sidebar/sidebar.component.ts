@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ServiciosService } from 'src/app/shared/servicios.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class SidebarComponent implements OnInit {
   public isHidden: boolean = true;
   public oculto:boolean=true;
 
-  constructor(public servicio:ServiciosService) 
+  constructor(public servicio:ServiciosService, private _router: Router) 
   { 
 
   }
@@ -45,6 +46,12 @@ export class SidebarComponent implements OnInit {
     this.oculto=true
 
     document.getElementById('sidebar')!.classList.toggle('sidebarContracted')
+  }
+
+  cerrarSesion(){
+    sessionStorage.removeItem("id_companies")
+    sessionStorage.removeItem("id_employees")
+    this._router.navigate(['login'])
   }
 
   ngOnInit(): void {
