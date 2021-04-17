@@ -54,32 +54,11 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="trPar">
-                        <td>250</td>
-                        <td>5</td>
-                        <td>22-11-21</td>
+                      <tr *ngFor = "let empleadop of produccionEmpleados, let i=index">
+                        <td>{{empleadop.productivity}}</td>
+                        <td>{{empleadop.hours}}</td>
+                        <td>{{empleadop.date.slice(0,10)}}</td>
                       </tr>
-                        <tr>
-                          <td>250</td>
-                          <td>6</td>
-                          <td>23-11-21</td>
-                        </tr>
-                      <tr class="trPar">
-                        <td>250</td>
-                        <td>5</td>
-                        <td>22-11-21</td>
-                      </tr>
-                        <tr>
-                          <td>250</td>
-                          <td>6</td>
-                          <td>23-11-21</td>
-                        </tr>
-                      <tr class="trPar">
-                        <td>250</td>
-                        <td>5</td>
-                        <td>22-11-21</td>
-                      </tr>
-                       
                     </tbody>
                   </table>
                 </div>
@@ -88,7 +67,7 @@
 </div>
 
 <div class="row">
-    <div class="grafico">
-      <div echarts [options]="chartOptions" [loading] = "true" class="demo-chart">
-    </div>
+  <div class = "grafico">
+    <div echarts [options]="chartOptions" [merge]="mergeOptions" [loading]="true" class="demo-chart">
   </div>
+</div>

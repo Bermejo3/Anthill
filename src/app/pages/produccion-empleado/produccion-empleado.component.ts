@@ -1,5 +1,7 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { Empleados } from 'src/app/models/empleados';
 import { ProdIndividual } from 'src/app/models/prod-individual';
 import { Productividad } from 'src/app/models/productividad';
 import { ApiserviceService } from 'src/app/shared/apiservice.service';
@@ -17,7 +19,7 @@ export class ProduccionEmpleadoComponent implements OnInit {
     title: 
     {
       textStyle:{color:'#ffffff'},
-      text: 'Productividad',
+      text: 'Producción',
     },
     textStyle: 
     {
@@ -58,7 +60,7 @@ export class ProduccionEmpleadoComponent implements OnInit {
     ],
     series: [
         {   
-            name: 'Productividad Empresa',
+            name: 'Producción Empresa',
             type: 'line',
             areaStyle: {},
             emphasis: {
@@ -80,6 +82,7 @@ export class ProduccionEmpleadoComponent implements OnInit {
 
   public produccionEmpleados: ProdIndividual [];
   public produccionEmpleado: ProdIndividual;
+  public miEmpleado:Empleados;
 
   public id_productivity:number;
 
@@ -87,6 +90,7 @@ export class ProduccionEmpleadoComponent implements OnInit {
 
   public showModal:boolean;
   public showModal2:boolean;
+  public showModal3:boolean;
 
   public mergeOptions = {}
 
@@ -96,12 +100,15 @@ export class ProduccionEmpleadoComponent implements OnInit {
 
   public posicionTabla:number;
 
+  public mensaje:string;
+
   constructor(public servicio: ServiciosService, public apiservice: ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     
     
     this.showModal=false;
-    this.showModal2 = false
+    this.showModal2 = false;
+    this.showModal3=false;
 
     this.id_productivity=0;
     this.servicio.numeroEmpleados=[];
@@ -110,6 +117,7 @@ export class ProduccionEmpleadoComponent implements OnInit {
     this.misEmpleados=0;
 
     this.posicionTabla=0;
+    this.mensaje = "";
   }
 
   getEmpleados()
@@ -122,6 +130,13 @@ export class ProduccionEmpleadoComponent implements OnInit {
 
         this.misEmpleados = this.servicio.numeroEmpleados.length;
       }
+    })
+  }
+  getEmpleadoInd()
+  {
+    this.apiservice.getEmpleadoInd(this.servicio.id_companies).subscribe((resultado:any)=>
+    {
+      
     })
   }
 
@@ -154,7 +169,7 @@ export class ProduccionEmpleadoComponent implements OnInit {
         this.mergeOptions = {
 					series: [
             {
-              name: 'Productividad Media',
+              name: 'Producción Media',
               type: 'line',
               areaStyle: {},
               emphasis: {
@@ -199,9 +214,9 @@ export class ProduccionEmpleadoComponent implements OnInit {
 
   }
 
-  updateProductividad(nombre:string,productividad:number, horas:number,dia:string){
+  updateProductividad(nombre:string,productividad:number, horas:number,dia:string)
+  {
   
-    console.log(this.servicio.id_employees, nombre, productividad, horas, dia);
     this.id_productivity = this.produccionEmpleados[this.posicionTabla].id_productivity;
     
     this.apiservice.updateProductividad(new ProdIndividual(this.servicio.id_employees,nombre,productividad, horas, dia, this.servicio.id_companies, this.id_productivity)).subscribe(
@@ -213,6 +228,17 @@ export class ProduccionEmpleadoComponent implements OnInit {
       }
   
     )
+  }
+
+  deleteProductividad()
+  {
+    this.id_productivity = this.produccionEmpleados[this.posicionTabla].id_productivity;
+    this.apiservice.deleteProductividad(this.id_productivity).subscribe((resultado:any) =>
+    {
+      this.mensaje = resultado.mensaje
+      this.getProdIndividual()
+      this.hide()
+    })
   }
 
   nuevoDato(nombre:string,productividad:number, horas:number, dia:string)
@@ -233,9 +259,14 @@ export class ProduccionEmpleadoComponent implements OnInit {
     this.showModal2=true;
     this.posicionTabla = posicionTabla;
   }
+  showSure(posicionTabla){
+    this.showModal3 = true;
+    this.posicionTabla = posicionTabla
+  }
   hide(){ 
     this.showModal = false;
     this.showModal2=false;
+    this.showModal3=false;
   }
   ngOnInit(): void 
   {

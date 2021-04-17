@@ -32,12 +32,6 @@ export class ProduccionComponent implements OnInit {
     this.index = 0
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.showModal = false;
-    this.data = [
-      { empleado: 'John', productividad: '250', horas: '35' },
-      { empleado: 'Michael', productividad: '789', horas: '39' },
-      { empleado: 'Fernando', productividad: '234', horas: '45' },
-      { empleado: 'Tania', productividad: '435', horas: '47' }
-    ];
   }
 
   getProductMes()

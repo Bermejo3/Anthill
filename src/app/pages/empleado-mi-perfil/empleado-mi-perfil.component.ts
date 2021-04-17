@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { ProdIndividual } from 'src/app/models/prod-individual';
+import { Productividad } from 'src/app/models/productividad';
+import { ApiserviceService } from 'src/app/shared/apiservice.service';
 import { ServiciosService } from 'src/app/shared/servicios.service';
 
 @Component({
@@ -14,7 +17,7 @@ export class EmpleadoMiPerfilComponent implements OnInit {
     title: 
     {
       textStyle:{color:'#ffffff'},
-      text: 'Productividad',
+      text: 'Producción',
     },
     textStyle: 
     {
@@ -55,32 +58,131 @@ export class EmpleadoMiPerfilComponent implements OnInit {
     ],
     series: [
         {   
-            name: 'Productividad Empresa',
+            name: 'Producción Media',
             type: 'line',
             areaStyle: {},
             emphasis: {
                 focus: 'series'
             },
-            data: [120, 132, 101, 134, 90, 230, 210]
+            data: []
         },
         { 
           color: ["#00ffff"],
-          name: 'Olivia',
+          name: 'Tú',
           type: 'line',
           areaStyle: {},
           emphasis: {
               focus: 'series'
           },
-          data: [125, 99, 230, 274, 100, 55, 400]
+          data: []
       }
   ]}
 
-  constructor(public servicio: ServiciosService) {
+  public mergeOptions={};
+  public misEmpleados:number;
+  public produccionEmpleados: ProdIndividual [];
+  public arrayProductividad: Productividad[];
+
+  constructor(public servicio: ServiciosService, public apiservice: ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.servicio.esEmpleado=true //Para iniciar el sidebar de empleado
+
+    this.servicio.numeroEmpleados=[];
+    this.servicio.produccionMes=[];
+    this.servicio.produccionMesEmpleado=[];
+    
+    this.arrayProductividad = [];
+    this.produccionEmpleados = [];
+    this.misEmpleados=0;
+    
+  }
+  getEmpleados()
+  {
+    this.apiservice.getEmpleados(this.servicio.id_companies).subscribe((resultado:any[]) =>
+    {
+      for(let i=0; i<resultado.length; i++)
+      {
+        this.servicio.numeroEmpleados.push(resultado[i].id_employees);
+
+        this.misEmpleados = this.servicio.numeroEmpleados.length;
+      }
+    })
   }
 
-  ngOnInit(): void {
+  getProductividad()
+  {
+    this.apiservice.getProductividad(this.servicio.id_companies).subscribe((resultado:Productividad[])=>
+    {
+      
+      this.arrayProductividad = resultado
+    })
+  }
+  
+  getProdIndividual()
+  {
+    this.apiservice.getProdIndividual(this.servicio.id_employees, this.servicio.id_companies).subscribe((resultado: ProdIndividual[]) =>
+    {
+     
+      this.produccionEmpleados = resultado;
+
+      console.log(this.produccionEmpleados)
+      
+    })
+    
+  }
+  ProdIndiMes()
+  {
+    this.getProductMes();
+    this.apiservice.ProdIndiMes(this.servicio.id_employees, this.servicio.id_companies).subscribe((resultado:any[])=>
+    {
+      for(let i=0; i<resultado.length; i++)
+      {
+        this.servicio.produccionMesEmpleado.push(resultado[i].sum_productivity);
+
+        this.mergeOptions = {
+					series: [
+            {
+              name: 'Producción Media',
+              type: 'line',
+              areaStyle: {},
+              emphasis: {
+                  focus: 'series'
+              },
+              data: this.servicio.produccionMes
+            },
+            { 
+              color: ["#00ffff"],
+              name: 'Tú',
+              type: 'line',
+              areaStyle: {},
+              emphasis: {
+                  focus: 'series'
+              },
+              data: this.servicio.produccionMesEmpleado
+            }
+          ]
+				};
+      }
+    })
+  }
+  getProductMes()
+  {
+    this.apiservice.getProductMes(this.servicio.id_companies).subscribe((resultado: any[])=>
+    {
+      for(let i=0; i<resultado.length; i++)
+      {
+        this.servicio.produccionMes.push(resultado[i].sum_productivity/this.misEmpleados);
+      }
+    })
+  }
+
+  ngOnInit(): void 
+  {
+    this.getEmpleados()
+    this.getProdIndividual()
+    this.getProductividad()
+    this.ProdIndiMes()
+    
   }
 
 }

@@ -41,7 +41,7 @@
                 <td>{{empleadop.productivity}}</td>
                 <td>{{empleadop.hours}}</td>
                 <td>{{empleadop.date.slice(0,10)}}</td>
-                <td><i class="far fa-times-circle iconos-tarjetas eliminar"></i>
+                <td><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="showSure(i)"></i>
                   <i class="fas fa-edit iconos-tarjetas editar" (click)="show2(i)"></i></td>
               </tr>
             </tbody>
@@ -49,6 +49,27 @@
         </div>
     </div>
     </div>
+
+  </div>
+  <!-- Modal Borrar-->
+  <div class="modal" id="myModal" [style.display]="showModal3 ? 'block' : 'none'">
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-body">
+        ¿Seguro de que quieres borrar este dato?
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="hide()">Atrás</button>
+         <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteProductividad()">Borrar</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
+ <!-- <div class="alert alert-dismissible alert-success" *ngIf="mostrar">
+   <button type="button" class="close" on-click="hide()">&times;</button>
+   <strong>Dato borrado</strong> <a href="#" class="alert-link"></a>
+ </div> -->
 <!-- Modal añadir nueva productividad-->
     <div class="modal tarjetas-modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
       <div class="modal-dialog">
@@ -90,7 +111,7 @@
         </div>
       </div>
     </div>
-<!--Modal editar/borrar productividad-->
+<!--Modal editar productividad-->
     <div class="modal tarjetas-modal" id="myModal" [style.display]="showModal2 ? 'block' : 'none'">
       <div class="modal-dialog">
         <div class="modal-content">

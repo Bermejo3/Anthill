@@ -44,6 +44,14 @@ export class ApiserviceService {
   {
     return this.http.put(this.url+"/productividad", nuevaProductividad)
   }
+  deleteProductividad(id_productivity:number)
+  {
+    let options = {
+      headers: new HttpHeaders({'Content-Type':'application/json'}),
+      body:{"id_productivity" : id_productivity}
+    }
+    return this.http.delete(this.url + "/productividad", options)
+  }
 
   getStock(id_companies:number){
     return this.http.get(this.url+"/stock?id_companies="+id_companies)
