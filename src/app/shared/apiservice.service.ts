@@ -67,8 +67,8 @@ export class ApiserviceService {
     return this.http.delete(this.url+"/stock", options)
   }
 
-  getVacaciones(){
-    return this.http.get(this.url + "/vacaciones/fecha")
+  getVacaciones(id_companies: number){
+    return this.http.get(this.url + "/vacaciones/fecha?id_companies="+id_companies)
   }
 
   getVacacionesEmp(id_employees:number){

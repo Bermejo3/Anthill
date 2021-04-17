@@ -77,7 +77,7 @@ export class VacacionesComponent implements OnInit {
   }
 
   getVacaciones(){
-    this.apiservice.getVacaciones().subscribe((resultado: Holidays[])=>{
+    this.apiservice.getVacaciones(this.servicio.id_companies).subscribe((resultado: Holidays[])=>{
       this.vacaciones = resultado
     for (let i=0; i<this.vacaciones.length; i++){
       let holiday = {
