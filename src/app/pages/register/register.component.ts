@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   empresa:Empresa= new Empresa(0,"","","",0,"","")
   mensaje:string = ""
-  public myForm:FormGroup
+  public formularioRegister:FormGroup
   public prueba1:any
 
   constructor(public servicio: ServiciosService,public apiService: ApiserviceService,private formBuilder:FormBuilder) {
@@ -27,31 +27,63 @@ export class RegisterComponent implements OnInit {
    public buildForm()
    {
      const minPass = 8
-     const maxPass = 12
 
-     this.myForm = this.formBuilder.group({
-       name:[, Validators.required]
-      //  adress:[, Validators.required],
-      //  email:[, Validators.required],
-      //  phone:[, Validators.required],
-      //  password: [, [Validators.required, Validators.minLength(minPass), Validators.maxLength(maxPass)]],
-      //  confPass:[, [Validators.required, Validators.minLength(minPass), Validators.maxLength(maxPass)]]
-     })
+     this.formularioRegister = this.formBuilder.group({
+       nombre:["" , Validators.required],
+       direccion:["" , Validators.required],
+       email:["" , [Validators.required, Validators.email]],
+       telefono:["" , Validators.required],
+       contrasena: [ "", [Validators.required, Validators.minLength(minPass)]],
+       confContrasena:[ "", Validators.required]
+      },
+      {
+        validator: this.MustMatch('contrasena', 'confContrasena')
+    })
    }
 
+   MustMatch(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+        const control = formGroup.controls[controlName];
+        const matchingControl = formGroup.controls[matchingControlName];
+
+        if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+            // return if another validator has already found an error on the matchingControl
+            return;
+        }
+
+        // set error on matchingControl if validation fails
+        if (control.value !== matchingControl.value) {
+            matchingControl.setErrors({ mustMatch: true });
+        } else {
+            matchingControl.setErrors(null);
+        }
+    }
+  }
+
+  get f() { return this.formularioRegister.controls; }
+
+  
+
   addEmpresa(name:string,address:string,email:string,phone:number,password:string,confPass:string){
-    this.myForm.value
+    this.formularioRegister.value
     this.apiService.addEmpresa(new Empresa(0,name,address,email,phone,password,confPass)).subscribe(
       (data:any)=>
       {
-        this.myForm.value;
+        this.formularioRegister.value;
         console.log(address)
       }
     )
   }
-prueba(){
-  this.prueba1 = this.myForm.value
-}
+
+  add(){
+    console.log(this.formularioRegister.value)
+    // this.apiService.addEmpresa(new Empresa(0,this.formularioRegister.get('nombre').value,this.formularioRegister.get('direccion').value,this.formularioRegister.get('email').value,this.formularioRegister.get('telefono').value,this.formularioRegister.get('contrasena').value)).subscribe(
+    //   (data:any)=>
+    //   {
+    //     console.log(data)
+    //   }
+    // )
+  }
 
 
   ngOnInit(): void {

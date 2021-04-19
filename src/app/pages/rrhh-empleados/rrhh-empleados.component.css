@@ -56,7 +56,7 @@
   width: 97%;
   height: 50%;
   margin-left: 1%;
-  margin-top: 20px;
+  margin-top: 50px;
  
 
 }
@@ -84,7 +84,7 @@
   /* margin-top: 16px; */
 }
 .tarjetas-fila1 img{
-  margin-left: 1%;width: 17rem; height: 300px;margin-top: -40px; border-radius: 6px; cursor: pointer;
+  margin-left: 1%;width: 17rem; height: 275px;margin-top: -40px; border-radius: 6px; cursor: pointer;
           -webkit-box-shadow: 1px 1px 3px 4px #ccc; 
           -moz-box-shadow:    1px 1px 3px 4px #ccc;  
           box-shadow:         1px 1px 3px 4px #ccc;  
@@ -101,7 +101,7 @@ box-shadow: 0 0px 26px 0 rgb(255 255 255 / 8%);
   color: white;
   /* margin-left: 20%; */
   margin-top: 1%;
-  margin-bottom: 5%;
+  margin-bottom: 1%;
 }
 
 .iconos-tarjetas {

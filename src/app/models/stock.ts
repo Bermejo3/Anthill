@@ -6,7 +6,6 @@ export class Stock {
         public type:string,
         public quantity:number,
         public unit:string,
-        public date:string,
         public place:string,
         public minQuantity:number,
         public picture?:string

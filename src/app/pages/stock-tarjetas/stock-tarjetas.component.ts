@@ -13,7 +13,7 @@ export class StockTarjetasComponent implements OnInit {
   showModal: boolean
   showModal2:boolean
   showModal3:boolean
-  stock : Stock = new Stock(0,0,"","",0,"","","",0,"")
+  stock : Stock = new Stock(0,0,"","",0,"","",0,"")
   arrayStock : Stock[] = [this.stock]
   mensaje: string = ""
   mostrar: boolean
@@ -40,11 +40,13 @@ export class StockTarjetasComponent implements OnInit {
     )
   }
 
-  addStock(name:string,type:string,quantity:number,unit:string,date:string,place:string, minQuantity:number,picture:string){
+  addStock(name:string,type:string,quantity:number,unit:string,place:string, minQuantity:number,picture:string){
 
-    this.apiService.addStock(new Stock(0,this.servicio.id_companies,name ,type,quantity,unit,date,place,minQuantity,picture)).subscribe(
+    this.apiService.addStock(new Stock(0,this.servicio.id_companies,name ,type,quantity,unit,place,minQuantity,picture)).subscribe(
       (data:any)=>
-      {      
+      {     
+        this.mostrar=true
+        setTimeout(()=>{this.mostrar=false},3000) 
         this.mensaje =data.mensaje
         this.getStock()
         this.hide()      
@@ -53,13 +55,15 @@ export class StockTarjetasComponent implements OnInit {
   }
 
   
-updateStock(name:string,type:string,quantity:number,unit:string,date:string,place:string, minQuantity:number,picture:string){
+updateStock(name:string,type:string,quantity:number,unit:string,place:string, minQuantity:number,picture:string){
 
   this.posicionTabla= this.arrayStock[this.posicionTabla].id_stock
 
-  this.apiService.updateStock(new Stock(this.posicionTabla,this.servicio.id_companies,name ,type,quantity,unit,date,place,minQuantity,picture)).subscribe(
+  this.apiService.updateStock(new Stock(this.posicionTabla,this.servicio.id_companies,name ,type,quantity,unit,place,minQuantity,picture)).subscribe(
     (data:any)=>
     {
+      this.mostrar=true
+      setTimeout(()=>{this.mostrar=false},3000)
       this.mensaje=data.mensaje
       this.getStock()
       this.hide()
@@ -73,6 +77,8 @@ updateStock(name:string,type:string,quantity:number,unit:string,date:string,plac
     (
       (data:any) =>
       {
+        this.mostrar=true
+        setTimeout(()=>{this.mostrar=false},3000)
         this.mensaje =data.mensaje
         this.getStock()
         this.hide()

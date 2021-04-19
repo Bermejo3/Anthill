@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CalendarOptions, EventClickArg } from '@fullcalendar/angular';
+import { CalendarApi, CalendarOptions, EventClickArg } from '@fullcalendar/angular';
 import esLocale from '@fullcalendar/core/locales/es';
 import { DateClickArg } from '@fullcalendar/interaction';
 import { Holidays } from 'src/app/models/holidays';
@@ -16,6 +16,8 @@ export class EmpleadoVacacionesComponent implements OnInit {
 
   public showModal: boolean
   public showModalVacaciones: boolean
+  public showModalBorrarVacaciones: boolean
+  
   public posicionEvento: number = 0
   public diaVacaciones: string = ""
 
@@ -23,12 +25,22 @@ export class EmpleadoVacacionesComponent implements OnInit {
   public itemsPerPage: number = 7
   
   public vacaciones: Holidays[] = []
+
+  public infoCalendar: DateClickArg
+  public infoCalendar2: EventClickArg
+
+  public mostrar: boolean = false
+  public mensaje: string = ""
   
   constructor(public servicio: ServiciosService, private apiservice: ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.servicio.esEmpleado=true //Para iniciar el sidebar de empleado
     this.showModal = false
     this.showModalVacaciones = false
+  }
+
+  ngOnInit(): void {
+    this.getVacacionesEmp()
   }
 
   calendarOptions: CalendarOptions = {
@@ -39,7 +51,8 @@ export class EmpleadoVacacionesComponent implements OnInit {
     height: "80vh",
     aspectRatio: 3,
     eventContent:this.renderEventContent,
-    dateClick: this.modalClick.bind(this)
+    dateClick: this.modalClick.bind(this),
+    eventClick: this.modalBorrar.bind(this)
   };
 
   calendarEvents= [
@@ -61,24 +74,24 @@ export class EmpleadoVacacionesComponent implements OnInit {
   modalClick(clickInfo: DateClickArg){
     this.showModalVacaciones = true;
     this.diaVacaciones = clickInfo.dateStr
+    this.infoCalendar = clickInfo
   }
 
-
-
-
-  ngOnInit(): void {
-      this.getVacacionesEmp()
+  modalBorrar(clickInfo: EventClickArg){
+    this.showModalBorrarVacaciones = true;
+    this.diaVacaciones = clickInfo.event.startStr
+    this.infoCalendar2 = clickInfo
   }
 
   show(i:number){
     this.posicionEvento = i
     this.showModal = true;
   }
-
   
   hide(){ 
     this.showModal = false;
     this.showModalVacaciones = false;
+    this.showModalBorrarVacaciones = false
   }
   
   borrarVacaciones(posicionEvento: number, fecha: string){
@@ -87,7 +100,24 @@ export class EmpleadoVacacionesComponent implements OnInit {
 
     this.apiservice.deleteVacacionesEmp(this.servicio.id_employees, fecha).subscribe((resultado: any)=>{
       if (resultado.codigo == 1){
-        console.log(resultado.mensaje)
+        this.mensaje=resultado.mensaje
+        this.mostrar=true
+        setInterval(()=>{this.mostrar=false},3000)
+      }
+      this.getVacacionesEmp()
+    })
+  }
+
+  removeVacaciones(fecha: string){
+    this.hide()
+   
+    this.infoCalendar2.event.remove()
+
+    this.apiservice.deleteVacacionesEmp(this.servicio.id_employees, fecha).subscribe((resultado: any)=>{
+      if (resultado.codigo == 1){
+        this.mensaje=resultado.mensaje
+        this.mostrar=true
+        setInterval(()=>{this.mostrar=false},3000)
       }
       this.getVacacionesEmp()
     })
@@ -96,6 +126,7 @@ export class EmpleadoVacacionesComponent implements OnInit {
   getVacacionesEmp(){
     this.apiservice.getVacacionesEmp(this.servicio.id_employees).subscribe((resultado: Holidays[])=>{
       this.vacaciones = resultado
+    this.calendarEvents = []
     for (let i=0; i<this.vacaciones.length; i++){
       let holiday = {
         date: this.vacaciones[i].date,
@@ -105,21 +136,31 @@ export class EmpleadoVacacionesComponent implements OnInit {
       }
       this.calendarEvents.push(holiday)
     }
+    this.calendarEvents.sort()
     this.calendarOptions.events = this.calendarEvents
     })
   }
 
   addVacaciones(dia: string){
-    this.calendarEvents.push({date: dia, display: 'background', backgroundColor: '#ff9100',
+    this.calendarEvents.push({date: dia, display: 'background', backgroundColor: '#fafafa',
           imageUrl: '../../../assets/Logo/Hormiga1.png',})
 
+    const apiCalendar = this.infoCalendar.view.calendar
+
+    apiCalendar.addEvent({date: dia, display: 'background', backgroundColor: '#fafafa',
+    imageUrl: '../../../assets/Logo/Hormiga1.png',})
+
     this.apiservice.addVacacionesEmp(this.servicio.id_employees, this.servicio.id_companies, dia).subscribe((resultado: any)=>{
-      
-      console.log(resultado)
       if (resultado.codigo == 1){
-        console.log(resultado.mensaje)
+        this.mensaje=resultado.mensaje
+        this.mostrar=true
+        setInterval(()=>{this.mostrar=false},3000)
       }
     })
     this.hide()
+  }
+
+  cerrar(){
+    this.mostrar=false
   }
 }

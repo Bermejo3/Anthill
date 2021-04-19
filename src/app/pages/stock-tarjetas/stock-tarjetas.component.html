@@ -23,14 +23,6 @@
       <option value="3">Kilos</option>
     </select>
   </div>
-  <div class="col-1 margen2">
-    <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example">
-      <option selected>Fecha</option>
-      <option value="1">Enero-2021</option>
-      <option value="2">Febrero-2021</option>
-      <option value="3">Marzo-2021</option>
-    </select>
-  </div>
   <div class="col-1">
     <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example">
       <option selected>Ubicación</option>
@@ -65,7 +57,7 @@
   <div class="row fila-completa" *ngIf="arrayStock.length > 0; else isNone">
 
      <div class="card tarjetas letras-tarjeta tarjetas-fila1" *ngFor="let stock of arrayStock | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
-       <img class="card-img-top"src="../../../assets/tarjetas/jeringuilla.jpg" alt="Card image cap">
+       <img class="card-img-top imagenTarjeta"src="../../../assets/tarjetas/jeringuilla.jpg" alt="Card image cap">
        <div class="card-body" >
          <p class="card-text"><b>Artículo: </b>{{stock.name}}</p>
          <p class="card-text"><b>Categoría: </b>{{stock.type}}</p>
@@ -78,31 +70,34 @@
            <i class="fas fa-edit iconos-tarjetas editar"  (click)="show2(i)" ></i></p>
        </div>
      </div>
-  <pagination-controls (pageChange)="page = $event"></pagination-controls>      
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  <div class="alert alert-dismissible alert-success" *ngIf="mostrar">
+    <button type="button" class="close" on-click="cerrar()">&times;</button>
+    <strong>{{mensaje}}</strong>
+  </div>   
   </div>
 </div>
 <ng-template #isNone>
   <h5 style="text-align: center;">Todavía no hay artículos introducidos</h5>
 </ng-template>
-         <!-- Modal Borrar-->
-         <div class="modal" id="myModal" [style.display]="showModal3 ? 'block' : 'none'" *ngFor="let stock of arrayStock; let i = index" >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-body">
-               ¿Seguro que quieres borrar : {{stock.name}}?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="hide()">Atrás</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteStock(stock.id_stock)">Borrar</button>
-              </div>
-            </div>
-          </div>
-        </div>
+
+
+<!-- Modal Borrar-->
+<div class="modal" id="myModal" [style.display]="showModal3 ? 'block' : 'none'" *ngFor="let stock of arrayStock; let i = index" >
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-body">
+      ¿Seguro que quieres borrar : {{stock.name}}?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="hide()">Atrás</button>
+      <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteStock(stock.id_stock)">Borrar</button>
+    </div>
+  </div>
+</div>
+</div>
   
-        <div class="alert alert-dismissible alert-success" *ngIf="mostrar">
-          <button type="button" class="close" on-click="cerrar()">&times;</button>
-          <strong>{{mensaje}}</strong> <a href="#" class="alert-link"></a>
-        </div>
+        
 
 
 
@@ -140,10 +135,6 @@
             <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #unit>
           </div>
           <div class="input-group flex-nowrap mt-1">
-            <span class="input-group-text cabecera-input" id="addon-wrapping">Fecha de entrada</span>
-            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #date>
-          </div>
-          <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Ubicación</span>
             <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #place>
           </div>
@@ -155,7 +146,7 @@
       </div>
       
       <div class="modal-footer colocar-boton">
-        <button type="button" class="boton-barra-filtros boton-modal" routerLink="/stock" (click)="addStock(name.value, type.value, quantity.valueAsNumber, unit.value, date.value, place.value, minQuantity.valueAsNumber, picture.value)">Guardar</button>
+        <button type="button" class="boton-barra-filtros boton-modal" routerLink="/stock" (click)="addStock(name.value, type.value, quantity.valueAsNumber, unit.value, place.value, minQuantity.valueAsNumber, picture.value)">Guardar</button>
         <button type="button" class="boton-barra-filtros boton-modal color" (click)="hide()">Cancelar</button>
       </div>
       
@@ -199,10 +190,6 @@
           <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].unit}}" defaultValue=null #unitEdit>
         </div>
         <div class="input-group flex-nowrap mt-1">
-          <span class="input-group-text cabecera-input" id="addon-wrapping">Fecha de entrada</span>
-          <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"  value="{{arrayStock[posicionTabla].date}}"defaultValue=null #dateEdit>
-        </div>
-        <div class="input-group flex-nowrap mt-1">
           <span class="input-group-text cabecera-input" id="addon-wrapping">Ubicación</span>
           <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].place}}"defaultValue=null #placeEdit>
         </div>
@@ -211,7 +198,7 @@
           <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].minQuantity}}"defaultValue=null #minQuantityEdit>
         </div>
         <div class="modal-footer colocar-boton">
-          <button type="reset" class="boton-barra-filtros boton-modal" routerLink="/stock-tarjetas" (click)="updateStock(nameEdit.value, typeEdit.value, quantityEdit.valueAsNumber, unitEdit.value, dateEdit.value, placeEdit.value, minQuantityEdit.valueAsNumber, pictureEdit.value)" >Guardar</button>
+          <button type="reset" class="boton-barra-filtros boton-modal" routerLink="/stock-tarjetas" (click)="updateStock(nameEdit.value, typeEdit.value, quantityEdit.valueAsNumber, unitEdit.value, placeEdit.value, minQuantityEdit.valueAsNumber, pictureEdit.value)" >Guardar</button>
           <button type="button" class="boton-barra-filtros boton-modal color"(click)="hide()">Cancelar</button>
         </div>
       </form>

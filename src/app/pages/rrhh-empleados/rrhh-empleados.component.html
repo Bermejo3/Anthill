@@ -59,6 +59,7 @@
            <p class="card-text"><b>Puesto: </b>{{empleado.position}} </p>
            <p class="card-text"><b>Teléfono: </b>{{empleado.phone}}</p>
            <p class="card-text"><b>Email: </b>{{empleado.email}}</p>
+           <p class="card-text"><b>Turno: </b></p>
            <hr>
            <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="showSure(i)"></i>
              <i class="fas fa-edit iconos-tarjetas editar" routerLink="/rrhh-edit-empleados"></i></p>
@@ -68,6 +69,10 @@
    </div>
  </div>
  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+ <div class="alert alert-dismissible alert-success" *ngIf="mostrar">
+  <button type="button" class="close" on-click="cerrar()">&times;</button>
+  <strong>{{mensaje}}</strong>
+</div>
  </div>
 
 <ng-template #isNone>
@@ -88,7 +93,4 @@
   </div>
 </div>
 
-<div class="alert alert-dismissible alert-success" *ngIf="mostrar">
-  <button type="button" class="close" on-click="cerrar()">&times;</button>
-  <strong>{{mensaje}}</strong> <a href="#" class="alert-link"></a>
-</div>
+

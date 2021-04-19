@@ -71,12 +71,10 @@
       <table class="table">
         <thead>
           <tr class="tablaHeader">
-            <th>ID</th>
             <th>Artículo</th>
             <th>Categoría</th>
             <th>Cantidad</th>
             <th>Unidad</th>
-            <th>Fecha entrada</th>
             <th>Ubicacion</th>
             <th>Estado</th>
             <th>Opciones</th>
@@ -84,12 +82,10 @@
         </thead>
         <tbody>
           <tr *ngFor="let stock of arrayStock | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index; let even = even" [ngClass]="{trPar:even}" >
-            <td>{{stock.id_stock}}</td>
             <td>{{stock.name}}</td>
             <td>{{stock.type}}</td>
             <td>{{stock.quantity}}</td>
             <td>{{stock.unit}}</td>
-            <td>{{stock.date}}</td>
             <td>{{stock.place}}</td>
             <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
             <td><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="showSure(i)"></i>
@@ -98,6 +94,10 @@
         </tbody>
       </table>
       <pagination-controls (pageChange)="page = $event"></pagination-controls>      
+    </div>
+    <div class="alert alert-dismissible alert-success" *ngIf="mostrar">
+      <button type="button" class="close" on-click="cerrar()">&times;</button>
+      <strong>{{mensaje}}</strong>
     </div>
   </div>
 </div>
@@ -120,10 +120,7 @@
         </div>
       </div>
 
-      <div class="alert alert-dismissible alert-success" *ngIf="mostrar">
-        <button type="button" class="close" on-click="cerrar()">&times;</button>
-        <strong>{{mensaje}}</strong> <a href="#" class="alert-link"></a>
-      </div>
+      
   <!-- --------------------------------Modal añadir producto-------------------------------------- -->
    <div class="modal tarjetas-modal fondo-modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
     <div class="modal-dialog">
@@ -158,10 +155,6 @@
               <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #unit>
             </div>
             <div class="input-group flex-nowrap mt-1">
-              <span class="input-group-text cabecera-input" id="addon-wrapping">Fecha de entrada</span>
-              <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #date>
-            </div>
-            <div class="input-group flex-nowrap mt-1">
               <span class="input-group-text cabecera-input" id="addon-wrapping">Ubicación</span>
               <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #place>
             </div>
@@ -171,7 +164,7 @@
             </div>
 
             <div class="modal-footer colocar-boton">
-              <button type="reset" class="boton-barra-filtros boton-modal" (click)="addStock(name.value, type.value, quantity.valueAsNumber, unit.value, date.value, place.value, minQuantity.valueAsNumber, picture.value)">Guardar</button>
+              <button type="reset" class="boton-barra-filtros boton-modal" (click)="addStock(name.value, type.value, quantity.valueAsNumber, unit.value, place.value, minQuantity.valueAsNumber, picture.value)">Guardar</button>
               <button type="button" class="boton-barra-filtros boton-modal color" (click)="hide()">Cancelar</button>
             </div>
 
@@ -214,15 +207,11 @@
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Cantidad</span>
-            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].quantity}}" defaultValue=null #quantityEdit>
+            <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].quantity}}" defaultValue=null #quantityEdit>
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Unidad</span>
             <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].unit}}" defaultValue=null #unitEdit>
-          </div>
-          <div class="input-group flex-nowrap mt-1">
-            <span class="input-group-text cabecera-input" id="addon-wrapping">Fecha de entrada</span>
-            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"  value="{{arrayStock[posicionTabla].date}}"defaultValue=null #dateEdit>
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Ubicación</span>
@@ -230,13 +219,13 @@
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Cantidad mínima</span>
-            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].minQuantity}}"defaultValue=null #minQuantityEdit>
+            <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].minQuantity}}"defaultValue=null #minQuantityEdit>
           </div>
         </form>
       </div>
       
       <div class="modal-footer colocar-boton">
-        <button type="button" class="boton-barra-filtros boton-modal" routerLink="/stock" (click)="updateStock(nameEdit.value, typeEdit.value, quantityEdit.valueAsNumber, unitEdit.value, dateEdit.value, placeEdit.value, minQuantityEdit.valueAsNumber, pictureEdit.value)" >Guardar</button>
+        <button type="button" class="boton-barra-filtros boton-modal" routerLink="/stock" (click)="updateStock(nameEdit.value, typeEdit.value, quantityEdit.valueAsNumber, unitEdit.value, placeEdit.value, minQuantityEdit.valueAsNumber, pictureEdit.value)" >Guardar</button>
         <button type="button" class="boton-barra-filtros boton-modal color"(click)="hide()">Cancelar</button>
       </div>
       
