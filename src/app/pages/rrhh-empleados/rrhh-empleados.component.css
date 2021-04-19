@@ -1,8 +1,13 @@
 /* ................................................Boton e Iconos................................................. */
 
-.boton-barra-filtros {
-  margin-left: 12%;
-}
+.reductor 
+  {
+    margin-left: 12%;
+    
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+  }
 
 .row .iconos-barra-filtros {
   text-align: end;

@@ -93,7 +93,7 @@ export class ProduccionEmpleadoComponent implements OnInit {
   public showModal3:boolean;
 
   public page: number = 1
-  public itemsPerPage: number = 7
+  public itemsPerPage: number = 5
 
   public mergeOptions = {}
 
@@ -105,6 +105,8 @@ export class ProduccionEmpleadoComponent implements OnInit {
 
   public mensaje:string;
 
+  public isGrande:boolean;
+
   constructor(public servicio: ServiciosService, public apiservice: ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     
@@ -112,6 +114,7 @@ export class ProduccionEmpleadoComponent implements OnInit {
     this.showModal=false;
     this.showModal2 = false;
     this.showModal3=false;
+    this.isGrande=false;
 
     this.id_productivity=0;
     this.servicio.numeroEmpleados=[];
@@ -244,14 +247,21 @@ export class ProduccionEmpleadoComponent implements OnInit {
     })
   }
 
-  nuevoDato(nombre:string,productividad:number, horas:number, dia:string)
+  cambiarTamanyo()
   {
-    this.hide();
-    this.servicio.nombreEmpleado = nombre;
-    this.servicio.produccionEmpleado = productividad;
-    this.servicio.horasEmpleado = horas;
-    this.servicio.diaTrabajado = dia;
-
+    if(this.isGrande == false)
+    {
+      document.getElementById("miGrafica").style.height = "500px"
+      document.getElementById("tablita").style.display = "none";
+      this.isGrande = true;
+    }
+    else
+    {
+      document.getElementById("miGrafica").style.height = "180px"
+      document.getElementById("tablita").style.display = "block"
+      this.isGrande = false;
+    }
+    
   }
 
   show(){

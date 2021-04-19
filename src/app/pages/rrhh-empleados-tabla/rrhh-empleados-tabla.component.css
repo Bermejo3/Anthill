@@ -1,11 +1,15 @@
 /* .........Boton y Search............ */
-.boton-barra-filtros {
+.reductor 
+  {
     margin-left: 12%;
-    height:55px
+    /* padding: 10px 60px; */
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
   }
  
   
-  .boton-barra-filtros:before {
+  /* .boton-barra-filtros:before {
     content:"";
     position: absolute;
     top: 0px;
@@ -17,7 +21,7 @@
   } 
   .boton-barra-filtros:hover:before {
     height: 100%;
-  }
+  } */
   .row .iconos-barra-filtros{
     text-align:end;
   

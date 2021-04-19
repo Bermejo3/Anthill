@@ -24,6 +24,8 @@ export class ProduccionComponent implements OnInit {
 
   public index: number;
 
+  public isGrande:boolean;
+
   public mergeOptions = {};
 
   public page: number = 1
@@ -35,6 +37,7 @@ export class ProduccionComponent implements OnInit {
     this.index = 0
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.showModal = false;
+    this.isGrande = false;
   }
 
   getProductMes()
@@ -65,6 +68,7 @@ export class ProduccionComponent implements OnInit {
 
   getProductividad()
   {
+    
     this.apiservice.getProductividad(this.servicio.id_companies).subscribe((resultado:Productividad[])=>
     {
       this.arrayProductividad = resultado;
@@ -98,18 +102,23 @@ export class ProduccionComponent implements OnInit {
 
     this._router.navigate(['produccion/empleado'])
   }
-
-  nuevoDato(nombre:string,productividad:number, horas:number, dia:string)
+  cambiarTamanyo()
   {
-    this.hide();
-    this.servicio.nombreEmpleado = nombre;
-    this.servicio.produccionEmpleado = productividad;
-    this.servicio.horasEmpleado = horas;
-    this.servicio.diaTrabajado = dia;
-
-    this._router.navigate(['produccion/empleado'])
-
+    if(this.isGrande == false)
+    {
+      document.getElementById("miGrafica").style.height = "500px"
+      document.getElementById("tablita").style.display = "none";
+      this.isGrande = true;
+    }
+    else
+    {
+      document.getElementById("miGrafica").style.height = "180px"
+      document.getElementById("tablita").style.display = "block"
+      this.isGrande = false;
+    }
+    
   }
+
 
   actualizarTotal(productividad:number, horas:number)
   {

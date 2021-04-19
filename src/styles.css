@@ -1,6 +1,6 @@
 :root{
   --colorPrincipal: #54e346;
-  --colorFondo: #03256c;;
+  --colorFondo: #03256c;
   --colorLetraSideBar: #6c81a6;
   --colorSideBar: #fff;
   --colorLetraTablas: #fff;
@@ -324,17 +324,18 @@ box-shadow: 0 0px 26px 0 rgb(255 255 255 / 8%);
 
 .reductor
 {
-    color: var(--colorPrincipal);
-    position: relative;
-    display: inline-block;
-    text-decoration: none;
-    
+  color: var(--colorLetraTablas);
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 30px;
+  
 }
 .reductor:hover
 {
-    color: var(--colorLetraTablas);
-    background-color: var(--colorPrincipal);
-    transition-delay: 0.5s;
+    color: var(--colorPrincipal);
+    
+    transition-delay: 1s;
 }
   
 .reductor span
@@ -376,11 +377,11 @@ box-shadow: 0 0px 26px 0 rgb(255 255 255 / 8%);
     transform: scaleX(1);
     transform-origin: left;
     transition: transform 0.5s;
-}
+} 
 ​
 .reductor span:nth-child(3)
 {
-    right:0;
+    right: 0;
     bottom: 0;
     width: 2px;
     height: 100%;
@@ -414,7 +415,7 @@ box-shadow: 0 0px 26px 0 rgb(255 255 255 / 8%);
     transition: transform 0.5s;
     transition-delay: 0.5s;
 }
-​
+
 .neon
 {
     position: relative;
@@ -427,7 +428,7 @@ box-shadow: 0 0px 26px 0 rgb(255 255 255 / 8%);
     overflow: hidden;
     font-size: 14px;
     color: #1779ff;
-    background: #0c002b;;
+    background: #0c002b;
     opacity: 1;
 }
 .neon:hover

@@ -31,15 +31,25 @@
     font-size: small;
 }
 
+.row-barra-filtros
+{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:right;
+
+}
+
 .boton-barra-filtros:before {
     content:"";
-    position: absolute;
+    position: flex;
     top: 0px;
     left: 0px;
     width: 100%;
     height: 0px;
     background: rgba(255, 255, 255, 0.1);
     transition: all 0.5s ease;
+
   } 
   .boton-barra-filtros:hover:before {
     height: 100%;
@@ -66,8 +76,10 @@
 #margen{
   margin-right: 25%;
 }
-.boton-barra-filtros{
-  height: 55px;
+.reductor{
+  height: 40px;
+  margin-left: 50px;
+  border-color: transparent;
 }
 
   .iconos-tarjetas{
@@ -86,3 +98,14 @@
     color:  var(--colorPrincipal);
     cursor:pointer
   }
+
+  .modal-content{
+    height: 20%;
+    width: 100%;
+}
+
+
+
+
+  
+
