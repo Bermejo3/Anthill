@@ -16,7 +16,7 @@
     text-align: end;
   }
   .iconos-barra-filtros i:hover{
-    color:darkturquoise
+    color: var(--colorPrincipal)
   }
   .color{
     background: #ff9100;

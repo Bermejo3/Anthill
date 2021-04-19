@@ -13,7 +13,7 @@ import { ServiciosService } from 'src/app/shared/servicios.service';
 export class EmpleadoMiPerfilComponent implements OnInit {
 
   chartOptions: NgxEchartsModule = {
-    color: ["#ff9100"],
+    color: ["#fff"],
     title: 
     {
       textStyle:{color:'#ffffff'},
@@ -67,7 +67,7 @@ export class EmpleadoMiPerfilComponent implements OnInit {
             data: []
         },
         { 
-          color: ["#00ffff"],
+          color: ["#54e346"],
           name: 'Tú',
           type: 'line',
           areaStyle: {},
@@ -82,6 +82,9 @@ export class EmpleadoMiPerfilComponent implements OnInit {
   public misEmpleados:number;
   public produccionEmpleados: ProdIndividual [];
   public arrayProductividad: Productividad[];
+
+  public page: number = 1
+  public itemsPerPage: number = 5
 
   constructor(public servicio: ServiciosService, public apiservice: ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
@@ -151,7 +154,7 @@ export class EmpleadoMiPerfilComponent implements OnInit {
               data: this.servicio.produccionMes
             },
             { 
-              color: ["#00ffff"],
+              color: ["#54e346"],
               name: 'Tú',
               type: 'line',
               areaStyle: {},

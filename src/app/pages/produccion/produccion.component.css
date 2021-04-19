@@ -28,8 +28,9 @@
 }
 
 .destacada{
-  color: #54e346;
+  color: var(--colorPrincipal);
 }
+
 .trPar{ 
     background-color: rgba(255, 255, 255, 0.15);
 }

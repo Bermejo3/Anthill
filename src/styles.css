@@ -329,7 +329,7 @@ box-shadow: 0 0px 26px 0 rgb(255 255 255 / 8%);
 
 .reductor
 {
-  color: var(--colorLetraTablas);
+  color: var(--colorPrincipal);
   position: relative;
   display: inline-block;
   text-decoration: none;
@@ -338,7 +338,7 @@ box-shadow: 0 0px 26px 0 rgb(255 255 255 / 8%);
 }
 .reductor:hover
 {
-    color: var(--colorPrincipal);
+    color: var(--colorLetraTablas);
     
     transition-delay: 1s;
 }

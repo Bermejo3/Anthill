@@ -21,9 +21,7 @@
     align-items: center;
     text-align: center;
 }
-.tablaHeader{
-    color: #ff9100
-}
+
 .trPar{ 
     background-color: rgba(255, 255, 255, 0.15);
 }
@@ -76,10 +74,9 @@
 #margen{
   margin-right: 25%;
 }
-.reductor{
-  height: 40px;
-  margin-left: 50px;
-  border-color: transparent;
+
+.destacada{
+  color: var(--colorPrincipal);
 }
 
   .iconos-tarjetas{

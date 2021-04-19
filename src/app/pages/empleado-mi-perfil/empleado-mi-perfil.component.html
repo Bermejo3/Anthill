@@ -54,13 +54,14 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor = "let empleadop of produccionEmpleados, let i=index">
+                      <tr *ngFor = "let empleadop of produccionEmpleados | paginate: { itemsPerPage: itemsPerPage, currentPage: page };, let i=index">
                         <td>{{empleadop.productivity}}</td>
                         <td>{{empleadop.hours}}</td>
                         <td>{{empleadop.date.slice(0,10)}}</td>
                       </tr>
                     </tbody>
                   </table>
+                  <pagination-controls (pageChange)="page = $event"></pagination-controls>
                 </div>
             </div>
     </div>

@@ -15,7 +15,7 @@ import { ServiciosService } from 'src/app/shared/servicios.service';
 export class ProduccionEmpleadoComponent implements OnInit {
 
   chartOptions: NgxEchartsModule = {
-    color: ["#ff9100"],
+    color: ["#fff"],
     title: 
     {
       textStyle:{color:'#ffffff'},
@@ -69,7 +69,7 @@ export class ProduccionEmpleadoComponent implements OnInit {
             data: []
         },
         { 
-          color: ["#00ffff"],
+          color: ["#54e346"],
           name: 'Empleado',
           type: 'line',
           areaStyle: {},
@@ -104,6 +104,7 @@ export class ProduccionEmpleadoComponent implements OnInit {
   public posicionTabla:number;
 
   public mensaje:string;
+  public mostrar:boolean=false
 
   public isGrande:boolean;
 
@@ -184,7 +185,7 @@ export class ProduccionEmpleadoComponent implements OnInit {
               data: this.servicio.produccionMes
             },
             { 
-              color: ["#00ffff"],
+              color: ["#54e346"],
               name: 'Empleado',
               type: 'line',
               areaStyle: {},
@@ -211,9 +212,14 @@ export class ProduccionEmpleadoComponent implements OnInit {
   addProductividad(nombre:string,productividad:number, horas:number, dia:string)
   {
     this.produccionEmpleado = new ProdIndividual(this.servicio.id_employees,nombre,productividad, horas, dia, this.servicio.id_companies, this.id_productivity)
-    this.apiservice.addProductividad(this.produccionEmpleado).subscribe((resultado:ProdIndividual)=>
+    this.apiservice.addProductividad(this.produccionEmpleado).subscribe((resultado:any)=>
     {
-      this.produccionEmpleado = resultado;
+      if (resultado.codigo == 1){
+        this.mensaje=resultado.mensaje
+        this.mostrar=true
+        setInterval(()=>{this.mostrar=false},3000)
+      }
+
     })
     this.getProdIndividual();
     this.hide();
@@ -226,9 +232,13 @@ export class ProduccionEmpleadoComponent implements OnInit {
     this.id_productivity = this.produccionEmpleados[this.posicionTabla].id_productivity;
     
     this.apiservice.updateProductividad(new ProdIndividual(this.servicio.id_employees,nombre,productividad, horas, dia, this.servicio.id_companies, this.id_productivity)).subscribe(
-      (resultado:ProdIndividual)=>
+      (resultado:any)=>
       {
-        this.produccionEmpleado = resultado;
+        if (resultado.codigo == 1){
+          this.mensaje=resultado.mensaje
+          this.mostrar=true
+          setInterval(()=>{this.mostrar=false},3000)
+        }
         this.getProdIndividual()
         this.hide()
       }
@@ -241,7 +251,11 @@ export class ProduccionEmpleadoComponent implements OnInit {
     this.id_productivity = this.produccionEmpleados[this.posicionTabla].id_productivity;
     this.apiservice.deleteProductividad(this.id_productivity).subscribe((resultado:any) =>
     {
-      this.mensaje = resultado.mensaje
+      if (resultado.codigo == 1){
+        this.mensaje=resultado.mensaje
+        this.mostrar=true
+        setInterval(()=>{this.mostrar=false},3000)
+      }
       this.getProdIndividual()
       this.hide()
     })
@@ -280,6 +294,9 @@ export class ProduccionEmpleadoComponent implements OnInit {
     this.showModal = false;
     this.showModal2=false;
     this.showModal3=false;
+  }
+  cerrar(){
+    this.mostrar=false
   }
   ngOnInit(): void 
   {
