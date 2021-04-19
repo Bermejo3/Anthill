@@ -42,6 +42,10 @@
                 </tbody>
               </table>
         </div>
+        <div class="alert alert-dismissible alert-success" *ngIf="mostrar">
+          <button type="button" class="close" on-click="cerrar()">&times;</button>
+          <strong>{{mensaje}}</strong>
+        </div>
       </div>
     </div>
 
@@ -74,3 +78,18 @@
       </div>
     </div>
   </div>
+
+      <!-- Modal Borrar Vacaciones-->
+<div class="modal" id="myModal" [style.display]="showModalBorrarVacaciones ? 'block' : 'none'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+       ¿Quieres borrar el dia {{ diaVacaciones }} a tus vacaciones?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="hide()">Atrás</button>
+        <button type="submit" class="btn btn-success" data-dismiss="modal" (click)="removeVacaciones(diaVacaciones)">Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>

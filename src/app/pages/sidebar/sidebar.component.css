@@ -13,6 +13,7 @@
     color: var(--colorLetraSideBar);
     opacity: 1;
     width: 100%;
+    cursor: pointer;
 }
 .opciones:hover
 {

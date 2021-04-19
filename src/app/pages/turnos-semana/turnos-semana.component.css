@@ -1,15 +1,15 @@
 
 .turnoCompleto{
-    background-color: rgba(255, 0, 0, 0.5);
+    background-color: rgba(250, 62, 62, 0.767);
 
 }
 
 .turnoMedias{
-    background-color: rgba(255, 255, 0, 0.712);
+    background-color: rgb(184, 184, 54);
 }
 
 .turnoVacio{
-    background-color: rgba(0, 128, 0, 0.801);
+    background-color: rgba(44, 161, 44, 0.801);
 }
 
 .turnoSeleccionado{
@@ -36,10 +36,12 @@ td{
     height: 50px;    
 }
 
+
 .selectTurno{
     margin: auto;
     text-align: center;
     width: 50%;
+    background: rgba(0,0,0,0.2);
 }
 
 .tablaEmpleadosElegidos{

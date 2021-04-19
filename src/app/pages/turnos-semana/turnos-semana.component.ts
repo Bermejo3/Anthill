@@ -19,6 +19,8 @@ export class TurnosSemanaComponent implements OnInit {
   public idCasilla: string = "0"
 
   public showInfo: boolean
+  public mostrar: boolean = false
+  public mensaje: string = ""
 
   constructor(public servicio: ServiciosService, private apiservice: ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
@@ -74,7 +76,8 @@ export class TurnosSemanaComponent implements OnInit {
     let date = this.semana2[Number(this.idCasilla.slice(1,2))+1].toJSON().slice(0,10)
     this.apiservice.postTurnos(this.servicio.id_companies, id_employees, id_shifts, date).subscribe((resultado: any)=>{
       if (resultado.codigo == 1){
-        console.log(resultado.mensaje)
+        this.mostrarAlerta()
+        this.mensaje =resultado.mensaje
       }
       this.getTurnosSemana()
       this.getEmpleadosSeleccionado()
@@ -100,7 +103,8 @@ export class TurnosSemanaComponent implements OnInit {
     console.log(date)
     this.apiservice.deleteTurno(this.servicio.id_companies, id_employees,id_shifts, date).subscribe((resultado: any)=>{
       if (resultado.codigo == 1){
-        console.log(resultado.mensaje)
+        this.mostrarAlerta()
+        this.mensaje =resultado.mensaje
       }
       this.getTurnosSemana()
       this.getEmpleadosSeleccionado()
@@ -231,4 +235,16 @@ export class TurnosSemanaComponent implements OnInit {
         }  
     })
   }
+
+  cerrar(){
+    this.mostrar=false
+  }
+
+  mostrarAlerta(){
+    this.mostrar=true
+    setTimeout(()=>{this.mostrar=false},3000)
+  }
+
+
+
 }

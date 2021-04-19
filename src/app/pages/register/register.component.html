@@ -9,40 +9,46 @@
     </div>
     <h2>ANTHILL</h2>
     <hr>
-    <form>
-
-      <div class="input-group flex-nowrap mt-1">
+    <form [formGroup]="formularioRegister" (ngSubmit)="formularioRegister.valid && add()">
+      <div class="input-group flex-wrap mt-1">
         <span class="input-group-text cabecera-input" id="addon-wrapping">Nombre</span>
         <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-          defaultValue=null #name>
+          defaultValue=null formControlName="nombre" [ngClass]="{'is-invalid': formularioRegister.get('nombre').touched && !formularioRegister.get('nombre').valid}" #name>
       </div>
-      <div class="input-group flex-nowrap mt-1">
+      <div class="input-group flex-wrap mt-1">
         <span class="input-group-text cabecera-input" id="addon-wrapping">Dirección</span>
         <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-          defaultValue=null #adress>
+          defaultValue=null formControlName="direccion" [ngClass]="{'is-invalid': formularioRegister.get('direccion').touched && !formularioRegister.get('direccion').valid}" #adress>
       </div>
-      <div class="input-group flex-nowrap mt-1">
+      <div class="input-group flex-wrap mt-1">
         <span class="input-group-text cabecera-input" id="addon-wrapping">Email</span>
         <input type="email" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-          defaultValue=null #email>
+          defaultValue=null formControlName="email" [ngClass]="{'is-invalid': formularioRegister.get('email').touched && !formularioRegister.get('email').valid}" #email2>
       </div>
-      <div class="input-group flex-nowrap mt-1">
+      <div class="input-group flex-wrap mt-1">
         <span class="input-group-text cabecera-input" id="addon-wrapping">Teléfono</span>
         <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-          defaultValue=null #phone>
+          defaultValue=null formControlName="telefono" [ngClass]="{'is-invalid': formularioRegister.get('telefono').touched && !formularioRegister.get('telefono').valid}" #phone>
       </div>
-      <div class="input-group flex-nowrap mt-1">
-        <span class="input-group-text cabecera-input" id="addon-wrapping">Password</span>
+      <div class="input-group flex-wrap mt-1">
+        <span class="input-group-text cabecera-input" id="addon-wrapping">Contraseña</span>
         <input type="password" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-          defaultValue=null #password>
+          defaultValue=null formControlName="contrasena" [ngClass]="{'is-invalid': formularioRegister.get('contrasena').touched && !formularioRegister.get('contrasena').valid}" #password>
+        <div *ngIf="formularioRegister.get('contrasena').invalid" class="invalid-feedback">
+          La contraseña tiene que tener al menos 8 caracteres
+        </div>
       </div>
-      <div class="input-group flex-nowrap mt-1">
-        <span class="input-group-text cabecera-input" id="addon-wrapping">Confirmar Password</span>
+      <div class="input-group flex-wrap mt-1">
+        <span class="input-group-text cabecera-input" id="addon-wrapping">Confirmar Contraseña</span>
         <input type="password" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-          defaultValue=null #confPass>
+          defaultValue=null formControlName="confContrasena" [ngClass]="{'is-invalid': formularioRegister.get('confContrasena').touched && !formularioRegister.get('confContrasena').valid}" #confPass>
+          <div *ngIf="f.confContrasena.errors.mustMatch" class="invalid-feedback">
+            La contraseña no coincide
+          </div>
       </div>
       <div class="row" style="margin-top: 40px;justify-content: center;">
-        <button type="button" class="boton4" style="height: max-content;" routerLink="/login" (click)="addEmpresa(name.value,adress.value,email.value,phone.valueAsNumber,password.value,confPass.value)">Añadir</button>
+        <button type="submit" class="boton4" style="height: max-content;" (click)="add()">Añadir</button>
+        <!-- <button type="button" class="boton4" style="height: max-content;" routerLink="/login" (click)="addEmpresa(name.value,adress.value,email2.value,phone.valueAsNumber,password.value,confPass.value)">Añadir</button> -->
       </div>
     </form>
   </div>
