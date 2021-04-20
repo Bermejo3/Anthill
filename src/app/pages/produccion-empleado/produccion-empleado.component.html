@@ -56,8 +56,8 @@
                 <td>{{empleadop.hours}}</td>
                 <td class="destacada">{{(empleadop.productivity/empleadop.hours).toFixed(2)}}</td>
                 <td>{{empleadop.date.slice(0,10)}}</td>
-                <td><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="showSure(i)"></i>
-                  <i class="fas fa-edit iconos-tarjetas editar" (click)="show2(i)"></i></td>
+                <td><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="showSure(empleadop.id_productivity)"></i>
+                  <i class="fas fa-edit iconos-tarjetas editar" (click)="show2(empleadop.id_productivity, empleadop.name, empleadop.productivity, empleadop.hours, empleadop.date.slice(0,10))"></i></td>
               </tr>
             </tbody>
           </table>
@@ -141,19 +141,19 @@
             <form>
               <div class="input-group flex-nowrap mt-1">
                 <span class="input-group-text cabecera-input" id="addon-wrapping">Empleado</span>
-                <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{produccionEmpleados[posicionTabla].name}}" defaultValue=null #empleadoEdit>
+                <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{nombreEmpleado}}" defaultValue=null #empleadoEdit>
               </div>
               <div class="input-group flex-nowrap mt-1">
                 <span class="input-group-text cabecera-input" id="addon-wrapping">Producción</span>
-                <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{produccionEmpleados[posicionTabla].productivity}}" defaultValue=null #productividadEdit>
+                <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{productEmpleado}}" defaultValue=null #productividadEdit>
               </div>
               <div class="input-group flex-nowrap mt-1">
                 <span class="input-group-text cabecera-input" id="addon-wrapping">Horas</span>
-                <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{produccionEmpleados[posicionTabla].hours}}" defaultValue=null #horasEdit>
+                <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{horasEmpleado}}" defaultValue=null #horasEdit>
               </div>
               <div class="input-group flex-nowrap mt-1">
                 <span class="input-group-text cabecera-input" id="addon-wrapping">Día</span>
-                <input type="date" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{produccionEmpleados[posicionTabla].date}}" defaultValue=null #diasEdit>
+                <input type="date" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{fechaEmpleado}}" defaultValue=null #diasEdit>
               </div>
             </form>
           </div>

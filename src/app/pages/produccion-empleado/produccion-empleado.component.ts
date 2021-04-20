@@ -84,6 +84,11 @@ export class ProduccionEmpleadoComponent implements OnInit {
   public produccionEmpleado: ProdIndividual;
   public miEmpleado:Empleados;
 
+  public nombreEmpleado:string;
+  public productEmpleado:number;
+  public horasEmpleado:number;
+  public fechaEmpleado:string;
+
   public id_productivity:number;
 
   public arrayProductividad: Productividad[];
@@ -111,7 +116,11 @@ export class ProduccionEmpleadoComponent implements OnInit {
   constructor(public servicio: ServiciosService, public apiservice: ApiserviceService) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     
-    
+    this.nombreEmpleado="";
+    this.productEmpleado=0;
+    this.horasEmpleado=0;
+    this.fechaEmpleado="";
+
     this.showModal=false;
     this.showModal2 = false;
     this.showModal3=false;
@@ -122,6 +131,8 @@ export class ProduccionEmpleadoComponent implements OnInit {
     this.servicio.produccionMes=[];
     this.servicio.produccionMesEmpleado=[];
     this.misEmpleados=0;
+
+
 
     this.posicionTabla=0;
     this.mensaje = "";
@@ -229,7 +240,8 @@ export class ProduccionEmpleadoComponent implements OnInit {
   updateProductividad(nombre:string,productividad:number, horas:number,dia:string)
   {
   
-    this.id_productivity = this.produccionEmpleados[this.posicionTabla].id_productivity;
+    // this.id_productivity = this.produccionEmpleados[this.posicionTabla].id_productivity;
+    
     
     this.apiservice.updateProductividad(new ProdIndividual(this.servicio.id_employees,nombre,productividad, horas, dia, this.servicio.id_companies, this.id_productivity)).subscribe(
       (resultado:any)=>
@@ -248,7 +260,8 @@ export class ProduccionEmpleadoComponent implements OnInit {
 
   deleteProductividad()
   {
-    this.id_productivity = this.produccionEmpleados[this.posicionTabla].id_productivity;
+    // this.id_productivity = this.produccionEmpleados[this.posicionTabla].id_productivity;
+  
     this.apiservice.deleteProductividad(this.id_productivity).subscribe((resultado:any) =>
     {
       if (resultado.codigo == 1){
@@ -281,14 +294,18 @@ export class ProduccionEmpleadoComponent implements OnInit {
   show(){
     this.showModal = true;
   }
-  show2(posicionTabla:number)
+  show2(id_productivity:number, nombre:string, productividad:number, horas:number, fecha:string)
   {
     this.showModal2=true;
-    this.posicionTabla = posicionTabla;
+    this.id_productivity = id_productivity;
+    this.nombreEmpleado=nombre;
+    this.productEmpleado=productividad;
+    this.horasEmpleado = horas;
+    this.fechaEmpleado = fecha;
   }
-  showSure(posicionTabla){
+  showSure(id_productivity:number){
     this.showModal3 = true;
-    this.posicionTabla = posicionTabla
+    this.id_productivity = id_productivity;
   }
   hide(){ 
     this.showModal = false;

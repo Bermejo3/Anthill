@@ -30,8 +30,8 @@
   </div>
 
   <div class="col-12">
-    <div class="row tamaño-tabla" id="tablita">
-      <div class="container mt-5">
+    <div class="row tamaño-tabla">
+      <div class="mt-5">
         <div class="tableContainer">
           <table class="table">
             <thead>
@@ -46,10 +46,35 @@
             <tbody>
               <tr *ngFor = "let trabajadores of arrayProductividad | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index; let even = even" [ngClass] = "{trPar: even}" (click)="getProdIndividual(i)">
                 <td>{{trabajadores.name}}</td>
-                <td class="destacada">{{trabajadores.sum_productivity}}</td>
+                <td>{{trabajadores.sum_productivity}}</td>
                 <td>{{trabajadores.sum_hours}}</td>
                 <td class="destacada">{{(trabajadores.sum_productivity/trabajadores.sum_hours).toFixed(2)}}</td>
-                <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
+                <td>
+                  
+                  <div class="info">
+                    <span class="tooltiptext">Empleado más productivo</span>
+                    <i *ngIf = "trabajadores.esHormiga==true" style="margin-right: 10px;" class="fas fa-crown">
+                    </i> 
+                  </div>
+             
+                  <div class="info">
+                    <span class="tooltiptext">Empleado menos productivo</span>
+                    <i *ngIf = "trabajadores.esVago==true" style="margin-right: 10px;" class="fas fa-bed">
+                    </i>
+                  </div>
+                  
+                  <div class="info">
+                    <i *ngIf = "trabajadores.masHoras==true" style="margin-right: 10px;" class="fas fa-user-clock">
+                    </i> 
+                    <span class="tooltiptext">Empleado con más horas</span>
+                  </div>
+                  
+                  <div class="info">
+                    <i *ngIf = "trabajadores.menosHoras==true" style="margin-right: 10px;" class="fas fa-running">
+                    </i> 
+                    <span class="tooltiptext">Empleado menos horas</span>
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>

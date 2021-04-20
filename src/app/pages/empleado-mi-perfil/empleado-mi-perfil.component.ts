@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { Empleados } from 'src/app/models/empleados';
+import { Holidays } from 'src/app/models/holidays';
 import { ProdIndividual } from 'src/app/models/prod-individual';
 import { Productividad } from 'src/app/models/productividad';
 import { ApiserviceService } from 'src/app/shared/apiservice.service';
@@ -82,6 +84,8 @@ export class EmpleadoMiPerfilComponent implements OnInit {
   public misEmpleados:number;
   public produccionEmpleados: ProdIndividual [];
   public arrayProductividad: Productividad[];
+  public unEmpleado: Empleados;
+  public vacaciones: Holidays [];
 
   public page: number = 1
   public itemsPerPage: number = 5
@@ -93,6 +97,7 @@ export class EmpleadoMiPerfilComponent implements OnInit {
     this.servicio.numeroEmpleados=[];
     this.servicio.produccionMes=[];
     this.servicio.produccionMesEmpleado=[];
+    this.vacaciones=[];
     
     this.arrayProductividad = [];
     this.produccionEmpleados = [];
@@ -111,6 +116,21 @@ export class EmpleadoMiPerfilComponent implements OnInit {
       }
     })
   }
+  getEmpleadoInd()
+  {
+    this.apiservice.getEmpleadoInd(this.servicio.id_employees).subscribe((resultado:Empleados[])=>
+    {
+      this.unEmpleado = resultado[0];
+
+      console.log(this.unEmpleado);
+    })
+  }
+
+  getVacacionesEmp(){
+    this.apiservice.getVacacionesEmp(this.servicio.id_employees).subscribe((resultado: Holidays[])=>{
+      this.vacaciones = resultado;
+    })
+  }
 
   getProductividad()
   {
@@ -127,8 +147,6 @@ export class EmpleadoMiPerfilComponent implements OnInit {
     {
      
       this.produccionEmpleados = resultado;
-
-      console.log(this.produccionEmpleados)
       
     })
     
@@ -182,6 +200,8 @@ export class EmpleadoMiPerfilComponent implements OnInit {
   ngOnInit(): void 
   {
     this.getEmpleados()
+    this.getEmpleadoInd()
+    this.getVacacionesEmp()
     this.getProdIndividual()
     this.getProductividad()
     this.ProdIndiMes()

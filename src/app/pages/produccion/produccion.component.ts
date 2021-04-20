@@ -18,6 +18,8 @@ export class ProduccionComponent implements OnInit {
 
   public produccionEmpleado: ProdIndividual;
 
+  public comparaProduccion: number [];
+
   public showModal: boolean;
 
   public data: Array <any>;
@@ -33,6 +35,8 @@ export class ProduccionComponent implements OnInit {
   
   constructor(public servicio: ServiciosService, private _router:Router, private apiservice: ApiserviceService) 
   {
+    this.comparaProduccion = [];
+    this.arrayProductividad = [];
     this.servicio.produccionMes = [];
     this.index = 0
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
@@ -64,16 +68,17 @@ export class ProduccionComponent implements OnInit {
       }
     })
   }
-  
 
   getProductividad()
   {
-    
     this.apiservice.getProductividad(this.servicio.id_companies).subscribe((resultado:Productividad[])=>
     {
       this.arrayProductividad = resultado;
+
+      console.log(this.arrayProductividad)
+      this.masProductivo()
+      this.masHoras();
     })
-    
   }
 
   getProdIndividual(i:number)
@@ -81,6 +86,68 @@ export class ProduccionComponent implements OnInit {
     this.servicio.id_employees = this.arrayProductividad[i].id_employees; 
     this._router.navigate(['produccion/empleado'])
     
+  }
+
+  masProductivo()
+  {
+
+    let resultado:number = 0;
+    let guardar: number;
+
+    for(let i=0; i<this.arrayProductividad.length; i++)
+    {
+      this.comparaProduccion.push(this.arrayProductividad[i].sum_productivity/this.arrayProductividad[i].sum_hours);
+
+      if(this.comparaProduccion[i] > resultado)
+      {
+        resultado = this.comparaProduccion[i];
+        guardar = i;
+      }
+    }
+    this.arrayProductividad[guardar].esHormiga = true;
+    
+    for(let i=0; i<this.arrayProductividad.length; i++)
+    {
+      this.comparaProduccion.push(this.arrayProductividad[i].sum_productivity/this.arrayProductividad[i].sum_hours);
+
+      if(this.comparaProduccion[i] < resultado)
+      {
+        resultado = this.comparaProduccion[i];
+        guardar = i;
+      }
+    }
+    this.arrayProductividad[guardar].esVago= true;
+  }
+
+  masHoras()
+  {
+
+    let resultado:number = 0;
+    let guardar: number;
+
+    for(let i=0; i<this.arrayProductividad.length; i++)
+    {
+      this.arrayProductividad[i].sum_hours
+
+      if(this.arrayProductividad[i].sum_hours > resultado)
+      {
+        resultado = this.arrayProductividad[i].sum_hours;
+        guardar = i;
+      }
+    }
+    this.arrayProductividad[guardar].masHoras = true;
+
+    for(let i=0; i<this.arrayProductividad.length; i++)
+    {
+      this.arrayProductividad[i].sum_hours
+
+      if(this.arrayProductividad[i].sum_hours < resultado)
+      {
+        resultado = this.arrayProductividad[i].sum_hours;
+        guardar = i;
+      }
+    }
+    this.arrayProductividad[guardar].menosHoras = true;
   }
   
   addProductividad(nombre:string,productividad:number, horas:number, dia:string)
