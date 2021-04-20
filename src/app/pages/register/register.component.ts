@@ -28,6 +28,8 @@ export class RegisterComponent implements OnInit {
    {
      const minPass = 8
 
+     
+
      this.formularioRegister = this.formBuilder.group({
        nombre:["" , Validators.required],
        direccion:["" , Validators.required],
@@ -39,6 +41,7 @@ export class RegisterComponent implements OnInit {
       {
         validator: this.MustMatch('contrasena', 'confContrasena')
     })
+    console.log(this.formularioRegister.valid)
    }
 
    MustMatch(controlName: string, matchingControlName: string) {
@@ -76,13 +79,12 @@ export class RegisterComponent implements OnInit {
   }
 
   add(){
-    console.log(this.formularioRegister.value)
-    // this.apiService.addEmpresa(new Empresa(0,this.formularioRegister.get('nombre').value,this.formularioRegister.get('direccion').value,this.formularioRegister.get('email').value,this.formularioRegister.get('telefono').value,this.formularioRegister.get('contrasena').value)).subscribe(
-    //   (data:any)=>
-    //   {
-    //     console.log(data)
-    //   }
-    // )
+    this.apiService.addEmpresa(new Empresa(0,this.formularioRegister.get('nombre').value,this.formularioRegister.get('direccion').value,this.formularioRegister.get('email').value,this.formularioRegister.get('telefono').value,this.formularioRegister.get('contrasena').value)).subscribe(
+      (data:any)=>
+      {
+        console.log(data)
+      }
+    )
   }
 
 

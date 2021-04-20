@@ -82,8 +82,8 @@
             <td>{{stock.unit}}</td>
             <td>{{stock.place}}</td>
             <td [style.color]="stock.quantity>stock.minQuantity ? 'var(--colorPrincipal)' : 'red'"><i class="fas fa-cubes"></i></td>
-            <td><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="showSure(i)"></i>
-              <i class="fas fa-edit iconos-tarjetas editar" (click)="show2(i)"></i></td>
+            <td><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="showSure(stock.id_stock)"></i>
+              <i class="fas fa-edit iconos-tarjetas editar" (click)="show2(stock.id_stock)"></i></td>
           </tr>
         </tbody>
       </table>
@@ -100,11 +100,11 @@
 </ng-template>
 
        <!-- Modal Borrar-->
-       <div class="modal" id="myModal" [style.display]="showModal3 ? 'block' : 'none'">
+       <div class="modal modalB" id="myModal" [style.display]="showModal3 ? 'block' : 'none'">
         <div class="modal-dialog">
-          <div class="modal-content">
+          <div class="modal-content modalBorrar">
             <div class="modal-body">
-             ¿Seguro que quieres borrar : {{stock.name}}?
+             ¿Seguro que quieres borrar: {{arrayStock[posicionTabla].name}}?
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="hide()">Atrás</button>
@@ -126,55 +126,56 @@
         </div>
         
         <div class="modal-body">
-          <form>
+          <form [formGroup]="formularioStockAdd" (ngSubmit)="formularioStockAdd.valid">
 
             <div class="input-group flex-nowrap mt-1">
               <span class="input-group-text cabecera-input" id="addon-wrapping">Introducir foto (Opcional)</span>
-              <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #picture>
+              <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null
+              formControlName="foto" #picture>
             </div>
             <div class="input-group flex-nowrap mt-1">
               <span class="input-group-text cabecera-input" id="addon-wrapping">Artículo</span>
-              <input type="text"class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #name>
+              <input type="text"class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null 
+              formControlName="articulo" [ngClass]="{'is-invalid': formularioStockAdd.get('articulo').touched && !formularioStockAdd.get('articulo').valid}" #name>
             </div>
             <div class="input-group flex-nowrap mt-1">
               <span class="input-group-text cabecera-input" id="addon-wrapping">Categoría</span>
-              <input type="email" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #type>
+              <input type="email" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null 
+              formControlName="categoria" [ngClass]="{'is-invalid': formularioStockAdd.get('categoria').touched && !formularioStockAdd.get('categoria').valid}" #type>
             </div>
             <div class="input-group flex-nowrap mt-1">
               <span class="input-group-text cabecera-input" id="addon-wrapping">Cantidad</span>
-              <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #quantity>
+              <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null 
+              formControlName="cantidad" [ngClass]="{'is-invalid': formularioStockAdd.get('cantidad').touched && !formularioStockAdd.get('cantidad').valid}" #quantity>
             </div>
             <div class="input-group flex-nowrap mt-1">
               <span class="input-group-text cabecera-input" id="addon-wrapping">Unidad</span>
-              <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #unit>
+              <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null 
+              formControlName="unidad" [ngClass]="{'is-invalid': formularioStockAdd.get('unidad').touched && !formularioStockAdd.get('unidad').valid}" #unit>
             </div>
             <div class="input-group flex-nowrap mt-1">
               <span class="input-group-text cabecera-input" id="addon-wrapping">Ubicación</span>
-              <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #place>
+              <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null 
+              formControlName="ubicacion" [ngClass]="{'is-invalid': formularioStockAdd.get('ubicacion').touched && !formularioStockAdd.get('ubicacion').valid}" #place>
             </div>
             <div class="input-group flex-nowrap mt-1">
               <span class="input-group-text cabecera-input" id="addon-wrapping">Cantidad mínima</span>
-              <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #minQuantity>
+              <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null 
+              formControlName="minCantidad" [ngClass]="{'is-invalid': formularioStockAdd.get('minCantidad').touched && !formularioStockAdd.get('minCantidad').valid}" #minQuantity>
             </div>
 
             <div class="modal-footer colocar-boton">
-              <button type="reset" class="boton-barra-filtros boton-modal" (click)="addStock(name.value, type.value, quantity.valueAsNumber, unit.value, place.value, minQuantity.valueAsNumber, picture.value)">Guardar</button>
+              <button type="submit" class="boton-barra-filtros boton-modal" [disabled]="formularioStockAdd.invalid" (click)="addStockForm()">Guardar</button>
               <button type="button" class="boton-barra-filtros boton-modal color" (click)="hide()">Cancelar</button>
             </div>
 
           </form>
         </div>
-        
-   
-        
-        
       </div>
     </div>
   </div>
 
-<!-- ------------------------------------------Modal cambiar producto--------------------------------------------------------- -->
-
-
+<!-- ------------------------------------------Modal Update producto--------------------------------------------------------- -->
 <div class="modal tarjetas-modal  fondo-modal" id="myModal" [style.display]="showModal2 ? 'block' : 'none'">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -185,44 +186,51 @@
       </div>
       
       <div class="modal-body">
-        <form>
-  
+        <form [formGroup]="formularioStockUpdate" (ngSubmit)="formularioStockUpdate.valid">
+
           <div class="input-group flex-nowrap mt-1">
-            <span class="input-group-text cabecera-input" id="addon-wrapping">Cambiar foto</span>
-            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].picture}}" defaultValue=null #pictureEdit>
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Introducir foto (Opcional)</span>
+            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null
+            formControlName="foto" #picture>
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Artículo</span>
-            <input type="text"class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].name}}" defaultValue=null #nameEdit>
+            <input type="text"class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null
+            formControlName="articulo" [ngClass]="{'is-invalid': formularioStockUpdate.get('articulo').touched && !formularioStockUpdate.get('articulo').valid}" #name>
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Categoría</span>
-            <input type="email" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].type}}"  defaultValue=null #typeEdit>
+            <input type="email" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null
+            formControlName="categoria" [ngClass]="{'is-invalid': formularioStockUpdate.get('categoria').touched && !formularioStockUpdate.get('categoria').valid}" #type>
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Cantidad</span>
-            <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].quantity}}" defaultValue=null #quantityEdit>
+            <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null
+            formControlName="cantidad" [ngClass]="{'is-invalid': formularioStockUpdate.get('cantidad').touched && !formularioStockUpdate.get('cantidad').valid}" #quantity>
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Unidad</span>
-            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].unit}}" defaultValue=null #unitEdit>
+            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null
+            formControlName="unidad" [ngClass]="{'is-invalid': formularioStockUpdate.get('unidad').touched && !formularioStockUpdate.get('unidad').valid}" #unit>
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Ubicación</span>
-            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].place}}"defaultValue=null #placeEdit>
+            <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null
+            formControlName="ubicacion" [ngClass]="{'is-invalid': formularioStockUpdate.get('ubicacion').touched && !formularioStockUpdate.get('ubicacion').valid}" #place>
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Cantidad mínima</span>
-            <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{arrayStock[posicionTabla].minQuantity}}"defaultValue=null #minQuantityEdit>
+            <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null
+            formControlName="minCantidad" [ngClass]="{'is-invalid': formularioStockUpdate.get('minCantidad').touched && !formularioStockUpdate.get('minCantidad').valid}" #minQuantity>
           </div>
+
+          <div class="modal-footer colocar-boton">
+            <button type="submit" class="boton-barra-filtros boton-modal" [disabled]="formularioStockUpdate.invalid" (click)="updateStockForm()">Guardar</button>
+            <button type="button" class="boton-barra-filtros boton-modal color" (click)="hide()">Cancelar</button>
+          </div>
+
         </form>
       </div>
-      
-      <div class="modal-footer colocar-boton">
-        <button type="button" class="boton-barra-filtros boton-modal" routerLink="/stock" (click)="updateStock(nameEdit.value, typeEdit.value, quantityEdit.valueAsNumber, unitEdit.value, placeEdit.value, minQuantityEdit.valueAsNumber, pictureEdit.value)" >Guardar</button>
-        <button type="button" class="boton-barra-filtros boton-modal color"(click)="hide()">Cancelar</button>
-      </div>
-      
     </div>
   </div>
-  </div>
+</div>
