@@ -40,7 +40,7 @@ const routes: Routes = [
   {path:"rrhh-empleados", component:RrhhEmpleadosComponent},
   {path:"rrhh-empresa", component:RrhhEmpresaComponent},
   {path:"rrhh-empleados/tabla", component:RrhhEmpleadosTablaComponent},
-  {path:"rrhh-edit-empleados", component:RrhhEditEmpleadosComponent}
+  {path:"rrhh-empleados/edit-empleados", component:RrhhEditEmpleadosComponent}
 ];
 
 @NgModule({

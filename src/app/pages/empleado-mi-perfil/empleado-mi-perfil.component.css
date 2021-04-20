@@ -23,12 +23,13 @@
 
 .tarjetas-fila1
 {
-    width: 540px;
+    width: 650px;
+    background: linear-gradient(#dfdfdfd2, #9f9f9fd5), url("../../../assets/hormiguero3.png");
 }
 
 .letras-tarjeta 
 {
-    color: white;
+    color: var(--colorFondo);
     margin-left: 20%;
     margin-top: 1%;
     margin-bottom: 5%;

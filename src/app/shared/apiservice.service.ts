@@ -120,9 +120,9 @@ export class ApiserviceService {
     return this.http.get(this.url+"/empleado?id_companies="+id_companies)
   }
 
-  getEmpleadoInd(id_companies:number)
+  getEmpleadoInd(id_employees:number)
   {
-    return this.http.get(this.url+"/empleado/empleado?id_companies="+id_companies)
+    return this.http.get(this.url+"/empleado/empleado?id_employees="+id_employees)
   }
 
   addEmpleado(empleado:Empleados)

@@ -18,8 +18,8 @@
   .iconos-barra-filtros i:hover{
     color: var(--colorPrincipal)
   }
-  .color{
-    background: #ff9100;
+  .fa-cubes{
+    font-size: 30px;
   }
   .mainLoginInput::-webkit-input-placeholder { 
     font-family: FontAwesome;
@@ -44,13 +44,9 @@
   .boton-redondo{
     border-radius: 50%
   }
-  /* .........Estados............ */
-  .estado-verde-tabla{
-    color:yellowgreen;font-size: 30px;margin-left: 7%
-  }
-.estado-rojo-tabla{
-    color:red;font-size: 30px;margin-left: 7%
-}
+
+
+
   .iconos-tarjetas{
     margin-left: 7%;  font-size: 30px; cursor: pointer;
   }
@@ -58,7 +54,7 @@
     color: yellow;
   }
   
-  .luna {
+  .luna { 
     color: rgb(64, 75, 224);
   }
   

@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { Empleados } from 'src/app/models/empleados';
 import { ApiserviceService } from 'src/app/shared/apiservice.service';
 import { ServiciosService } from 'src/app/shared/servicios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rrhh-add-empleados',
@@ -19,7 +20,7 @@ export class RrhhAddEmpleadosComponent implements OnInit {
   public myForm:FormGroup
   checkbox:boolean=false
 
-  constructor(public servicio: ServiciosService, public apiService:ApiserviceService) {
+  constructor(public servicio: ServiciosService, public apiService:ApiserviceService, public _router:Router) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
   }
 
@@ -33,11 +34,11 @@ export class RrhhAddEmpleadosComponent implements OnInit {
     )
   }  
 
-  addEmpleado(name:string,surname:string,age:number,position:string,phone:number,shiftMorning:boolean,shiftAfternoon:boolean,shiftEvening:boolean,email:string,password:string,description){
+  addEmpleado(name:string,surname:string,age:number,position:string,phone:number,shiftMorning:boolean,shiftAfternoon:boolean,shiftEvening:boolean,email:string,password:string,description:string,picture:string, ){
     console.log(name);
     // this.myForm.value
 
-    let empleado = new Empleados(0,this.servicio.id_companies,name,surname,age,position,phone,shiftMorning,shiftAfternoon,shiftEvening,email,password,description)
+    let empleado = new Empleados(0,this.servicio.id_companies,name,surname,age,position,phone,shiftMorning,shiftAfternoon,shiftEvening,email,password,description,picture)
     console.log(empleado);
     
     this.apiService.addEmpleado(empleado).subscribe(
@@ -45,6 +46,8 @@ export class RrhhAddEmpleadosComponent implements OnInit {
       {
         // this.myForm.value
         this.mensaje=data.mensaje
+
+        this._router.navigate(['rrhh-empleados'])
       }
     )
   }

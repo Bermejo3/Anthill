@@ -75,13 +75,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let stock of arrayStock | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index; let even = even" [ngClass]="{trPar:even}" >
+          <tr *ngFor="let stock of arrayStock | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index; let even = even" [ngClass]="{trPar:even}">
             <td>{{stock.name}}</td>
             <td>{{stock.type}}</td>
             <td>{{stock.quantity}}</td>
             <td>{{stock.unit}}</td>
             <td>{{stock.place}}</td>
-            <td><i class="fas fa-cubes estado-verde-tabla"></i></td>
+            <td [style.color]="stock.quantity>stock.minQuantity ? 'var(--colorPrincipal)' : 'red'"><i class="fas fa-cubes"></i></td>
             <td><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="showSure(i)"></i>
               <i class="fas fa-edit iconos-tarjetas editar" (click)="show2(i)"></i></td>
           </tr>

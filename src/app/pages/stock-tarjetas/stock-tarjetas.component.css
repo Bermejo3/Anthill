@@ -119,16 +119,8 @@
   cursor:pointer
 }
 
-.estado-rojo {
-  color: red;
+.fa-cubes{
   font-size: 30px;
-  margin-left: 7%;
-}
-
-.estado-verde {
-  color: green;
-  font-size: 30px;
-  margin-left: 7%;
 }
 
 .cabecera-input {

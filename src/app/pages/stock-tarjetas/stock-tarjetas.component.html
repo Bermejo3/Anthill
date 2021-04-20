@@ -64,7 +64,7 @@
          <p class="card-text"><b>Cantidad: </b>{{stock.quantity}}</p>
          <p class="card-text"><b>Unidad: </b>{{stock.unit}} </p>
          <p class="card-text"><b>Ubicación: </b>{{stock.place}}</p>
-         <p class="card-text"><b>Estado: </b><i class="fas fa-cubes estado-verde"></i></p>
+         <p class="card-text"><b>Estado: </b><i class="fas fa-cubes"[style.color]="stock.quantity>stock.minQuantity ? 'var(--colorPrincipal)' : 'red'"></i></p>
          <hr>
          <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="showSure(i)"></i>
            <i class="fas fa-edit iconos-tarjetas editar"  (click)="show2(i)" ></i></p>

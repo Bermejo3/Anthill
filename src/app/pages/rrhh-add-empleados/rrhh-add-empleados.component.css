@@ -12,8 +12,9 @@
 .boton-barra-filtros {
   position: absolute;
   width: 63%;
-  margin-top: -100px;
-  background:var(--colorFondo)
+  margin-left: -70px;
+  margin-top: -200px;
+  background-color:var(--colorFondo)
 }
 
 .grande {
@@ -78,9 +79,9 @@
   width: 67%;
   height: 40px;
   background-color: rgb(94, 94, 94);
-  margin-top: 19px;
+  margin-top: 18px;
   border: 1px solid white;
-  border-radius: 4px;
+  border-radius: 12px;
   justify-content: space-evenly;
 }
 

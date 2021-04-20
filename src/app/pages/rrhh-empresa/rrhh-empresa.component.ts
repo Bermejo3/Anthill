@@ -26,8 +26,9 @@ export class RrhhEmpresaComponent implements OnInit {
       (data:Empresa[]) =>
       {
         console.log(data)
-        this.arrayEmpresa=data
+        this.empresa=data[0]
         console.log(this.arrayEmpresa)
+        
       }
     )
   }
