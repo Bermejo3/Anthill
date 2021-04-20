@@ -2,7 +2,7 @@
     width: 70%;
     height: 750px;
     border: 2px solid white;
-    background: linear-gradient(#03256c, #03246cde), url("../../../assets/hormiguero.png");
+    background: linear-gradient(#dfdfdfd2, #9f9f9fd5), url("../../../assets/hormiguero.png");
     margin-left: 10%;
     border-radius: 6px;
     margin-top: 5vh;
@@ -11,6 +11,8 @@
   /* ................................................Boton y Search................................................. */
   .boton-barra-filtros {
     width: 63%;
+    background-color: var(--colorFondo);
+    margin-left: -60px;
   }
   
   .grande {
@@ -21,24 +23,17 @@
     border-radius: 12px;
   }
   
-  .pequeño {
-    height: 40px;
-    width: 40%;
-    margin-left: 33%;
-    background-color: #b53900d2;
-    margin-top: 5%;
-  }
-  
+
   .cabecera-input {
     width: 33%;
-    background-color: rgb(31, 40, 62);
+    background-color:var(--colorFondo);
     color: white;
     margin-top: 18px;
     height: 40px;
   }
   
   .input-modal {
-    background-color: rgb(45, 58, 88);
+    background-color:  rgb(94, 94, 94);;
     color: white;
     margin-top: 18px;
     height: 40px;

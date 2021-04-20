@@ -3,6 +3,7 @@ import { data } from 'jquery';
 import { ApiserviceService } from 'src/app/shared/apiservice.service';
 import { ServiciosService } from 'src/app/shared/servicios.service';
 import{Empleados}from "../../models/empleados"
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rrhh-empleados',
@@ -20,8 +21,9 @@ export class RrhhEmpleadosComponent implements OnInit {
   
   public page: number = 1
   public itemsPerPage: number = 4
+ 
 
-  constructor(public servicio: ServiciosService, public apiService:ApiserviceService) {
+  constructor(public servicio: ServiciosService, public apiService:ApiserviceService,  private _router:Router ) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.mostrar = false
   }
@@ -49,8 +51,9 @@ export class RrhhEmpleadosComponent implements OnInit {
   } 
   
   deleteEmpleado(){
-    let id_employees=this.arrayEmpleados[this.posicionTabla].id_employees
-    this.apiService.deleteEmpleado(id_employees).subscribe
+    console.log(this.servicio.id_employees);
+    
+    this.apiService.deleteEmpleado(this.servicio.id_employees).subscribe
     (
       (data:any) =>
       {
@@ -60,15 +63,30 @@ export class RrhhEmpleadosComponent implements OnInit {
         this.hide()
       }
     )
-    console.log(id_employees)  
+    console.log(this.servicio.id_employees)  
   }
+  editarEmpleado(id_employees:number)
+  {
+    this.servicio.id_employees = id_employees
+    this._router.navigate(['rrhh-empleados/edit-empleados'])
+  }
+
   hide(){ 
    
     this.showModal3=false
   }
-  showSure(posicionTabla){
+  showSure(id_employees){
     this.showModal3 = true;
-    this.posicionTabla = posicionTabla
+    this.servicio.id_employees=id_employees
+    for (let i=0; i<this.arrayEmpleados.length; i++){ //Coger la posicion del array para mostrar los datos en el modal del update
+
+      if (this.arrayEmpleados[i].id_employees == id_employees){
+
+        this.posicionTabla=i
+
+      }
+
+    }
   }
  
   ngOnInit(): void {

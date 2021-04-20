@@ -33,7 +33,7 @@
    </div>
    <!-- -------------------- Button e Iconos------------------------------ -->
    <div class="col-2">
-   <button class="boton-barra-filtros reductor" routerLink="rrhh-empleados/add-empleados">
+   <button class="boton-barra-filtros reductor" routerLink="/rrhh-empleados/add-empleados">
     <span></span>
     <span></span>
     <span></span>
@@ -53,7 +53,11 @@
     <div class="row fila-completa">
       <!-- <div class="col-3"> -->
        <div class="card tarjetas letras-tarjeta tarjetas-fila1" *ngFor="let empleado of arrayEmpleados | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
-         <img class="card-img-top"src="../../../assets/tarjetas/empleado3.jfif" alt="Card image cap">
+         <div *ngIf="empleado.picture != null, else isNull">
+          <img class="card-img-top" src="{{empleado.picture}}"alt="Card image cap">
+        </div>
+        <!-- ------Imagen predeterminada----- -->
+        <ng-template #isNull> <img class="card-img-top" src="../../../assets/tarjetas/empleado3.jfif" alt="Card image cap"> </ng-template>
          <div class="card-body" >
            <p class="card-text"><b>Nombre: </b>{{empleado.name}}</p>
            <p class="card-text"><b>Apellido: </b>{{empleado.surname}}</p>
@@ -63,8 +67,8 @@
            <p class="card-text"><b>Email: </b>{{empleado.email}}</p>
            <p class="card-text"><b>Turno: </b></p>
            <hr>
-           <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="showSure(i)"></i>
-             <i class="fas fa-edit iconos-tarjetas editar" routerLink="/rrhh-edit-empleados"></i></p>
+           <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="showSure(empleado.id_employees)"></i>
+             <i class="fas fa-edit iconos-tarjetas editar" (click)="editarEmpleado(empleado.id_employees)" ></i></p>
          </div>
        </div>
       <!-- </div> -->
@@ -81,15 +85,15 @@
   <h5 style="text-align: center;">Todavía no hay empleados introducidos</h5>
 </ng-template>
 <!-- Modal Borrar-->
-<div class="modal" id="myModal" [style.display]="showModal3 ? 'block' : 'none'" *ngFor="let stock of arrayEmpleados; let i = index" >
+<div class="modal" id="myModal" [style.display]="showModal3 ? 'block' : 'none'">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-       ¿Seguro que quieres borrar : {{stock.name}}?
+       ¿Seguro que quieres borrar : {{arrayEmpleados[posicionTabla].name}}  {{arrayEmpleados[posicionTabla].surname}}?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="hide()">Atrás</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteEmpleado()">Borrar</button>
+        <button type="submit" class="btn btn-danger" data-dismiss="modal" (click)="deleteEmpleado()">Borrar</button>
       </div>
     </div>
   </div>

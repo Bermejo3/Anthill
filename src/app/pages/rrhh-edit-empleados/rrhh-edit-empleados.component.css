@@ -12,7 +12,8 @@
   .boton-barra-filtros {
     position: absolute;
     width: 63%;
-    margin-top: -100px;
+    margin-top: -220px;
+    margin-left: -70px;
     background:var(--colorFondo)
   }
   
@@ -76,14 +77,17 @@
   
   .falso-input {
     width: 67%;
-    height: 40px;
+    height: 38px;
     background-color: rgb(94, 94, 94);
     margin-top: 19px;
-    border: 1px solid white;
-    border-radius: 4px;
+    
+    border-radius: 12px;
     justify-content: space-evenly;
   }
-  
+  .falso-input:hover{
+    border: 1px solid white;
+
+  }
   .col form {
     margin-right: 6%;
     margin-top: 5%;

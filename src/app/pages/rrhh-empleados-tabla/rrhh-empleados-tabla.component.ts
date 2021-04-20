@@ -3,6 +3,8 @@ import { data } from 'jquery';
 import { ApiserviceService } from 'src/app/shared/apiservice.service';
 import { ServiciosService } from 'src/app/shared/servicios.service';
 import{Empleados}from "../../models/empleados"
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-rrhh-empleados-tabla',
   templateUrl: './rrhh-empleados-tabla.component.html',
@@ -17,11 +19,12 @@ export class RrhhEmpleadosTablaComponent implements OnInit{
   posicionTabla : number = 0
   showModal: boolean
   showModal2:boolean
+  showModal3:boolean
 
   public page: number = 1
   public itemsPerPage: number = 10
 
-  constructor(public servicio: ServiciosService, public apiService:ApiserviceService) {
+  constructor(public servicio: ServiciosService, public apiService:ApiserviceService, public _router:Router) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.mostrar = false
   }
@@ -32,11 +35,13 @@ export class RrhhEmpleadosTablaComponent implements OnInit{
       {
         this.arrayEmpleados=data
         this.servicio.arrayEmpleados=this.arrayEmpleados
+        this.showModal3 = false
         console.log(this.arrayEmpleados);
 
       }
     )
   }  
+
 
 
   cerrar() {
@@ -55,8 +60,9 @@ export class RrhhEmpleadosTablaComponent implements OnInit{
   } 
   
   deleteEmpleado(){
-    let id_employees = this.arrayEmpleados[this.posicionTabla].id_employees
-    this.apiService.deleteEmpleado(id_employees).subscribe
+    console.log(this.servicio.id_employees);
+    
+    this.apiService.deleteEmpleado(this.servicio.id_employees).subscribe
     (
       (data:any) =>
       {
@@ -66,7 +72,12 @@ export class RrhhEmpleadosTablaComponent implements OnInit{
         this.hide()
       }
     )
-    console.log(id_employees)  
+    console.log(this.servicio.id_employees)  
+  }
+  editarEmpleado(id_employees:number)
+  {
+    this.servicio.id_employees = id_employees
+    this._router.navigate(['rrhh-empleados/edit-empleados'])
   }
   hide(){ 
     this.showModal = false;

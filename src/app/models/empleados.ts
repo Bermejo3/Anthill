@@ -12,7 +12,7 @@ export class Empleados {
         public shiftEvening:boolean,
         public email:string,
         public password:string,
-        public descrimption?:string,
+        public description?:string,
         public picture?:string,
         
     ){}
