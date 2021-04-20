@@ -42,12 +42,12 @@
         <span class="input-group-text cabecera-input" id="addon-wrapping">Confirmar Contraseña</span>
         <input type="password" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
           defaultValue=null formControlName="confContrasena" [ngClass]="{'is-invalid': formularioRegister.get('confContrasena').touched && !formularioRegister.get('confContrasena').valid}" #confPass>
-          <div *ngIf="f.confContrasena.errors.mustMatch" class="invalid-feedback">
+          <div *ngIf="formularioRegister.get('confContrasena').errors && formularioRegister.get('confContrasena').errors.mustMatch" class="invalid-feedback">
             La contraseña no coincide
           </div>
       </div>
       <div class="row" style="margin-top: 40px;justify-content: center;">
-        <button type="submit" class="boton4" style="height: max-content;" (click)="add()">Añadir</button>
+        <button type="submit" class="boton4" style="height: max-content;" [disabled]="!formularioRegister.valid" (click)="add()">Añadir</button>
         <!-- <button type="button" class="boton4" style="height: max-content;" routerLink="/login" (click)="addEmpresa(name.value,adress.value,email2.value,phone.valueAsNumber,password.value,confPass.value)">Añadir</button> -->
       </div>
     </form>

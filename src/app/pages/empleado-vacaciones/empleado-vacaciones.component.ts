@@ -19,6 +19,7 @@ export class EmpleadoVacacionesComponent implements OnInit {
   public showModalBorrarVacaciones: boolean
   
   public posicionEvento: number = 0
+  public fecha: string = ""
   public diaVacaciones: string = ""
 
   public page: number = 1
@@ -83,8 +84,8 @@ export class EmpleadoVacacionesComponent implements OnInit {
     this.infoCalendar2 = clickInfo
   }
 
-  show(i:number){
-    this.posicionEvento = i
+  show(fecha: string){
+    this.fecha = fecha
     this.showModal = true;
   }
   
@@ -94,11 +95,10 @@ export class EmpleadoVacacionesComponent implements OnInit {
     this.showModalBorrarVacaciones = false
   }
   
-  borrarVacaciones(posicionEvento: number, fecha: string){
+  borrarVacaciones(){
     this.hide()
-    this.calendarEvents.splice(posicionEvento,1)
 
-    this.apiservice.deleteVacacionesEmp(this.servicio.id_employees, fecha).subscribe((resultado: any)=>{
+    this.apiservice.deleteVacacionesEmp(this.servicio.id_employees, this.fecha).subscribe((resultado: any)=>{
       if (resultado.codigo == 1){
         this.mensaje=resultado.mensaje
         this.mostrar=true

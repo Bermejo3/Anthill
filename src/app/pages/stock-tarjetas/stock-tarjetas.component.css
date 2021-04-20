@@ -170,3 +170,18 @@
 .boton-barra-filtros{
   height: 55px;
 }
+
+.modalB{
+  padding-top: 10%;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+.modal-content{
+  height: 630px;
+}
+.modalBorrar{
+  height: 20%;
+  width: 100%;
+}
+.modal-footer{
+  justify-content: space-between;
+}
