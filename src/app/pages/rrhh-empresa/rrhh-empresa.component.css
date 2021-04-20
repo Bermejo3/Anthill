@@ -7,6 +7,9 @@
     border-radius: 6px;
     margin-top: 5vh;
   }
+  .row img{
+    width: 400px;height:365px;margin-top: -12%; margin-left: -20%; border-radius: 16%
+  }
   
   /* ................................................Boton y Search................................................. */
   .boton-barra-filtros {

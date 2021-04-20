@@ -24,13 +24,17 @@
 .tarjetas-fila1
 {
     width: 650px;
-    background: linear-gradient(#dfdfdfd2, #9f9f9fd5), url("../../../assets/hormiguero3.png");
+    background: linear-gradient(
+    90deg
+    ,#02194b 0  
+    ,#0539a9 50%
+    ,#02194b);
 }
 
 .letras-tarjeta 
 {
-    color: var(--colorFondo);
-    margin-left: 20%;
+    color: white;
+    margin-left: 25%;
     margin-top: 1%;
     margin-bottom: 5%;
 }
@@ -38,7 +42,7 @@
 .iconos-tarjetas 
 {
     margin-left: 7%;
-    font-size: 30px;
+    font-size: 26px;
     cursor: pointer;
 }
 
@@ -49,7 +53,7 @@
 
 .luna 
 {
-    color: rgb(64, 75, 224);
+    color: white;
 }
 
 .tarde 

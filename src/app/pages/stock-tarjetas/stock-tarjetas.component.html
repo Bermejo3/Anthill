@@ -57,7 +57,11 @@
   <div class="row fila-completa" *ngIf="arrayStock.length > 0; else isNone">
 
      <div class="card tarjetas letras-tarjeta tarjetas-fila1" *ngFor="let stock of arrayStock | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
-       <img class="card-img-top imagenTarjeta"src="../../../assets/tarjetas/jeringuilla.jpg" alt="Card image cap">
+       <div  *ngIf="stock.picture != null, else isNull">
+         <!-- ------Imagen predeterminada----- -->
+        <img class="card-img-top imagenTarjeta"src="{{stock.picture}}" alt="Card image cap">
+       </div> 
+       <ng-template #isNull> <img class="card-img-top" src="../../../assets/tarjetas/hormigaFaltan.jpg" alt="Card image cap"> </ng-template>
        <div class="card-body" >
          <p class="card-text"><b>Artículo: </b>{{stock.name}}</p>
          <p class="card-text"><b>Categoría: </b>{{stock.type}}</p>

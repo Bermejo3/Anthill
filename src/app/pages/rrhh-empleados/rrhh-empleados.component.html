@@ -57,7 +57,7 @@
           <img class="card-img-top" src="{{empleado.picture}}"alt="Card image cap">
         </div>
         <!-- ------Imagen predeterminada----- -->
-        <ng-template #isNull> <img class="card-img-top" src="../../../assets/tarjetas/empleado3.jfif" alt="Card image cap"> </ng-template>
+        <ng-template #isNull> <img class="card-img-top" src="../../../assets/tarjetas/hormigaFaltan.jpg" alt="Card image cap"> </ng-template>
          <div class="card-body" >
            <p class="card-text"><b>Nombre: </b>{{empleado.name}}</p>
            <p class="card-text"><b>Apellido: </b>{{empleado.surname}}</p>
@@ -65,7 +65,10 @@
            <p class="card-text"><b>Puesto: </b>{{empleado.position}} </p>
            <p class="card-text"><b>Teléfono: </b>{{empleado.phone}}</p>
            <p class="card-text"><b>Email: </b>{{empleado.email}}</p>
-           <p class="card-text"><b>Turno: </b></p>
+           <p class="card-text"><b>Turno: </b>
+                        <i class="fas fa-sun iconos-tarjetas sol" *ngIf = "empleado.shiftMorning==true"></i> 
+                        <i class="fas fa-adjust iconos-tarjetas sol" *ngIf = "empleado.shiftAfternoon==true"></i>
+                        <i class=" fas fa-moon iconos-tarjetas luna" *ngIf = "empleado.shiftEvening==true"></i></p>
            <hr>
            <p class="card-text" style="text-align: center;"><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="showSure(empleado.id_employees)"></i>
              <i class="fas fa-edit iconos-tarjetas editar" (click)="editarEmpleado(empleado.id_employees)" ></i></p>

@@ -71,7 +71,10 @@
               <td>{{empleado.surname}}</td>
               <td>{{empleado.age}}</td>
               <td>{{empleado.position}}</td>
-              <td class="col"> <i class="fas fa-sun iconos-tarjetas sol"></i> <i class="fas fa-adjust iconos-tarjetas sol"></i><i class=" fas fa-moon iconos-tarjetas luna"></i></td>
+              <td class="col"> 
+                <i class="fas fa-sun iconos-tarjetas sol" *ngIf = "empleado.shiftMorning==true"></i> 
+                <i class="fas fa-adjust iconos-tarjetas sol" *ngIf = "empleado.shiftAfternoon==true"></i>
+                <i class=" fas fa-moon iconos-tarjetas luna" *ngIf = "empleado.shiftEvening==true"></i></td>
               <td>{{empleado.phone}}</td>
               <td>{{empleado.email}}</td>
               

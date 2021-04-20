@@ -102,7 +102,7 @@ box-shadow: 0 0px 26px 0 rgb(255 255 255 / 8%);
 
 .iconos-tarjetas {
   margin-left: 7%;
-  font-size: 30px;
+  font-size: 20px;
   cursor: pointer;
 }
 
@@ -111,7 +111,7 @@ box-shadow: 0 0px 26px 0 rgb(255 255 255 / 8%);
 }
 
 .luna {
-  color: rgb(64, 75, 224);
+  color: white
 }
 
 .tarde {
@@ -122,11 +122,14 @@ box-shadow: 0 0px 26px 0 rgb(255 255 255 / 8%);
   color: rgb(135, 126, 135);
   margin-left: 10px;
   margin-top: 10px;
-  transition: background-color .1s;
+  transition: background-color .2s;
+  font-size: 30px;
 }
 
 .editar {
-  color: rgb(135, 126, 135)
+  color: rgb(135, 126, 135);
+  font-size: 30px;
+  transition: background-color .2s;
 }
  .eliminar:hover {
   color: red;

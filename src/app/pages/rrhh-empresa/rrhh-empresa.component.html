@@ -1,9 +1,14 @@
 <div class="row tarjeta-add-empleado">
     <div class="foto">
       <div class="row">
-        <img src="{{empresa.picture}}"
-          style="width: 400px;height:365px;margin-top: -12%; margin-left: -20%; border-radius: 16%;" alt="">
+        <div  *ngIf="empresa.picture != null, else isNull">
+            <img src="{{empresa.picture}}" alt="">
+        </div> 
+        <!-- ------Imagen predeterminada----- -->
+        <ng-template #isNull> <img class="card-img-top" src="../../../assets/ElHormiguero.png" alt="Card image cap"> </ng-template>     
       </div>
+       
+        
     </div>
     <div class="col">
       <form>
