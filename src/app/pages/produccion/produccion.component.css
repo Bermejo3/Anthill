@@ -39,7 +39,16 @@
 .form-control{
     font-size: small;
 }
-
+.mainLoginInput::-webkit-input-placeholder { 
+    font-family: FontAwesome;
+    font-weight: normal;
+    overflow: visible;
+    vertical-align: top;
+    display: inline-block !important;
+    padding-left: 5px;
+    padding-top: 2px;
+    color: hsl(0, 0%, 0%);
+  }
 
 /* <-- Modal --> */
 .tarjetas-modal{

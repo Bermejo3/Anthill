@@ -27,13 +27,13 @@ export class StockComponent implements OnInit {
   public id_stock: number = 0
 
   public page: number = 1
-  public itemsPerPage: number = 10
+  public itemsPerPage: number = 9
 
   public formularioStockAdd: FormGroup
   public formularioStockUpdate: FormGroup
 
+  public searchText: string=""
   
-
   constructor(public servicio: ServiciosService,public apiService: ApiserviceService, private formBuilder:FormBuilder) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.showModal = false
@@ -164,8 +164,8 @@ export class StockComponent implements OnInit {
         this.mostrar=true
         setTimeout(()=>{this.mostrar=false},3000)
         this.mensaje =data.mensaje
-        this.hide()
         this.getStock()
+        this.hide()
       } 
     )
   }
@@ -228,6 +228,21 @@ export class StockComponent implements OnInit {
   }
   cerrar() {
     this.mostrar = false
+  }
+
+  filter(){
+    if (this.searchText==""){
+      this.arrayStock = this.arrayStockBackup
+    }
+    else{
+      this.arrayStock = this.arrayStockBackup.filter(newArray =>
+        newArray.name.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
+        newArray.type.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
+        newArray.quantity == Number(this.searchText) ||
+        newArray.unit.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
+        newArray.place.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()),
+      )
+    }
   }
   
 

@@ -14,6 +14,7 @@ export class RrhhEmpleadosComponent implements OnInit {
 
   empleado: Empleados = new Empleados(0,0,"","",0,"",0,false,false,false,"","","","")
   arrayEmpleados : Empleados[] = []
+  arrayEmpleadosBackUp : Empleados[] = []
   mensaje: string = ""
   mostrar: boolean
   posicionTabla : number = 0
@@ -21,7 +22,8 @@ export class RrhhEmpleadosComponent implements OnInit {
   
   public page: number = 1
   public itemsPerPage: number = 4
- 
+
+  public searchText: string=""
 
   constructor(public servicio: ServiciosService, public apiService:ApiserviceService,  private _router:Router ) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
@@ -35,6 +37,7 @@ export class RrhhEmpleadosComponent implements OnInit {
       (data:Empleados[])=>
       {
         this.arrayEmpleados=data
+        this.arrayEmpleadosBackUp=data
         this.servicio.arrayEmpleados=this.arrayEmpleados
         this.showModal3 = false
         console.log(this.arrayEmpleados);
@@ -93,4 +96,40 @@ export class RrhhEmpleadosComponent implements OnInit {
     this.getEmpleados()
   }
  
+  filter(){
+    if (this.searchText==""){
+      this.arrayEmpleados = this.arrayEmpleadosBackUp
+    }
+    else{
+      this.arrayEmpleados = this.arrayEmpleadosBackUp.filter(newArray =>
+        newArray.name.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
+        newArray.email.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
+        newArray.age == Number(this.searchText) ||
+        newArray.position.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
+        newArray.surname.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()),
+        )
+    }
+  }
+
+  filtroTurnos(selectBox: HTMLSelectElement){
+    if (selectBox.value=="Turno"){
+      this.arrayEmpleados = this.arrayEmpleadosBackUp
+    }
+    else if (selectBox.value=="Mañana"){
+      this.arrayEmpleados = this.arrayEmpleadosBackUp.filter(newArray =>
+        newArray.shiftMorning == true 
+      )
+    }
+    else if (selectBox.value=="Tarde"){
+      this.arrayEmpleados = this.arrayEmpleadosBackUp.filter(newArray =>
+        newArray.shiftAfternoon == true 
+      )
+    }
+    else if (selectBox.value=="Noche"){
+      this.arrayEmpleados = this.arrayEmpleadosBackUp.filter(newArray =>
+        newArray.shiftEvening == true 
+      )
+    }
+  }
+
 }

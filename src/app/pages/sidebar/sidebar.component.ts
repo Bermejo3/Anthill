@@ -51,6 +51,7 @@ export class SidebarComponent implements OnInit {
   cerrarSesion(){
     sessionStorage.removeItem("id_companies")
     sessionStorage.removeItem("id_employees")
+    this.servicio.estaLogueado=false
     this._router.navigate(['login'])
   }
 

@@ -198,7 +198,12 @@ body {
   border-bottom-right-radius: 12px;
   border-top-right-radius: 12px;
 }
-
+.boton-modal{
+  background: var(--colorFondo);
+}
+.boton-modal:hover{
+  background: var(--colorPrincipal);
+}
 .colocar-boton {
   justify-content: center;
   margin: 3%;
@@ -281,29 +286,16 @@ body {
   height: 40px;
   width: fit-content;
 }
-
+.heigthTopBar{
+  height: 45px;
+}
 /* ------------------Tarjetas---------------------- */
 .tarjetas-fila1{
   height: fit-content;
-  /* border: 0.1px solid #343c5087; */
   border: 1px solid rgba(255,255,255,0.09);
-
-  /* box-shadow:         3px 3px 5px 6px #fcfcfc87 inset; */
   width: 20rem;
   border-radius: 12px;
-  /* background: linear-gradient(
-    90deg
-    ,#06308c 0  
-    ,#063aaa 60%
-    ,#0950e8); */
-  /* background: linear-gradient(
-    90deg
-    ,#02194b 0  
-    ,#0539a9 50%
-    ,#02194b); */
   background: rgba(0,0,0,0.2);
-
-  /* margin-top: 16px; */
 }
 
 .tarjetas-fila1 img{
@@ -339,7 +331,7 @@ box-shadow: 0 0px 26px 0 rgb(255 255 255 / 8%);
 .reductor:hover
 {
     color: var(--colorLetraTablas);
-    
+    background: var(--colorPrincipal);
     transition-delay: 1s;
 }
   
@@ -550,9 +542,5 @@ box-shadow: 0 0px 26px 0 rgb(255 255 255 / 8%);
       transform: translateY(-100%);
     }
   }
-  .iconos-barra-filtros i:hover{
-    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px var(--colorPrincipal), 0 0 30px var(--colorPrincipal), 0 0 40px var(--colorPrincipal), 0 0 55px var(--colorPrincipal), 0 0 75px var(--colorPrincipal);
-    
-  
-  }
+
 /* ------------------------------------ */

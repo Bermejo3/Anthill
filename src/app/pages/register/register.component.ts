@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
 
    public buildForm()
    {
-     const minPass = 8
+     const minPass = 6
 
      
 

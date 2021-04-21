@@ -14,6 +14,8 @@
   .boton-barra-filtros:hover:before {
     height: 100%;
   } */
+
+  
   .row .iconos-barra-filtros{
     text-align:end;
   
@@ -102,4 +104,11 @@
 .modal-content{
   height: 20%;
   width: 100%;
+}
+
+.heigthTopBar{
+  height: 45px;
+}
+.modal-footer{
+  justify-content: space-between;
 }

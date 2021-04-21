@@ -17,6 +17,7 @@ export class StockTarjetasComponent implements OnInit {
   showModal3:boolean
   stock : Stock = new Stock(0,0,"","",0,"","",0,"")
   arrayStock : Stock[] = [this.stock]
+  public arrayStockBackUp : Stock[] = [this.stock]
   mensaje: string = ""
   mostrar: boolean
   posicionTabla : number = 0
@@ -27,6 +28,8 @@ export class StockTarjetasComponent implements OnInit {
 
   public formularioStockAdd: FormGroup
   public formularioStockUpdate: FormGroup
+
+  public searchText: string=""
 
   constructor(public servicio: ServiciosService,public apiService: ApiserviceService, private formBuilder:FormBuilder) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
@@ -97,6 +100,7 @@ export class StockTarjetasComponent implements OnInit {
       (data:Stock[]) =>
       {
         this.arrayStock=data
+        this.arrayStockBackUp=data
       }
     )
   }
@@ -180,6 +184,21 @@ updateStock(name:string,type:string,quantity:number,unit:string,place:string, mi
   }
   cerrar() {
     this.mostrar = false
+  }
+
+  filter(){
+    if (this.searchText==""){
+      this.arrayStock = this.arrayStockBackUp
+    }
+    else{
+      this.arrayStock = this.arrayStockBackUp.filter(newArray =>
+        newArray.name.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
+        newArray.type.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
+        newArray.quantity == Number(this.searchText) ||
+        newArray.unit.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
+        newArray.place.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()),
+      )
+    }
   }
   
 

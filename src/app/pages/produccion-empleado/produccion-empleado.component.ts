@@ -1,4 +1,3 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { Empleados } from 'src/app/models/empleados';
@@ -119,6 +118,8 @@ export class ProduccionEmpleadoComponent implements OnInit {
   public formularioAddProductividad: FormGroup
   public formularioEditProductividad: FormGroup
 
+  public searchText: string=""
+
   constructor(public servicio: ServiciosService, public apiservice: ApiserviceService, private formBuilder:FormBuilder) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     
@@ -237,7 +238,6 @@ export class ProduccionEmpleadoComponent implements OnInit {
       // }
       this.produccionEmpleados = resultado;
       this.produccionEmpleadosBackUp = resultado;
-
 
       console.log(this.produccionEmpleados)
     })
@@ -474,8 +474,19 @@ export class ProduccionEmpleadoComponent implements OnInit {
     this.getProductividad()
     this.getEmpleados()
     this.ProdIndiMes()
-
-    
   }
 
+    filter(){
+    if (this.searchText==""){
+      this.produccionEmpleados= this.produccionEmpleadosBackUp
+    }
+    else{
+      this.produccionEmpleados = this.produccionEmpleadosBackUp.filter(newArray =>
+        newArray.name.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
+        newArray.date.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
+        newArray.hours == Number(this.searchText) ||
+        newArray.productivity == Number(this.searchText)
+        )
+    }
+  }
 }

@@ -2,7 +2,7 @@
     <div class="foto">
       <div class="row">
         <div  *ngIf="empresa.picture != null, else isNull">
-            <img src="{{empresa.picture}}" alt="">
+            <img src="{{empresa.picture}}" onerror="this.src='../../../assets/ElHormiguero.png'" alt="">
         </div> 
         <!-- ------Imagen predeterminada----- -->
         <ng-template #isNull> <img class="card-img-top" src="../../../assets/ElHormiguero.png" alt="Card image cap"> </ng-template>     

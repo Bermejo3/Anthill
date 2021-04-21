@@ -1,7 +1,13 @@
 /* .........Boton y Search............ */
 .boton-modal{
-  background-color:   var(--colorFondo)
-} 
+  background: var(--colorFondo);
+}
+.boton-modal:hover{
+  background: var(--colorPrincipal);
+}
+.color:hover{
+  background-color: #ff9100;
+}
 .fondo-modal{
   background-color: rgba(0, 0, 0, 0.75);
 }

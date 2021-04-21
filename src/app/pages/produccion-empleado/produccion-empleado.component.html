@@ -1,32 +1,12 @@
 <div class="row barra-filtros">
-  <!-- <div class="col-2">
-    <form class="d-flex">
-      <input class="form-control me-2 mainLoginInput input-search-barra" type="search" placeholder="&#61442;"
-        aria-label="Search">
-      <button type="button" class="btn btn-primary btn-sm boton-redondo">Go</button>
-    </form>
-  </div>
-  <div class="col-1">
-    <select class="form-select selectBarraFiltros" aria-label="Default select example" style="width: fit-content;">
-      <option selected>Fecha</option>
-      <option value="1">Día</option>
-      <option value="2">Mes</option>
-    </select>
-    </div> -->
-    <!-- <div class="col-9">
-      <button class="boton-barra-filtros reductor" (click)="show()">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        Añadir
-      </button>
-      </div> -->
-      
+  <div class="col-2">
+    <input class="form-control me-2 mainLoginInput input-search-barra heigthTopBar" type="search" placeholder="&#61442;"
+      aria-label="Search" [(ngModel)]="searchText" (ngModelChange)="filter()">
+  </div>    
     <div class="row">
         <div class="row filabotones">
           <div class="col-3">
-            <button class="boton-barra-filtros reductor" (click)="show()">
+            <button class="boton-barra-filtros reductor heigthTopBar" (click)="show()">
               <span></span>
               <span></span>
               <span></span>
@@ -45,8 +25,6 @@
         </div>
   </div>
   
-  
-<!-- </div> -->
 
 
   <div class="col-12">
@@ -100,7 +78,7 @@
        <div class="modal-body">
         ¿Seguro de que quieres borrar este dato?
        </div>
-       <div class="modal-footer">
+       <div class="modal-footer modal-footer2">
          <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="hide()">Atrás</button>
          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteProductividad()">Borrar</button>
        </div>
@@ -194,7 +172,12 @@
           </div>
           
           <div class="modal-footer colocar-boton">
-            <button type="button" class="boton-barra-filtros boton-modal" [disabled]="formularioEditProductividad.invalid" (click) = "updateProductividadForm()" >Guardar</button>
+            <button type="button" class="boton-barra-filtros boton-modal reductor" [disabled]="formularioEditProductividad.invalid" (click) = "updateProductividadForm()">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Guardar</button>
           </div>
           
         </div>
