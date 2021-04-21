@@ -48,8 +48,7 @@
   </div>
   <!-- ----------------------------Tabla------------------------------------------- -->
   <div class="row tamaño-tabla" *ngIf="arrayEmpleados.length > 0; else isNone">
-
-    <div class="container mt-5">
+    <!-- <div class="container mt-5"> -->
       <div class="tableContainer">
         <table class="table">
           <thead>
@@ -71,7 +70,7 @@
               <td>{{empleado.surname}}</td>
               <td>{{empleado.age}}</td>
               <td>{{empleado.position}}</td>
-              <td class="col"> 
+              <td> 
                 <i class="fas fa-sun iconos-tarjetas sol" *ngIf = "empleado.shiftMorning==true"></i> 
                 <i class="fas fa-adjust iconos-tarjetas sol" *ngIf = "empleado.shiftAfternoon==true"></i>
                 <i class=" fas fa-moon iconos-tarjetas luna" *ngIf = "empleado.shiftEvening==true"></i></td>
@@ -89,7 +88,7 @@
       <strong>{{mensaje}}</strong>
     </div>
       </div>
-    </div>
+    <!-- </div> -->
   </div>
   
 <ng-template #isNone>

@@ -90,12 +90,20 @@
 .margen2{
   margin-right: 1%;
 }
-.tableContainer{
+/* .tableContainer{
   background: linear-gradient(
     90deg
     ,#03256c 0  
     ,#0539a9 60%
-    ,#03256c);
+    ,#03256c); 
+} */
+.tamaño-tabla{
+  width:93%;
+  height: fit-content;
+  margin-left: 1%;
+}
+.table{
+  width:100%
 }
 #margen{
   margin-right: 25%;

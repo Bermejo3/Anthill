@@ -4,7 +4,7 @@
   <div class="row1" style="justify-content: center;">
     
         <div class="col-3">
-          <img src="../../../assets/hormiguero_blanco.png" class="imagen-hormiguero" id="imagen">
+          <img src="../../../assets/hormiguero.png" class="imagen-hormiguero" id="imagen">
         </div>
         <div class="tarjeta-login">
            <div class="row">
@@ -22,8 +22,15 @@
           <p class="alinear">Si eres una empresa y aún no te has registrado</p>
           <p class="alinear register" routerLink="/register"><b>Regístrate</b></p> 
         </div>
+        
 
   </div>
+  <div style="width: 100%; align-items: center;">
+    <div class="alert alert-dismissible alert-danger " *ngIf="showAlert">
+      <button type="button" class="close" on-click="cerrar()">&times;</button>
+      <strong>Datos incorrectos</strong>
+    </div>
+  </div> 
 <div class="col about">
     <h5 routerLink="/about-us">Sobre nosotros</h5>
 </div>

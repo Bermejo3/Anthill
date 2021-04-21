@@ -95,3 +95,11 @@ body {
     text-shadow: 0 0 10px #03256c, 0 0 20px #03256c, 0 0 40px #03256c;
     transition-delay: 0.2s;
 }
+
+.alert{
+  width:23%;
+  position: absolute;
+  margin-left: 51%;
+  margin-top: 2%;
+  text-align: center;
+}
