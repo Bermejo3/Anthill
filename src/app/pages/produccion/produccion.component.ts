@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { ApiserviceService } from 'src/app/shared/apiservice.service';
 import { Productividad } from 'src/app/models/productividad';
 import { ProdIndividual } from 'src/app/models/prod-individual';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 
 @Component({
@@ -32,8 +34,10 @@ export class ProduccionComponent implements OnInit {
 
   public page: number = 1
   public itemsPerPage: number = 7
+
+  public formularioAddProductividad: FormGroup
   
-  constructor(public servicio: ServiciosService, private _router:Router, private apiservice: ApiserviceService) 
+  constructor(public servicio: ServiciosService, private _router:Router, private apiservice: ApiserviceService, private formBuilder:FormBuilder) 
   {
     this.comparaProduccion = [];
     this.arrayProductividad = [];
@@ -42,6 +46,28 @@ export class ProduccionComponent implements OnInit {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.showModal = false;
     this.isGrande = false;
+    this.buildForm()
+  }
+
+  public buildForm()
+   {
+     this.formularioAddProductividad = this.formBuilder.group({
+       empleado: [, Validators.required],
+       productividad:[ , Validators.required],
+       horas:[ , Validators.required],
+       dia:[ , Validators.required],
+      })
+   }
+
+   addProductividadForm()
+  {
+    this.produccionEmpleado = new ProdIndividual(this.servicio.id_employees,this.formularioAddProductividad.get('empleado').value,this.formularioAddProductividad.get('productividad').value, this.formularioAddProductividad.get('horas').value, this.formularioAddProductividad.get('dia').value, this.servicio.id_companies, 0)
+    console.log(this.produccionEmpleado)
+    this.apiservice.addProductividad(this.produccionEmpleado).subscribe((resultado:any)=>
+    {
+      console.log(resultado)
+    })
+    this._router.navigate(['produccion/empleado'])
   }
 
   getProductMes()

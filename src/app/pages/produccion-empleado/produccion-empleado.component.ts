@@ -6,6 +6,7 @@ import { ProdIndividual } from 'src/app/models/prod-individual';
 import { Productividad } from 'src/app/models/productividad';
 import { ApiserviceService } from 'src/app/shared/apiservice.service';
 import { ServiciosService } from 'src/app/shared/servicios.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-produccion-empleado',
@@ -113,7 +114,10 @@ export class ProduccionEmpleadoComponent implements OnInit {
 
   public isGrande:boolean;
 
-  constructor(public servicio: ServiciosService, public apiservice: ApiserviceService) {
+  public formularioAddProductividad: FormGroup
+  public formularioEditProductividad: FormGroup
+
+  constructor(public servicio: ServiciosService, public apiservice: ApiserviceService, private formBuilder:FormBuilder) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     
     this.nombreEmpleado="";
@@ -132,10 +136,58 @@ export class ProduccionEmpleadoComponent implements OnInit {
     this.servicio.produccionMesEmpleado=[];
     this.misEmpleados=0;
 
-
-
     this.posicionTabla=0;
     this.mensaje = "";
+
+    this.buildForm()
+    this.buildFormEdit()
+  }
+
+  public buildForm()
+   {
+     this.formularioAddProductividad = this.formBuilder.group({
+       empleado: [, Validators.required],
+       productividad:[ , Validators.required],
+       horas:[ , Validators.required],
+       dia:[ , Validators.required],
+      })
+   }
+
+   addProductividadForm()
+  {
+    this.produccionEmpleado = new ProdIndividual(this.servicio.id_employees,this.formularioAddProductividad.get('empleado').value,this.formularioAddProductividad.get('productividad').value, this.formularioAddProductividad.get('horas').value, this.formularioAddProductividad.get('dia').value, this.servicio.id_companies, 0)
+    console.log(this.produccionEmpleado)
+    this.apiservice.addProductividad(this.produccionEmpleado).subscribe((resultado:any)=>
+    {
+      console.log(resultado)
+    })
+  }
+
+  public buildFormEdit()
+  {
+    this.formularioEditProductividad = this.formBuilder.group({
+      empleado: [this.nombreEmpleado, Validators.required],
+      productividad:[this.productEmpleado , Validators.required],
+      horas:[this.horasEmpleado , Validators.required],
+      dia:[ this.fechaEmpleado, Validators.required],
+     })
+  }
+
+  updateProductividadForm()
+  {
+    this.apiservice.updateProductividad(new ProdIndividual(this.servicio.id_employees,this.formularioEditProductividad.get('empleado').value,this.formularioEditProductividad.get('productividad').value, this.formularioEditProductividad.get('horas').value, this.formularioEditProductividad.get('dia').value, this.servicio.id_companies, this.id_productivity)).subscribe(
+      (resultado:any)=>
+      {
+        if (resultado.codigo == 1){
+          this.mensaje=resultado.mensaje
+          this.mostrar=true
+          setInterval(()=>{this.mostrar=false},3000)
+        }
+        this.getProdIndividual()
+        this.hide()
+      }
+  
+    )
   }
 
   getEmpleados()
@@ -302,6 +354,8 @@ export class ProduccionEmpleadoComponent implements OnInit {
     this.productEmpleado=productividad;
     this.horasEmpleado = horas;
     this.fechaEmpleado = fecha;
+    this.buildFormEdit()
+
   }
   showSure(id_productivity:number){
     this.showModal3 = true;

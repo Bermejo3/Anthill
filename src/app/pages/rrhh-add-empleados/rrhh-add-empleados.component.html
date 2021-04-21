@@ -6,43 +6,51 @@
     
   
     <div class="col-8">
-      <form>
-
+      <form [formGroup]="formularioAddEmpleado" (ngSubmit)="formularioAddEmpleado.valid">
+  
         <div class="input-group flex-nowrap mt-1">
           <span class="input-group-text cabecera-input" id="addon-wrapping">Nombre</span>
           <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-            defaultValue=null #name>
+            defaultValue=null #name
+            formControlName="nombre" [ngClass]="{'is-invalid': formularioAddEmpleado.get('nombre').touched && !formularioAddEmpleado.get('nombre').valid}" >
         </div>
         <div class="input-group flex-nowrap mt-1">
           <span class="input-group-text cabecera-input" id="addon-wrapping">Apellidos</span>
           <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-            defaultValue=null #surname>
+          defaultValue=null #surname
+          formControlName="apellido" [ngClass]="{'is-invalid': formularioAddEmpleado.get('apellido').touched && !formularioAddEmpleado.get('apellido').valid}" >
         </div>
         <div class="input-group flex-nowrap mt-1">
           <span class="input-group-text cabecera-input" id="addon-wrapping">Edad</span>
           <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-            defaultValue=null #age>
+           defaultValue=null #age
+          formControlName="edad" [ngClass]="{'is-invalid': formularioAddEmpleado.get('edad').touched && !formularioAddEmpleado.get('edad').valid}" >
         </div>
         <div class="input-group flex-nowrap mt-1">
           <span class="input-group-text cabecera-input" id="addon-wrapping">Puesto</span>
           <input type="email" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-            defaultValue=null #position>
+          defaultValue=null #position
+          formControlName="posicion" [ngClass]="{'is-invalid': formularioAddEmpleado.get('posicion').touched && !formularioAddEmpleado.get('posicion').valid}" >
         </div>
         <div class="input-group flex-nowrap mt-1">
           <span class="input-group-text cabecera-input" id="addon-wrapping">Teléfono</span>
           <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-            defaultValue=null #phone>
+          defaultValue=null #phone
+          formControlName="telefono" [ngClass]="{'is-invalid': formularioAddEmpleado.get('telefono').touched && !formularioAddEmpleado.get('telefono').valid}" >
         </div>
         <div class="input-group flex-nowrap mt-1">
           <span class="input-group-text cabecera-input" id="addon-wrapping">Turno</span>
           <div class="falso-input">
             <div class="colocar-selectores" >
 
-                    <input name="mañana" type="checkbox" (click)="checkBox()" #shiftMorning/>       Mañana
+                    <input name="mañana" type="checkbox" (click)="checkBox()" #shiftMorning
+                    formControlName="turnoM" [ngClass]="{'is-invalid': formularioAddEmpleado.get('turnoM').touched && !formularioAddEmpleado.get('turnoM').valid}" />Mañana
             
-                    <input class="margen1" name="tarde" type="checkbox" (click)="checkBox()" #shiftAfternoon />       Tarde
+                    <input class="margen1" name="tarde" type="checkbox" (click)="checkBox()" #shiftAfternoon
+                    formControlName="turnoT" [ngClass]="{'is-invalid': formularioAddEmpleado.get('turnoT').touched && !formularioAddEmpleado.get('turnoT').valid}"  />Tarde
                   
-                    <input class="margen1" name="noche" type="checkbox" (click)="checkBox()" #shiftEvening />       Noche
+                    <input class="margen1" name="noche" type="checkbox" (click)="checkBox()"  #shiftEvening 
+                    formControlName="turnoN" [ngClass]="{'is-invalid': formularioAddEmpleado.get('turnoN').touched && !formularioAddEmpleado.get('turnoN').valid}" />Noche
                   
             </div>
           </div>
@@ -50,25 +58,29 @@
         <div class="input-group flex-nowrap mt-1">
           <span class="input-group-text cabecera-input" id="addon-wrapping">Email</span>
           <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-            defaultValue=null #email>
+          defaultValue=null #email
+          formControlName="email" [ngClass]="{'is-invalid': formularioAddEmpleado.get('email').touched && !formularioAddEmpleado.get('email').valid}" >
         </div>
         <div class="input-group flex-nowrap mt-1">
           <span class="input-group-text cabecera-input" id="addon-wrapping">Contraseña</span>
           <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-            defaultValue=null #password>
+           defaultValue=null #password
+          formControlName="contrasena" [ngClass]="{'is-invalid': formularioAddEmpleado.get('contrasena').touched && !formularioAddEmpleado.get('contrasena').valid}" >
         </div>
         <div class="input-group flex-nowrap mt-1">
           <span class="input-group-text cabecera-input" id="addon-wrapping">Foto</span>
           <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-            defaultValue=null #picture>
+           defaultValue=null #picture
+          formControlName="foto" [ngClass]="{'is-invalid': formularioAddEmpleado.get('foto').touched && !formularioAddEmpleado.get('foto').valid}" >
         </div>
         <div class="input-group flex-nowrap mt-1">
           <span class="input-group-text cabecera-input" id="addon-wrapping">Descripción</span>
-          <textarea class="form-control input-modal descripcion" id="exampleFormControlTextarea1" rows="2" #description></textarea>
+          <textarea class="form-control input-modal descripcion" id="exampleFormControlTextarea1" rows="2" #description
+          formControlName="descripcion" [ngClass]="{'is-invalid': formularioAddEmpleado.get('descripcion').touched && !formularioAddEmpleado.get('descripcion').valid}" ></textarea>
 
         </div>
         <div class="row grande">
-          <button type="button" class="boton-barra-filtros reductor" (click)="addEmpleado(name.value,surname.value,age.valueAsNumber,position.value,phone.valueAsNumber,shiftMorning.checked, shiftAfternoon.checked,shiftEvening.checked,email.value,password.value,description.value,picture.value)">
+          <button type="submit" class="boton-barra-filtros reductor" [disabled]="formularioAddEmpleado.invalid" (click)="addEmpleadoForm()">
             <span></span>
             <span></span>
             <span></span>

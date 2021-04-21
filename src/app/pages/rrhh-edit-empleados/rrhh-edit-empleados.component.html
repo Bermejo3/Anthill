@@ -6,43 +6,51 @@
       
     
       <div class="col-8">
-        <form>
+        <form [formGroup]="formularioEditEmpleado" (ngSubmit)="formularioEditEmpleado.valid">
   
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Nombre</span>
             <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-              value ="{{empleadoInd.name}}" defaultValue=null #name>
+              defaultValue=null #name
+              formControlName="nombre" [ngClass]="{'is-invalid': formularioEditEmpleado.get('nombre').touched && !formularioEditEmpleado.get('nombre').valid}" >
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Apellidos</span>
             <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-            value ="{{empleadoInd.surname}}" defaultValue=null #surname>
+            defaultValue=null #surname
+            formControlName="apellido" [ngClass]="{'is-invalid': formularioEditEmpleado.get('apellido').touched && !formularioEditEmpleado.get('apellido').valid}" >
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Edad</span>
             <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-            value ="{{empleadoInd.age}}" defaultValue=null #age>
+             defaultValue=null #age
+            formControlName="edad" [ngClass]="{'is-invalid': formularioEditEmpleado.get('edad').touched && !formularioEditEmpleado.get('edad').valid}" >
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Puesto</span>
             <input type="email" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-            value ="{{empleadoInd.position}}" defaultValue=null #position>
+            defaultValue=null #position
+            formControlName="posicion" [ngClass]="{'is-invalid': formularioEditEmpleado.get('posicion').touched && !formularioEditEmpleado.get('posicion').valid}" >
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Teléfono</span>
             <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-            value ="{{empleadoInd.phone}}" defaultValue=null #phone>
+            defaultValue=null #phone
+            formControlName="telefono" [ngClass]="{'is-invalid': formularioEditEmpleado.get('telefono').touched && !formularioEditEmpleado.get('telefono').valid}" >
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Turno</span>
             <div class="falso-input">
               <div class="colocar-selectores" >
-                      
-                        <input name="mañana" type="checkbox" (click)="checkBox()" value ="{{empleadoInd.shiftMorning}}"  #shiftMorning/>Mañana
-                        
-                      <input class="margen1" name="tarde" type="checkbox" (click)="checkBox()" value ="{{empleadoInd.shiftAfternoon}}"  #shiftAfternoon />Tarde
+  
+                      <input name="mañana" type="checkbox" (click)="checkBox()" #shiftMorning
+                      formControlName="turnoM" [ngClass]="{'is-invalid': formularioEditEmpleado.get('turnoM').touched && !formularioEditEmpleado.get('turnoM').valid}" />Mañana
+              
+                      <input class="margen1" name="tarde" type="checkbox" (click)="checkBox()" #shiftAfternoon
+                      formControlName="turnoT" [ngClass]="{'is-invalid': formularioEditEmpleado.get('turnoT').touched && !formularioEditEmpleado.get('turnoT').valid}"  />Tarde
                     
-                      <input class="margen1" name="noche" type="checkbox" (click)="checkBox()" value ="{{empleadoInd.shiftEvening}}"  #shiftEvening />Noche
+                      <input class="margen1" name="noche" type="checkbox" (click)="checkBox()"  #shiftEvening 
+                      formControlName="turnoN" [ngClass]="{'is-invalid': formularioEditEmpleado.get('turnoN').touched && !formularioEditEmpleado.get('turnoN').valid}" />Noche
                     
               </div>
             </div>
@@ -50,25 +58,29 @@
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Email</span>
             <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-            value ="{{empleadoInd.email}}" defaultValue=null #email>
+            defaultValue=null #email
+            formControlName="email" [ngClass]="{'is-invalid': formularioEditEmpleado.get('email').touched && !formularioEditEmpleado.get('email').valid}" >
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Contraseña</span>
             <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-            value ="{{empleadoInd.password}}" defaultValue=null #password>
+             defaultValue=null #password
+            formControlName="contrasena" [ngClass]="{'is-invalid': formularioEditEmpleado.get('contrasena').touched && !formularioEditEmpleado.get('contrasena').valid}" >
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Foto</span>
             <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
-            value ="{{empleadoInd.picture}}" defaultValue=null #picture>
+             defaultValue=null #picture
+            formControlName="foto" [ngClass]="{'is-invalid': formularioEditEmpleado.get('foto').touched && !formularioEditEmpleado.get('foto').valid}" >
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Descripción</span>
-            <textarea class="form-control input-modal descripcion" id="exampleFormControlTextarea1" rows="2" value ="{{empleadoInd.name}}" #description></textarea>
+            <textarea class="form-control input-modal descripcion" id="exampleFormControlTextarea1" rows="2" #description
+            formControlName="descripcion" [ngClass]="{'is-invalid': formularioEditEmpleado.get('descripcion').touched && !formularioEditEmpleado.get('descripcion').valid}" ></textarea>
   
           </div>
           <div class="row grande">
-            <button type="button" class="boton-barra-filtros reductor" (click)="updateEmpleado(name.value,surname.value,age.valueAsNumber,position.value,phone.valueAsNumber,shiftMorning.checked, shiftAfternoon.checked, shiftEvening.checked,email.value,password.value,description.value,picture.value)">
+            <button type="submit" class="boton-barra-filtros reductor" [disabled]="formularioEditEmpleado.invalid" (click)="updateEmpleadoForm()">
               <span></span>
               <span></span>
               <span></span>
