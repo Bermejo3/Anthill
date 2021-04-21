@@ -87,46 +87,51 @@
  </div>
 
 <!-- Modal añadir nueva productividad-->
-    <div class="modal tarjetas-modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
-      <div class="modal-dialog">
-        <div class="modal-content">
-        
-          <div class="modal-header" >
-            <h4 class="modal-title">Introduce nuevos datos</h4>
-            <button type="button" class="close" data-dismiss="modal" (click)="hide()">&times;</button>
-          </div>
-          
-          <div class="modal-body fondo-modal">
-            <form>
-              <div class="input-group flex-nowrap mt-1">
-                <span class="input-group-text cabecera-input" id="addon-wrapping">Empleado</span>
-                <select class="form-select" aria-label="Default select example" style="width: fit-content;" #empleado>
-                  <option value="" selected>Seleccione un empleado</option>
-                  <option *ngFor = "let trabajadores of arrayProductividad; let i = index; let even = even" value="{{trabajadores.name}}">{{trabajadores.name}}</option>
-                </select>
-              </div>
-              <div class="input-group flex-nowrap mt-1">
-                <span class="input-group-text cabecera-input" id="addon-wrapping">Producción</span>
-                <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #productividad>
-              </div>
-              <div class="input-group flex-nowrap mt-1">
-                <span class="input-group-text cabecera-input" id="addon-wrapping">Horas</span>
-                <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #horas>
-              </div>
-              <div class="input-group flex-nowrap mt-1">
-                <span class="input-group-text cabecera-input" id="addon-wrapping">Día</span>
-                <input type="date" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #dias>
-              </div>
-            </form>
-          </div>
-          
-          <div class="modal-footer colocar-boton">
-            <button type="button" class="btn btn-success" data-dismiss="modal" (click)="addProductividad(empleado.value, productividad.valueAsNumber, horas.valueAsNumber, dias.value)">Enviar</button>
-          </div>
-          
-        </div>
+<div class="modal tarjetas-modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <div class="modal-header" >
+        <h4 class="modal-title">Introduce nuevos datos</h4>
+        <button type="button" class="close" data-dismiss="modal" (click)="hide()">&times;</button>
       </div>
+      
+      <div class="modal-body fondo-modal">
+        <form  [formGroup]="formularioAddProductividad" (ngSubmit)="formularioAddProductividad.valid">
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Empleado</span>
+            <select class="form-select" aria-label="Default select example" style="width: fit-content;" #empleado
+            formControlName="empleado" [ngClass]="{'is-invalid': formularioAddProductividad.get('empleado').touched && !formularioAddProductividad.get('empleado').valid}">
+              <option value="" selected>Seleccione un empleado</option>
+              <option *ngFor = "let trabajadores of arrayProductividad" value="{{trabajadores.name}}">{{trabajadores.name}}</option>
+            </select>
+    
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Producción</span>
+            <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #productividad
+            formControlName="productividad" [ngClass]="{'is-invalid': formularioAddProductividad.get('productividad').touched && !formularioAddProductividad.get('productividad').valid}">
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Horas</span>
+            <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #horas
+            formControlName="horas" [ngClass]="{'is-invalid': formularioAddProductividad.get('horas').touched && !formularioAddProductividad.get('horas').valid}">
+          </div>
+          <div class="input-group flex-nowrap mt-1">
+            <span class="input-group-text cabecera-input" id="addon-wrapping">Día</span>
+            <input type="date" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #dias
+            formControlName="dia" [ngClass]="{'is-invalid': formularioAddProductividad.get('dia').touched && !formularioAddProductividad.get('dia').valid}">
+          </div>
+        </form>
+      </div>
+      
+      <div class="modal-footer colocar-boton">
+        <button type="button" class="btn btn-success" data-dismiss="modal" [disabled]="formularioAddProductividad.invalid" (click)="addProductividadForm()">Enviar</button>
+      </div>
+      
     </div>
+  </div>
+</div>
 <!--Modal editar productividad-->
     <div class="modal tarjetas-modal" id="myModal" [style.display]="showModal2 ? 'block' : 'none'">
       <div class="modal-dialog">
@@ -138,28 +143,36 @@
           </div>
           
           <div class="modal-body fondo-modal">
-            <form>
+            <form  [formGroup]="formularioEditProductividad" (ngSubmit)="formularioEditProductividad.valid">
               <div class="input-group flex-nowrap mt-1">
                 <span class="input-group-text cabecera-input" id="addon-wrapping">Empleado</span>
-                <input type="text" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{nombreEmpleado}}" defaultValue=null #empleadoEdit>
+                <select class="form-select" aria-label="Default select example" style="width: fit-content;" #empleado
+                formControlName="empleado" [ngClass]="{'is-invalid': formularioEditProductividad.get('empleado').touched && !formularioEditProductividad.get('empleado').valid}">
+                  <option value="" selected>Seleccione un empleado</option>
+                  <option *ngFor = "let trabajadores of arrayProductividad" value="{{trabajadores.name}}">{{trabajadores.name}}</option>
+                </select>
+        
               </div>
               <div class="input-group flex-nowrap mt-1">
                 <span class="input-group-text cabecera-input" id="addon-wrapping">Producción</span>
-                <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{productEmpleado}}" defaultValue=null #productividadEdit>
+                <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #productividad
+                formControlName="productividad" [ngClass]="{'is-invalid': formularioEditProductividad.get('productividad').touched && !formularioEditProductividad.get('productividad').valid}">
               </div>
               <div class="input-group flex-nowrap mt-1">
                 <span class="input-group-text cabecera-input" id="addon-wrapping">Horas</span>
-                <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{horasEmpleado}}" defaultValue=null #horasEdit>
+                <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #horas
+                formControlName="horas" [ngClass]="{'is-invalid': formularioEditProductividad.get('horas').touched && !formularioEditProductividad.get('horas').valid}">
               </div>
               <div class="input-group flex-nowrap mt-1">
                 <span class="input-group-text cabecera-input" id="addon-wrapping">Día</span>
-                <input type="date" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" value="{{fechaEmpleado}}" defaultValue=null #diasEdit>
+                <input type="date" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #dias
+                formControlName="dia" [ngClass]="{'is-invalid': formularioEditProductividad.get('dia').touched && !formularioEditProductividad.get('dia').valid}">
               </div>
             </form>
           </div>
           
           <div class="modal-footer colocar-boton">
-            <button type="button" class="boton-barra-filtros boton-modal" (click) = "updateProductividad(empleadoEdit.value, productividadEdit.valueAsNumber, horasEdit.valueAsNumber, diasEdit.value)" >Guardar</button>
+            <button type="button" class="boton-barra-filtros boton-modal" [disabled]="formularioEditProductividad.invalid" (click) = "updateProductividadForm()" >Guardar</button>
           </div>
           
         </div>

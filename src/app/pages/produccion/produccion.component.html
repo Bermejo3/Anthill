@@ -99,31 +99,36 @@
       </div>
       
       <div class="modal-body fondo-modal">
-        <form>
+        <form  [formGroup]="formularioAddProductividad" (ngSubmit)="formularioAddProductividad.valid">
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Empleado</span>
-            <select class="form-select" aria-label="Default select example" style="width: fit-content;" #empleado>
-              <option *ngFor = "let trabajadores of arrayProductividad" selected value="{{trabajadores.name}}">{{trabajadores.name}}</option>
+            <select class="form-select" aria-label="Default select example" style="width: fit-content;" #empleado
+            formControlName="empleado" [ngClass]="{'is-invalid': formularioAddProductividad.get('empleado').touched && !formularioAddProductividad.get('empleado').valid}">
+              <option value="" selected>Seleccione un empleado</option>
+              <option *ngFor = "let trabajadores of arrayProductividad" value="{{trabajadores.name}}">{{trabajadores.name}}</option>
             </select>
     
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Producción</span>
-            <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #productividad>
+            <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #productividad
+            formControlName="productividad" [ngClass]="{'is-invalid': formularioAddProductividad.get('productividad').touched && !formularioAddProductividad.get('productividad').valid}">
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Horas</span>
-            <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #horas>
+            <input type="number" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #horas
+            formControlName="horas" [ngClass]="{'is-invalid': formularioAddProductividad.get('horas').touched && !formularioAddProductividad.get('horas').valid}">
           </div>
           <div class="input-group flex-nowrap mt-1">
             <span class="input-group-text cabecera-input" id="addon-wrapping">Día</span>
-            <input type="date" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #dias>
+            <input type="date" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping" defaultValue=null #dias
+            formControlName="dia" [ngClass]="{'is-invalid': formularioAddProductividad.get('dia').touched && !formularioAddProductividad.get('dia').valid}">
           </div>
         </form>
       </div>
       
       <div class="modal-footer colocar-boton">
-        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="addProductividad(empleado.value, productividad.valueAsNumber, horas.valueAsNumber, dias.value)">Enviar</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" [disabled]="formularioAddProductividad.invalid" (click)="addProductividadForm()">Enviar</button>
       </div>
       
     </div>

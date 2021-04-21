@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { Empleados } from 'src/app/models/empleados';
 import { ApiserviceService } from 'src/app/shared/apiservice.service';
 import { ServiciosService } from 'src/app/shared/servicios.service';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-rrhh-add-empleados',
@@ -20,8 +21,42 @@ export class RrhhAddEmpleadosComponent implements OnInit {
   public myForm:FormGroup
   checkbox:boolean=false
 
-  constructor(public servicio: ServiciosService, public apiService:ApiserviceService, public _router:Router) {
+  public formularioAddEmpleado: FormGroup
+
+  constructor(public servicio: ServiciosService, public apiService:ApiserviceService, public _router:Router, private formBuilder:FormBuilder) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
+    this.buildForm()
+
+  }
+
+  public buildForm()
+   {
+     this.formularioAddEmpleado = this.formBuilder.group({
+       nombre: [, Validators.required],
+       apellido:[ , Validators.required],
+       edad:[ , Validators.required],
+       posicion:[ , Validators.required],
+       telefono:[ , Validators.required],
+       turnoM: [, ],
+       turnoT:[, ],
+       turnoN:[, ],
+       email:[, Validators.required],
+       contrasena:[, Validators.required],
+       foto:[, ],
+       descripcion:[, Validators.maxLength(200)],
+      })
+   }
+
+   addEmpleadoForm(){
+    let empleado = new Empleados(0,this.servicio.id_companies,this.formularioAddEmpleado.get('nombre').value,this.formularioAddEmpleado.get('apellido').value,this.formularioAddEmpleado.get('edad').value,this.formularioAddEmpleado.get('posicion').value,this.formularioAddEmpleado.get('telefono').value,this.formularioAddEmpleado.get('turnoM').value,this.formularioAddEmpleado.get('turnoT').value,this.formularioAddEmpleado.get('turnoN').value,this.formularioAddEmpleado.get('email').value,this.formularioAddEmpleado.get('contrasena').value,this.formularioAddEmpleado.get('descripcion').value,this.formularioAddEmpleado.get('foto').value)
+    
+    this.apiService.addEmpleado(empleado).subscribe(
+      (data:any)=>
+      {
+        this.mensaje=data.mensaje
+        this._router.navigate(['rrhh-empleados'])
+      }
+    )
   }
 
   
