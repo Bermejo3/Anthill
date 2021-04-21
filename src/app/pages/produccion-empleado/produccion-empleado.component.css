@@ -53,7 +53,25 @@
     height: 100%;
   }
 
+  .mainLoginInput::-webkit-input-placeholder { 
+    font-family: FontAwesome;
+    font-weight: normal;
+    overflow: visible;
+    vertical-align: top;
+    display: inline-block !important;
+    padding-left: 5px;
+    padding-top: 2px;
+    color: hsl(0, 0%, 0%);
+  }
+
 /* <-- Modal --> */
+
+.boton-modal{
+  background: var(--colorFondo);
+}
+.boton-modal:hover{
+  background: var(--colorPrincipal);
+}
 
 .colocar-select{
   width: fit-content;
@@ -99,6 +117,13 @@
   .modal-content{
     height: 20%;
     width: 100%;
+}
+.modal{
+  padding-top: 5%;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+.modal-footer2{
+  justify-content: space-between;
 }
 
 

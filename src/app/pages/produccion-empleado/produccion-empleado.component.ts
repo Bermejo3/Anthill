@@ -82,6 +82,8 @@ export class ProduccionEmpleadoComponent implements OnInit {
   ]}
 
   public produccionEmpleados: ProdIndividual [];
+  public produccionEmpleadosBackUp: ProdIndividual [];
+  
   public produccionEmpleado: ProdIndividual;
   public miEmpleado:Empleados;
 
@@ -116,6 +118,8 @@ export class ProduccionEmpleadoComponent implements OnInit {
 
   public formularioAddProductividad: FormGroup
   public formularioEditProductividad: FormGroup
+
+  public searchText: string=""
 
   constructor(public servicio: ServiciosService, public apiservice: ApiserviceService, private formBuilder:FormBuilder) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
@@ -221,6 +225,7 @@ export class ProduccionEmpleadoComponent implements OnInit {
     {
      
       this.produccionEmpleados = resultado;
+      this.produccionEmpleadosBackUp = resultado;
 
       console.log(this.produccionEmpleados)
       console.log(resultado)
@@ -375,8 +380,19 @@ export class ProduccionEmpleadoComponent implements OnInit {
     this.getProductividad()
     this.getEmpleados()
     this.ProdIndiMes()
-
-    
   }
 
+    filter(){
+    if (this.searchText==""){
+      this.produccionEmpleados= this.produccionEmpleadosBackUp
+    }
+    else{
+      this.produccionEmpleados = this.produccionEmpleadosBackUp.filter(newArray =>
+        newArray.name.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
+        newArray.date.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
+        newArray.hours == Number(this.searchText) ||
+        newArray.productivity == Number(this.searchText)
+        )
+    }
+  }
 }

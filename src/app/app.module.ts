@@ -65,7 +65,6 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     StockTarjetasComponent,
     RrhhEmpleadosTablaComponent,
     RrhhEditEmpleadosComponent,
-    
   ],
   imports: [
     FormsModule,

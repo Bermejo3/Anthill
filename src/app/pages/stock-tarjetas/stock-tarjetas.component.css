@@ -1,8 +1,14 @@
 /* ................................................Boton y Search................................................. */
 .boton-modal{
-  height: 40px;
-  background-color:  var(--colorFondo)
+  background: var(--colorFondo);
 }
+.boton-modal:hover{
+  background: var(--colorPrincipal);
+}
+.color:hover{
+  background-color: #ff9100;
+}
+
 .fondo-modal{
   background-color: rgba(0, 0, 0, 0.75);
 }
@@ -38,9 +44,6 @@
   color: hsl(0, 0%, 0%);
 }
 
-.color{
-  background: #ff9100;
-}
 /* ....................................Desaparecer responsive.................................................. */
 @media screen and (max-width:1500px) {
   #imagen {

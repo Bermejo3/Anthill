@@ -1,39 +1,20 @@
  <!-- ----------------------Search y Filtros---------------------------- -->
  <div class="row barra-filtros">
-    <div class="col-2">
-      <form class="d-flex">
-        <input class="form-control me-2 mainLoginInput input-search-barra" type="search" placeholder="&#61442;"
-          aria-label="Search">
-        <button type="button" class="btn btn-primary btn-sm boton-redondo">Go</button>
-      </form>
-    </div>
-    <div class="col-1">
-      <select class="form-select selectBarraFiltros" aria-label="Default select example">
-        <option selected>Puesto</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-    </div>
-    <div class="col-1">
-      <select class="form-select selectBarraFiltros" aria-label="Default select example">
-        <option selected>Edad</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-    </div>
-    <div class="tamaño-filtros">
-      <select class="form-select selectBarraFiltros" aria-label="Default select example">
-        <option selected>Proyecto</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-    </div>
+  <div class="col-2">
+    <input class="form-control me-2 mainLoginInput input-search-barra heigthTopBar" type="search" placeholder="&#61442;"
+      aria-label="Search" [(ngModel)]="searchText" (ngModelChange)="filter()">
+  </div>
+  <div class="tamaño-filtros">
+    <select class="form-select selectBarraFiltros heigthTopBar" aria-label="Default select example" #selectBox on-change="filtroTurnos(selectBox)">
+      <option selected>Turno</option>
+      <option value="Mañana">Mañana</option>
+      <option value="Tarde">Tarde</option>
+      <option value="Noche">Noche</option>
+    </select>
+  </div>
     <!-- -------------------- Button e Iconos------------------------------ -->
   <div class="col-2">
-    <button class="boton-barra-filtros reductor" routerLink="/rrhh-add-empleados">
+    <button class="boton-barra-filtros reductor heigthTopBar" routerLink="/rrhh-add-empleados">
       <span></span>
       <span></span>
       <span></span>
@@ -93,7 +74,7 @@
   </div>
   
 <ng-template #isNone>
-  <h5 style="text-align: center;">Todavía no hay empleados introducidos</h5>
+  <h5 style="text-align: center; margin-top: 50px;">Disculpe, pero no aparecen empleados en su búsqueda</h5>
 </ng-template>
 
        <!-- Modal Borrar-->
@@ -101,7 +82,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-body">
-            ¿Seguro que quieres borrar a {{arrayEmpleados[posicionTabla].name}}  {{arrayEmpleados[posicionTabla].surname}}?
+            ¿Seguro que quieres borrar a {{arrayEmpleados[posicionTabla]?.name}}  {{arrayEmpleados[posicionTabla]?.surname}}?
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="hide()">Atrás</button>

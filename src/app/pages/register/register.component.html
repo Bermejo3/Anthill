@@ -35,7 +35,7 @@
         <input type="password" class="form-control input-modal" aria-label="titulo" aria-describedby="addon-wrapping"
           defaultValue=null formControlName="contrasena" [ngClass]="{'is-invalid': formularioRegister.get('contrasena').touched && !formularioRegister.get('contrasena').valid}" #password>
         <div *ngIf="formularioRegister.get('contrasena').invalid" class="invalid-feedback">
-          La contraseña tiene que tener al menos 8 caracteres
+          La contraseña tiene que tener al menos 6 caracteres
         </div>
       </div>
       <div class="input-group flex-wrap mt-1">

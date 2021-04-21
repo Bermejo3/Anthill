@@ -17,6 +17,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ProduccionComponent implements OnInit {
 
   public arrayProductividad: Productividad[]
+  public arrayProductividadBackUp: Productividad[]
 
   public produccionEmpleado: ProdIndividual;
 
@@ -36,11 +37,14 @@ export class ProduccionComponent implements OnInit {
   public itemsPerPage: number = 7
 
   public formularioAddProductividad: FormGroup
+
+  public searchText: string=""
   
   constructor(public servicio: ServiciosService, private _router:Router, private apiservice: ApiserviceService, private formBuilder:FormBuilder) 
   {
     this.comparaProduccion = [];
     this.arrayProductividad = [];
+    this.arrayProductividadBackUp = [];
     this.servicio.produccionMes = [];
     this.index = 0
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
@@ -100,6 +104,7 @@ export class ProduccionComponent implements OnInit {
     this.apiservice.getProductividad(this.servicio.id_companies).subscribe((resultado:Productividad[])=>
     {
       this.arrayProductividad = resultado;
+      this.arrayProductividadBackUp = resultado;
 
       console.log(this.arrayProductividad)
       this.masProductivo()
@@ -288,6 +293,19 @@ export class ProduccionComponent implements OnInit {
             data: []
         }
   ]}
+
+  filter(){
+    if (this.searchText==""){
+      this.arrayProductividad = this.arrayProductividadBackUp
+    }
+    else{
+      this.arrayProductividad = this.arrayProductividadBackUp.filter(newArray =>
+        newArray.name.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
+        newArray.sum_hours == Number(this.searchText) ||
+        newArray.sum_productivity == Number(this.searchText)
+        )
+    }
+  }
 
 }
 

@@ -17,18 +17,20 @@ export class StockComponent implements OnInit {
   showModal3:boolean
   stock : Stock = new Stock(0,0,"","",0,"","",0)
   arrayStock : Stock[] = [this.stock]
+  public arrayStockBackUp : Stock[] = [this.stock]
   mensaje: string = ""
   mostrar: boolean
   posicionTabla : number = 0
   public id_stock: number = 0
 
   public page: number = 1
-  public itemsPerPage: number = 10
+  public itemsPerPage: number = 9
 
   public formularioStockAdd: FormGroup
   public formularioStockUpdate: FormGroup
-  
 
+  public searchText: string=""
+  
   constructor(public servicio: ServiciosService,public apiService: ApiserviceService, private formBuilder:FormBuilder) {
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.showModal = false
@@ -123,6 +125,7 @@ export class StockComponent implements OnInit {
       (data:Stock[]) =>
       {
         this.arrayStock=data
+        this.arrayStockBackUp=data
       }
     )
   }
@@ -135,8 +138,8 @@ export class StockComponent implements OnInit {
         this.mostrar=true
         setTimeout(()=>{this.mostrar=false},3000)
         this.mensaje =data.mensaje
-        this.hide()
         this.getStock()
+        this.hide()
       } 
     )
   }
@@ -181,6 +184,21 @@ export class StockComponent implements OnInit {
   }
   cerrar() {
     this.mostrar = false
+  }
+
+  filter(){
+    if (this.searchText==""){
+      this.arrayStock = this.arrayStockBackUp
+    }
+    else{
+      this.arrayStock = this.arrayStockBackUp.filter(newArray =>
+        newArray.name.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
+        newArray.type.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
+        newArray.quantity == Number(this.searchText) ||
+        newArray.unit.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
+        newArray.place.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()),
+      )
+    }
   }
   
 
