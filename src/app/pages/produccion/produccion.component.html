@@ -4,13 +4,7 @@
     <input class="form-control me-2 mainLoginInput input-search-barra heigthTopBar" type="search" placeholder="&#61442;"
       aria-label="Search" [(ngModel)]="searchText" (ngModelChange)="filter()">
   </div>
-   <div class="col-1">
-     <select class="form-select selectBarraFiltros heigthTopBar" aria-label="Default select example" style="width: fit-content;">
-       <option selected>Fecha</option>
-       <option value="1">Día</option>
-       <option value="2">Mes</option>
-     </select>
-     </div>
+
 <div class="col-9">
    <button class="boton-barra-filtros reductor heigthTopBar" (click)="show()">
     <span></span>
@@ -27,7 +21,7 @@
   </div>
 
   <div class="col-12">
-    <div class="row tamaño-tabla">
+    <div class="row tamaño-tabla" id="tablita">
       <div class="mt-5">
         <div class="tableContainer">
           <table class="table">
@@ -82,7 +76,7 @@
   </div>
 </div>
 <ng-template #isNone>
-  <h5 style="text-align: center;">Todavía no hay datos de producción introducidos</h5>
+  <h5 style="text-align: center; margin-top: 50px;">Todavía no hay datos de producción introducidos</h5>
 </ng-template>
 
 <!-- Modal añadir-->

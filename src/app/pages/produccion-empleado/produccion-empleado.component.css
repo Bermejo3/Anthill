@@ -58,7 +58,9 @@
   .boton-barra-filtros:hover:before {
     height: 100%;
   }
-
+.boton-redondo{
+  width: 45px;
+}
   .mainLoginInput::-webkit-input-placeholder { 
     font-family: FontAwesome;
     font-weight: normal;

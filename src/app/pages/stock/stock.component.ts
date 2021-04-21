@@ -185,6 +185,17 @@ export class StockComponent implements OnInit {
     
     this.arrayStock = this.arrayStockBackup.filter(nuevoArray3=>nuevoArray3.place.includes(selectBox3.value))
   }
+  selectStock4(selectBox4:HTMLSelectElement){
+    if (Number(selectBox4.value)==1){
+      this.arrayStock = this.arrayStockBackup.filter(nuevoArray3=>nuevoArray3.minQuantity < nuevoArray3.quantity)
+    }
+    else if (Number(selectBox4.value)==0){
+      this.arrayStock = this.arrayStockBackup.filter(nuevoArray3=>nuevoArray3.minQuantity > nuevoArray3.quantity)
+    }
+    else{
+      this.arrayStock = this.arrayStockBackup
+    }
+  }
 
 
 

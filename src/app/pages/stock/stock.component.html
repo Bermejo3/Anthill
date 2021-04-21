@@ -3,32 +3,39 @@
 <!-- ----------------------Search y Filtros---------------------------- -->
  <div class="row barra-filtros">
    <div class="col">
-       <input class="form-control me mainLoginInput input-search-barra" type="search" placeholder="&#61442;"
+       <input class="form-control me mainLoginInput input-search-barra heigthTopBar" type="search" placeholder="&#61442;"
          aria-label="Search" [(ngModel)]="searchText"  (ngModelChange)="filter()">
    </div>
       <div class="col">
-        <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example"  #selectBox on-change="selectStock(selectBox);">
+        <select class="form-select selectBarraFiltros colocar-select heigthTopBar" aria-label="Default select example"  #selectBox on-change="selectStock(selectBox);">
           <option value="" selected>Categoría</option>
           <option *ngFor="let stockCategoria of arrayStockCategoria" value="{{stockCategoria}}">{{stockCategoria}}</option>          
         </select>
       </div>
       <div class="col margen1">
-        <select class="form-select selectBarraFiltros colocar-select " aria-label="Default select example"  #selectBox2 on-change="selectStock2(selectBox2);">
+        <select class="form-select selectBarraFiltros colocar-select heigthTopBar" aria-label="Default select example"  #selectBox2 on-change="selectStock2(selectBox2);">
           <option value="" selected>Unidad</option>
           <option *ngFor="let stockUnidad of arrayStockUnidad" value="{{stockUnidad}}">{{stockUnidad}}</option>
         </select>
       </div>
       <div class="col">
-        <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example"  #selectBox3 on-change="selectStock3(selectBox3);">
+        <select class="form-select selectBarraFiltros colocar-select heigthTopBar" aria-label="Default select example"  #selectBox3 on-change="selectStock3(selectBox3);">
           <option value="" selected>Ubicacion</option>
           <option *ngFor="let stockUbicacion of arrayStockUbicacion" value="{{stockUbicacion}}">{{stockUbicacion}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <select class="form-select selectBarraFiltros colocar-select heigthTopBar" aria-label="Default select example"  #selectBox4 on-change="selectStock4(selectBox4);">
+          <option value="Estado" selected>Estado</option>
+          <option value=1>Correcto</option>
+          <option value=0>En peligro</option>
         </select>
       </div>
       
       
    <!-- -------------------- Button e Iconos------------------------------ -->
    <div class="col">
-   <button class="boton-barra-filtros reductor" (click)="show()">
+   <button class="boton-barra-filtros reductor heigthTopBar" (click)="show()">
     <span></span>
     <span></span>
     <span></span>

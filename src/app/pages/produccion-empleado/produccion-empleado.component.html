@@ -1,29 +1,30 @@
 <div class="row barra-filtros">
-  <div class="col-2">
-    <input class="form-control me-2 mainLoginInput input-search-barra heigthTopBar" type="search" placeholder="&#61442;"
-      aria-label="Search" [(ngModel)]="searchText" (ngModelChange)="filter()">
-  </div>    
+  
     <div class="row">
         <div class="row filabotones">
-          <div class="col-3">
-            <button class="boton-barra-filtros reductor heigthTopBar" (click)="show()">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              Añadir
-            </button>
-          </div>
+          <div class="col-2">
+            <input class="form-control me-2 mainLoginInput input-search-barra heigthTopBar" type="search" placeholder="&#61442;"
+              aria-label="Search" [(ngModel)]="searchText" (ngModelChange)="filter()">
+          </div>    
             <div class="col-3">
-                <button type="button" class="btn btn-primary btn-sm boton-redondo"(click)="mesIzquierda()"><i class="fas fa-arrow-left"></i></button>
-                <button type="button" class="btn btn-primary btn-sm boton-redondo"(click)="mesDerecha()"><i class="fas fa-arrow-right"></i></button>
+              <button type="button" class="btn btn-primary btn-sm boton-redondo heigthTopBar"(click)="mesIzquierda()"><i class="fas fa-arrow-left"></i></button>
+              <button type="button" class="btn btn-primary btn-sm boton-redondo heigthTopBar"(click)="mesDerecha()"><i class="fas fa-arrow-right"></i></button>
             </div>
             <div class="col-3">
-                <button class="boton-barra-filtros" (click) = "verPorMes()">Mes</button>
-                <button class="boton-barra-filtros" (click) = "verPorAnyo()">Año</button>
+              <button class="boton-barra-filtros reductor heigthTopBar" (click)="show()">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Añadir
+              </button>
+            </div>
+            <div class="col-3">
+                  <button class="boton-barra-filtros" (click) = "verPorMes()">Mes</button>
+                  <button class="boton-barra-filtros" (click) = "verPorAnyo()">Año</button>
             </div>
         </div>
-  </div>
+    </div>
   
 
 
@@ -34,9 +35,9 @@
     </div>
   </div>
 
-<div class="col">
+<div class="col-12">
     <div class="row tamaño-tabla" id = "tablita">
-      <div class="container mt-5">
+      <div class="mt-5">
         <div class="tableContainer">
           <table class="table">
             <thead>

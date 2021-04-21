@@ -12,9 +12,6 @@
 .fondo-modal{
   background-color: rgba(0, 0, 0, 0.75);
 }
-.boton-barra-filtros{
-  height: 55px;
-}
 
 .row .iconos-barra-filtros {
   text-align: end;
@@ -161,9 +158,6 @@
 }
 .margen2{
   margin-right: 1%;
-}
-.boton-barra-filtros{
-  height: 55px;
 }
 
 .modalB{

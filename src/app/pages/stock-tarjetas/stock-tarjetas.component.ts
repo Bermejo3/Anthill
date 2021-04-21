@@ -17,8 +17,7 @@ export class StockTarjetasComponent implements OnInit {
   showModal3:boolean
   stock : Stock = new Stock(0,0,"","",0,"","",0,"")
   arrayStock : Stock[] = [this.stock]
-  public arrayStockBackUp : Stock[] = [this.stock]
-  arrayStockBackup:Stock[] = [this.stock]
+  arrayStockBackup:Stock[] = []
   arrayStockCategoria:string[]=[]
   arrayStockUnidad:string[]=[]
   arrayStockUbicacion:string[]=[]
@@ -147,6 +146,18 @@ export class StockTarjetasComponent implements OnInit {
     this.arrayStock = this.arrayStockBackup.filter(nuevoArray3=>nuevoArray3.place.includes(selectBox3.value))
   }
 
+  selectStock4(selectBox4:HTMLSelectElement){
+    if (Number(selectBox4.value)==1){
+      this.arrayStock = this.arrayStockBackup.filter(nuevoArray3=>nuevoArray3.minQuantity < nuevoArray3.quantity)
+    }
+    else if (Number(selectBox4.value)==0){
+      this.arrayStock = this.arrayStockBackup.filter(nuevoArray3=>nuevoArray3.minQuantity > nuevoArray3.quantity)
+    }
+    else{
+      this.arrayStock = this.arrayStockBackup
+    }
+  }
+
   addStock(name:string,type:string,quantity:number,unit:string,place:string, minQuantity:number,picture:string){
 
     this.apiService.addStock(new Stock(0,this.servicio.id_companies,name ,type,quantity,unit,place,minQuantity,picture)).subscribe(
@@ -230,10 +241,10 @@ updateStock(name:string,type:string,quantity:number,unit:string,place:string, mi
 
   filter(){
     if (this.searchText==""){
-      this.arrayStock = this.arrayStockBackUp
+      this.arrayStock = this.arrayStockBackup
     }
     else{
-      this.arrayStock = this.arrayStockBackUp.filter(newArray =>
+      this.arrayStock = this.arrayStockBackup.filter(newArray =>
         newArray.name.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
         newArray.type.toLocaleLowerCase().includes(this.searchText.toLocaleLowerCase()) ||
         newArray.quantity == Number(this.searchText) ||
