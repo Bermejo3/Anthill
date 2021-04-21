@@ -38,6 +38,12 @@
 
 }
 
+.row .filabotones
+{
+  vertical-align: middle;
+  justify-content: space-between;
+}
+
 .boton-barra-filtros:before {
     content:"";
     position: flex;

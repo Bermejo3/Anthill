@@ -82,6 +82,7 @@ export class ProduccionEmpleadoComponent implements OnInit {
   ]}
 
   public produccionEmpleados: ProdIndividual [];
+  public produccionEmpleadosBackUp: ProdIndividual[];
   public produccionEmpleado: ProdIndividual;
   public miEmpleado:Empleados;
 
@@ -104,6 +105,7 @@ export class ProduccionEmpleadoComponent implements OnInit {
   public mergeOptions = {}
 
   public misEmpleados:number;
+  public posicion:number;
 
   public data: Array<any>;
 
@@ -135,9 +137,11 @@ export class ProduccionEmpleadoComponent implements OnInit {
     this.servicio.produccionMes=[];
     this.servicio.produccionMesEmpleado=[];
     this.misEmpleados=0;
+    this.produccionEmpleadosBackUp = [];
 
     this.posicionTabla=0;
     this.mensaje = "";
+    this.posicion=0;
 
     this.buildForm()
     this.buildFormEdit()
@@ -159,7 +163,15 @@ export class ProduccionEmpleadoComponent implements OnInit {
     console.log(this.produccionEmpleado)
     this.apiservice.addProductividad(this.produccionEmpleado).subscribe((resultado:any)=>
     {
-      console.log(resultado)
+      if (resultado.codigo == 1){
+        this.mensaje=resultado.mensaje
+        this.mostrar=true
+        setInterval(()=>{this.mostrar=false},3000)
+      }
+
+      this.getProdIndividual();
+      this.hide();
+
     })
   }
 
@@ -219,11 +231,15 @@ export class ProduccionEmpleadoComponent implements OnInit {
   {
     this.apiservice.getProdIndividual(this.servicio.id_employees, this.servicio.id_companies).subscribe((resultado: ProdIndividual[]) =>
     {
-     
+      // for(let i=0; i<resultado.length; i++)
+      // {
+      //   resultado[i].date
+      // }
       this.produccionEmpleados = resultado;
+      this.produccionEmpleadosBackUp = resultado;
+
 
       console.log(this.produccionEmpleados)
-      console.log(resultado)
     })
     
   }
@@ -237,6 +253,13 @@ export class ProduccionEmpleadoComponent implements OnInit {
         this.servicio.produccionMesEmpleado.push(resultado[i].sum_productivity);
 
         this.mergeOptions = {
+          xAxis: [
+            {
+                type: 'category',
+                boundaryGap: false,
+                data: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+            }
+          ],
 					series: [
             {
               name: 'Producción Media',
@@ -272,43 +295,43 @@ export class ProduccionEmpleadoComponent implements OnInit {
       }
     })
   }
-  addProductividad(nombre:string,productividad:number, horas:number, dia:string)
-  {
-    this.produccionEmpleado = new ProdIndividual(this.servicio.id_employees,nombre,productividad, horas, dia, this.servicio.id_companies, this.id_productivity)
-    this.apiservice.addProductividad(this.produccionEmpleado).subscribe((resultado:any)=>
-    {
-      if (resultado.codigo == 1){
-        this.mensaje=resultado.mensaje
-        this.mostrar=true
-        setInterval(()=>{this.mostrar=false},3000)
-      }
+  // addProductividad(nombre:string,productividad:number, horas:number, dia:string)
+  // {
+  //   this.produccionEmpleado = new ProdIndividual(this.servicio.id_employees,nombre,productividad, horas, dia, this.servicio.id_companies, this.id_productivity)
+  //   this.apiservice.addProductividad(this.produccionEmpleado).subscribe((resultado:any)=>
+  //   {
+  //     if (resultado.codigo == 1){
+  //       this.mensaje=resultado.mensaje
+  //       this.mostrar=true
+  //       setInterval(()=>{this.mostrar=false},3000)
+  //     }
 
-    })
-    this.getProdIndividual();
-    this.hide();
+  //   })
+  //   this.getProdIndividual();
+  //   this.hide();
 
-  }
+  // }
 
-  updateProductividad(nombre:string,productividad:number, horas:number,dia:string)
-  {
+  // updateProductividad(nombre:string,productividad:number, horas:number,dia:string)
+  // {
   
-    // this.id_productivity = this.produccionEmpleados[this.posicionTabla].id_productivity;
+  //   // this.id_productivity = this.produccionEmpleados[this.posicionTabla].id_productivity;
     
     
-    this.apiservice.updateProductividad(new ProdIndividual(this.servicio.id_employees,nombre,productividad, horas, dia, this.servicio.id_companies, this.id_productivity)).subscribe(
-      (resultado:any)=>
-      {
-        if (resultado.codigo == 1){
-          this.mensaje=resultado.mensaje
-          this.mostrar=true
-          setInterval(()=>{this.mostrar=false},3000)
-        }
-        this.getProdIndividual()
-        this.hide()
-      }
+  //   this.apiservice.updateProductividad(new ProdIndividual(this.servicio.id_employees,nombre,productividad, horas, dia, this.servicio.id_companies, this.id_productivity)).subscribe(
+  //     (resultado:any)=>
+  //     {
+  //       if (resultado.codigo == 1){
+  //         this.mensaje=resultado.mensaje
+  //         this.mostrar=true
+  //         setInterval(()=>{this.mostrar=false},3000)
+  //       }
+  //       this.getProdIndividual()
+  //       this.hide()
+  //     }
   
-    )
-  }
+  //   )
+  // }
 
   deleteProductividad()
   {
@@ -324,6 +347,82 @@ export class ProduccionEmpleadoComponent implements OnInit {
       this.getProdIndividual()
       this.hide()
     })
+  }
+  mesDerecha()
+  {
+    this.posicion+=1;
+    if(this.posicion == 12)
+    {
+      this.posicion = 0;
+    }
+    this.verPorMes()
+  }
+  mesIzquierda()
+  {
+    this.posicion-=1;
+    if(this.posicion == -1)
+    {
+      this.posicion = 11;
+    }
+    this.verPorMes()
+  }
+  verPorAnyo()
+  {
+    this.produccionEmpleados = this.produccionEmpleadosBackUp;
+    this.ProdIndiMes()
+  }
+  verPorMes()
+  {
+    let meses = ["-01-", "-02-", "-03-", "-04-", "-05-", "-06-", "-07-", "-08-", "-09-", "-10-", "-11-", "-12-"];
+
+    this.produccionEmpleados = this.produccionEmpleadosBackUp.filter(nuevoArray => nuevoArray.date.includes(meses[this.posicion]));
+    
+    this.graficaMes()
+  }
+
+  graficaMes()
+  {
+    let meses = ["-01-", "-02-", "-03-", "-04-", "-05-", "-06-", "-07-", "-08-", "-09-", "-10-", "-11-", "-12-"];
+    let dias = []
+    let produccion = []
+    
+    this.produccionEmpleados = this.produccionEmpleadosBackUp.filter(nuevoArray => nuevoArray.date.includes(meses[this.posicion]));
+    for(let i=0; i<this.produccionEmpleados.length; i++)
+    {
+      dias.push(this.produccionEmpleados[i].date.slice(0,10));
+      produccion.push(this.produccionEmpleados[i].productivity);
+      
+    }
+    this.mergeOptions = {
+      xAxis: [
+        {
+            type: 'category',
+            boundaryGap: false,
+            data: dias
+        }
+      ],
+      series: [
+        {
+          name: '',
+          type: 'line',
+          areaStyle: {},
+          emphasis: {
+              focus: 'series'
+          },
+          data: 0
+        },
+        { 
+          color: ["#54e346"],
+          name: 'Empleado',
+          type: 'line',
+          areaStyle: {},
+          emphasis: {
+              focus: 'series'
+          },
+          data: produccion
+        }
+      ]
+    };
   }
 
   cambiarTamanyo()

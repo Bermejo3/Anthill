@@ -83,9 +83,11 @@ export class EmpleadoMiPerfilComponent implements OnInit {
   public mergeOptions={};
   public misEmpleados:number;
   public produccionEmpleados: ProdIndividual [];
+  public produccionEmpleadosBackUp: ProdIndividual[];
   public arrayProductividad: Productividad[];
   public unEmpleado: Empleados;
   public vacaciones: Holidays [];
+  public posicion:number;
 
   public page: number = 1
   public itemsPerPage: number = 5
@@ -98,10 +100,13 @@ export class EmpleadoMiPerfilComponent implements OnInit {
     this.servicio.produccionMes=[];
     this.servicio.produccionMesEmpleado=[];
     this.vacaciones=[];
+    this.produccionEmpleadosBackUp = [];
     
     this.arrayProductividad = [];
     this.produccionEmpleados = [];
     this.misEmpleados=0;
+
+    this.posicion=0;
     
   }
   getEmpleados()
@@ -121,8 +126,6 @@ export class EmpleadoMiPerfilComponent implements OnInit {
     this.apiservice.getEmpleadoInd(this.servicio.id_employees).subscribe((resultado:Empleados[])=>
     {
       this.unEmpleado = resultado[0];
-
-      console.log(this.unEmpleado);
     })
   }
 
@@ -136,7 +139,6 @@ export class EmpleadoMiPerfilComponent implements OnInit {
   {
     this.apiservice.getProductividad(this.servicio.id_companies).subscribe((resultado:Productividad[])=>
     {
-      
       this.arrayProductividad = resultado
     })
   }
@@ -148,6 +150,7 @@ export class EmpleadoMiPerfilComponent implements OnInit {
      
       this.produccionEmpleados = resultado;
       
+      this.produccionEmpleadosBackUp = resultado;
     })
     
   }
@@ -161,6 +164,13 @@ export class EmpleadoMiPerfilComponent implements OnInit {
         this.servicio.produccionMesEmpleado.push(resultado[i].sum_productivity);
 
         this.mergeOptions = {
+          xAxis: [
+            {
+                type: 'category',
+                boundaryGap: false,
+                data: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+            }
+          ],
 					series: [
             {
               name: 'Producción Media',
@@ -196,6 +206,83 @@ export class EmpleadoMiPerfilComponent implements OnInit {
       }
     })
   }
+  mesDerecha()
+  {
+    this.posicion+=1;
+    if(this.posicion == 12)
+    {
+      this.posicion = 0;
+    }
+    this.verPorMes()
+  }
+  mesIzquierda()
+  {
+    this.posicion-=1;
+    if(this.posicion == -1)
+    {
+      this.posicion = 11;
+    }
+    this.verPorMes()
+  }
+  verPorAnyo()
+  {
+    this.produccionEmpleados = this.produccionEmpleadosBackUp;
+    this.ProdIndiMes()
+  }
+  verPorMes()
+  {
+    let meses = ["-01-", "-02-", "-03-", "-04-", "-05-", "-06-", "-07-", "-08-", "-09-", "-10-", "-11-", "-12-"];
+
+    this.produccionEmpleados = this.produccionEmpleadosBackUp.filter(nuevoArray => nuevoArray.date.includes(meses[this.posicion]));
+    
+    this.graficaMes()
+  }
+
+  graficaMes()
+  {
+    let meses = ["-01-", "-02-", "-03-", "-04-", "-05-", "-06-", "-07-", "-08-", "-09-", "-10-", "-11-", "-12-"];
+    let dias = []
+    let produccion = []
+    
+    this.produccionEmpleados = this.produccionEmpleadosBackUp.filter(nuevoArray => nuevoArray.date.includes(meses[this.posicion]));
+    for(let i=0; i<this.produccionEmpleados.length; i++)
+    {
+      dias.push(this.produccionEmpleados[i].date.slice(0,10));
+      produccion.push(this.produccionEmpleados[i].productivity);
+      
+    }
+    this.mergeOptions = {
+      xAxis: [
+        {
+            type: 'category',
+            boundaryGap: false,
+            data: dias
+        }
+      ],
+      series: [
+        {
+          name: '',
+          type: 'line',
+          areaStyle: {},
+          emphasis: {
+              focus: 'series'
+          },
+          data: 0
+        },
+        { 
+          color: ["#54e346"],
+          name: 'Tú',
+          type: 'line',
+          areaStyle: {},
+          emphasis: {
+              focus: 'series'
+          },
+          data: produccion
+        }
+      ]
+    };
+  }
+
 
   ngOnInit(): void 
   {

@@ -1,5 +1,5 @@
 <div class="row barra-filtros">
-  <div class="col-2">
+  <!-- <div class="col-2">
     <form class="d-flex">
       <input class="form-control me-2 mainLoginInput input-search-barra" type="search" placeholder="&#61442;"
         aria-label="Search">
@@ -12,17 +12,39 @@
       <option value="1">Día</option>
       <option value="2">Mes</option>
     </select>
-    </div>
-    
-    <div class="col-9">
-    <button class="boton-barra-filtros reductor" (click)="show()">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      Añadir
-    </button>
-    </div>
+    </div> -->
+    <!-- <div class="col-9">
+      <button class="boton-barra-filtros reductor" (click)="show()">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Añadir
+      </button>
+      </div> -->
+      
+    <div class="row">
+        <div class="row filabotones">
+          <div class="col-3">
+            <button class="boton-barra-filtros reductor" (click)="show()">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Añadir
+            </button>
+          </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-primary btn-sm boton-redondo"(click)="mesIzquierda()"><i class="fas fa-arrow-left"></i></button>
+                <button type="button" class="btn btn-primary btn-sm boton-redondo"(click)="mesDerecha()"><i class="fas fa-arrow-right"></i></button>
+            </div>
+            <div class="col-3">
+                <button class="boton-barra-filtros" (click) = "verPorMes()">Mes</button>
+                <button class="boton-barra-filtros" (click) = "verPorAnyo()">Año</button>
+            </div>
+        </div>
+  </div>
+  
   
 <!-- </div> -->
 
