@@ -11,7 +11,20 @@ import { ServiciosService } from 'src/app/shared/servicios.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private apiservice: ApiserviceService, private servicio: ServiciosService, private _router: Router) { }
+  public showAlert:boolean
+  public mensaje:string=""
+
+  constructor(private apiservice: ApiserviceService, private servicio: ServiciosService, private _router: Router) {
+    this.showAlert=false
+   }
+  alertaLogin(){
+    this.showAlert=true
+    this.mensaje=this.mensaje
+    setTimeout(()=>{this.showAlert=false},3000)
+  }
+  cerrar(){
+    this.showAlert=false
+  }
 
   ngOnInit(): void {
   }
@@ -34,7 +47,7 @@ export class LoginComponent implements OnInit {
             this._router.navigate(['home'])
           }
           else{
-            console.log("campo mal introducido")
+            this.alertaLogin()
           }
         })
       }

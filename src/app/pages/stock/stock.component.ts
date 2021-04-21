@@ -17,6 +17,10 @@ export class StockComponent implements OnInit {
   showModal3:boolean
   stock : Stock = new Stock(0,0,"","",0,"","",0)
   arrayStock : Stock[] = [this.stock]
+  arrayStockBackup:Stock[] = [this.stock]
+  arrayStockCategoria:string[]=[]
+  arrayStockUnidad:string[]=[]
+  arrayStockUbicacion:string[]=[]
   mensaje: string = ""
   mostrar: boolean
   posicionTabla : number = 0
@@ -27,6 +31,7 @@ export class StockComponent implements OnInit {
 
   public formularioStockAdd: FormGroup
   public formularioStockUpdate: FormGroup
+
   
 
   constructor(public servicio: ServiciosService,public apiService: ApiserviceService, private formBuilder:FormBuilder) {
@@ -34,6 +39,9 @@ export class StockComponent implements OnInit {
     this.showModal = false
     this.showModal2 = false
     this.mostrar = false
+    this.arrayStockCategoria=[]
+    this.arrayStockUnidad=[]
+    this.arrayStockUbicacion=[]
 
     this.buildFormAdd()
     this.buildFormUpdate()
@@ -123,6 +131,27 @@ export class StockComponent implements OnInit {
       (data:Stock[]) =>
       {
         this.arrayStock=data
+        this.arrayStockBackup=data
+        this.arrayStockCategoria=[]
+        for(let i=0;i<this.arrayStock.length;i++)
+        {
+          if(!this.arrayStockCategoria.includes(this.arrayStock[i].type))
+          {
+            this.arrayStockCategoria.push(this.arrayStock[i].type)
+          }
+          if(!this.arrayStockUnidad.includes(this.arrayStock[i].unit))
+          {
+            this.arrayStockUnidad.push(this.arrayStock[i].unit)
+          }
+          if(!this.arrayStockUbicacion.includes(this.arrayStock[i].place))
+          {
+            this.arrayStockUbicacion.push(this.arrayStock[i].place)
+          }
+
+        }
+        console.log(this.arrayStockCategoria);  
+        console.log(this.arrayStockUnidad);
+        console.log(this.arrayStockUbicacion); 
       }
     )
   }
@@ -140,6 +169,24 @@ export class StockComponent implements OnInit {
       } 
     )
   }
+
+  
+  selectStock(selectBox:HTMLSelectElement){
+    
+    this.arrayStock = this.arrayStockBackup.filter(nuevoArray=>nuevoArray.type.includes(selectBox.value))
+  }
+
+  selectStock2(selectBox2:HTMLSelectElement){
+    
+    this.arrayStock = this.arrayStockBackup.filter(nuevoArray2=>nuevoArray2.unit.includes(selectBox2.value))
+  }
+
+  selectStock3(selectBox3:HTMLSelectElement){
+    
+    this.arrayStock = this.arrayStockBackup.filter(nuevoArray3=>nuevoArray3.place.includes(selectBox3.value))
+  }
+
+
 
   ngOnInit(): void {
     this.getStock()

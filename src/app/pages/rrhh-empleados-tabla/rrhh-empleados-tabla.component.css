@@ -75,9 +75,18 @@
     color: rgb(135, 126, 135)
   }
 
+  .tamaño-tabla{
+    width: 93%;
+    height: fit-content;
+    margin-left: 1%;
+  }
+  .table{
+    width:100%;
+  }
 
  .tableContainer{
-     width: fit-content;
+     width: 100%;
+     margin-top: 3%;
  }
  .form-select{
   width: fit-content;

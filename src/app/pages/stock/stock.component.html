@@ -10,36 +10,25 @@
      </form>
    </div>
       <div class="col-1">
-        <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example">
-          <option selected>Categoría</option>
-          <option value="1">Material médico</option>
-          <option value="2">Medicina</option>
-          <option value="3">Parafarmacia</option>
+        <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example"  #selectBox on-change="selectStock(selectBox);">
+          <option value="" selected>Categoría</option>
+          <option *ngFor="let stockCategoria of arrayStockCategoria" value="{{stockCategoria}}">{{stockCategoria}}</option>          
         </select>
       </div>
       <div class="col-1 margen1">
-        <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example">
-          <option selected>Unidad</option>
-          <option value="1">Litros</option>
-          <option value="2">Unidades</option>
-          <option value="3">Kilos</option>
+        <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example"  #selectBox2 on-change="selectStock2(selectBox2);">
+          <option value="" selected>Unidad</option>
+          <option *ngFor="let stockUnidad of arrayStockUnidad" value="{{stockUnidad}}">{{stockUnidad}}</option>
         </select>
       </div>
       <div class="col-1">
-        <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example">
-          <option selected>Ubicación</option>
-          <option value="1">Almacén</option>
-          <option value="2">Congelador</option>
-          <option value="3">En stock</option>
+        <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example"  #selectBox3 on-change="selectStock3(selectBox3);">
+          <option value="" selected>Ubicacion</option>
+          <option *ngFor="let stockUbicacion of arrayStockUbicacion" value="{{stockUbicacion}}">{{stockUbicacion}}</option>
         </select>
       </div>
-      <div class="col-1">
-        <select class="form-select selectBarraFiltros colocar-select" aria-label="Default select example">
-          <option selected>Estado</option>
-          <option value="1">Correcto</option>
-          <option value="2">Reponer</option>
-        </select>
-      </div>
+      
+      
    <!-- -------------------- Button e Iconos------------------------------ -->
    <div class="col-2">
    <button class="boton-barra-filtros reductor" (click)="show()">
@@ -60,7 +49,7 @@
 
 
  <div class="row tamaño-tabla" *ngIf="arrayStock.length > 0; else isNone">
-  <div class="container mt-5">
+  <!-- <div class="container mt-5"> -->
     <div class="tableContainer">
       <table class="table">
         <thead>
@@ -93,7 +82,7 @@
       <button type="button" class="close" on-click="cerrar()">&times;</button>
       <strong>{{mensaje}}</strong>
     </div>
-  </div>
+  <!-- </div> -->
 </div>
 <ng-template #isNone>
   <h5 style="text-align: center;">Todavía no hay artículos introducidos</h5>
