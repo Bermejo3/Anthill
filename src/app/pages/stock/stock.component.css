@@ -12,7 +12,8 @@
   background-color: rgba(0, 0, 0, 0.75);
 }
   .row .iconos-barra-filtros{
-    text-align:end;
+    /* text-align:end; */
+    width: fit-content;
   
   }
   .iconos-barra-filtros i{
@@ -20,6 +21,7 @@
     font-size:50px;
     margin-right:3% ;
     text-align: end;
+    
   }
   .iconos-barra-filtros i:hover{
     color: var(--colorPrincipal)
@@ -90,13 +92,13 @@
 .colocar-select{
   width: fit-content;
 }
-.margen1{
-  margin-left: 2%;margin-right: -1%;
-}
-.margen2{
-  margin-right: 1%;
-}
-/* .tableContainer{
+  .margen1{
+    margin-left: 2%;margin-right: -1%;
+  }
+  .margen2{
+    margin-right: 1%;
+  }
+  /* .tableContainer{
   background: linear-gradient(
     90deg
     ,#03256c 0  

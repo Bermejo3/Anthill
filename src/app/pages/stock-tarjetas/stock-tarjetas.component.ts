@@ -18,6 +18,10 @@ export class StockTarjetasComponent implements OnInit {
   stock : Stock = new Stock(0,0,"","",0,"","",0,"")
   arrayStock : Stock[] = [this.stock]
   public arrayStockBackUp : Stock[] = [this.stock]
+  arrayStockBackup:Stock[] = [this.stock]
+  arrayStockCategoria:string[]=[]
+  arrayStockUnidad:string[]=[]
+  arrayStockUbicacion:string[]=[]
   mensaje: string = ""
   mostrar: boolean
   posicionTabla : number = 0
@@ -37,6 +41,9 @@ export class StockTarjetasComponent implements OnInit {
     this.showModal2 = false
     this.showModal3=false
     this.mostrar = false
+    this.arrayStockCategoria=[]
+    this.arrayStockUnidad=[]
+    this.arrayStockUbicacion=[]
 
     this.buildFormAdd()
     this.buildFormUpdate()
@@ -94,15 +101,50 @@ export class StockTarjetasComponent implements OnInit {
     )
   }
 
-   getStock(){
+  getStock(){
     this.apiService.getStock(this.servicio.id_companies).subscribe
     (
       (data:Stock[]) =>
       {
         this.arrayStock=data
-        this.arrayStockBackUp=data
+        this.arrayStockBackup=data
+        this.arrayStockCategoria=[]
+        for(let i=0;i<this.arrayStock.length;i++)
+        {
+          if(!this.arrayStockCategoria.includes(this.arrayStock[i].type))
+          {
+            this.arrayStockCategoria.push(this.arrayStock[i].type)
+          }
+          if(!this.arrayStockUnidad.includes(this.arrayStock[i].unit))
+          {
+            this.arrayStockUnidad.push(this.arrayStock[i].unit)
+          }
+          if(!this.arrayStockUbicacion.includes(this.arrayStock[i].place))
+          {
+            this.arrayStockUbicacion.push(this.arrayStock[i].place)
+          }
+
+        }
+        console.log(this.arrayStockCategoria);  
+        console.log(this.arrayStockUnidad);
+        console.log(this.arrayStockUbicacion); 
       }
     )
+  }
+
+  selectStock(selectBox:HTMLSelectElement){
+    
+    this.arrayStock = this.arrayStockBackup.filter(nuevoArray=>nuevoArray.type.includes(selectBox.value))
+  }
+
+  selectStock2(selectBox2:HTMLSelectElement){
+    
+    this.arrayStock = this.arrayStockBackup.filter(nuevoArray2=>nuevoArray2.unit.includes(selectBox2.value))
+  }
+
+  selectStock3(selectBox3:HTMLSelectElement){
+    
+    this.arrayStock = this.arrayStockBackup.filter(nuevoArray3=>nuevoArray3.place.includes(selectBox3.value))
   }
 
   addStock(name:string,type:string,quantity:number,unit:string,place:string, minQuantity:number,picture:string){
