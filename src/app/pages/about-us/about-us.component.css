@@ -1,0 +1,96 @@
+.navbar img{
+    width: 90px;
+    height: 70px;
+}
+h3{
+    color: var(--colorFondo);
+    cursor: pointer;
+}
+.navbar{
+    width: 100%;
+    height: 100px;
+    top: 0;
+    /* position: sticky; */
+}
+.row{
+    
+    /* border: 1px solid yellow; */
+    width: 200vh;
+    height: 400px;
+}
+
+.end{
+justify-content: flex-end;
+/* border: 1px solid yellow; */
+}
+.start{
+    justify-content: flex-start;
+    /* border: 1px solid yellow; */
+}
+.centrar{
+        
+    margin-top: 3%;
+    text-align: center;
+    justify-content: center;
+}
+
+.turnos{
+    width: 100%; 
+    height: 65%;
+}
+.tarjeta{
+    width: 80%;
+    height: 90%;
+    /* margin-left: 50px; */
+    margin-top: -170px;
+}
+
+/* .start img:hover{
+ box-shadow: 3px 3px 5px 6px  #ccc;;
+} */
+.entrada{
+    height: 200px;
+    text-align: center;
+    color: white;
+}
+h4 {
+    margin-top: 15px;
+}
+.bocadillo{
+    background-color: #02194b;
+    width: 50%;
+    height: 81%;
+    margin: 1%;
+    border-radius: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.bocadillo,.bocadillo3,.bocadillo2, p{
+   margin-top: 15px;
+}
+.margen{
+    margin-top: 15px;
+}
+
+.tamaño{
+    font-size: 24px;
+}
+.icono{
+    font-size: 50px;
+}
+.grafica{
+    width: 128%;
+    height: 100%;
+    margin-top: -50px;
+}
+.fotos{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.tabla{
+    width: 129%;
+    height: 80%;
+    margin-top: -50px;
+}
