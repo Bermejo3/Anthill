@@ -87,7 +87,7 @@ export class ProduccionComponent implements OnInit {
         this.mergeOptions = {
 					series: [
             {
-              name: 'Productividad Total',
+              name: 'Producción Total',
               type: 'line',
               areaStyle: {},
               emphasis: {
@@ -245,7 +245,7 @@ export class ProduccionComponent implements OnInit {
     title: 
     {
       textStyle:{color:'#ffffff'},
-      text: 'Productividad',
+      text: 'Producción',
     },
     textStyle: 
     {
@@ -286,7 +286,7 @@ export class ProduccionComponent implements OnInit {
     ],
     series: [
         {   
-            name: 'Productividad Total',
+            name: 'Producción Total',
             type: 'line',
             areaStyle: {},
             emphasis: {
