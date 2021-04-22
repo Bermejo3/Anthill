@@ -26,6 +26,8 @@ export class RrhhEmpleadosComponent implements OnInit {
   public searchText: string=""
 
   constructor(public servicio: ServiciosService, public apiService:ApiserviceService,  private _router:Router ) {
+    this.servicio.id_employees = Number(JSON.parse(sessionStorage.getItem("id_employees"))) || 1;  
+    this.servicio.id_companies = Number(JSON.parse(sessionStorage.getItem("id_companies"))) || 1;
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.mostrar = false
   }

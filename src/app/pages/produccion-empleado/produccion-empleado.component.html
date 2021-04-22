@@ -56,7 +56,7 @@
                 <td>{{empleadop.productivity}}</td>
                 <td>{{empleadop.hours}}</td>
                 <td class="destacada">{{(empleadop.productivity/empleadop.hours).toFixed(2)}}</td>
-                <td>{{empleadop.date.slice(0,10)}}</td>
+                <td>{{empleadop.date}}</td>
                 <td><i class="far fa-times-circle iconos-tarjetas eliminar" (click)="showSure(empleadop.id_productivity)"></i>
                   <i class="fas fa-edit iconos-tarjetas editar" (click)="show2(empleadop.id_productivity, empleadop.name, empleadop.productivity, empleadop.hours, empleadop.date.slice(0,10))"></i></td>
               </tr>

@@ -19,11 +19,15 @@
     <div class="col-6">
       <div class="card mb-3 tarjetas-fila1">
         <div class="row g-0 img">
+
           <div class="col-md-4">
-            <img src="../../../assets/tarjetas/empleado2.jpg" alt="..."
-              style="width: 250px;height:270px;margin-top: -20%; margin-left: -20%; border-radius: 6px;" id="imagen">
-              
+            <div *ngIf="unEmpleado.picture != null, else isNull">
+              <img class="card-img-top" src="{{unEmpleado.picture}}"  onerror="this.src='../../../assets/tarjetas/hormigaFaltan.jpg'" alt="Card image cap" style="width: 250px;height:270px;margin-top: -20%; margin-left: -20%; border-radius: 6px;" id="imagen">
+            </div>
+            <!-- ------Imagen predeterminada----- -->
+            <ng-template #isNull> <img class="card-img-top" src="../../../assets/tarjetas/hormigaFaltan.jpg" alt="Card image cap"> </ng-template>
           </div>
+    
           <div class="col-8">
             <div class="card-body letras-tarjeta">
               <p class="card-title" ><b>Nombre:</b> {{unEmpleado.name}}</p>
@@ -34,8 +38,10 @@
               <p class="card-title"><b>Telefono:</b> {{unEmpleado.phone}}</p>
               <p class="card-title"><b>Email:</b> {{unEmpleado.email}}</p>
               <p class="card-title"><b>Vacaciones restantes:</b> {{23 - vacaciones.length}}</p>
-              <p class="card-title" ><b>Turno:</b><i class="fas fa-adjust iconos-tarjetas tarde"></i><i
-                class="fas fa-moon iconos-tarjetas luna"></i> </p>
+              <p class="card-title" ><b>Turno:</b> 
+                <i class="fas fa-sun iconos-tarjetas sol" *ngIf = "unEmpleado.shiftMorning==true"></i> 
+                <i class="fas fa-adjust iconos-tarjetas sol" *ngIf = "unEmpleado.shiftAfternoon==true"></i>
+                <i class=" fas fa-moon iconos-tarjetas luna" *ngIf = "unEmpleado.shiftEvening==true"></i></p>
             </div>
           </div>
         </div>
@@ -57,7 +63,7 @@
                       <tr *ngFor = "let empleadop of produccionEmpleados | paginate: { itemsPerPage: itemsPerPage, currentPage: page };, let i=index">
                         <td>{{empleadop.productivity}}</td>
                         <td>{{empleadop.hours}}</td>
-                        <td>{{empleadop.date.slice(0,10)}}</td>
+                        <td>{{empleadop.date}}</td>
                       </tr>
                     </tbody>
                   </table>

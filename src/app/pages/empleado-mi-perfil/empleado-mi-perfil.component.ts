@@ -91,8 +91,12 @@ export class EmpleadoMiPerfilComponent implements OnInit {
 
   public page: number = 1
   public itemsPerPage: number = 5
+  public fecha:Date[];
 
   constructor(public servicio: ServiciosService, public apiservice: ApiserviceService) {
+    this.servicio.id_employees = Number(JSON.parse(sessionStorage.getItem("id_employees"))) || 1;  
+    this.servicio.id_companies = Number(JSON.parse(sessionStorage.getItem("id_companies"))) || 1;
+
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.servicio.esEmpleado=true //Para iniciar el sidebar de empleado
 
@@ -107,6 +111,7 @@ export class EmpleadoMiPerfilComponent implements OnInit {
     this.misEmpleados=0;
 
     this.posicion=0;
+    this.fecha=[];
     
   }
   getEmpleados()
@@ -151,13 +156,27 @@ export class EmpleadoMiPerfilComponent implements OnInit {
       this.produccionEmpleados = resultado;
       
       this.produccionEmpleadosBackUp = resultado;
+
+      this.fecha = [];
+
+      for(let i=0; i<resultado.length; i++)
+      {
+        this.fecha.push(new Date(resultado[i].date));
+
+        this.fecha[i].setDate(this.fecha[i].getDate() + 1);
+
+        this.produccionEmpleados[i].date = this.fecha[i].toJSON().slice(0,10);
+        
+        this.produccionEmpleadosBackUp[i].date = this.fecha[i].toJSON().slice(0,10);
+        
+      }
     })
     
   }
-  ProdIndiMes()
+  prodIndiMes()
   {
     this.getProductMes();
-    this.apiservice.ProdIndiMes(this.servicio.id_employees, this.servicio.id_companies).subscribe((resultado:any[])=>
+    this.apiservice.prodIndiMes(this.servicio.id_employees, this.servicio.id_companies).subscribe((resultado:any[])=>
     {
       for(let i=0; i<resultado.length; i++)
       {
@@ -227,7 +246,7 @@ export class EmpleadoMiPerfilComponent implements OnInit {
   verPorAnyo()
   {
     this.produccionEmpleados = this.produccionEmpleadosBackUp;
-    this.ProdIndiMes()
+    this.prodIndiMes()
   }
   verPorMes()
   {
@@ -291,7 +310,7 @@ export class EmpleadoMiPerfilComponent implements OnInit {
     this.getVacacionesEmp()
     this.getProdIndividual()
     this.getProductividad()
-    this.ProdIndiMes()
+    this.prodIndiMes()
     
   }
 

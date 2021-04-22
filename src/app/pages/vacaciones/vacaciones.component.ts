@@ -21,6 +21,8 @@ export class VacacionesComponent implements OnInit {
   public arrayVacaciones: string[] = []
   
   constructor(public servicio: ServiciosService, private apiservice: ApiserviceService) {
+    this.servicio.id_employees = Number(JSON.parse(sessionStorage.getItem("id_employees"))) || 1;  
+    this.servicio.id_companies = Number(JSON.parse(sessionStorage.getItem("id_companies"))) || 1;
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
   }
 

@@ -26,6 +26,8 @@ export class HomeComponent implements OnInit {
   time: Date
 
   constructor(public servicio: ServiciosService) {
+    this.servicio.id_employees = Number(JSON.parse(sessionStorage.getItem("id_employees"))) || 1;  
+    this.servicio.id_companies = Number(JSON.parse(sessionStorage.getItem("id_companies"))) || 1;
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.d = new Date()
     this.time = new Date()

@@ -35,7 +35,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor = "let trabajadores of arrayProductividad | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index; let even = even" [ngClass] = "{trPar: even}" (click)="getProdIndividual(i)">
+              <tr *ngFor = "let trabajadores of arrayProductividad | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index; let even = even" [ngClass] = "{trPar: even}" (click)="getProdIndividual(trabajadores.id_employees)">
                 <td>{{trabajadores.name}}</td>
                 <td>{{trabajadores.sum_productivity}}</td>
                 <td>{{trabajadores.sum_hours}}</td>

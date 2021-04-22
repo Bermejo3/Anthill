@@ -17,7 +17,7 @@ export class ApiserviceService {
     
   }
 
-  ProdIndiMes(id_employees:number, id_companies:number)
+  prodIndiMes(id_employees:number, id_companies:number)
   {
     return this.http.get(this.url + "/productividad/empleado/fecha?id_employees=" + id_employees + "&id_companies=" + id_companies)
   }

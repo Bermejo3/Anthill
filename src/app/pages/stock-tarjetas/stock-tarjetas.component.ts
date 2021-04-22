@@ -35,6 +35,8 @@ export class StockTarjetasComponent implements OnInit {
   public searchText: string=""
 
   constructor(public servicio: ServiciosService,public apiService: ApiserviceService, private formBuilder:FormBuilder) {
+    this.servicio.id_employees = Number(JSON.parse(sessionStorage.getItem("id_employees"))) || 1;  
+    this.servicio.id_companies = Number(JSON.parse(sessionStorage.getItem("id_companies"))) || 1;
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     this.showModal = false
     this.showModal2 = false

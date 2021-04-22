@@ -34,7 +34,7 @@ export class ProduccionComponent implements OnInit {
   public mergeOptions = {};
 
   public page: number = 1
-  public itemsPerPage: number = 7
+  public itemsPerPage: number = 5
 
   public formularioAddProductividad: FormGroup
 
@@ -42,6 +42,8 @@ export class ProduccionComponent implements OnInit {
   
   constructor(public servicio: ServiciosService, private _router:Router, private apiservice: ApiserviceService, private formBuilder:FormBuilder) 
   {
+    this.servicio.id_employees = Number(JSON.parse(sessionStorage.getItem("id_employees"))) || 1;  
+    this.servicio.id_companies = Number(JSON.parse(sessionStorage.getItem("id_companies"))) || 1;
     this.comparaProduccion = [];
     this.arrayProductividad = [];
     this.arrayProductividadBackUp = [];
@@ -112,9 +114,9 @@ export class ProduccionComponent implements OnInit {
     })
   }
 
-  getProdIndividual(i:number)
+  getProdIndividual(id_employees:number)
   {
-    this.servicio.id_employees = this.arrayProductividad[i].id_employees; 
+    this.servicio.id_employees = id_employees; 
     this._router.navigate(['produccion/empleado'])
     
   }
