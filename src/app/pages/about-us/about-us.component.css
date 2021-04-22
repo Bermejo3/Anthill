@@ -41,56 +41,73 @@ justify-content: flex-end;
 .tarjeta{
     width: 80%;
     height: 90%;
-    /* margin-left: 50px; */
     margin-top: -170px;
 }
 
-/* .start img:hover{
- box-shadow: 3px 3px 5px 6px  #ccc;;
-} */
 .entrada{
-    height: 200px;
     text-align: center;
     color: white;
+    margin-top: 60px;
 }
+
 h4 {
     margin-top: 15px;
 }
 .bocadillo{
     background-color: #02194b;
     width: 50%;
-    height: 81%;
-    margin: 1%;
     border-radius: 12px;
     align-items: center;
     justify-content: center;
-}
-
-.bocadillo,.bocadillo3,.bocadillo2, p{
-   margin-top: 15px;
-}
-.margen{
-    margin-top: 15px;
+    height: 300px;
 }
 
 .tamaño{
     font-size: 24px;
+    margin-top: 50px;
 }
 .icono{
     font-size: 50px;
 }
-.grafica{
-    width: 128%;
-    height: 100%;
-    margin-top: -50px;
-}
+
 .fotos{
     width: 200px;
     height: 200px;
     border-radius: 50%;
 }
-.tabla{
-    width: 129%;
-    height: 80%;
-    margin-top: -50px;
+.imagen{
+    width: 1000px;
+    height: 300px;
+}
+
+.nosotros{
+    background: white;
+    width: 100%;
+}
+
+.separador{
+    width: 90%;
+}
+
+.colorNombre{
+    color: var(--colorFondo)
+}
+
+.funcionalidades{
+    margin-left: auto;
+    margin-right: auto;
+}
+li{
+    list-style: none;
+    margin-top: 15px;
+}
+
+.lista{
+    margin-top: 50px;
+    margin-left: 40%;
+    background-color: #02194b;
+    width: fit-content;
+    padding: 20px;
+    border-radius: 12px;
+    
 }
