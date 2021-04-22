@@ -123,7 +123,7 @@ export class ProduccionEmpleadoComponent implements OnInit {
   public fecha:Date[];
 
   constructor(public servicio: ServiciosService, public apiservice: ApiserviceService, private formBuilder:FormBuilder) {
-    this.servicio.id_employees = Number(JSON.parse(sessionStorage.getItem("id_employees"))) || 1;  
+    
     this.servicio.id_companies = Number(JSON.parse(sessionStorage.getItem("id_companies"))) || 1;
     this.servicio.estaLogueado = true //Para poder mostrar el sidebar y el header
     
