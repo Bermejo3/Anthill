@@ -21,7 +21,7 @@ import { TurnosSemanaComponent } from './pages/turnos-semana/turnos-semana.compo
 import { VacacionesComponent } from './pages/vacaciones/vacaciones.component';
 
 const routes: Routes = [
-  {path:"", component:HomeComponent},
+  {path:"", component:LoginComponent},
   {path:"login", component:LoginComponent},
   {path:"register", component:RegisterComponent},
   {path:"about-us", component:AboutUsComponent},
