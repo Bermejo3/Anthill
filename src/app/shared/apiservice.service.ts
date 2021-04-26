@@ -10,7 +10,8 @@ import{Empleados}from"../models/empleados"
 export class ApiserviceService {
 
 
-  private url = 'http://localhost:300'
+  // private url = 'http://localhost:300'
+  private url = 'https://anthill-apirest.herokuapp.com'
 
   constructor(public http: HttpClient) 
   { 

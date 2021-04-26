@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   acceder(email: string, password: string){
     this.apiservice.postLogin(email, password).subscribe((resultado: any)=>{
       if (resultado.codigo == 1){
-        
+        this.servicio.esEmpleado = false
         sessionStorage.setItem("id_companies", JSON.stringify(resultado.res[0].id_companies))
         // this.servicio.id_companies = resultado.res[0].id_companies
         this._router.navigate(['home'])
